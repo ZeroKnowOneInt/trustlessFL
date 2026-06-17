@@ -1,0 +1,7 @@
+[project]
+name = "trustlessfl"
+version = "0.1.0"
+description = "Trustless Federate Learning with Zero-Knowledge Proof"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
