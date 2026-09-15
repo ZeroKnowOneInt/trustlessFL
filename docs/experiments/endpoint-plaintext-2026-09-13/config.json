@@ -1,0 +1,43 @@
+{
+  "data": ".cache/endpoint/v2",
+  "output": ".cache/endpoint/runs/plaintext-2026-09-13",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "mus": [
+    0.0,
+    0.01,
+    0.1
+  ],
+  "learning_rates": [
+    0.01,
+    0.1
+  ],
+  "rounds": 10,
+  "epochs": 3,
+  "batch_size": 128,
+  "model": {
+    "inputs": 31,
+    "hidden": 128,
+    "classes": 9,
+    "parameters": 5257
+  },
+  "aggregation": "equal-client float64 average",
+  "security": "None; plaintext learning simulator",
+  "attack": "2/8 clients, fixed cyclic train label flip, rounds 1..R",
+  "python": "3.12.12",
+  "numpy": "2.5.0",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "sources": {
+    "/home/hacho/@WSL-Projects/trustlessFL/experiments/run_endpoint.py": "b15219e4bcae384be295f5e3e6b05193aef2f128ea20929a57841f20e2403ecd",
+    "trustlessfl/endpoint.py": "bb2beb0b1f7eb40ab7136293856a7f9f6dab87124fa03b44d053e4e2a1752df6",
+    "experiments/download_endpoint.py": "00e66137fb5e5a2959ea734c35ae383cddb6af27169cb5b0f07302a93caa5152"
+  }
+}

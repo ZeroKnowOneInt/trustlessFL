@@ -1,0 +1,648 @@
+{
+  "record": "https://www.scidb.cn/en/detail?dataSetId=0151eff3132541e2852a10ed65e0991f",
+  "version": "V2",
+  "license": "CC BY 4.0",
+  "files": [
+    {
+      "file": "0.csv",
+      "sha256": "1f9cd5e886ba7dbb5e5b53012807e02f8f2a4a582ed5966102922391599597fa",
+      "rows": 20448,
+      "label_counts": [
+        2325,
+        2400,
+        1775,
+        2365,
+        2365,
+        2390,
+        2395,
+        2028,
+        2405
+      ]
+    },
+    {
+      "file": "1.csv",
+      "sha256": "35e4a3412a43fd98205879008cd44a3c358e241b1b001ce59bed67f1593954ab",
+      "rows": 21765,
+      "label_counts": [
+        2285,
+        2420,
+        2820,
+        2355,
+        2365,
+        2390,
+        2370,
+        2360,
+        2400
+      ]
+    },
+    {
+      "file": "2.csv",
+      "sha256": "f194d54aeaf60cdba97cdab12fc13432db71fc4a1a2ef7108a9cc35a637af9ee",
+      "rows": 21420,
+      "label_counts": [
+        2395,
+        2400,
+        2400,
+        2400,
+        2255,
+        2400,
+        2400,
+        2375,
+        2395
+      ]
+    },
+    {
+      "file": "3.csv",
+      "sha256": "6072dfe4d8bb32898f4c7ceab60ef5b4613f9603a5d203d05e29c2071b2f6052",
+      "rows": 21455,
+      "label_counts": [
+        2400,
+        2400,
+        2405,
+        2400,
+        2405,
+        2405,
+        2405,
+        2240,
+        2395
+      ]
+    },
+    {
+      "file": "4.csv",
+      "sha256": "b8a775d975dd1a15f160b72879ce185ef92bb7d4a2bd636c1513dd279bec57ea",
+      "rows": 21550,
+      "label_counts": [
+        2400,
+        2405,
+        2405,
+        2395,
+        2400,
+        2400,
+        2355,
+        2400,
+        2390
+      ]
+    },
+    {
+      "file": "5.csv",
+      "sha256": "23a33031b9506cb8c5f03b61d7093b67b736bbc1b17dcc33e425f1ca4e5f1c3f",
+      "rows": 21215,
+      "label_counts": [
+        2400,
+        2195,
+        2400,
+        2405,
+        2400,
+        2390,
+        2365,
+        2270,
+        2390
+      ]
+    },
+    {
+      "file": "6.csv",
+      "sha256": "418418ef266440502a174c95d55f9b83732caa35002443768031b2be4983927c",
+      "rows": 21605,
+      "label_counts": [
+        2400,
+        2400,
+        2400,
+        2400,
+        2400,
+        2400,
+        2400,
+        2400,
+        2405
+      ]
+    },
+    {
+      "file": "7.csv",
+      "sha256": "37e6c863cbfdd1dba0673f96d69a1bb20cbd70b8ad665b7d1585d20282a06823",
+      "rows": 21595,
+      "label_counts": [
+        2400,
+        2400,
+        2400,
+        2390,
+        2400,
+        2405,
+        2405,
+        2390,
+        2405
+      ]
+    }
+  ],
+  "rows": 171053,
+  "inputs": 31,
+  "features": [
+    "madvise",
+    "setgroups32",
+    "statfs64",
+    "seconds_RES_data",
+    "getsockname",
+    "connect",
+    "block:block_unplug_KERN_data",
+    "ext4:ext4_ext_rm_leaf",
+    "socket",
+    "jbd2:jbd2_handle_extend",
+    "util",
+    "write_kbs",
+    "rename",
+    "prlimit64",
+    "write_merge",
+    "dup2",
+    "recv",
+    "ext4:ext4_da_update_reserve_space_RES_data",
+    "iowrite",
+    "fchmod",
+    "setitimer",
+    "mkdir",
+    "inotify_add_watch",
+    "ext4:ext4_ext_remove_space_done",
+    "pipe2",
+    "writeback:sb_clear_inode_writeback_KERN_data",
+    "brk",
+    "shutdown",
+    "getegid32",
+    "iowritetime",
+    "geteuid32"
+  ],
+  "labels": [
+    "Normal",
+    "Ransomware-PoC",
+    "TheTick",
+    "Bashlite",
+    "HttpBackdoor",
+    "Beurk",
+    "Backdoor",
+    "Bdvl",
+    "XMRig"
+  ],
+  "label_mapping_source": "https://github.com/Cyber-Tracer/iot-feature-engineering/blob/bf04ddfa010c3de5a003bd087497b9f9184e58e9/py_dataset/sys_func.py#L25",
+  "label_mapping_status": "Matches linked source encoder; CSV has no embedded semantic metadata",
+  "client_mapping": "Official device/0.csv through 7.csv preserved; physical device-ID mapping unverified",
+  "evaluation_scope": "Released-feature, non-temporal split; upstream preprocessing leakage possible",
+  "paper_discrepancy": "Observed 31 input features and 171053 rows, versus paper 32 and 342106",
+  "split_seed": 42,
+  "duplicates": {
+    "unique_feature_groups": 33354,
+    "duplicate_excess_rows": 137699,
+    "conflicting_label_groups": 480,
+    "conflicting_label_rows": 4800,
+    "cross_file_groups": 0,
+    "conflict_policy": "Retained; entire feature group assigned to one split",
+    "split": "Non-temporal, feature-group stratified approximately 60/20/20"
+  },
+  "split_stats": [
+    {
+      "client": 0,
+      "split": "train",
+      "rows": 12242,
+      "label_counts": [
+        1395,
+        1440,
+        1065,
+        1415,
+        1415,
+        1430,
+        1435,
+        1207,
+        1440
+      ]
+    },
+    {
+      "client": 0,
+      "split": "validation",
+      "rows": 4098,
+      "label_counts": [
+        465,
+        480,
+        355,
+        475,
+        475,
+        480,
+        480,
+        408,
+        480
+      ]
+    },
+    {
+      "client": 0,
+      "split": "test",
+      "rows": 4108,
+      "label_counts": [
+        465,
+        480,
+        355,
+        475,
+        475,
+        480,
+        480,
+        413,
+        485
+      ]
+    },
+    {
+      "client": 1,
+      "split": "train",
+      "rows": 13042,
+      "label_counts": [
+        1370,
+        1450,
+        1692,
+        1410,
+        1415,
+        1430,
+        1420,
+        1415,
+        1440
+      ]
+    },
+    {
+      "client": 1,
+      "split": "validation",
+      "rows": 4354,
+      "label_counts": [
+        455,
+        485,
+        564,
+        470,
+        475,
+        480,
+        475,
+        470,
+        480
+      ]
+    },
+    {
+      "client": 1,
+      "split": "test",
+      "rows": 4369,
+      "label_counts": [
+        460,
+        485,
+        564,
+        475,
+        475,
+        480,
+        475,
+        475,
+        480
+      ]
+    },
+    {
+      "client": 2,
+      "split": "train",
+      "rows": 12845,
+      "label_counts": [
+        1435,
+        1440,
+        1440,
+        1440,
+        1350,
+        1440,
+        1440,
+        1425,
+        1435
+      ]
+    },
+    {
+      "client": 2,
+      "split": "validation",
+      "rows": 4285,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        450,
+        480,
+        480,
+        475,
+        480
+      ]
+    },
+    {
+      "client": 2,
+      "split": "test",
+      "rows": 4290,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        455,
+        480,
+        480,
+        475,
+        480
+      ]
+    },
+    {
+      "client": 3,
+      "split": "train",
+      "rows": 12855,
+      "label_counts": [
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1340,
+        1435
+      ]
+    },
+    {
+      "client": 3,
+      "split": "validation",
+      "rows": 4290,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        450,
+        480
+      ]
+    },
+    {
+      "client": 3,
+      "split": "test",
+      "rows": 4310,
+      "label_counts": [
+        480,
+        480,
+        485,
+        480,
+        485,
+        485,
+        485,
+        450,
+        480
+      ]
+    },
+    {
+      "client": 4,
+      "split": "train",
+      "rows": 12915,
+      "label_counts": [
+        1440,
+        1440,
+        1440,
+        1435,
+        1440,
+        1440,
+        1410,
+        1440,
+        1430
+      ]
+    },
+    {
+      "client": 4,
+      "split": "validation",
+      "rows": 4310,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        470,
+        480,
+        480
+      ]
+    },
+    {
+      "client": 4,
+      "split": "test",
+      "rows": 4325,
+      "label_counts": [
+        480,
+        485,
+        485,
+        480,
+        480,
+        480,
+        475,
+        480,
+        480
+      ]
+    },
+    {
+      "client": 5,
+      "split": "train",
+      "rows": 12710,
+      "label_counts": [
+        1440,
+        1315,
+        1440,
+        1440,
+        1440,
+        1430,
+        1415,
+        1360,
+        1430
+      ]
+    },
+    {
+      "client": 5,
+      "split": "validation",
+      "rows": 4250,
+      "label_counts": [
+        480,
+        440,
+        480,
+        480,
+        480,
+        480,
+        475,
+        455,
+        480
+      ]
+    },
+    {
+      "client": 5,
+      "split": "test",
+      "rows": 4255,
+      "label_counts": [
+        480,
+        440,
+        480,
+        485,
+        480,
+        480,
+        475,
+        455,
+        480
+      ]
+    },
+    {
+      "client": 6,
+      "split": "train",
+      "rows": 12960,
+      "label_counts": [
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1440,
+        1440
+      ]
+    },
+    {
+      "client": 6,
+      "split": "validation",
+      "rows": 4320,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ]
+    },
+    {
+      "client": 6,
+      "split": "test",
+      "rows": 4325,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        485
+      ]
+    },
+    {
+      "client": 7,
+      "split": "train",
+      "rows": 12940,
+      "label_counts": [
+        1440,
+        1440,
+        1440,
+        1430,
+        1440,
+        1440,
+        1440,
+        1430,
+        1440
+      ]
+    },
+    {
+      "client": 7,
+      "split": "validation",
+      "rows": 4320,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ]
+    },
+    {
+      "client": 7,
+      "split": "test",
+      "rows": 4335,
+      "label_counts": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        485,
+        485,
+        480,
+        485
+      ]
+    }
+  ],
+  "feature_min": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "feature_max": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0000000000000002,
+    1.0000000000000002,
+    1.0,
+    1.0,
+    1.0000000000000002,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0000000000000002,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0000000000000002,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0000000000000002,
+    1.0
+  ]
+}

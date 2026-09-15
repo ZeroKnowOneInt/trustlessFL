@@ -1,0 +1,13 @@
+experiment,paper_location,metric,clients,aggregators,rounds,dataset,model,paper_value,unit,scope
+E1,Table 3,end_to_end_round_time,256,8,44,FMNIST,LeNet5,15.56,s,local training plus SA per round
+E1,Table 3,additional_communication,256,8,44,FMNIST,LeNet5,0.60,MB,excludes model parameter communication
+E1,Table 3,local_training_round_time,256,8,44,FMNIST,LeNet5,7.90,s,training component per round
+E2,Figures 4 and 5,attack_success_rate,,,60,FMNIST and CIFAR10,,0,percent,reported under specified attack with poison ratios up to 50 percent; other settings require audit
+E4,Table 2,aggregator_aggregation_time_aion_asr,4096,8,,,,75.02,ms,aggregator aggregation phase only
+E4,Table 2,aggregator_aggregation_time_flamingo,4096,8,,,,42359.10,ms,aggregator aggregation phase only
+E4,Table 2,aggregator_aggregation_speedup,4096,8,,,,563.64,ratio,Flamingo over AION-ASR
+E6,Figure 11,total_time,4096,8,1000,,,188.05,s,cumulative protocol experiment; distinct from Table 4
+E6,Figure 11,total_additional_communication,4096,8,1000,,,928.59,MB,cumulative protocol experiment
+E6,Table 4,mask_creation_time,4096,8,1000,,,22.00,s,mask creation cumulative
+E6,Table 4,mask_reconstruction_time,4096,8,1000,,,34.01,s,mask reconstruction cumulative
+E9,Figure 15,attack_success_rate_upper_bound,,,,EMNIST-Byclass,ResNet9,2.6,percent,reported below bound for poison ratios below 50 percent; round count to verify against artifact

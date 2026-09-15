@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "same_initial_model": true,
+    "same_partition": true,
+    "same_poison_schedule": true,
+    "same_first_round_participants": true,
+    "same_first_round_updates": true
+  },
+  "files_sha256": {
+    "avg-result.json": "ea8b9d27d2690446bf73991adb7ccc829c5b0a84c8d159052dd448d93714e710",
+    "avg-rounds.jsonl": "afab174aeb30c6d8ac468a80eb88ced8580082f63929f8c990d42b3a01df6f82",
+    "avg-source-hashes.json": "1e90ac1bffa1df00b479671b7db13bcc2bc5528d78e1ed1ef600e738f021435d",
+    "avg-runtime.patch": "9747237e7f0afa1994ea0bedf68c91c178b8cd66c48db3e1d59fafa53147fa01",
+    "avg-adapter-used.py": "1f6dffb7b1e8ca3298216b8e31134ccfb9c66d56c4d8681a2cad835805f4c085",
+    "aion-result.json": "2df082ed89298c71502550257eb2657b93d67d73e3491acf1437371ad09c3d86",
+    "aion-rounds.jsonl": "70a7727ae708c12f6a4f38d3d0b54d57104588f6d36fd619ae57c5c10231e3de",
+    "aion-source-hashes.json": "1e90ac1bffa1df00b479671b7db13bcc2bc5528d78e1ed1ef600e738f021435d",
+    "aion-runtime.patch": "9747237e7f0afa1994ea0bedf68c91c178b8cd66c48db3e1d59fafa53147fa01",
+    "aion-adapter-used.py": "1f6dffb7b1e8ca3298216b8e31134ccfb9c66d56c4d8681a2cad835805f4c085"
+  },
+  "repeat_checks": {
+    "avg": {
+      "same_initial_model": true,
+      "same_partition": true,
+      "same_rounds_except_timing": true,
+      "same_metrics": true,
+      "same_matrix": true
+    },
+    "aion": {
+      "same_initial_model": true,
+      "same_partition": true,
+      "same_rounds_except_timing": true,
+      "same_metrics": true,
+      "same_matrix": true
+    }
+  },
+  "later_round_participants_equal": [
+    false
+  ],
+  "secure_aggregation_executed": false,
+  "paper_reproduction_complete": false,
+  "interpretation": "bounded centralized artifact pilot; not a paper-result reproduction"
+}

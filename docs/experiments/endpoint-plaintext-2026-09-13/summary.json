@@ -1,0 +1,281 @@
+[
+  {
+    "run": "seed-42-mu-0-clean",
+    "seed": 42,
+    "mu": 0.0,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.6034208320779726,
+    "macro_f1": 0.5802272596012746,
+    "accuracy": 0.6074248914532157,
+    "normal_false_positive_rate": 0.8567674113009198,
+    "malware_false_negative_rate": 0.017206345044572628,
+    "device_macro_f1_mean": 0.5469167925339111,
+    "device_macro_f1_min": 0.43710209522985277
+  },
+  {
+    "run": "seed-42-mu-0.01-clean",
+    "seed": 42,
+    "mu": 0.01,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.7074840500717983,
+    "macro_f1": 0.5810431035212712,
+    "accuracy": 0.6075705918349507,
+    "normal_false_positive_rate": 0.8554533508541393,
+    "malware_false_negative_rate": 0.017206345044572628,
+    "device_macro_f1_mean": 0.547840432634328,
+    "device_macro_f1_min": 0.43888369720467363
+  },
+  {
+    "run": "seed-42-mu-0.1-clean",
+    "seed": 42,
+    "mu": 0.1,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.664507686975412,
+    "macro_f1": 0.5667965019133517,
+    "accuracy": 0.5927965731270216,
+    "normal_false_positive_rate": 0.8160315374507228,
+    "malware_false_negative_rate": 0.019828264289459885,
+    "device_macro_f1_mean": 0.535277104517104,
+    "device_macro_f1_min": 0.4205039770688112
+  },
+  {
+    "run": "seed-42-mu-0-poison",
+    "seed": 42,
+    "mu": 0.0,
+    "poison": true,
+    "attackers": [
+      1,
+      2
+    ],
+    "seconds": 2.5969637929229066,
+    "macro_f1": 0.5333241109871303,
+    "accuracy": 0.5432584433371216,
+    "normal_false_positive_rate": 0.5216819973718791,
+    "malware_false_negative_rate": 0.034412690089145256,
+    "device_macro_f1_mean": 0.4914333241566977,
+    "device_macro_f1_min": 0.29803557013693927
+  },
+  {
+    "run": "seed-42-mu-0.01-poison",
+    "seed": 42,
+    "mu": 0.01,
+    "poison": true,
+    "attackers": [
+      1,
+      2
+    ],
+    "seconds": 2.800019701011479,
+    "macro_f1": 0.5326109794382935,
+    "accuracy": 0.5429670425736516,
+    "normal_false_positive_rate": 0.5177398160315374,
+    "malware_false_negative_rate": 0.035395909805977975,
+    "device_macro_f1_mean": 0.4898309165051097,
+    "device_macro_f1_min": 0.29670842094724575
+  },
+  {
+    "run": "seed-42-mu-0.1-poison",
+    "seed": 42,
+    "mu": 0.1,
+    "poison": true,
+    "attackers": [
+      1,
+      2
+    ],
+    "seconds": 2.7885888589080423,
+    "macro_f1": 0.5238531715085651,
+    "accuracy": 0.5346621208147565,
+    "normal_false_positive_rate": 0.5137976346911958,
+    "malware_false_negative_rate": 0.0434255374934452,
+    "device_macro_f1_mean": 0.48402284658915806,
+    "device_macro_f1_min": 0.3106673629723719
+  },
+  {
+    "run": "seed-43-mu-0-clean",
+    "seed": 43,
+    "mu": 0.0,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.610325520974584,
+    "macro_f1": 0.5779300175580344,
+    "accuracy": 0.6064049887810706,
+    "normal_false_positive_rate": 0.8475689881734559,
+    "malware_false_negative_rate": 0.01737021499737808,
+    "device_macro_f1_mean": 0.5480444269738858,
+    "device_macro_f1_min": 0.4329571886242245
+  },
+  {
+    "run": "seed-43-mu-0.01-clean",
+    "seed": 43,
+    "mu": 0.01,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.745796355069615,
+    "macro_f1": 0.5772986864021009,
+    "accuracy": 0.6056764868723956,
+    "normal_false_positive_rate": 0.8488830486202366,
+    "malware_false_negative_rate": 0.017206345044572628,
+    "device_macro_f1_mean": 0.5477169234199492,
+    "device_macro_f1_min": 0.4316665204843753
+  },
+  {
+    "run": "seed-43-mu-0.1-clean",
+    "seed": 43,
+    "mu": 0.1,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.698744924971834,
+    "macro_f1": 0.5652609648876277,
+    "accuracy": 0.5927965731270216,
+    "normal_false_positive_rate": 0.8278580814717477,
+    "malware_false_negative_rate": 0.018353434714210803,
+    "device_macro_f1_mean": 0.5402297494566949,
+    "device_macro_f1_min": 0.4510896950990959
+  },
+  {
+    "run": "seed-43-mu-0-poison",
+    "seed": 43,
+    "mu": 0.0,
+    "poison": true,
+    "attackers": [
+      2,
+      6
+    ],
+    "seconds": 2.56056329398416,
+    "macro_f1": 0.51530673872686,
+    "accuracy": 0.5416557391380366,
+    "normal_false_positive_rate": 0.6228646517739816,
+    "malware_false_negative_rate": 0.043097797587834295,
+    "device_macro_f1_mean": 0.47749465422192583,
+    "device_macro_f1_min": 0.2612240420835427
+  },
+  {
+    "run": "seed-43-mu-0.01-poison",
+    "seed": 43,
+    "mu": 0.01,
+    "poison": true,
+    "attackers": [
+      2,
+      6
+    ],
+    "seconds": 2.677069543977268,
+    "macro_f1": 0.5148313799841934,
+    "accuracy": 0.5416557391380366,
+    "normal_false_positive_rate": 0.6241787122207622,
+    "malware_false_negative_rate": 0.04260618772941793,
+    "device_macro_f1_mean": 0.47718761973958035,
+    "device_macro_f1_min": 0.25826313683036867
+  },
+  {
+    "run": "seed-43-mu-0.1-poison",
+    "seed": 43,
+    "mu": 0.1,
+    "poison": true,
+    "attackers": [
+      2,
+      6
+    ],
+    "seconds": 2.6791675990680233,
+    "macro_f1": 0.5081671043988676,
+    "accuracy": 0.5383046303581316,
+    "normal_false_positive_rate": 0.6228646517739816,
+    "malware_false_negative_rate": 0.05522417409543786,
+    "device_macro_f1_mean": 0.47672030188121595,
+    "device_macro_f1_min": 0.27317327884359266
+  },
+  {
+    "run": "seed-44-mu-0-clean",
+    "seed": 44,
+    "mu": 0.0,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.6435408300021663,
+    "macro_f1": 0.5925970960285261,
+    "accuracy": 0.6182358597779526,
+    "normal_false_positive_rate": 0.8554533508541393,
+    "malware_false_negative_rate": 0.017206345044572628,
+    "device_macro_f1_mean": 0.5603812670786332,
+    "device_macro_f1_min": 0.44180566507269087
+  },
+  {
+    "run": "seed-44-mu-0.01-clean",
+    "seed": 44,
+    "mu": 0.01,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.773513121996075,
+    "macro_f1": 0.5916547883519773,
+    "accuracy": 0.6167788559606027,
+    "normal_false_positive_rate": 0.8580814717477004,
+    "malware_false_negative_rate": 0.01687860513896172,
+    "device_macro_f1_mean": 0.5589238451790465,
+    "device_macro_f1_min": 0.4427263383088318
+  },
+  {
+    "run": "seed-44-mu-0.1-clean",
+    "seed": 44,
+    "mu": 0.1,
+    "poison": false,
+    "attackers": [],
+    "seconds": 2.743176472024061,
+    "macro_f1": 0.5818936053295872,
+    "accuracy": 0.6066381093918466,
+    "normal_false_positive_rate": 0.8449408672798949,
+    "malware_false_negative_rate": 0.017697954902988988,
+    "device_macro_f1_mean": 0.551274801009025,
+    "device_macro_f1_min": 0.4529267988498204
+  },
+  {
+    "run": "seed-44-mu-0-poison",
+    "seed": 44,
+    "mu": 0.0,
+    "poison": true,
+    "attackers": [
+      2,
+      7
+    ],
+    "seconds": 2.6692330529913306,
+    "macro_f1": 0.5692029797701188,
+    "accuracy": 0.5925051723635516,
+    "normal_false_positive_rate": 0.5834428383705651,
+    "malware_false_negative_rate": 0.04506423702149974,
+    "device_macro_f1_mean": 0.5410192266262146,
+    "device_macro_f1_min": 0.4409421030651366
+  },
+  {
+    "run": "seed-44-mu-0.01-poison",
+    "seed": 44,
+    "mu": 0.01,
+    "poison": true,
+    "attackers": [
+      2,
+      7
+    ],
+    "seconds": 2.772012328961864,
+    "macro_f1": 0.5730757466638317,
+    "accuracy": 0.5965847830521316,
+    "normal_false_positive_rate": 0.5795006570302234,
+    "malware_false_negative_rate": 0.047030676455165184,
+    "device_macro_f1_mean": 0.5460555914600682,
+    "device_macro_f1_min": 0.45161817328339626
+  },
+  {
+    "run": "seed-44-mu-0.1-poison",
+    "seed": 44,
+    "mu": 0.1,
+    "poison": true,
+    "attackers": [
+      2,
+      7
+    ],
+    "seconds": 2.7412526319967583,
+    "macro_f1": 0.5624716632258554,
+    "accuracy": 0.5919223708366116,
+    "normal_false_positive_rate": 0.519053876478318,
+    "malware_false_negative_rate": 0.0593209229155742,
+    "device_macro_f1_mean": 0.5412630495811229,
+    "device_macro_f1_min": 0.46594268076345574
+  }
+]

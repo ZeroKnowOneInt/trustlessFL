@@ -1,0 +1,168 @@
+{
+  "run": {
+    "versions": {
+      "flwr": "1.36.0",
+      "ray": "2.55.1",
+      "numpy": "2.5.0",
+      "torch": "2.8.0+cu128"
+    },
+    "sources": {
+      "trustlessfl/__init__.py": "85258f060e25c23a687a6020c4dd035cbd4d597056d881ae093d64f6be3d971f",
+      "trustlessfl/endpoint.py": "bb2beb0b1f7eb40ab7136293856a7f9f6dab87124fa03b44d053e4e2a1752df6",
+      "trustlessfl/endpoint_torch.py": "484a8c56198d45007d418d8d8b63dfdccd788d4f5c9679d03e965556a2e1a3d2",
+      "trustlessfl/endpoint_public.py": "ea3b6f333d34dbfa361787018b3f42245a536075509f192e7bfc25fb7fac2a1a",
+      "trustlessfl/endpoint_public_flower.py": "200f18bc70b06d84cbf9a192ca4f587480acf080ec86ff3b6ffda01f78a30d76",
+      "/home/hacho/@WSL-Projects/trustlessFL/experiments/run_endpoint_public.py": "10d7aa4c099bbeafab3de43405cd246446820664baef9107425edcd1ed4f9f85",
+      "experiments/run_endpoint.py": "b15219e4bcae384be295f5e3e6b05193aef2f128ea20929a57841f20e2403ecd",
+      "experiments/run_endpoint_flower.py": "9d10a38b6334df7690cf38cd8fda0b245c9f67c96958f034898283a97e557220",
+      "configs/endpoint/flower-pyproject.toml": "34af49ec14c36b6511bcd980df26ac03b100b5deec9a72ed5cb23279469854ba",
+      "uv.lock": "0a6c2de0b511df48928b2187a37ba08128919c98d1d2d6bdc6e500c119085cfb"
+    },
+    "upstream": [
+      {
+        "path": "training/mlp.py",
+        "url": "https://raw.githubusercontent.com/Cyber-Tracer/iot-feature-engineering/bf04ddfa010c3de5a003bd087497b9f9184e58e9/training/mlp.py",
+        "git_blob": "e8087cc9863194ee8bb58ced019001b0cc42aaf3",
+        "sha256": "049919d7956828e59480e489541898467ffbb4ad6b26b458fff152bdfffffeaf",
+        "bytes": 6086
+      },
+      {
+        "path": "training/training30.ipynb",
+        "url": "https://raw.githubusercontent.com/Cyber-Tracer/iot-feature-engineering/bf04ddfa010c3de5a003bd087497b9f9184e58e9/training/training30.ipynb",
+        "git_blob": "a10602c0605d7128bba07ea67ad6133114fa53fd",
+        "sha256": "9dd9a86d41ae772bda98deca0936593e90124a2bf7073dabcffb5033ec462a9c",
+        "bytes": 71907
+      },
+      {
+        "path": "training/training300.ipynb",
+        "url": "https://raw.githubusercontent.com/Cyber-Tracer/iot-feature-engineering/bf04ddfa010c3de5a003bd087497b9f9184e58e9/training/training300.ipynb",
+        "git_blob": "8d714e40bcbf1ee9e609459044712b68abd3fce7",
+        "sha256": "20abcf5e3805a685a9766aa2f26720e58b04bd53b574cdc0ed5f6262d974ba8c",
+        "bytes": 77632
+      }
+    ],
+    "upstream_commit": "bf04ddfa010c3de5a003bd087497b9f9184e58e9",
+    "model": "31->30->30->9; two ReLUs; log_softmax then CrossEntropyLoss",
+    "optimizer": "Adam lr=.01 betas=(.9,.999) eps=1e-8 weight_decay=0 foreach=False; persistent across epochs",
+    "selection": "Epoch-level validation macro recall (macro accuracy); strict improvement, patience=5, min_delta=0; first best checkpoint",
+    "deviations": [
+      "PyTorch port on Flower; original Lightning callbacks/batch metric logging not executed",
+      "Explicit epoch-level macro accuracy instead of Lightning Validation/Accuracy batch-logging semantics",
+      "Fixed initialization/shuffle seeds and row-split seed=42",
+      "V2 has 31 inputs,171053 rows; upstream notebook inputs differ",
+      "Existing released normalization retained; no extra scaling or feature selection",
+      "Single GPU, no DataLoader subprocesses; explicit randperm; no original notebook RNG sequence guarantee",
+      "Independent group-holdout profile is intentionally different from upstream row split"
+    ],
+    "verification": "CUDA float32 metadata, best-checkpoint selection, CPU checkpoint confusion equality and loss atol=1e-5",
+    "security": "None; centralized public-data diagnostic",
+    "overlap_audit": {
+      "group-holdout": {
+        "rows": {
+          "train": 102509,
+          "validation": 34227,
+          "evaluation": 34317
+        },
+        "train_evaluation_row_overlap": 0,
+        "train_evaluation_feature_groups_shared": 0,
+        "evaluation_rows_with_features_seen_in_train": 0,
+        "evaluation_reuses_validation": false
+      },
+      "row-reference": {
+        "rows": {
+          "train": 136842,
+          "validation": 34211,
+          "evaluation": 34211
+        },
+        "train_evaluation_row_overlap": 0,
+        "train_evaluation_feature_groups_shared": 22631,
+        "evaluation_rows_with_features_seen_in_train": 34171,
+        "evaluation_reuses_validation": true
+      }
+    }
+  },
+  "verification": {
+    "passed": true,
+    "checks": [
+      {
+        "case": "group-holdout-seed-42",
+        "passed": true,
+        "initial_exact": true,
+        "selection_ok": true,
+        "confusion_exact": true,
+        "loss_errors": [
+          1.0197937300171489e-08,
+          7.781240096704778e-10
+        ],
+        "gpu_ok": true
+      },
+      {
+        "case": "group-holdout-seed-43",
+        "passed": true,
+        "initial_exact": true,
+        "selection_ok": true,
+        "confusion_exact": true,
+        "loss_errors": [
+          5.4054640208356375e-09,
+          1.9453099686650432e-09
+        ],
+        "gpu_ok": true
+      },
+      {
+        "case": "group-holdout-seed-44",
+        "passed": true,
+        "initial_exact": true,
+        "selection_ok": true,
+        "confusion_exact": true,
+        "loss_errors": [
+          1.0030758001988715e-08,
+          1.492330645169737e-08
+        ],
+        "gpu_ok": true
+      },
+      {
+        "case": "row-reference-seed-42",
+        "passed": true,
+        "initial_exact": true,
+        "selection_ok": true,
+        "confusion_exact": true,
+        "loss_errors": [
+          2.7597485408037414e-09,
+          2.7597485408037414e-09
+        ],
+        "gpu_ok": true
+      },
+      {
+        "case": "row-reference-seed-43",
+        "passed": true,
+        "initial_exact": true,
+        "selection_ok": true,
+        "confusion_exact": true,
+        "loss_errors": [
+          2.9270060264430242e-09,
+          2.9270060264430242e-09
+        ],
+        "gpu_ok": true
+      },
+      {
+        "case": "row-reference-seed-44",
+        "passed": true,
+        "initial_exact": true,
+        "selection_ok": true,
+        "confusion_exact": true,
+        "loss_errors": [
+          2.0907185982466103e-09,
+          2.0907185982466103e-09
+        ],
+        "gpu_ok": true
+      }
+    ],
+    "run_id": 15086316814512081528
+  },
+  "files": {
+    ".cache/endpoint/runs/public-recipe-2026-09-13-v2/runtime-results/run-15086316814512081528/results.json": "d7d64c84a2b4d3c94484c57d441df4472fcc0460383324e89aa6a823fdfe6eb1",
+    ".cache/endpoint/runs/public-recipe-2026-09-13-v2/verification.json": "37fb0b4cb5052e468af874efb2ceb4f2045146c6772088afcd48caffc9b75f35",
+    ".cache/endpoint/runs/public-recipe-2026-09-13-v2/split.npz": "7f0b3325ed4f7fbd4ce09f40fa7e25b53e057a4e478ffa1fc854d8bc2b798ec8",
+    ".cache/endpoint/runs/central-flower-2026-09-13/split.npz": "7f0b3325ed4f7fbd4ce09f40fa7e25b53e057a4e478ffa1fc854d8bc2b798ec8"
+  }
+}

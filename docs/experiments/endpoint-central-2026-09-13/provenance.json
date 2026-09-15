@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "versions": {
+      "flwr": "1.36.0",
+      "ray": "2.55.1",
+      "numpy": "2.5.0"
+    },
+    "sources": {
+      "trustlessfl/__init__.py": "85258f060e25c23a687a6020c4dd035cbd4d597056d881ae093d64f6be3d971f",
+      "trustlessfl/endpoint.py": "bb2beb0b1f7eb40ab7136293856a7f9f6dab87124fa03b44d053e4e2a1752df6",
+      "trustlessfl/endpoint_central_flower.py": "1572c342ad8a55b730c00ad8ca81b8a8dc7209349313d3276591656c0671452d",
+      "/home/hacho/@WSL-Projects/trustlessFL/experiments/run_endpoint_central.py": "7806b975b7277da30f969aa01f76ed3c6fb5bd43283f3d5d2452a2603161cf8d",
+      "experiments/run_endpoint.py": "b15219e4bcae384be295f5e3e6b05193aef2f128ea20929a57841f20e2403ecd",
+      "experiments/run_endpoint_flower.py": "9d10a38b6334df7690cf38cd8fda0b245c9f67c96958f034898283a97e557220",
+      "configs/endpoint/flower-pyproject.toml": "34af49ec14c36b6511bcd980df26ac03b100b5deec9a72ed5cb23279469854ba",
+      "uv.lock": "0a6c2de0b511df48928b2187a37ba08128919c98d1d2d6bdc6e500c119085cfb"
+    },
+    "model_atol": 0.0,
+    "purpose": "Fixed-setting centralized diagnostic, not a paper reproduction",
+    "comparison": "Every 3 epochs checkpoint and all split confusion matrices must match NumPy exactly",
+    "selection": "No tuning; fixed final epoch, no test-based model selection",
+    "sample_exposures": 30,
+    "security": "None"
+  },
+  "run_id": 5726795482076255477,
+  "verification_passed": true,
+  "files": {
+    ".cache/endpoint/runs/central-flower-2026-09-13/runtime-results/run-5726795482076255477/results.json": "efe6fbcbaeafe4899c27ab28d11e0b12c810e832c844cb9cbe52caff14428c6f",
+    ".cache/endpoint/runs/central-flower-2026-09-13/verification.json": "73988849fbbe8dd7f644bd60ff50800890d27619e4508096c326ef212d4c19ee",
+    "docs/experiments/endpoint-plaintext-2026-09-13/summary.json": "636d234f90687f283e823b7f50fafc6c383dd1e122fe912a9bc08a77ccc113fe",
+    ".cache/endpoint/runs/plaintext-2026-09-13/split.npz": "ce5d4ecde12c3a31c98e6689d5a359f580a0719b640ef50d93e8f1a6def1a5ec",
+    ".cache/endpoint/runs/central-flower-2026-09-13/split.npz": "7f0b3325ed4f7fbd4ce09f40fa7e25b53e057a4e478ffa1fc854d8bc2b798ec8"
+  }
+}

@@ -1,0 +1,25 @@
+[project]
+name = "trustlessfl-endpoint-runtime"
+version = "0.1.0"
+description = "Crowdsensing plaintext workload on the official Flower Simulation Runtime"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = ["flwr[simulation]==1.36.0", "numpy>=2.5.0"]
+
+[tool.flwr.app]
+publisher = "trustlessfl"
+
+[tool.flwr.app.components]
+serverapp = "trustlessfl.endpoint_flower:server_app"
+clientapp = "trustlessfl.endpoint_flower:client_app"
+
+[tool.flwr.app.config]
+data-dir = "UNCONFIGURED"
+output-dir = "UNCONFIGURED"
+seed = 42
+rounds = 3
+epochs = 3
+batch-size = 128
+learning-rate = 0.1
+timeout = 120.0
+backend = "numpy"

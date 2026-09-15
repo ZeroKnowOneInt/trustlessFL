@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "status": "source-audited; full training and attack not yet executed",
+  "scope": "official standalone input-validation artifact; not Flower secure aggregation or Table 3",
+  "record_id": 15870338,
+  "archive_sha256": "dff11dfbdf8c40121c01220b3292007cfea5b8401ecd413af0b7701ebbc742f3",
+  "source_root": "Aion/input_validation",
+  "entrypoint": "FL_Backdoor_CV/roles/trainer.py",
+  "dataset": {
+    "name": "FashionMNIST",
+    "downloaded": false,
+    "raw_data_checksums": null,
+    "normalization_mean": [0.1307],
+    "normalization_std": [0.3081],
+    "distribution": "artifact sample_dirichlet_train_data",
+    "dirichlet_alpha": 0.5,
+    "participant_population": 500,
+    "participant_sample_size": 100,
+    "partition_hashes": null,
+    "notes": [
+      "class_imbalance=0 selects Dirichlet, not IID; classes_per_client=2 is inactive in this branch",
+      "The original poison-training sampler draws from the test dataset; do not claim held-out separation for this artifact"
+    ]
+  },
+  "model": {
+    "class": "FL_Backdoor_CV.models.cnn.LeNet5",
+    "parameter_count_verified": 61706,
+    "checkpoint": "FL_Backdoor_CV/saved_models/Revision_1/fmnist/avg_300.pth",
+    "checkpoint_sha256": "047d40adbfdf3c0a5c95db299bec49c48ff1cc16125f5455094e974251c143e2",
+    "resume_round": 300,
+    "checkpoint_round_provenance": "filename and code interpretation; original training log not included"
+  },
+  "training": {
+    "batch_size": 64,
+    "test_batch_size": 64,
+    "retrain_no_times": 2,
+    "local_lr_default": 0.1,
+    "benign_lr_during_poison_evaluation": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "global_lr": 1.0,
+    "retrain_rounds": 60,
+    "effective_rounds": [301, 360],
+    "seeds": {"torch": 1, "torch_cuda": 1, "python_random": 0, "numpy": 0}
+  },
+  "attack": {
+    "mode": "MR",
+    "round_probability": 0.5,
+    "random_compromise": false,
+    "target_label": 2,
+    "num_poisoned_samples_per_batch": 6,
+    "poison_local_steps": 120,
+    "poison_lr": 0.0005,
+    "poison_momentum": 0.9,
+    "poison_weight_decay": 0.005,
+    "trigger": "union of four pixel patterns from fmnist_params.yaml; normalized pixel value 0.1307 * 30",
+    "effective_boost": "mal_boost / number_of_adversaries / global_lr / s_norm",
+    "s_norm": 1.0,
+    "figure5_wrapper": {"number_of_adversaries": "CLI sweep", "mal_boost": "number_of_adversaries * 20", "weight": 0.1},
+    "figure7_wrapper": {"number_of_adversaries_child": 20, "weight": "CLI sweep", "mal_boost": "outer number_of_adversaries * 20; outer value is NOT forwarded as child adversary count"},
+    "figure9_wrapper": {"number_of_adversaries": 20, "mal_boost": "CLI sweep", "weight": 0.1}
+  },
+  "mgf_artifact": {
+    "layer": "classifier.weight (840 elements); selection then applies to every model tensor",
+    "min_threshold": 0.1,
+    "bootstrap": "first three rounds after resume: sorted masked L2 norm at index floor(min_threshold * q)",
+    "selection_count": "clamped between floor(0.1*q) and floor(0.8*q)",
+    "mask_range": "nonnegative scaled SHPRG output; not the full-model signed wire representation",
+    "seed_lifecycle": "fresh seeds generated in central aion() on every call",
+    "final_aggregation": "mean of selected plaintext model updates; no distributed unmask",
+    "shprg_initialization": {"n": 1, "stored_m": 8, "p": 173569775688864, "q": 5000999999999999},
+    "matrix_file": "matrix_840 generated on first use, absent from archive",
+    "cpu_port_required": "two hardcoded .cuda() calls in aggregation_rules.py"
+  },
+  "metrics": {
+    "per_round_attack_success_rate": "target-label accuracy on triggered test loader",
+    "trainer_summary": "mean(poison_accuracy); 1-mean(clean_accuracy)",
+    "check_results_summary": "max(poison_accuracy); minimum TER among rounds attaining that max",
+    "policy": "preserve both summaries and all round values; paper plot summary unresolved"
+  },
+  "paper_equivalence_unresolved": [
+    "Figure 7 10-percent attack branch is not exposed by attack2_fmnist.py child CLI",
+    "Figure 9 paper text uses 10-percent attackers, while wrapper hardcodes 20-percent",
+    "Which of mean and maximum ASR was used for each paper plot",
+    "Table 3 FMNIST q=256/n=8/44-round training-protocol integration",
+    "Original partition and matrix state, checkpoint training log, dataset checksums"
+  ]
+}

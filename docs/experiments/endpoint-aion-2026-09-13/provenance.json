@@ -1,0 +1,357 @@
+{
+  "workload": "endpoint",
+  "backend": "torch-cuda",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "rounds": 10,
+  "modes": [
+    "aion",
+    "quantized",
+    "float"
+  ],
+  "scenarios": [
+    "clean"
+  ],
+  "dimension": 2169,
+  "versions": {
+    "flwr": "1.36.0",
+    "ray": "2.55.1",
+    "numpy": "2.5.0",
+    "torch": "2.8.0+cu128",
+    "cryptography": "46.0.7"
+  },
+  "sources": {
+    "trustlessfl/__init__.py": "85258f060e25c23a687a6020c4dd035cbd4d597056d881ae093d64f6be3d971f",
+    "trustlessfl/aion_runtime.py": "c961972d7fde06437762e4fa75800043866ee22e131812fa09ce3498f22ce329",
+    "trustlessfl/client_app.py": "7f2add603e9af08e9b3dbbfa23a676950c9777c88b1497c943ca172a08e8453b",
+    "trustlessfl/workflow.py": "7a0f5e24280711c1200e9b08108fa183b9f5007a672c142e19911a6853ee1b65",
+    "trustlessfl/protocol.py": "1ffd6a64dd23609d71022df4a9017b5df3e589951b7a4aa3a2902a808a22d439",
+    "trustlessfl/crypto.py": "a7a9370211b45f019866b5a59f2813fffde7ed8defe39b6e1144f13832bb9ab3",
+    "trustlessfl/numeric.py": "f0ec5e6b3dea73d21fc43c23d9082c1c9f286e2754f77697e3c09181f52ba820",
+    "trustlessfl/task.py": "ae5169543b5c9aed2c2d8579a360b17a0c2f3c7e936f3f437c0a6314c8f41652",
+    "trustlessfl/endpoint.py": "bb2beb0b1f7eb40ab7136293856a7f9f6dab87124fa03b44d053e4e2a1752df6",
+    "trustlessfl/endpoint_public.py": "ea3b6f333d34dbfa361787018b3f42245a536075509f192e7bfc25fb7fac2a1a",
+    "trustlessfl/endpoint_aion.py": "6fa0139c1449d5273c4d92fa1010af0c328346cead744b35944ed1f9f40c5914",
+    "trustlessfl/endpoint_torch.py": "484a8c56198d45007d418d8d8b63dfdccd788d4f5c9679d03e965556a2e1a3d2",
+    "/home/hacho/@WSL-Projects/trustlessFL/experiments/run_endpoint_aion.py": "4553d055695079eb4f9506a1dfc2e8ee9a1a2155c3b18cb8125363473bf6cd8b",
+    "experiments/run_endpoint.py": "b15219e4bcae384be295f5e3e6b05193aef2f128ea20929a57841f20e2403ecd",
+    "experiments/run_endpoint_flower.py": "9d10a38b6334df7690cf38cd8fda0b245c9f67c96958f034898283a97e557220",
+    "trustlessfl/demo.py": "59e7669ffd54d97bf24c0d9da963f0dee7f93c28e32dab41bd445ccceab6a457",
+    "uv.lock": "0a6c2de0b511df48928b2187a37ba08128919c98d1d2d6bdc6e500c119085cfb",
+    "configs/endpoint/flower-pyproject.toml": "34af49ec14c36b6511bcd980df26ac03b100b5deec9a72ed5cb23279469854ba"
+  },
+  "data_files": {
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-0.npz": "b7c27942479e7b3ba2066ca68de71f62fdd88ad5ab6eef5c6a4f116c08b43e5a",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-1.npz": "2f6fe43bb9c1d4e16992adc1077f06805a50ec7c378cbd672f78e3b70c3a3c7d",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-2.npz": "2976348dc4f26d4e006018e9b0285e59631d507c16d19fc21e0a7466f27f6363",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-3.npz": "beaa4eb680f2eae1c4f27f094d4946d95ed88ebd677d49df3e125bfaf9428379",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-4.npz": "3490ccb07c84d0c6c7e8c47a3ffd04b4da42e94364eed9ef98f013bb3c8fe483",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-5.npz": "e932dc66f151f56200bf1fbab8ba7dc82213fc117ebab9df0a957c625b1fd5c6",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-6.npz": "aea2b539509ffa817927299d487ac04dcfc00c8eec031073e267be3a0edf0391",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/shards/client-7.npz": "63ca46d55eed872d244ce2e8028b27406e7aa050e790031f5a1caf87d524f252",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/test.npz": "aa05b49254b8cb9a1b65b997cf6eab4a2c9346db801b113d56e6f39dfcc02153"
+  },
+  "model": "31->30->30->9; float32 local Adam lr=.01; batch500; 3 epochs; reset moments each round",
+  "initialization": "PublicMLP default seeded CPU initialization; wire model is float64 offset from initialization",
+  "aggregation": "Equal client weights; fixed point decimals=6; no clipping; reject |delta|>100",
+  "selection": "Fixed final round; no validation or test model selection",
+  "verification": "Every AION/clear-quantized round offset EXACT; integer totals recovered within 1e-5 integer units; final confusion EXACT",
+  "security": "Research masking surrogate, not production privacy; 12 logical identities share OS user/worker; no poisoning defense",
+  "runtime": "Official flwr run/SuperLink/Ray; independent FAB per mode; no plaintext handler in AION ClientApp",
+  "attempts": {
+    "aion": {
+      "run-status": {
+        "success": true,
+        "runs": [
+          {
+            "run-id": "16980620927128535531",
+            "federation-id": "@none/default",
+            "fab-id": "trustlessfl/trustlessfl-aion-aion",
+            "fab-name": "trustlessfl-aion-aion",
+            "fab-version": "0.1.0",
+            "fab-hash": "03fd129e0f21056fcca32e7f973732648a1a49d21dfea0c19d4e760e70b07669",
+            "status": "finished:completed",
+            "status-details": "N/A",
+            "elapsed": 86.337201,
+            "pending-at": "2026-09-13 10:59:02Z",
+            "starting-at": "2026-09-13 10:59:02Z",
+            "running-at": "2026-09-13 10:59:03Z",
+            "finished-at": "2026-09-13 11:00:29Z",
+            "network-traffic": {
+              "inbound-bytes": 0,
+              "outbound-bytes": 0,
+              "total-bytes": 0
+            },
+            "compute-time": {
+              "serverapp-seconds": 86.337201,
+              "clientapp-seconds": 65.13234839041252,
+              "total-seconds": 151.4695493904125
+            }
+          }
+        ]
+      },
+      "timing": {
+        "flwr_cli_wall_seconds": 94.31047499401029
+      },
+      "commands": {
+        "superlink": [
+          "/home/hacho/@WSL-Projects/trustlessFL/.venv/bin/flower-superlink",
+          "--insecure",
+          "--simulation",
+          "--isolation",
+          "subprocess",
+          "--disable-runtime-dependency-installation",
+          "--control-api-address",
+          "127.0.0.1:50085",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "40397"
+        ],
+        "flwr": [
+          "/home/hacho/@WSL-Projects/trustlessFL/.venv/bin/flwr",
+          "run",
+          "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/aion/app",
+          "endpoint-test",
+          "--stream",
+          "--federation-config",
+          "num-supernodes=12 client-resources-num-cpus=1 client-resources-num-gpus=1 init-args-num-cpus=1 init-args-num-gpus=1"
+        ],
+        "env": {
+          "FLWR_HOME": "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/aion/attempt-97566d57/flower-home",
+          "FLWR_TELEMETRY_ENABLED": "0",
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+        }
+      },
+      "cuda-preflight": {
+        "backend": "torch",
+        "device": "cuda:0",
+        "dtype": "torch.float64",
+        "torch-version": "2.8.0+cu128",
+        "local-training-seconds": 0.4617966120131314,
+        "gpu-name": "NVIDIA GeForce RTX 5060",
+        "cuda-visible-devices": "",
+        "peak-allocated-bytes": 67198976,
+        "peak-reserved-bytes": 69206016,
+        "cuda-runtime": "12.8",
+        "compute-capability": [
+          12,
+          0
+        ],
+        "compiled-architectures": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "free-bytes-after-probe": 7200571392,
+        "total-bytes": 8546484224,
+        "delta-norm": 0.7745260951117708
+      }
+    },
+    "quantized": {
+      "run-status": {
+        "success": true,
+        "runs": [
+          {
+            "run-id": "15945076649355423090",
+            "federation-id": "@none/default",
+            "fab-id": "trustlessfl/trustlessfl-aion-quantized",
+            "fab-name": "trustlessfl-aion-quantized",
+            "fab-version": "0.1.0",
+            "fab-hash": "e8e2d86ec5e2a4529095df1f33c1acd1ce25981ffd79b9d4f7ea46a9822b1202",
+            "status": "finished:completed",
+            "status-details": "N/A",
+            "elapsed": 40.358525,
+            "pending-at": "2026-09-13 11:00:36Z",
+            "starting-at": "2026-09-13 11:00:36Z",
+            "running-at": "2026-09-13 11:00:37Z",
+            "finished-at": "2026-09-13 11:01:17Z",
+            "network-traffic": {
+              "inbound-bytes": 0,
+              "outbound-bytes": 0,
+              "total-bytes": 0
+            },
+            "compute-time": {
+              "serverapp-seconds": 40.358525,
+              "clientapp-seconds": 31.581534964381717,
+              "total-seconds": 71.94005996438172
+            }
+          }
+        ]
+      },
+      "timing": {
+        "flwr_cli_wall_seconds": 44.519746878999285
+      },
+      "commands": {
+        "superlink": [
+          "/home/hacho/@WSL-Projects/trustlessFL/.venv/bin/flower-superlink",
+          "--insecure",
+          "--simulation",
+          "--isolation",
+          "subprocess",
+          "--disable-runtime-dependency-installation",
+          "--control-api-address",
+          "127.0.0.1:58899",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "49073"
+        ],
+        "flwr": [
+          "/home/hacho/@WSL-Projects/trustlessFL/.venv/bin/flwr",
+          "run",
+          "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/quantized/app",
+          "endpoint-test",
+          "--stream",
+          "--federation-config",
+          "num-supernodes=12 client-resources-num-cpus=1 client-resources-num-gpus=1 init-args-num-cpus=1 init-args-num-gpus=1"
+        ],
+        "env": {
+          "FLWR_HOME": "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/quantized/attempt-e3732302/flower-home",
+          "FLWR_TELEMETRY_ENABLED": "0",
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+        }
+      },
+      "cuda-preflight": {
+        "backend": "torch",
+        "device": "cuda:0",
+        "dtype": "torch.float64",
+        "torch-version": "2.8.0+cu128",
+        "local-training-seconds": 0.316299790982157,
+        "gpu-name": "NVIDIA GeForce RTX 5060",
+        "cuda-visible-devices": "",
+        "peak-allocated-bytes": 67198976,
+        "peak-reserved-bytes": 69206016,
+        "cuda-runtime": "12.8",
+        "compute-capability": [
+          12,
+          0
+        ],
+        "compiled-architectures": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "free-bytes-after-probe": 7200571392,
+        "total-bytes": 8546484224,
+        "delta-norm": 0.7745260951117708
+      }
+    },
+    "float": {
+      "run-status": {
+        "success": true,
+        "runs": [
+          {
+            "run-id": "244087180388319186",
+            "federation-id": "@none/default",
+            "fab-id": "trustlessfl/trustlessfl-aion-float",
+            "fab-name": "trustlessfl-aion-float",
+            "fab-version": "0.1.0",
+            "fab-hash": "4b4cc9bd6c11009c3ab4730eaa5a1dde77657e1544f79e0df43cb915080b2044",
+            "status": "finished:completed",
+            "status-details": "N/A",
+            "elapsed": 37.491888,
+            "pending-at": "2026-09-13 11:01:22Z",
+            "starting-at": "2026-09-13 11:01:23Z",
+            "running-at": "2026-09-13 11:01:23Z",
+            "finished-at": "2026-09-13 11:02:01Z",
+            "network-traffic": {
+              "inbound-bytes": 0,
+              "outbound-bytes": 0,
+              "total-bytes": 0
+            },
+            "compute-time": {
+              "serverapp-seconds": 37.491888,
+              "clientapp-seconds": 30.76671661308501,
+              "total-seconds": 68.25860461308501
+            }
+          }
+        ]
+      },
+      "timing": {
+        "flwr_cli_wall_seconds": 43.441155203967355
+      },
+      "commands": {
+        "superlink": [
+          "/home/hacho/@WSL-Projects/trustlessFL/.venv/bin/flower-superlink",
+          "--insecure",
+          "--simulation",
+          "--isolation",
+          "subprocess",
+          "--disable-runtime-dependency-installation",
+          "--control-api-address",
+          "127.0.0.1:41751",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "50059"
+        ],
+        "flwr": [
+          "/home/hacho/@WSL-Projects/trustlessFL/.venv/bin/flwr",
+          "run",
+          "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/float/app",
+          "endpoint-test",
+          "--stream",
+          "--federation-config",
+          "num-supernodes=12 client-resources-num-cpus=1 client-resources-num-gpus=1 init-args-num-cpus=1 init-args-num-gpus=1"
+        ],
+        "env": {
+          "FLWR_HOME": "/home/hacho/@WSL-Projects/trustlessFL/.cache/endpoint/runs/endpoint-aion-2026-09-13/float/attempt-bafbd397/flower-home",
+          "FLWR_TELEMETRY_ENABLED": "0",
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+        }
+      },
+      "cuda-preflight": {
+        "backend": "torch",
+        "device": "cuda:0",
+        "dtype": "torch.float64",
+        "torch-version": "2.8.0+cu128",
+        "local-training-seconds": 0.3400019840337336,
+        "gpu-name": "NVIDIA GeForce RTX 5060",
+        "cuda-visible-devices": "",
+        "peak-allocated-bytes": 67198976,
+        "peak-reserved-bytes": 69206016,
+        "cuda-runtime": "12.8",
+        "compute-capability": [
+          12,
+          0
+        ],
+        "compiled-architectures": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "free-bytes-after-probe": 7200571392,
+        "total-bytes": 8546484224,
+        "delta-norm": 0.7745260951117708
+      }
+    }
+  },
+  "data_and_split_match_previous": true,
+  "exporter_sha256": "afbda76375298da8b487655ef42fb2086b59439a5367684a8c464a0667efe994",
+  "verification_sha256": "60b7d71d8f14f5a157e128cc57e7969a45541acfb09dc5cd01cdbebd4e38253e"
+}

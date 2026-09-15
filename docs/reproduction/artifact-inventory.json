@@ -1,0 +1,1747 @@
+{
+  "record_id": 15870338,
+  "doi": "10.5281/zenodo.15870338",
+  "publication_date": "2025-07-11",
+  "record_license": {
+    "id": "cc-by-4.0"
+  },
+  "archive": {
+    "name": "Aion.zip",
+    "bytes": 403162679,
+    "md5": "dadf60eeb3713398ef0d189ea9cec920",
+    "sha256": "dff11dfbdf8c40121c01220b3292007cfea5b8401ecd413af0b7701ebbc742f3"
+  },
+  "checked_utc": "2026-09-12T10:43:53.018653+00:00",
+  "record_sha256": "88bacc8b552bf390023eda4b5626a49de0c238538642170afdf7a1c742cdfaf7",
+  "zip_crc_valid": true,
+  "files": [
+    {
+      "path": "Aion/GradAttack/checkpoint_old/aion_epoch=20.ckpt",
+      "bytes": 89451498,
+      "compressed_bytes": 82825655,
+      "crc32": "81b29266",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/checkpoint_old/aion_epoch=48.ckpt",
+      "bytes": 89451944,
+      "compressed_bytes": 83029971,
+      "crc32": "c1703fa1",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/data/cifar-10-python.tar.gz",
+      "bytes": 170498071,
+      "compressed_bytes": 170498071,
+      "crc32": "645f5855",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/examples/attack_cifar10_gradinversion.py",
+      "bytes": 6855,
+      "compressed_bytes": 1993,
+      "crc32": "0f3c7ad4",
+      "text_extracted": true,
+      "sha256": "f47e71ceb95d4a25cd4c242914ed7b4f5ef79886c04f56855920eb26b63af475"
+    },
+    {
+      "path": "Aion/GradAttack/examples/attack_decode.py",
+      "bytes": 8665,
+      "compressed_bytes": 2485,
+      "crc32": "860adcf4",
+      "text_extracted": true,
+      "sha256": "b889f0601c5fffd1f8a69cd78a33aead93e5f07050889da99dd8d0825183e0fb"
+    },
+    {
+      "path": "Aion/GradAttack/examples/calc_metric.py",
+      "bytes": 3704,
+      "compressed_bytes": 1168,
+      "crc32": "ea77f4cc",
+      "text_extracted": true,
+      "sha256": "497cd4e823ef480580c23e8fbcadebad2d3c1e272da71ffc271fb3c604473570"
+    },
+    {
+      "path": "Aion/GradAttack/examples/train_cifar10.py",
+      "bytes": 2857,
+      "compressed_bytes": 990,
+      "crc32": "1ca1235a",
+      "text_extracted": true,
+      "sha256": "d5167de2a224aa5fa58f3579e5be66207dad1557a1429ecebb70ee3e40e594b4"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/attacks/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/attacks/attack.py",
+      "bytes": 2678,
+      "compressed_bytes": 821,
+      "crc32": "2fc25f9b",
+      "text_extracted": true,
+      "sha256": "40c123251548fed71a7e3fee111ab1ad544c1a07d3994aa740d7e2ed0d667a4b"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/attacks/gradientinversion.py",
+      "bytes": 18147,
+      "compressed_bytes": 3798,
+      "crc32": "e34abb1c",
+      "text_extracted": true,
+      "sha256": "f90dba090fff3256a9553def23df4828c14574dfca25095bae118de68bd98b62"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/datamodules.py",
+      "bytes": 20058,
+      "compressed_bytes": 2291,
+      "crc32": "6b7b5cd7",
+      "text_extracted": true,
+      "sha256": "07376c4765f01a3fd34f7e67d821aeeec257c5d3300442a255b197548926d500"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/__init__.py",
+      "bytes": 51,
+      "compressed_bytes": 45,
+      "crc32": "3aaa379a",
+      "text_extracted": true,
+      "sha256": "940f909843c64997509f297ff7a5c5f92bd363859dc354339f02db7197809ad3"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/aion.py",
+      "bytes": 1797,
+      "compressed_bytes": 669,
+      "crc32": "90dc6aec",
+      "text_extracted": true,
+      "sha256": "1af1de11580bef7b50007af0d5a2a633d06388d0b9fe1e32f63cccf1940c96f9"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/defense.py",
+      "bytes": 578,
+      "compressed_bytes": 289,
+      "crc32": "32ef9817",
+      "text_extracted": true,
+      "sha256": "d3738afa6c69652f69c339fc36565cbd93348f7b38da785904cdd70a8095b984"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/defense_utils.py",
+      "bytes": 1434,
+      "compressed_bytes": 566,
+      "crc32": "158963ef",
+      "text_extracted": true,
+      "sha256": "f68510085bd415ace3635a2843a3cdeb125818f04a238c3b11f4d9e504cb9bc0"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/shprg/init.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/shprg/initialization_values",
+      "bytes": 37,
+      "compressed_bytes": 37,
+      "crc32": "19d86490",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/defenses/shprg/shprg.py",
+      "bytes": 2380,
+      "compressed_bytes": 731,
+      "crc32": "91c9c5ee",
+      "text_extracted": true,
+      "sha256": "f1015c82996aaef147813bb773aeb12feff18fdfd9ffdd2b61b8d18521bd1d0f"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/metrics/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/metrics/gradients.py",
+      "bytes": 3078,
+      "compressed_bytes": 621,
+      "crc32": "ccea92d9",
+      "text_extracted": true,
+      "sha256": "b530e83c66ab5a471a0c6e7c5a28cdaa840c3414ba50a2561c0cef6f6703858d"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/metrics/pixelwise.py",
+      "bytes": 280,
+      "compressed_bytes": 169,
+      "crc32": "21e99514",
+      "text_extracted": true,
+      "sha256": "540d438a830410ea6abb7e2a470318f4d8916668e56b136bd352f46007580735"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/LeNet.py",
+      "bytes": 813,
+      "compressed_bytes": 278,
+      "crc32": "19af5949",
+      "text_extracted": true,
+      "sha256": "7176d4c773bc5da4dfd7d977de35904fc746e8200588a2b680a40aba404b4609"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/__init__.py",
+      "bytes": 22942,
+      "compressed_bytes": 4913,
+      "crc32": "888ddb6d",
+      "text_extracted": true,
+      "sha256": "0beef34bcf91a63c30f988fe3e52f38e1a4fea5f19ad9944e6d34b9c86fc92ec"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/alldnet.py",
+      "bytes": 1050,
+      "compressed_bytes": 363,
+      "crc32": "cff1c7cc",
+      "text_extracted": true,
+      "sha256": "3180c9938440a2ef5685dba749428d64193558b7aefa89d28c1419a2e53eda35"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/covidmodel.py",
+      "bytes": 8225,
+      "compressed_bytes": 1573,
+      "crc32": "00d6720a",
+      "text_extracted": true,
+      "sha256": "e4b866e6518147e825428b8475d9fa612a1762a4dd5fe690fb7fbfd952a67299"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/densenet.py",
+      "bytes": 4081,
+      "compressed_bytes": 884,
+      "crc32": "f9809f54",
+      "text_extracted": true,
+      "sha256": "e198789f4e9fb85fbb6d53a00e67189d350ddca1b41ad4674222564c3ae5da64"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/googlenet.py",
+      "bytes": 3247,
+      "compressed_bytes": 796,
+      "crc32": "6cd1b965",
+      "text_extracted": true,
+      "sha256": "efb0db75f8a34f2046917aa61009b56f142f83b21d1a133e56e0bd303d9e2306"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/mobilenet.py",
+      "bytes": 2596,
+      "compressed_bytes": 804,
+      "crc32": "b5b88bf1",
+      "text_extracted": true,
+      "sha256": "fe50e913294858d3b4d71b45ec06a2af855b3160dcba470de124b74f73541f8c"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/multihead_resnet.py",
+      "bytes": 7672,
+      "compressed_bytes": 1884,
+      "crc32": "6017e2db",
+      "text_extracted": true,
+      "sha256": "354886cef22784f5ae30ca3c098b59f7254d5a9c6a22af90abf6e6dfc297265f"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/nasnet.py",
+      "bytes": 11649,
+      "compressed_bytes": 2133,
+      "crc32": "a1ab602b",
+      "text_extracted": true,
+      "sha256": "ff463307536b41a6472739db1e6c567e61244312f4efb4343d7494dbb3eb4c3a"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/resnet.py",
+      "bytes": 7989,
+      "compressed_bytes": 1345,
+      "crc32": "9e7c1496",
+      "text_extracted": true,
+      "sha256": "2a80d724e569da3f971518ed633716619d6aa39ab585cd8b46d546c895a440d7"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/resnext.py",
+      "bytes": 7692,
+      "compressed_bytes": 1865,
+      "crc32": "890b2af2",
+      "text_extracted": true,
+      "sha256": "3bdfebd239e70e8cd0e9cb4f4b90e216f386ca239907af1e3078820b28228a4b"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/simple.py",
+      "bytes": 1949,
+      "compressed_bytes": 507,
+      "crc32": "87a9cb2c",
+      "text_extracted": true,
+      "sha256": "f670d11107ea2f8826ca975ea86e636bb836f23f9dbbc30d7f2dfa31e59cd24d"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/models/vgg.py",
+      "bytes": 1804,
+      "compressed_bytes": 584,
+      "crc32": "ec9b3b7e",
+      "text_extracted": true,
+      "sha256": "5b99ac7e5e3f504c01966c4c0f24851f2189e3b96dc800dbafdee8df82df1ead"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/trainingpipeline.py",
+      "bytes": 1881,
+      "compressed_bytes": 602,
+      "crc32": "87a961a3",
+      "text_extracted": true,
+      "sha256": "5ce0fb8459f8a2df5e6155797fb6663bbb4a0d00b7136d5b432616f099b834b9"
+    },
+    {
+      "path": "Aion/GradAttack/gradattack/utils.py",
+      "bytes": 12372,
+      "compressed_bytes": 3141,
+      "crc32": "209fb05c",
+      "text_extracted": true,
+      "sha256": "5d291a555efcb31b3022172e57568abca6e7c82dbc6b20f4adfcdd6bfe58b26a"
+    },
+    {
+      "path": "Aion/GradAttack/pyproject.toml",
+      "bytes": 103,
+      "compressed_bytes": 86,
+      "crc32": "b7beb153",
+      "text_extracted": true,
+      "sha256": "4b5f4916dfc7c0e05e65ad70950e2d236857767ee01e21d82ef8e0783cd7315a"
+    },
+    {
+      "path": "Aion/GradAttack/requirements.txt",
+      "bytes": 1527,
+      "compressed_bytes": 792,
+      "crc32": "daa4d5b4",
+      "text_extracted": true,
+      "sha256": "27dabde6141fe459cfabed40864122669a2fbc18fb34ea6f40530880bbbd0b94"
+    },
+    {
+      "path": "Aion/GradAttack/setup.cfg",
+      "bytes": 796,
+      "compressed_bytes": 453,
+      "crc32": "d3fbd0c5",
+      "text_extracted": true,
+      "sha256": "52eb4846451d8651f1070082f983936b9d844e00e0388f9a364ff84d990b0b53"
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/HEAD",
+      "bytes": 23,
+      "compressed_bytes": 23,
+      "crc32": "a773692b",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/config",
+      "bytes": 323,
+      "compressed_bytes": 215,
+      "crc32": "b123c5d1",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/description",
+      "bytes": 73,
+      "compressed_bytes": 65,
+      "crc32": "1f078b37",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/applypatch-msg.sample",
+      "bytes": 478,
+      "compressed_bytes": 277,
+      "crc32": "09f84f85",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/commit-msg.sample",
+      "bytes": 896,
+      "compressed_bytes": 500,
+      "crc32": "10caf8e9",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/fsmonitor-watchman.sample",
+      "bytes": 4655,
+      "compressed_bytes": 1761,
+      "crc32": "6398b950",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/post-update.sample",
+      "bytes": 189,
+      "compressed_bytes": 137,
+      "crc32": "c0f70c9a",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/pre-applypatch.sample",
+      "bytes": 424,
+      "compressed_bytes": 264,
+      "crc32": "024cc0cf",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/pre-commit.sample",
+      "bytes": 1643,
+      "compressed_bytes": 902,
+      "crc32": "0c32b3ef",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/pre-merge-commit.sample",
+      "bytes": 416,
+      "compressed_bytes": 256,
+      "crc32": "5ef33f44",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/pre-push.sample",
+      "bytes": 1374,
+      "compressed_bytes": 697,
+      "crc32": "f90a0f0f",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/pre-rebase.sample",
+      "bytes": 4898,
+      "compressed_bytes": 1984,
+      "crc32": "5158ec84",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/pre-receive.sample",
+      "bytes": 544,
+      "compressed_bytes": 329,
+      "crc32": "96f8c492",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/prepare-commit-msg.sample",
+      "bytes": 1492,
+      "compressed_bytes": 741,
+      "crc32": "303613ed",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/push-to-checkout.sample",
+      "bytes": 2783,
+      "compressed_bytes": 1236,
+      "crc32": "f00806d3",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/hooks/update.sample",
+      "bytes": 3650,
+      "compressed_bytes": 1162,
+      "crc32": "06fcf0d9",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/info/exclude",
+      "bytes": 240,
+      "compressed_bytes": 173,
+      "crc32": "21cd3d77",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/logs/HEAD",
+      "bytes": 188,
+      "compressed_bytes": 143,
+      "crc32": "b37f0020",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/logs/refs/heads/master",
+      "bytes": 188,
+      "compressed_bytes": 143,
+      "crc32": "b37f0020",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/logs/refs/remotes/origin/HEAD",
+      "bytes": 188,
+      "compressed_bytes": 143,
+      "crc32": "b37f0020",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/objects/pack/pack-39c6bbd9e12a1e45affb2177aec424ceb95fc08b.idx",
+      "bytes": 2304,
+      "compressed_bytes": 1400,
+      "crc32": "7fdfff6d",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/objects/pack/pack-39c6bbd9e12a1e45affb2177aec424ceb95fc08b.pack",
+      "bytes": 7239,
+      "compressed_bytes": 6786,
+      "crc32": "50b1912e",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/objects/pack/pack-39c6bbd9e12a1e45affb2177aec424ceb95fc08b.promisor",
+      "bytes": 105,
+      "compressed_bytes": 70,
+      "crc32": "b3d5b29f",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/objects/pack/tmp_pack_MKuJLf",
+      "bytes": 2850815,
+      "compressed_bytes": 2850815,
+      "crc32": "6cea2154",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/packed-refs",
+      "bytes": 114,
+      "compressed_bytes": 103,
+      "crc32": "55906726",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/refs/heads/master",
+      "bytes": 41,
+      "compressed_bytes": 41,
+      "crc32": "cf6418c9",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/src/gradattack/.git/refs/remotes/origin/HEAD",
+      "bytes": 32,
+      "compressed_bytes": 32,
+      "crc32": "a0d425d6",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/GradAttack/test/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/GradAttack/test/test_attack.py",
+      "bytes": 1456,
+      "compressed_bytes": 605,
+      "crc32": "28277fdc",
+      "text_extracted": true,
+      "sha256": "635774580c370e9389905a43842e82f628007cb0922ad5c2e21ea263c44f0281"
+    },
+    {
+      "path": "Aion/GradAttack/test/test_pipeline.py",
+      "bytes": 1658,
+      "compressed_bytes": 620,
+      "crc32": "5d32b513",
+      "text_extracted": true,
+      "sha256": "1f7b5039b4dba0a1941b20d53d66cc3aef329561797e008260347b21bc4abad7"
+    },
+    {
+      "path": "Aion/GradAttack/test/train_config.py",
+      "bytes": 276,
+      "compressed_bytes": 182,
+      "crc32": "233eefae",
+      "text_extracted": true,
+      "sha256": "2f2979b86a592aa4d308aa407253b640adf0fd9b7fe531245d04fa4a67bd5ba5"
+    },
+    {
+      "path": "Aion/GradAttack/test/utils.py",
+      "bytes": 628,
+      "compressed_bytes": 295,
+      "crc32": "e431965f",
+      "text_extracted": true,
+      "sha256": "27b025e10ad937ccaf5bde6e13b7d1a717b4ee11326eb75d22a5c652c24800c4"
+    },
+    {
+      "path": "Aion/Kernel.py",
+      "bytes": 29356,
+      "compressed_bytes": 7541,
+      "crc32": "d0e3829a",
+      "text_extracted": true,
+      "sha256": "b4abfa45a10de1d89bc9282a23ee097d350205b73bfe95e7c7a411b68506a81e"
+    },
+    {
+      "path": "Aion/README.md",
+      "bytes": 15359,
+      "compressed_bytes": 4760,
+      "crc32": "59cdd784",
+      "text_extracted": true,
+      "sha256": "621ca630955706c3e9d6a9d14c2a508fe06d06cd48041698b771b4b84b035a97"
+    },
+    {
+      "path": "Aion/__pycache__/Kernel.cpython-312.pyc",
+      "bytes": 16827,
+      "compressed_bytes": 6959,
+      "crc32": "7e2dfd35",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/__pycache__/Kernel.cpython-38.pyc",
+      "bytes": 8953,
+      "compressed_bytes": 4213,
+      "crc32": "e21071f6",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/abides.py",
+      "bytes": 1173,
+      "compressed_bytes": 517,
+      "crc32": "f3e9771d",
+      "text_extracted": true,
+      "sha256": "08fcb45714c2d1dcf9bcc7c69d2a8e9ce2c56cdddbf32a1ec2dc629d1e2e0e26"
+    },
+    {
+      "path": "Aion/agent/Agent.py",
+      "bytes": 12361,
+      "compressed_bytes": 3675,
+      "crc32": "05382150",
+      "text_extracted": true,
+      "sha256": "b2f4d1c3ab9541e732c3bfd5219f8ee6a95c5df8871398e8e839de4a7cbb085b"
+    },
+    {
+      "path": "Aion/agent/Aion/HPRF/__pycache__/hprf.cpython-38.pyc",
+      "bytes": 3399,
+      "compressed_bytes": 1808,
+      "crc32": "4a81d40e",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/HPRF/hprf.py",
+      "bytes": 3167,
+      "compressed_bytes": 1055,
+      "crc32": "a0c2818e",
+      "text_extracted": true,
+      "sha256": "a0ec011a1538b3a4b80f45aa29afea399470de4d55446278390ca24b81d415dd"
+    },
+    {
+      "path": "Aion/agent/Aion/HPRF/init.py",
+      "bytes": 339,
+      "compressed_bytes": 231,
+      "crc32": "2753096e",
+      "text_extracted": true,
+      "sha256": "0b97dae129ae31ce7e4ac62c1027a26610a72a25b09a300eb6721baaaeee83b5"
+    },
+    {
+      "path": "Aion/agent/Aion/HPRF/initialization_values",
+      "bytes": 42,
+      "compressed_bytes": 42,
+      "crc32": "8b1367c9",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/HPRF/matrix",
+      "bytes": 713321,
+      "compressed_bytes": 623293,
+      "crc32": "de92e828",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/SA_Aggregator.py",
+      "bytes": 37914,
+      "compressed_bytes": 8100,
+      "crc32": "2f73ec57",
+      "text_extracted": true,
+      "sha256": "10a59f9232682a4de4b77a09323d7f5d8f127d91bb192bea19b4fcd5ef01b531"
+    },
+    {
+      "path": "Aion/agent/Aion/SA_ClientAgent.py",
+      "bytes": 20697,
+      "compressed_bytes": 4711,
+      "crc32": "bde816ec",
+      "text_extracted": true,
+      "sha256": "3fc8581e5f57573212175b61ac6dd99417d94cb1d138f354fc1a628cfb711d93"
+    },
+    {
+      "path": "Aion/agent/Aion/__pycache__/SA_Aggregator.cpython-38.pyc",
+      "bytes": 26767,
+      "compressed_bytes": 11341,
+      "crc32": "c66c011b",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/__pycache__/SA_ClientAgent.cpython-38.pyc",
+      "bytes": 15640,
+      "compressed_bytes": 6730,
+      "crc32": "49a23fe6",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/__pycache__/bft.cpython-38.pyc",
+      "bytes": 9228,
+      "compressed_bytes": 4002,
+      "crc32": "92a90c20",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/__pycache__/bft_view.cpython-38.pyc",
+      "bytes": 9785,
+      "compressed_bytes": 4034,
+      "crc32": "dc467500",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/Aion/bft.py",
+      "bytes": 12677,
+      "compressed_bytes": 2512,
+      "crc32": "1ed1aad5",
+      "text_extracted": true,
+      "sha256": "4e64648cc69f74434700169d9d3e43d806239a5b01e9bf3c6731239bfae10785"
+    },
+    {
+      "path": "Aion/agent/Aion/bft_view.py",
+      "bytes": 14737,
+      "compressed_bytes": 2392,
+      "crc32": "a7210dcc",
+      "text_extracted": true,
+      "sha256": "661369e4023f5f023883a4343aee3b748d6bff38a63220cb02d86c35552c38b2"
+    },
+    {
+      "path": "Aion/agent/__pycache__/Agent.cpython-38.pyc",
+      "bytes": 7781,
+      "compressed_bytes": 3815,
+      "crc32": "42ec3500",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/acorn/SA_ClientAgent.py",
+      "bytes": 27685,
+      "compressed_bytes": 5877,
+      "crc32": "cde58f61",
+      "text_extracted": true,
+      "sha256": "2e06f092eec4b5bf53a82b124dc8861acd63533d461459ce24379b2d0ab0a670"
+    },
+    {
+      "path": "Aion/agent/acorn/SA_ServiceAgent.py",
+      "bytes": 37958,
+      "compressed_bytes": 7572,
+      "crc32": "564e1fba",
+      "text_extracted": true,
+      "sha256": "b1b25a6750d40dad130d3e0ddf9ea58f8f94b0786e49e730727a06639e4cdfba"
+    },
+    {
+      "path": "Aion/agent/acorn/utils/batch_verifier.py",
+      "bytes": 3750,
+      "compressed_bytes": 1292,
+      "crc32": "5f77b7ca",
+      "text_extracted": true,
+      "sha256": "d0de01fcdb125ddf63ebcd746614aabe6ee1740c3be851c328d9e900017fc56e"
+    },
+    {
+      "path": "Aion/agent/flamingo/SA_ClientAgent.py",
+      "bytes": 19542,
+      "compressed_bytes": 4978,
+      "crc32": "67280495",
+      "text_extracted": true,
+      "sha256": "d8fc9395113a7f5523542478a85156599f3a1b00639399d048bf7097acda9dd9"
+    },
+    {
+      "path": "Aion/agent/flamingo/SA_ServiceAgent.py",
+      "bytes": 26750,
+      "compressed_bytes": 6030,
+      "crc32": "cb5686c0",
+      "text_extracted": true,
+      "sha256": "b51db96160621de6b3f2ba557b0ec67ffde18fd6364ad83fded15b0e8386d018"
+    },
+    {
+      "path": "Aion/agent/secagg/SA_ClientAgent.py",
+      "bytes": 25813,
+      "compressed_bytes": 5663,
+      "crc32": "848e8f05",
+      "text_extracted": true,
+      "sha256": "b8fdf7bfa8ea57896be143ee2c7c0a8b787e9760fa3e4fd9bc9687c9d2b5de41"
+    },
+    {
+      "path": "Aion/agent/secagg/SA_ServiceAgent.py",
+      "bytes": 31877,
+      "compressed_bytes": 6408,
+      "crc32": "9706ee63",
+      "text_extracted": true,
+      "sha256": "24663d765f30a0118ad5e0165559f33cbe624a977b5dc6fe38bde25d8d8f5e2c"
+    },
+    {
+      "path": "Aion/agent/secagg/__pycache__/SA_ClientAgent.cpython-38.pyc",
+      "bytes": 10539,
+      "compressed_bytes": 5229,
+      "crc32": "59ea478f",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/secagg/__pycache__/SA_ServiceAgent.cpython-38.pyc",
+      "bytes": 16652,
+      "compressed_bytes": 7078,
+      "crc32": "61bac17f",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/secagg_plus/SA_ClientAgent.py",
+      "bytes": 22080,
+      "compressed_bytes": 4660,
+      "crc32": "772ff3d1",
+      "text_extracted": true,
+      "sha256": "d131704cabfba7a9c7472ae1bfd9552252a9a00a92a873ce3835a2dcbd73d74d"
+    },
+    {
+      "path": "Aion/agent/secagg_plus/SA_ServiceAgent.py",
+      "bytes": 30677,
+      "compressed_bytes": 6028,
+      "crc32": "7aa71b60",
+      "text_extracted": true,
+      "sha256": "2b8847f66bc0f2ad96934516f4cb56d6fe43fc44b0f56ea977e25d0a3d26b06a"
+    },
+    {
+      "path": "Aion/agent/secagg_plus/__pycache__/SA_ClientAgent.cpython-38.pyc",
+      "bytes": 8924,
+      "compressed_bytes": 4442,
+      "crc32": "40bbc16c",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/agent/secagg_plus/__pycache__/SA_ServiceAgent.cpython-38.pyc",
+      "bytes": 15659,
+      "compressed_bytes": 6662,
+      "crc32": "4d80f99a",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/config/__pycache__/aion.cpython-312.pyc",
+      "bytes": 9148,
+      "compressed_bytes": 4711,
+      "crc32": "240644f6",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/config/__pycache__/aion.cpython-38.pyc",
+      "bytes": 5707,
+      "compressed_bytes": 3149,
+      "crc32": "323e84e1",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/config/__pycache__/secagg.cpython-38.pyc",
+      "bytes": 5313,
+      "compressed_bytes": 2889,
+      "crc32": "3b4bf12f",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/config/__pycache__/secagg_plus.cpython-38.pyc",
+      "bytes": 5198,
+      "compressed_bytes": 2830,
+      "crc32": "da7b3a9f",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/config/acorn.py",
+      "bytes": 11468,
+      "compressed_bytes": 3860,
+      "crc32": "4ce34a82",
+      "text_extracted": true,
+      "sha256": "1ff7e3e5b3de4f1f66ea44982a8e29863ea74247b9feb6b2df85b23d46d0ddce"
+    },
+    {
+      "path": "Aion/config/aion.py",
+      "bytes": 11896,
+      "compressed_bytes": 3990,
+      "crc32": "100d71f9",
+      "text_extracted": true,
+      "sha256": "dec2c4ee6276c71e08e0e1c1f9840c5a73e098ff7010c48870502539f4347b99"
+    },
+    {
+      "path": "Aion/config/flamingo.py",
+      "bytes": 11219,
+      "compressed_bytes": 3774,
+      "crc32": "70eb0357",
+      "text_extracted": true,
+      "sha256": "f9c864109b32d4dc8a3e037751c200ff181cd1611fb69a7f5f38f98ad95c80b7"
+    },
+    {
+      "path": "Aion/config/secagg.py",
+      "bytes": 11719,
+      "compressed_bytes": 3887,
+      "crc32": "a25cbf37",
+      "text_extracted": true,
+      "sha256": "e6c25d4c841fcb4704a2d65e3007cad7d15830e221174da35eabdf4ff0e31022"
+    },
+    {
+      "path": "Aion/config/secagg_plus.py",
+      "bytes": 11397,
+      "compressed_bytes": 3863,
+      "crc32": "5b181106",
+      "text_extracted": true,
+      "sha256": "9f22201dfd5b67deed667348e6d7bfe7034db85d48daacb60ecdb070297f1ad3"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/ARDIS/ARDIS_test_2828.csv",
+      "bytes": 10504477,
+      "compressed_bytes": 350967,
+      "crc32": "5eaf7639",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/ARDIS/ARDIS_test_labels.csv",
+      "bytes": 110000,
+      "compressed_bytes": 883,
+      "crc32": "c0b09c90",
+      "text_extracted": true,
+      "sha256": "3c43b29082c22b68551c1dc5637eb81372331ad9e9a7e4e94042f160f064b2e5"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/ARDIS/ARDIS_train_2828.csv",
+      "bytes": 69293356,
+      "compressed_bytes": 2283554,
+      "crc32": "afae5bb3",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/ARDIS/ARDIS_train_labels.csv",
+      "bytes": 726000,
+      "compressed_bytes": 5182,
+      "crc32": "f6a43c91",
+      "text_extracted": true,
+      "sha256": "c7d90bde202d6b24e86df0f6f53b2e72d8b3b8c3525cffb33d4c54b026c3d5f4"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/ARDIS/ardis_test_dataset.pt",
+      "bytes": 793959,
+      "compressed_bytes": 171333,
+      "crc32": "ef3088fd",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images.pkl",
+      "bytes": 49317,
+      "compressed_bytes": 14593,
+      "crc32": "001d5a86",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images_adv_p_percent_edge_case.pkl",
+      "bytes": 307365,
+      "compressed_bytes": 186569,
+      "crc32": "c443229e",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images_honest_almost_edge_case.pkl",
+      "bytes": 307365,
+      "compressed_bytes": 188447,
+      "crc32": "bc237994",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images_honest_full_normal.pkl",
+      "bytes": 2150566,
+      "compressed_bytes": 1271434,
+      "crc32": "1b9cb618",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images_new_test.pkl",
+      "bytes": 602277,
+      "compressed_bytes": 353873,
+      "crc32": "df88b8c4",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images_new_train.pkl",
+      "bytes": 2408614,
+      "compressed_bytes": 1432098,
+      "crc32": "ca9d0d7c",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/data/southwest_images_p_percent_edge_case_test.pkl",
+      "bytes": 553125,
+      "compressed_bytes": 327259,
+      "crc32": "3b22aa04",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/helper.py",
+      "bytes": 6698,
+      "compressed_bytes": 1548,
+      "crc32": "5c9e4548",
+      "text_extracted": true,
+      "sha256": "ff17eb92142d5a9dcc20c801197a50c81b3a6248cd028506e3aff15468396d8d"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/image_helper.py",
+      "bytes": 27687,
+      "compressed_bytes": 4352,
+      "crc32": "800f5d93",
+      "text_extracted": true,
+      "sha256": "237f4ed9adf12401104287d6e7d3ca667a1c8207f2be011be6fd2a5049de2374"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/cnn.py",
+      "bytes": 1142,
+      "compressed_bytes": 409,
+      "crc32": "76d80f92",
+      "text_extracted": true,
+      "sha256": "b79a35efb92069779e0ddf65b0ee8b06bf6a92a5d86d237314c89bd1e940899d"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/create_model.py",
+      "bytes": 1132,
+      "compressed_bytes": 322,
+      "crc32": "bfb2f3f4",
+      "text_extracted": true,
+      "sha256": "d8998e8b4b23a6971843b86bb78f2c2cfcdfbb84bfa6caad21a074cdf8ade075"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/edge_case_cnn.py",
+      "bytes": 787,
+      "compressed_bytes": 288,
+      "crc32": "e03dc325",
+      "text_extracted": true,
+      "sha256": "45d67813e8bc03a5d1cb1caca8623694482fdb8b94550cc7b7b029a94eb4676e"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/resnet.py",
+      "bytes": 5492,
+      "compressed_bytes": 1285,
+      "crc32": "8719e2cb",
+      "text_extracted": true,
+      "sha256": "0696f7d5fa21b4d5a1a9228c0343c225a0bb4db3fe6846285ec8741ecaf1c7e9"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/resnet56.py",
+      "bytes": 2719,
+      "compressed_bytes": 831,
+      "crc32": "327e924d",
+      "text_extracted": true,
+      "sha256": "8e0e1f4957b69b140b38521a913637d686fe24c4116bc803fddee0d2a19c0ef6"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/resnet9.py",
+      "bytes": 3405,
+      "compressed_bytes": 916,
+      "crc32": "cac578d1",
+      "text_extracted": true,
+      "sha256": "01e668feba7e37d3ba014c5b2620adc37daed90d5c88327efb07486f68546c7b"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/models/simple.py",
+      "bytes": 1268,
+      "compressed_bytes": 479,
+      "crc32": "8ddccf70",
+      "text_extracted": true,
+      "sha256": "3948b05224850b92ef1ef57904cf3434c11cfd240589a32770f43c1cdc08ba64"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/aggregation_rules.py",
+      "bytes": 6279,
+      "compressed_bytes": 1786,
+      "crc32": "f7c912f3",
+      "text_extracted": true,
+      "sha256": "3a5b48eb0ddd4305df2995fb4f851559cae1270d1d3d44527c8cca225945ae0b"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack1_cifar10.py",
+      "bytes": 1007,
+      "compressed_bytes": 491,
+      "crc32": "39fe8817",
+      "text_extracted": true,
+      "sha256": "a687841a8487d667cd88cf3dc11254bdea51431ca22cd413fa410dd5406a83c1"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack1_emnist_byclass.py",
+      "bytes": 1052,
+      "compressed_bytes": 501,
+      "crc32": "ead1ea89",
+      "text_extracted": true,
+      "sha256": "ed89f1f34943a91bd9bd0e49fcda221ea5548ea715ef1b311de61e9c5fadc90a"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack1_fmnist.py",
+      "bytes": 1003,
+      "compressed_bytes": 490,
+      "crc32": "9d2f3f6d",
+      "text_extracted": true,
+      "sha256": "49ab2769f47f8730af60deb668d7f4fb43122174dc619aedd4cc1472b72cf1af"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack2_cifar10.py",
+      "bytes": 987,
+      "compressed_bytes": 492,
+      "crc32": "422ba1cb",
+      "text_extracted": true,
+      "sha256": "f9638f647d53df635aad5c3b8e4931ed634993ec8c26eeb9f17ed29022ef9dce"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack2_emnist_byclass.py",
+      "bytes": 1032,
+      "compressed_bytes": 503,
+      "crc32": "71a3c14b",
+      "text_extracted": true,
+      "sha256": "b3028857de9e9df78ec85e2adcef90a480436f71d3f6b76fb7b052a8b4f082e0"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack2_fmnist.py",
+      "bytes": 983,
+      "compressed_bytes": 492,
+      "crc32": "d5442167",
+      "text_extracted": true,
+      "sha256": "c298bfc1da6afe2cca6d7dc4bd51d5af513967675b516da8f4169f8338cc6f5a"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack3_cifar10.py",
+      "bytes": 954,
+      "compressed_bytes": 478,
+      "crc32": "989ee24f",
+      "text_extracted": true,
+      "sha256": "adddaa052c165192c3bc8a5f6c36779214364c76944ffdd38ff9444a1c9f96f6"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack3_emnist_byclass.py",
+      "bytes": 999,
+      "compressed_bytes": 490,
+      "crc32": "a59172fe",
+      "text_extracted": true,
+      "sha256": "023133c1ed32663e713a45735fbd3588af07ad4994e1747420ee06bf9a466df1"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/attack3_fmnist.py",
+      "bytes": 950,
+      "compressed_bytes": 478,
+      "crc32": "66b4f039",
+      "text_extracted": true,
+      "sha256": "278d040dd48112e3d873a9b0060f8f6c214bbf1d57dd67e4629e59afb4dab8f5"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/autorun.py",
+      "bytes": 3174,
+      "compressed_bytes": 562,
+      "crc32": "e8d6a040",
+      "text_extracted": true,
+      "sha256": "e5acd8aaf90a16b73f052b6f5782bf79fbe5524a5d6881cf2544b7e1c79162c3"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/client.py",
+      "bytes": 15061,
+      "compressed_bytes": 2382,
+      "crc32": "f8408e37",
+      "text_extracted": true,
+      "sha256": "dd5929ab8fd4c87c4a25e5e40cab6d8e718e05d6c1b6683b87edf899e68e59f2"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/evaluation.py",
+      "bytes": 2466,
+      "compressed_bytes": 804,
+      "crc32": "27ff6681",
+      "text_extracted": true,
+      "sha256": "b18d711a6d91ab903013f88406724b2dc5c61995f9e2c9d06f2d530180b4eeb2"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/server.py",
+      "bytes": 15116,
+      "compressed_bytes": 2941,
+      "crc32": "7afc4f19",
+      "text_extracted": true,
+      "sha256": "970fb855fb1e132c8defd43455b6f5beed82b1e8e8378c55b6f2ed1c0261d079"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/roles/trainer.py",
+      "bytes": 12440,
+      "compressed_bytes": 2842,
+      "crc32": "8ba9b263",
+      "text_extracted": true,
+      "sha256": "20d46f1c201b673fe57c92798e5e6f96bc1878d2774213146f028a95b5afa3c8"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/cifar10/avg_100.pth",
+      "bytes": 11261246,
+      "compressed_bytes": 10413333,
+      "crc32": "b43300b6",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/cifar10/avg_200.pth",
+      "bytes": 11261246,
+      "compressed_bytes": 10411127,
+      "crc32": "f75e598c",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/cifar10/avg_300.pth",
+      "bytes": 11261246,
+      "compressed_bytes": 10409975,
+      "crc32": "9e617ad3",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/emnist/avg_100.pth",
+      "bytes": 26437187,
+      "compressed_bytes": 24402158,
+      "crc32": "97e664cc",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/fmnist/avg_100.pth",
+      "bytes": 254392,
+      "compressed_bytes": 232184,
+      "crc32": "a35d16fc",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/fmnist/avg_200.pth",
+      "bytes": 254392,
+      "compressed_bytes": 232474,
+      "crc32": "579ddc60",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/fmnist/avg_300.pth",
+      "bytes": 254392,
+      "compressed_bytes": 232528,
+      "crc32": "500902b8",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/shprg/init.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/shprg/initialization_values",
+      "bytes": 37,
+      "compressed_bytes": 37,
+      "crc32": "19d86490",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/shprg/shprg.py",
+      "bytes": 2380,
+      "compressed_bytes": 731,
+      "crc32": "91c9c5ee",
+      "text_extracted": true,
+      "sha256": "f1015c82996aaef147813bb773aeb12feff18fdfd9ffdd2b61b8d18521bd1d0f"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/utils/cifar100_params.yaml",
+      "bytes": 1582,
+      "compressed_bytes": 759,
+      "crc32": "44f4303b",
+      "text_extracted": true,
+      "sha256": "bca9c7b8df8b9d17055eea1bffd4e2d7561e97a6dfe590a50472bfbe9bb31973"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/utils/cifar10_params.yaml",
+      "bytes": 967,
+      "compressed_bytes": 443,
+      "crc32": "b05d5e03",
+      "text_extracted": true,
+      "sha256": "4f73cb072bded804ab55fc09c45e30b253266227962f0460310ba8fb4dfa8e36"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/utils/emnist_byclass_params.yaml",
+      "bytes": 2003,
+      "compressed_bytes": 883,
+      "crc32": "5132a756",
+      "text_extracted": true,
+      "sha256": "ee48fcbfcde482ecd065260e8a8afd3912df9228eba16735059d9753def42e63"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/utils/emnist_params.yaml",
+      "bytes": 747,
+      "compressed_bytes": 350,
+      "crc32": "beea9993",
+      "text_extracted": true,
+      "sha256": "e9f15499d1f2c43059b32f8bce3a0b72da0806cda419c3b048ac9102a438d9ad"
+    },
+    {
+      "path": "Aion/input_validation/FL_Backdoor_CV/utils/fmnist_params.yaml",
+      "bytes": 747,
+      "compressed_bytes": 350,
+      "crc32": "e8fff679",
+      "text_extracted": true,
+      "sha256": "f6b1576483a135df44d94321b77ed3b187a0001b0cc5ab3d728e46e3cc04272a"
+    },
+    {
+      "path": "Aion/input_validation/README.md",
+      "bytes": 4649,
+      "compressed_bytes": 1838,
+      "crc32": "4b8c6dae",
+      "text_extracted": true,
+      "sha256": "8d443b8005876e044ae463e54084a3a7c32ece1738a42620ba2d45d3820b3f61"
+    },
+    {
+      "path": "Aion/input_validation/check_results.py",
+      "bytes": 1375,
+      "compressed_bytes": 565,
+      "crc32": "25944049",
+      "text_extracted": true,
+      "sha256": "d265a205bbc05b371adf25136ecfdb455924c588480b322af71b1f1fa6275a77"
+    },
+    {
+      "path": "Aion/input_validation/configs.py",
+      "bytes": 7405,
+      "compressed_bytes": 1821,
+      "crc32": "4ab7d8c8",
+      "text_extracted": true,
+      "sha256": "14d20861d7ac60180b439811e3eff0f14c9ee4348333c0b6f2275e080a9af869"
+    },
+    {
+      "path": "Aion/input_validation/requirements.txt",
+      "bytes": 1304,
+      "compressed_bytes": 673,
+      "crc32": "d1f6a73a",
+      "text_extracted": true,
+      "sha256": "bf77425206099642676dc93169345a24313e469ad22ccdf255fc485275b820e8"
+    },
+    {
+      "path": "Aion/message/Message.py",
+      "bytes": 1882,
+      "compressed_bytes": 851,
+      "crc32": "079b5751",
+      "text_extracted": true,
+      "sha256": "632714b9f7e3e8fc8aa81a626eab0556606b5c10d6d9ff40ff01c1cfd8701cbb"
+    },
+    {
+      "path": "Aion/message/__pycache__/Message.cpython-312.pyc",
+      "bytes": 1454,
+      "compressed_bytes": 783,
+      "crc32": "8c3d17f4",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/message/__pycache__/Message.cpython-38.pyc",
+      "bytes": 1162,
+      "compressed_bytes": 647,
+      "crc32": "0fe3ffb5",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/model/LatencyModel.py",
+      "bytes": 7980,
+      "compressed_bytes": 2813,
+      "crc32": "1b639835",
+      "text_extracted": true,
+      "sha256": "fb7d79603e9af28201576a555f53ccaedcdbc800e204c5870bb0f7fd365d1fc5"
+    },
+    {
+      "path": "Aion/model/__pycache__/LatencyModel.cpython-38.pyc",
+      "bytes": 7354,
+      "compressed_bytes": 3210,
+      "crc32": "2a72b95e",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/pki_files/setup_pki.py",
+      "bytes": 1628,
+      "compressed_bytes": 547,
+      "crc32": "3f353ab2",
+      "text_extracted": true,
+      "sha256": "10a7ff4c3bad4d6a9406f533ec16ddf330feea8909a108b0958e04c58b879bf3"
+    },
+    {
+      "path": "Aion/requirements.txt",
+      "bytes": 352,
+      "compressed_bytes": 233,
+      "crc32": "50a4dc3a",
+      "text_extracted": true,
+      "sha256": "02566715a3a1ec6e637521dffca64e98cd0ddcf9b5e57e789dce6b32dcc2bf04"
+    },
+    {
+      "path": "Aion/util/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/util/__pycache__/__init__.cpython-312.pyc",
+      "bytes": 141,
+      "compressed_bytes": 133,
+      "crc32": "1b7a4abe",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/__pycache__/__init__.cpython-38.pyc",
+      "bytes": 125,
+      "compressed_bytes": 111,
+      "crc32": "d865d58c",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/__pycache__/param.cpython-38.pyc",
+      "bytes": 2956,
+      "compressed_bytes": 1689,
+      "crc32": "dd03696b",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/__pycache__/util.cpython-312.pyc",
+      "bytes": 11771,
+      "compressed_bytes": 5689,
+      "crc32": "c95e1154",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/__pycache__/util.cpython-38.pyc",
+      "bytes": 8160,
+      "compressed_bytes": 3847,
+      "crc32": "53465f48",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/__pycache__/ecchash.cpython-38.pyc",
+      "bytes": 9644,
+      "compressed_bytes": 4696,
+      "crc32": "c70f2109",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/ecchash.py",
+      "bytes": 9860,
+      "compressed_bytes": 3054,
+      "crc32": "6ee78ae1",
+      "text_extracted": true,
+      "sha256": "ec8c79d9ff337151f6d3b3e948a89ca396ea181e5cc3c2b5d49d8b437003eda8"
+    },
+    {
+      "path": "Aion/util/crypto/logReg.py",
+      "bytes": 3814,
+      "compressed_bytes": 1391,
+      "crc32": "3c974d22",
+      "text_extracted": true,
+      "sha256": "274d12715db010a1551718875d5aec53662b34e250e99f1b2415cb58b93da8c5"
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/__pycache__/polynomials.cpython-38.pyc",
+      "bytes": 2457,
+      "compressed_bytes": 1446,
+      "crc32": "fb1dc06a",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/__pycache__/primes.cpython-38.pyc",
+      "bytes": 1897,
+      "compressed_bytes": 1205,
+      "crc32": "efbe0923",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/__pycache__/sharing.cpython-38.pyc",
+      "bytes": 5657,
+      "compressed_bytes": 2621,
+      "crc32": "a3dbc29b",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/__pycache__/simple_sharing.cpython-38.pyc",
+      "bytes": 2425,
+      "compressed_bytes": 1379,
+      "crc32": "bcc68301",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/__pycache__/vss.cpython-38.pyc",
+      "bytes": 9345,
+      "compressed_bytes": 3956,
+      "crc32": "bd092bc4",
+      "text_extracted": false
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/polynomials.py",
+      "bytes": 3911,
+      "compressed_bytes": 1268,
+      "crc32": "295e5b38",
+      "text_extracted": true,
+      "sha256": "5a2079c88b38b0093b8ea2577fcbbd2f1330344d6bacad534316f9da29c4e005"
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/primes.py",
+      "bytes": 1687,
+      "compressed_bytes": 777,
+      "crc32": "4c065b39",
+      "text_extracted": true,
+      "sha256": "a097baf6916e7b1749452b20b6860586e350d477607b1d8777b75364837991dd"
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/sharing.py",
+      "bytes": 6028,
+      "compressed_bytes": 1661,
+      "crc32": "be5dedf5",
+      "text_extracted": true,
+      "sha256": "8615476b3d5e0da37dbf030eebb488dd20121a4385a71cdbff72dac6c305783e"
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/simple_sharing.py",
+      "bytes": 2464,
+      "compressed_bytes": 1016,
+      "crc32": "c512ef80",
+      "text_extracted": true,
+      "sha256": "d8a28438e89594417fbd6d58538f42f6b9c6ee571eff8ec132cf0b59a7c94b07"
+    },
+    {
+      "path": "Aion/util/crypto/secretsharing/vss.py",
+      "bytes": 13082,
+      "compressed_bytes": 2994,
+      "crc32": "59aab4c7",
+      "text_extracted": true,
+      "sha256": "1e7fe55ee7d3d788c561162ff77d9c21a8c4a6bb0083a454991fda63701e9ec7"
+    },
+    {
+      "path": "Aion/util/param.py",
+      "bytes": 5488,
+      "compressed_bytes": 1811,
+      "crc32": "5e144366",
+      "text_extracted": true,
+      "sha256": "bf7cbd360dcc43bec20d82ede3fece6b995fca806a47703df60a4e52d84625c8"
+    },
+    {
+      "path": "Aion/util/util.py",
+      "bytes": 8125,
+      "compressed_bytes": 2850,
+      "crc32": "9bbdf984",
+      "text_extracted": true,
+      "sha256": "fb96d007ca62ade8f151f1825ff38c0ec160b611b5dcc804a9e5d333cfe06da0"
+    },
+    {
+      "path": "Aion/zkp/README.md",
+      "bytes": 7252,
+      "compressed_bytes": 2287,
+      "crc32": "5f9d6dd3",
+      "text_extracted": true,
+      "sha256": "629a3059ef68e12c7927e4850f10355376edfcf37c6772919994c21ad9697578"
+    },
+    {
+      "path": "Aion/zkp/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/zkp/innerproduct/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/zkp/innerproduct/inner_product_prover.py",
+      "bytes": 3698,
+      "compressed_bytes": 970,
+      "crc32": "c7c41bd3",
+      "text_extracted": true,
+      "sha256": "07e63b62110f6c8f590d5843e3e997795a92266a604827f7d9367dec01e9bd7e"
+    },
+    {
+      "path": "Aion/zkp/innerproduct/inner_product_verifier.py",
+      "bytes": 4513,
+      "compressed_bytes": 1229,
+      "crc32": "38eb8f6a",
+      "text_extracted": true,
+      "sha256": "389bd69e08e50ede2e22ba7e9023db48151026bc8bd97a39aff60d902c4eefe3"
+    },
+    {
+      "path": "Aion/zkp/main.py",
+      "bytes": 1747,
+      "compressed_bytes": 557,
+      "crc32": "6c379a6d",
+      "text_extracted": true,
+      "sha256": "ecdc7a17abdda825147ed1bf634b87a2636edfdd6ab4245ec957726acb253b43"
+    },
+    {
+      "path": "Aion/zkp/pippenger/__init__.py",
+      "bytes": 180,
+      "compressed_bytes": 120,
+      "crc32": "6689c0cc",
+      "text_extracted": true,
+      "sha256": "a3c4e4bcea4ef23c6dbdd928a9467a056a90cb70f5a63b8cac597c0c4232387d"
+    },
+    {
+      "path": "Aion/zkp/pippenger/group.py",
+      "bytes": 646,
+      "compressed_bytes": 261,
+      "crc32": "7ba038f5",
+      "text_extracted": true,
+      "sha256": "2a9dd05f11fd46568685d2420aa338be7c385caede6efc4b557b1ce706f24ab2"
+    },
+    {
+      "path": "Aion/zkp/pippenger/modp.py",
+      "bytes": 1320,
+      "compressed_bytes": 368,
+      "crc32": "e27287a9",
+      "text_extracted": true,
+      "sha256": "7ce7bd2587ae7e44e12e609eb43d9540138fc2ddd8c283dd39c7f4b4597eb631"
+    },
+    {
+      "path": "Aion/zkp/pippenger/pippenger.py",
+      "bytes": 2912,
+      "compressed_bytes": 957,
+      "crc32": "26a297e0",
+      "text_extracted": true,
+      "sha256": "0389a8d1e9db084ebe24bece5b56583df275f66bab17b001374b9d5890652278"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/__init__.py",
+      "bytes": 321,
+      "compressed_bytes": 118,
+      "crc32": "7028717b",
+      "text_extracted": true,
+      "sha256": "ae81fe09bd6d5fa985de3be40982623e36e8af8f0079fd38cac5e7c24a88c496"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/batch_verifier.py",
+      "bytes": 11427,
+      "compressed_bytes": 3487,
+      "crc32": "18e20144",
+      "text_extracted": true,
+      "sha256": "51d5bb363953760bb1a309d66ed926fafd15e1c6cefc74de0e902410717af5c6"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/rangeproof_aggreg_prover.py",
+      "bytes": 5148,
+      "compressed_bytes": 1397,
+      "crc32": "223b9f82",
+      "text_extracted": true,
+      "sha256": "954e5d30540ec1a820f269c1421af04c8d0ff56fd0a0f4938e900d84098a9837"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/rangeproof_aggreg_verifier.py",
+      "bytes": 3174,
+      "compressed_bytes": 1044,
+      "crc32": "7239dbcc",
+      "text_extracted": true,
+      "sha256": "cfb8bf5b6e8358702a798ca918080d831cd96ee350d5cd86a89ce6da6e77e9df"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/rangeproof_prover.py",
+      "bytes": 3960,
+      "compressed_bytes": 1138,
+      "crc32": "9306bf93",
+      "text_extracted": true,
+      "sha256": "5d78a901a449098778349e7905962272748268430a296b3bb831f94096d3fcca"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/rangeproof_verifier.py",
+      "bytes": 3024,
+      "compressed_bytes": 1007,
+      "crc32": "676f9782",
+      "text_extracted": true,
+      "sha256": "27aacae67479ad0c4895d0abf50fff56594ce52bfaa97b09d9f0da20b684e1a2"
+    },
+    {
+      "path": "Aion/zkp/rangeproofs/test.py",
+      "bytes": 6619,
+      "compressed_bytes": 2136,
+      "crc32": "1f4471d7",
+      "text_extracted": true,
+      "sha256": "2d540f510cee11bbfa2339b2d7e64f610498ed8b568888a8b4b5da85f60326f5"
+    },
+    {
+      "path": "Aion/zkp/tests/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/zkp/tests/test_aggreg_rangeproofs.py",
+      "bytes": 6014,
+      "compressed_bytes": 851,
+      "crc32": "15d59ea6",
+      "text_extracted": true,
+      "sha256": "05188f5df5b568dd467c3032e55d2bb871fc4359e4b26c129e9cedb03b44c3e6"
+    },
+    {
+      "path": "Aion/zkp/tests/test_innerprod.py",
+      "bytes": 12317,
+      "compressed_bytes": 938,
+      "crc32": "b3eed262",
+      "text_extracted": true,
+      "sha256": "197ab9c787a693ebd881ebe59d10d861517882f439856787a28b79c2cf3d198f"
+    },
+    {
+      "path": "Aion/zkp/tests/test_rangeproofs.py",
+      "bytes": 5226,
+      "compressed_bytes": 873,
+      "crc32": "a6c03583",
+      "text_extracted": true,
+      "sha256": "e4533c0bbee6785dc368158036f1a580a3caada642c45755d01f7f319116d8cc"
+    },
+    {
+      "path": "Aion/zkp/tests/test_utils.py",
+      "bytes": 1439,
+      "compressed_bytes": 423,
+      "crc32": "11a06509",
+      "text_extracted": true,
+      "sha256": "c53c2bfdbfab4351a2f9884643fad653dad7dfd48519738690e4fe734dff6eaa"
+    },
+    {
+      "path": "Aion/zkp/utils/__init__.py",
+      "bytes": 0,
+      "compressed_bytes": 0,
+      "crc32": "00000000",
+      "text_extracted": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Aion/zkp/utils/commitments.py",
+      "bytes": 611,
+      "compressed_bytes": 311,
+      "crc32": "9ac96437",
+      "text_extracted": true,
+      "sha256": "c089a5dd4a7585ecc6d67117808a99fe303cd209a1e6f509382ee703d2b43a2b"
+    },
+    {
+      "path": "Aion/zkp/utils/elliptic_curve_hash.py",
+      "bytes": 655,
+      "compressed_bytes": 326,
+      "crc32": "771fab08",
+      "text_extracted": true,
+      "sha256": "b4f8be73e1da6f9534549ac2bd03e988d49d0c49614355536507a408df86f177"
+    },
+    {
+      "path": "Aion/zkp/utils/transcript.py",
+      "bytes": 891,
+      "compressed_bytes": 363,
+      "crc32": "c9904161",
+      "text_extracted": true,
+      "sha256": "02cecd7aa44e83b51167d327c0407dc6462065c1db3291dd9e5d78c14fb6baf4"
+    },
+    {
+      "path": "Aion/zkp/utils/utils.py",
+      "bytes": 3689,
+      "compressed_bytes": 1205,
+      "crc32": "b11e17f2",
+      "text_extracted": true,
+      "sha256": "8e7a49b3f5dfbae9a263643a043ea33ad112724a048e78aded7491107baf6590"
+    }
+  ],
+  "execution": "none; no archive Python, shell, pickle, or model code executed"
+}

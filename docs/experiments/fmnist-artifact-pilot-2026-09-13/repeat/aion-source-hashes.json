@@ -1,0 +1,142 @@
+{
+  "FL_Backdoor_CV/__init__.py": {
+    "original": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "FL_Backdoor_CV/helper.py": {
+    "original": "ff17eb92142d5a9dcc20c801197a50c81b3a6248cd028506e3aff15468396d8d",
+    "runtime": "ff17eb92142d5a9dcc20c801197a50c81b3a6248cd028506e3aff15468396d8d"
+  },
+  "FL_Backdoor_CV/image_helper.py": {
+    "original": "237f4ed9adf12401104287d6e7d3ca667a1c8207f2be011be6fd2a5049de2374",
+    "runtime": "237f4ed9adf12401104287d6e7d3ca667a1c8207f2be011be6fd2a5049de2374"
+  },
+  "FL_Backdoor_CV/models/cnn.py": {
+    "original": "b79a35efb92069779e0ddf65b0ee8b06bf6a92a5d86d237314c89bd1e940899d",
+    "runtime": "b79a35efb92069779e0ddf65b0ee8b06bf6a92a5d86d237314c89bd1e940899d"
+  },
+  "FL_Backdoor_CV/models/create_model.py": {
+    "original": "d8998e8b4b23a6971843b86bb78f2c2cfcdfbb84bfa6caad21a074cdf8ade075",
+    "runtime": "d8998e8b4b23a6971843b86bb78f2c2cfcdfbb84bfa6caad21a074cdf8ade075"
+  },
+  "FL_Backdoor_CV/models/edge_case_cnn.py": {
+    "original": "45d67813e8bc03a5d1cb1caca8623694482fdb8b94550cc7b7b029a94eb4676e",
+    "runtime": "45d67813e8bc03a5d1cb1caca8623694482fdb8b94550cc7b7b029a94eb4676e"
+  },
+  "FL_Backdoor_CV/models/resnet.py": {
+    "original": "0696f7d5fa21b4d5a1a9228c0343c225a0bb4db3fe6846285ec8741ecaf1c7e9",
+    "runtime": "0696f7d5fa21b4d5a1a9228c0343c225a0bb4db3fe6846285ec8741ecaf1c7e9"
+  },
+  "FL_Backdoor_CV/models/resnet56.py": {
+    "original": "8e0e1f4957b69b140b38521a913637d686fe24c4116bc803fddee0d2a19c0ef6",
+    "runtime": "8e0e1f4957b69b140b38521a913637d686fe24c4116bc803fddee0d2a19c0ef6"
+  },
+  "FL_Backdoor_CV/models/resnet9.py": {
+    "original": "01e668feba7e37d3ba014c5b2620adc37daed90d5c88327efb07486f68546c7b",
+    "runtime": "01e668feba7e37d3ba014c5b2620adc37daed90d5c88327efb07486f68546c7b"
+  },
+  "FL_Backdoor_CV/models/simple.py": {
+    "original": "3948b05224850b92ef1ef57904cf3434c11cfd240589a32770f43c1cdc08ba64",
+    "runtime": "3948b05224850b92ef1ef57904cf3434c11cfd240589a32770f43c1cdc08ba64"
+  },
+  "FL_Backdoor_CV/roles/__init__.py": {
+    "original": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "FL_Backdoor_CV/roles/aggregation_rules.py": {
+    "original": "3a5b48eb0ddd4305df2995fb4f851559cae1270d1d3d44527c8cca225945ae0b",
+    "runtime": "5651dacc26d07df9b0164b812fad3d84e65bbcb8ea07d1059c3f5203f6fc9a02"
+  },
+  "FL_Backdoor_CV/roles/attack1_cifar10.py": {
+    "original": "a687841a8487d667cd88cf3dc11254bdea51431ca22cd413fa410dd5406a83c1",
+    "runtime": "a687841a8487d667cd88cf3dc11254bdea51431ca22cd413fa410dd5406a83c1"
+  },
+  "FL_Backdoor_CV/roles/attack1_emnist_byclass.py": {
+    "original": "ed89f1f34943a91bd9bd0e49fcda221ea5548ea715ef1b311de61e9c5fadc90a",
+    "runtime": "ed89f1f34943a91bd9bd0e49fcda221ea5548ea715ef1b311de61e9c5fadc90a"
+  },
+  "FL_Backdoor_CV/roles/attack1_fmnist.py": {
+    "original": "49ab2769f47f8730af60deb668d7f4fb43122174dc619aedd4cc1472b72cf1af",
+    "runtime": "49ab2769f47f8730af60deb668d7f4fb43122174dc619aedd4cc1472b72cf1af"
+  },
+  "FL_Backdoor_CV/roles/attack2_cifar10.py": {
+    "original": "f9638f647d53df635aad5c3b8e4931ed634993ec8c26eeb9f17ed29022ef9dce",
+    "runtime": "f9638f647d53df635aad5c3b8e4931ed634993ec8c26eeb9f17ed29022ef9dce"
+  },
+  "FL_Backdoor_CV/roles/attack2_emnist_byclass.py": {
+    "original": "b3028857de9e9df78ec85e2adcef90a480436f71d3f6b76fb7b052a8b4f082e0",
+    "runtime": "b3028857de9e9df78ec85e2adcef90a480436f71d3f6b76fb7b052a8b4f082e0"
+  },
+  "FL_Backdoor_CV/roles/attack2_fmnist.py": {
+    "original": "c298bfc1da6afe2cca6d7dc4bd51d5af513967675b516da8f4169f8338cc6f5a",
+    "runtime": "c298bfc1da6afe2cca6d7dc4bd51d5af513967675b516da8f4169f8338cc6f5a"
+  },
+  "FL_Backdoor_CV/roles/attack3_cifar10.py": {
+    "original": "adddaa052c165192c3bc8a5f6c36779214364c76944ffdd38ff9444a1c9f96f6",
+    "runtime": "adddaa052c165192c3bc8a5f6c36779214364c76944ffdd38ff9444a1c9f96f6"
+  },
+  "FL_Backdoor_CV/roles/attack3_emnist_byclass.py": {
+    "original": "023133c1ed32663e713a45735fbd3588af07ad4994e1747420ee06bf9a466df1",
+    "runtime": "023133c1ed32663e713a45735fbd3588af07ad4994e1747420ee06bf9a466df1"
+  },
+  "FL_Backdoor_CV/roles/attack3_fmnist.py": {
+    "original": "278d040dd48112e3d873a9b0060f8f6c214bbf1d57dd67e4629e59afb4dab8f5",
+    "runtime": "278d040dd48112e3d873a9b0060f8f6c214bbf1d57dd67e4629e59afb4dab8f5"
+  },
+  "FL_Backdoor_CV/roles/autorun.py": {
+    "original": "e5acd8aaf90a16b73f052b6f5782bf79fbe5524a5d6881cf2544b7e1c79162c3",
+    "runtime": "e5acd8aaf90a16b73f052b6f5782bf79fbe5524a5d6881cf2544b7e1c79162c3"
+  },
+  "FL_Backdoor_CV/roles/client.py": {
+    "original": "dd5929ab8fd4c87c4a25e5e40cab6d8e718e05d6c1b6683b87edf899e68e59f2",
+    "runtime": "dd5929ab8fd4c87c4a25e5e40cab6d8e718e05d6c1b6683b87edf899e68e59f2"
+  },
+  "FL_Backdoor_CV/roles/evaluation.py": {
+    "original": "b18d711a6d91ab903013f88406724b2dc5c61995f9e2c9d06f2d530180b4eeb2",
+    "runtime": "b18d711a6d91ab903013f88406724b2dc5c61995f9e2c9d06f2d530180b4eeb2"
+  },
+  "FL_Backdoor_CV/roles/server.py": {
+    "original": "970fb855fb1e132c8defd43455b6f5beed82b1e8e8378c55b6f2ed1c0261d079",
+    "runtime": "19cb2b7287dc43122e20c1f9aff1947ce489dacd2098de4f1c6a88a53fabed1c"
+  },
+  "FL_Backdoor_CV/roles/trainer.py": {
+    "original": "20d46f1c201b673fe57c92798e5e6f96bc1878d2774213146f028a95b5afa3c8",
+    "runtime": "20d46f1c201b673fe57c92798e5e6f96bc1878d2774213146f028a95b5afa3c8"
+  },
+  "FL_Backdoor_CV/shprg/init.py": {
+    "original": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "FL_Backdoor_CV/shprg/shprg.py": {
+    "original": "f1015c82996aaef147813bb773aeb12feff18fdfd9ffdd2b61b8d18521bd1d0f",
+    "runtime": "8e5691295052483d8160e8b9f0264a6fbbaa6f28135952230864f8fab63e1c6c"
+  },
+  "FL_Backdoor_CV/utils/cifar100_params.yaml": {
+    "original": "bca9c7b8df8b9d17055eea1bffd4e2d7561e97a6dfe590a50472bfbe9bb31973",
+    "runtime": "bca9c7b8df8b9d17055eea1bffd4e2d7561e97a6dfe590a50472bfbe9bb31973"
+  },
+  "FL_Backdoor_CV/utils/cifar10_params.yaml": {
+    "original": "4f73cb072bded804ab55fc09c45e30b253266227962f0460310ba8fb4dfa8e36",
+    "runtime": "4f73cb072bded804ab55fc09c45e30b253266227962f0460310ba8fb4dfa8e36"
+  },
+  "FL_Backdoor_CV/utils/emnist_byclass_params.yaml": {
+    "original": "ee48fcbfcde482ecd065260e8a8afd3912df9228eba16735059d9753def42e63",
+    "runtime": "ee48fcbfcde482ecd065260e8a8afd3912df9228eba16735059d9753def42e63"
+  },
+  "FL_Backdoor_CV/utils/emnist_params.yaml": {
+    "original": "e9f15499d1f2c43059b32f8bce3a0b72da0806cda419c3b048ac9102a438d9ad",
+    "runtime": "e9f15499d1f2c43059b32f8bce3a0b72da0806cda419c3b048ac9102a438d9ad"
+  },
+  "FL_Backdoor_CV/utils/fmnist_params.yaml": {
+    "original": "f6b1576483a135df44d94321b77ed3b187a0001b0cc5ab3d728e46e3cc04272a",
+    "runtime": "f6b1576483a135df44d94321b77ed3b187a0001b0cc5ab3d728e46e3cc04272a"
+  },
+  "check_results.py": {
+    "original": "d265a205bbc05b371adf25136ecfdb455924c588480b322af71b1f1fa6275a77",
+    "runtime": "d265a205bbc05b371adf25136ecfdb455924c588480b322af71b1f1fa6275a77"
+  },
+  "configs.py": {
+    "original": "14d20861d7ac60180b439811e3eff0f14c9ee4348333c0b6f2275e080a9af869",
+    "runtime": "14d20861d7ac60180b439811e3eff0f14c9ee4348333c0b6f2275e080a9af869"
+  }
+}

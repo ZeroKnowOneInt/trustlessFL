@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "scope": "checkpoint compatibility and random-fixture forward/backward only",
+  "dataset_accuracy_measured": false,
+  "secure_aggregation_executed": false,
+  "poisoning_experiment_executed": false,
+  "checkpoint": "Aion/input_validation/FL_Backdoor_CV/saved_models/Revision_1/fmnist/avg_300.pth",
+  "checkpoint_sha256": "047d40adbfdf3c0a5c95db299bec49c48ff1cc16125f5455094e974251c143e2",
+  "model_source_sha256": "b79a35efb92069779e0ddf65b0ee8b06bf6a92a5d86d237314c89bd1e940899d",
+  "torch": "2.4.0+cpu",
+  "numpy": "1.26.3",
+  "device": "cpu",
+  "parameter_count": 61706,
+  "tensor_shapes": {
+    "conv1.0.weight": [
+      6,
+      1,
+      5,
+      5
+    ],
+    "conv1.0.bias": [
+      6
+    ],
+    "conv2.0.weight": [
+      16,
+      6,
+      5,
+      5
+    ],
+    "conv2.0.bias": [
+      16
+    ],
+    "fc1.0.weight": [
+      120,
+      400
+    ],
+    "fc1.0.bias": [
+      120
+    ],
+    "fc2.0.weight": [
+      84,
+      120
+    ],
+    "fc2.0.bias": [
+      84
+    ],
+    "classifier.weight": [
+      10,
+      84
+    ],
+    "classifier.bias": [
+      10
+    ]
+  },
+  "fixture_seed": 1,
+  "fixture_logits_shape": [
+    4,
+    10
+  ],
+  "fixture_loss_before": 4.655562400817871,
+  "fixture_loss_after": 3.9015049934387207,
+  "checkpoint_loader": "restricted inert-record decoder; torch.load not used"
+}

@@ -3,5 +3,51 @@ name = "trustlessfl"
 version = "0.1.0"
 description = "Trustless Federate Learning with Zero-Knowledge Proof"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.0",
+    "flwr==1.36.0",
+    "cryptography>=46.0.7,<47",
+]
+
+[project.optional-dependencies]
+simulation = ["flwr[simulation]==1.36.0"]
+gpu = ["torch==2.8.0"]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128", extra = "gpu" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=9.1,<10"]
+
+[project.scripts]
+aion-demo = "trustlessfl.demo:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["trustlessfl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.flwr.app]
+publisher = "trustlessfl"
+
+[tool.flwr.app.components]
+serverapp = "trustlessfl.server_app:app"
+clientapp = "trustlessfl.client_app:app"
+
+[tool.flwr.app.config]
+num-server-rounds = 3
+research-mode = true
+timeout = 30.0
+aion-manifest = "UNCONFIGURED"

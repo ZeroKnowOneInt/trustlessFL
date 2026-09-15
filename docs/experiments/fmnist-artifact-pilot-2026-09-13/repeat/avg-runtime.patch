@@ -1,0 +1,54 @@
+--- original/FL_Backdoor_CV/roles/aggregation_rules.py
++++ runtime/FL_Backdoor_CV/roles/aggregation_rules.py
+@@ -123,9 +123,9 @@
+     max_mask = args.weight * linf_old
+     
+     # SHPRG generation
+-    vector = torch.tensor([shprg.generate(seed, m, max_mask) for seed in seeds]).cuda()
++    vector = torch.tensor([shprg.generate(seed, m, max_mask) for seed in seeds]).to(args.device)
+     masked_updates = last_layer_updates + vector
+-    server_sum_vector = torch.tensor(shprg.client_sum_hprg(seeds, m, max_mask)).cuda()
++    server_sum_vector = torch.tensor(shprg.client_sum_hprg(seeds, m, max_mask)).to(args.device)
+     linf_norm_shprg = torch.norm(server_sum_vector, p=float('inf')).item()
+     
+     # select
+@@ -146,6 +146,13 @@
+         global_update[name] = model_updates[name][indices_selected].float().mean(dim=0)
+     # global_update[keys[-2]] = masked_updates[indices_selected].float().mean(dim=0)
+ 
++    # Read-only instrumentation; no random draws or model changes.
++    global last_trace
++    last_trace = dict(selected_positions=indices_selected.cpu().tolist(),
++                      masked_l2=l2_norm.cpu().tolist(),
++                      bound=float(b), max_mask=float(max_mask),
++                      mask_sum_linf=linf_norm_shprg)
++
+     # computation for next round
+     last_layer_global_update = global_update[keys[-2]]
+     l2_norm_global_new = torch.norm(last_layer_global_update).item()
+--- original/FL_Backdoor_CV/roles/server.py
++++ runtime/FL_Backdoor_CV/roles/server.py
+@@ -1,3 +1,4 @@
++from _aion_safe_runtime import safe_checkpoint_load
+ import copy
+ 
+ import os
+@@ -38,7 +39,7 @@
+     def __init__(self, helper, clients, adversary_list):
+         # === model ===
+         if args.resume:
+-            self.model = torch.load(os.path.join('./FL_Backdoor_CV/saved_models/Revision_1', args.resumed_name),
++            self.model = safe_checkpoint_load(os.path.join('./FL_Backdoor_CV/saved_models/Revision_1', args.resumed_name),
+                                     map_location=args.device)
+         else:
+             self.model = create_model()
+--- original/FL_Backdoor_CV/shprg/shprg.py
++++ runtime/FL_Backdoor_CV/shprg/shprg.py
+@@ -70,4 +70,4 @@
+ 
+ def load_initialization_values(filename):
+     with open(filename, 'rb') as file:
+-        return pickle.load(file)
+\ No newline at end of file
++        return (1, 8, 173569775688864, 5000999999999999)
+\ No newline at end of file

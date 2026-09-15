@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "same_initial_model": true,
+    "same_partition": true,
+    "same_poison_schedule": true,
+    "same_first_round_participants": true,
+    "same_first_round_updates": true
+  },
+  "files_sha256": {
+    "avg-result.json": "1e7f6c56232787d71c6a38995a66e4ed9acd6232bb5a13b2d1fe14b85864ca77",
+    "avg-rounds.jsonl": "a24ab9c278dcc02065e2120943e58762ce15f354ee2a2fa990803a30ebc430a7",
+    "avg-source-hashes.json": "1e90ac1bffa1df00b479671b7db13bcc2bc5528d78e1ed1ef600e738f021435d",
+    "avg-runtime.patch": "94484216170c84d0ffa287c1cec7de96944c81a2991ef0c1f9abfa1a6b6cf107",
+    "aion-result.json": "293b50575fce7298795a2b704bf61c7fbb38931c6e18946832ef64add81efeaf",
+    "aion-rounds.jsonl": "7c2bab3eddb5eb417c87399a130f9d29edb7903b1e5bc084dbdafde8f1c82732",
+    "aion-source-hashes.json": "1e90ac1bffa1df00b479671b7db13bcc2bc5528d78e1ed1ef600e738f021435d",
+    "aion-runtime.patch": "94484216170c84d0ffa287c1cec7de96944c81a2991ef0c1f9abfa1a6b6cf107"
+  },
+  "later_round_participants_equal": [
+    false
+  ],
+  "secure_aggregation_executed": false,
+  "paper_reproduction_complete": false,
+  "interpretation": "bounded centralized artifact pilot; not a paper-result reproduction"
+}
