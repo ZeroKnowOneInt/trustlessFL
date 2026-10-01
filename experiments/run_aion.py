@@ -29,7 +29,7 @@ from flwr.app import Context, Message, RecordDict
 from trustlessfl.client_app import payload, records
 from trustlessfl.crypto import Identity, ORDER, ProtocolError, canonical
 from trustlessfl.demo import provision
-from trustlessfl.local_grid import ProcessGrid
+from trustlessfl.local_grid import PooledProcessGrid, ProcessGrid
 from trustlessfl.numeric import OUTPUT_MODULUS
 from trustlessfl.protocol import Parameters
 from trustlessfl.server_app import app
@@ -54,8 +54,9 @@ class ObservedGrid(ProcessGrid):
     Dropped requests simulate immediate suppression, NOT a timeout experiment.
     """
 
-    def __init__(self, nodes: dict, case: Case, p: Parameters):
+    def __init__(self, nodes: dict, case: Case, p: Parameters, workers: int | None = None):
         self.case, self.parameters = case, p
+        self._pooled = workers is not None
         self.events: list[dict] = []
         self.occurrences: dict[str, int] = {}
         self.last_committed_round = 0
@@ -69,7 +70,19 @@ class ObservedGrid(ProcessGrid):
             target = 1
         if target is not None:
             self.malicious = Identity.from_private(json.loads(Path(nodes[target]["aion-identity"]).read_text()))
-        super().__init__(nodes)
+        if self._pooled:
+            PooledProcessGrid.__init__(self, nodes, workers)
+        else:
+            super().__init__(nodes)
+
+    def get_node_ids(self):
+        return PooledProcessGrid.get_node_ids(self) if self._pooled else super().get_node_ids()
+
+    def close(self):
+        if self._pooled:
+            PooledProcessGrid.close(self)
+        else:
+            super().close()
 
     def send_and_receive(self, messages, *, timeout=None):
         messages = list(messages)
@@ -105,7 +118,9 @@ class ObservedGrid(ProcessGrid):
             event["request_payload_bytes"] += len(canonical(payload(message)))
         start = time.perf_counter()
         try:
-            for reply in super().send_and_receive(forwarded, timeout=timeout):
+            source = (PooledProcessGrid.send_and_receive(self, forwarded, timeout=timeout)
+                      if self._pooled else super().send_and_receive(forwarded, timeout=timeout))
+            for reply in source:
                 if reply.has_error():
                     event["error_replies"] += 1
                 else:

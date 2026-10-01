@@ -1,10 +1,53 @@
 import numpy as np
+import os
 import pytest
 from flwr.app import ArrayRecord, ConfigRecord, Context, Message, RecordDict
 from flwr.common.serde import message_from_proto, message_to_proto
 
 from trustlessfl.endpoint import MLP, train_delta
 from trustlessfl.endpoint_flower import average_deltas, ordered_replies, partition, train
+from experiments import run_endpoint_flower
+
+
+def test_runtime_import_paths_survive_flower_app_directory_change(tmp_path):
+    value = os.pathsep.join((".cache/torch-deps", "", "./.cache/flower-deps"))
+    expected = os.pathsep.join((str(tmp_path / ".cache/torch-deps"), str(tmp_path),
+                                str(tmp_path / ".cache/flower-deps")))
+    assert run_endpoint_flower.absolute_pythonpath(value, tmp_path) == expected
+
+
+def test_missing_flower_cli_fails_before_attempt_creation(tmp_path, monkeypatch):
+    monkeypatch.setattr(run_endpoint_flower.shutil, "which", lambda _: None)
+    with pytest.raises(FileNotFoundError, match="Flower CLI"):
+        run_endpoint_flower.run(tmp_path)
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_cli_success_flag_does_not_override_failed_application():
+    status = {"success": True, "runs": [{"run-id": "1", "status": "finished:failed",
+                "status-details": "private-mask-key-value"}]}
+    with pytest.raises(RuntimeError, match="did not finish successfully") as error:
+        run_endpoint_flower.require_completed_run(status)
+    assert "private-mask-key-value" not in str(error.value)
+
+
+@pytest.mark.parametrize("status", [None, {}, {"success": False, "runs": []},
+    {"success": True, "runs": []}, {"success": True, "runs": [None]},
+    {"success": True, "runs": [{"status": "finished:completed"}] * 2}])
+def test_missing_or_multiple_runtime_results_are_not_completion(status):
+    with pytest.raises(RuntimeError, match="missing or not uniquely"):
+        run_endpoint_flower.require_completed_run(status)
+
+
+@pytest.mark.parametrize("state", ["running", "pending", "finished:stopped", "finished:failed"])
+def test_noncompleted_flower_states_are_not_success(state):
+    with pytest.raises(RuntimeError, match="did not finish successfully"):
+        run_endpoint_flower.require_completed_run({"success": True, "runs": [{"status": state}]})
+
+
+def test_terminal_completed_application_is_accepted():
+    run = {"run-id": "1", "status": "finished:completed"}
+    assert run_endpoint_flower.require_completed_run({"success": True, "runs": [run]}) == run
 
 
 def test_client_serialization_and_context_state(tmp_path):

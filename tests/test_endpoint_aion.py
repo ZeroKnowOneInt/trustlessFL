@@ -55,6 +55,20 @@ def test_runtime_provisioning_and_enrollment_retry(tmp_path):
         settings(context(0), "arbitrary-file-path")
 
 
+def test_runtime_roster_size_is_not_fixed_at_twelve(tmp_path):
+    p = Parameters("runtime-six", ("c0", "c1"), tuple(f"a{i}" for i in range(4)))
+    _, nodes = provision(tmp_path / "keys", p)
+    (tmp_path / "catalog.json").write_text(json.dumps({
+        "case": {str(i - 1): node for i, node in nodes.items()}}))
+    context = Context(1, 10, {"partition-id": 0, "num-partitions": 6},
+                      RecordDict(), {"provision-dir": str(tmp_path)})
+    node, manifest = settings(context, "case")
+    assert node == nodes[1] and len(manifest["registry"]) == 6
+    context.node_config["num-partitions"] = 12
+    with pytest.raises(ProtocolError):
+        settings(context, "case")
+
+
 def test_local_adam_matches_direct_pytorch_with_nonzero_offset(tmp_path):
     from trustlessfl.endpoint_public import PublicMLP, arrays, restore
     torch.set_num_threads(1)

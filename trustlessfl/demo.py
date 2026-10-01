@@ -49,13 +49,59 @@ def main():
     parser.add_argument("--faults", type=int, default=1)
     parser.add_argument("--rounds", type=int, default=3)
     parser.add_argument("--dimension", type=int, default=3)
+    parser.add_argument("--privacy-group-size", type=int, default=0,
+                        help="Enable disjoint all-or-nothing client groups (0 keeps the fixed cohort)")
+    parser.add_argument("--ema-weight", type=float, default=0.0,
+                        help="Scale a complete group's one-round-late mean delta; requires privacy groups")
+    parser.add_argument("--mask-backend", choices=("artifact", "lwe-reference", "lwe-192-reference", "aion-original"),
+                        default="artifact")
+    parser.add_argument("--original-hprf-dir", type=Path,
+                        help="Author HPRF directory; required for aion-original, files are read-only")
+    parser.add_argument("--hprf-width", type=int, default=8,
+                        help="Experimental binary-matrix HPRF key width; no security level is implied")
+    parser.add_argument("--hprf-input-bits", type=int, choices=(32, 128), default=None,
+                        help="LWE defaults to collision-free 128; 32 explicitly preserves legacy research tasks")
+    parser.add_argument("--leader-views", action="store_true",
+                        help="Use signed aggregator leader failover for roster/model proposals")
+    parser.add_argument("--hotstuff", action="store_true",
+                        help="Use the research Basic HotStuff voting core (pacemaker incomplete)")
+    parser.add_argument("--mgf-beta", default="",
+                        help="Enable bounded-mask MGF; requires the three bootstrap values below")
+    parser.add_argument("--mgf-initial-alpha", default="",
+                        help="Initial HPRF mask scale for MGF, as a positive decimal string")
+    parser.add_argument("--mgf-initial-bound", default="",
+                        help="Initial masked-gradient L2 bound, as a positive decimal string")
+    parser.add_argument("--mgf-initial-term", default="",
+                        help="Public bootstrap norm term for the first evolving bound")
     parser.add_argument("--provision-only", type=Path, help="Create NEW identity directory for a Flower deployment")
     args = parser.parse_args()
     if args.rounds < 1:
         parser.error("rounds must be positive")
-    p = Parameters(uuid.uuid4().hex, tuple(f"client-{i}" for i in range(args.clients)),
+    if args.privacy_group_size and (args.privacy_group_size < 2 or args.clients % args.privacy_group_size):
+        parser.error("privacy-group-size must be at least two and divide clients")
+    clients = tuple(f"client-{i}" for i in range(args.clients))
+    original_setup = ()
+    if args.mask_backend == "aion-original":
+        if args.original_hprf_dir is None:
+            parser.error("aion-original requires --original-hprf-dir")
+        from .aion_original_hprf import OriginalAionHPRF
+        original_setup = OriginalAionHPRF.from_directory(args.original_hprf_dir).public_setup()
+    elif args.original_hprf_dir is not None:
+        parser.error("--original-hprf-dir requires --mask-backend aion-original")
+    groups = (tuple(clients[i:i + args.privacy_group_size]
+                    for i in range(0, len(clients), args.privacy_group_size))
+              if args.privacy_group_size else ())
+    p = Parameters(uuid.uuid4().hex, clients,
                    tuple(f"aggregator-{i}" for i in range(args.aggregators)),
-                   faults=args.faults, dimension=args.dimension)
+                   faults=args.faults, dimension=args.dimension,
+                   privacy_groups=groups, ema_weight=args.ema_weight,
+                   mask_backend=args.mask_backend, hprf_width=args.hprf_width,
+                   original_hprf_setup=original_setup,
+                   hprf_input_bits=args.hprf_input_bits,
+                   leader_views=args.leader_views, hotstuff=args.hotstuff,
+                   mgf_beta=args.mgf_beta, mgf_initial_alpha=args.mgf_initial_alpha,
+                   mgf_initial_bound=args.mgf_initial_bound,
+                   mgf_initial_term=args.mgf_initial_term)
     if args.provision_only:
         manifest_path, _ = provision(args.provision_only.resolve(), p)
         print(f"Research manifest: {manifest_path}")
@@ -68,7 +114,7 @@ def main():
         with ProcessGrid(nodes) as grid:
             app(grid, context)
         history = json.loads(context.state["aion-result"]["history"])
-        print(json.dumps({"backend": "aion-asr-research-v1", "research_only": True,
+        print(json.dumps({"backend": "aion-asr-research-v2", "research_only": True,
                           "clients": args.clients, "independent_aggregator_processes": args.aggregators,
                           "rounds": args.rounds,
                           "loss": [loss(np.asarray(h["body"]["model"]), args.clients) for h in history],

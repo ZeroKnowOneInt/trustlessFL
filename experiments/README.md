@@ -1,5 +1,80 @@
 # AION 연구 구현 실험
 
+## 저자 구현 포팅 경로
+
+[원본 HPRF와 SHPRG·MGF의 포팅 기준 및 실행 명령](../docs/aion-author-port-goal.md)을
+우선 따릅니다. 원본 ASR은 `--original-hprf-dir`, 학습 실험의 원본 CPU
+계산은 `--author-mgf`로 선택합니다. `aion_mgf_oracle` 연결 경로는
+classifier 평문을 공개하고 매 라운드 새 ASR 키를 공유하므로, 원본의
+one-time sharing 비용이나 비공개 MGF까지 재현한 것으로 해석하지 않습니다.
+기존 bounded-mask 경로는 아래처럼 별도로 유지합니다.
+
+[저자 HPRF·SHPRG/MGF·HotStuff의 공식 Flower 10라운드 결과](../docs/experiments/fmnist-flower-author-hprf-shprg-hotstuff-ten-round-2026-09-30/report.md)에
+실행 명령·대조군·매 라운드 선택 일치·평균/최종 지표와 남은 차이를
+기록했습니다. N=100/q=20의 축소 검증이며 논문 전체 실험의 재현 결과로
+확대하지 않습니다.
+
+학습 배치 구성은 `--training-sampling author-loader`로 원본의
+DataLoader/SubsetRandomSampler 및 중복 없는 poison 첫 batch를
+선택할 수 있습니다. 기본 `legacy`는 기존 결과를 보존합니다.
+두 방식 모두 client/round별 분리 난수를 사용하므로 원본 프로그램 전체의
+공유 RNG transcript와 비트 단위 동일하다는 뜻은 아닙니다.
+
+새 실행에 `--author-reference-dir ../Aion/input_validation/FL_Backdoor_CV`를
+추가하면 원본 학습·SHPRG/MGF 소스와 실제 초기화 파일을 스냅샷으로
+기록합니다. Verifier와 exporter가 hash 및 초기화 값 변경을 거부합니다.
+이는 비교 기준 기록이며 그 원본 파일을 Flower worker가 직접 실행한다는
+뜻은 아닙니다. 기존 완료 결과에는 소급 적용하지 않습니다.
+
+원본 ASR-MMF와 학습 artifact MGF의 실제 데이터 흐름은 다음 구조 감사로
+재검증할 수 있습니다. 네 원본 파일 hash와 핵심 함수 AST hash를 함께
+기록하며, 학습 `aion()`에 client-side HPRF/DMC/DMR wire가 없다는 경계를
+검사합니다.
+
+```bash
+python3 -m experiments.audit_author_mgf_dataflow \
+  --source ../Aion --output .cache/NEW-author-mgf-dataflow.json
+```
+
+원본 HPRF의 논문 길이 수치 감사는 `audit_paper_dmc`에
+`--rounds 60 --clients 100 --dimension 840`을 지정합니다. 이는 공개
+fixture 감사이며 Flower 학습이나 프라이버시 증명은 아닙니다.
+
+## 마스킹된 classifier MGF와 원본식 threshold
+
+공식 Flower에서 classifier 평문 없이 MGF 선택과 전체 모델 ASR 집계를
+실행하려면 `aion_mgf_beta`를 명시한다. 다음 옵션 세 개를 함께 켜면 첫
+3라운드의 percentile bootstrap과 이후의 두 과거 집계 norm·전체 후보
+mask norm을 사용한다. 기존 `aion_mgf_oracle`은 평문 classifier를 공개하는
+별도 비교 경로이며, 아래 경로와 혼동하지 않는다.
+
+```bash
+python -m experiments.run_fmnist_official --phase all \
+  --output .cache/fmnist/masked-artifact-bound-new \
+  --modes aion_mgf_beta --mgf-projection --mgf-percentile --mgf-artifact-bound \
+  --population 100 --participants 20 --aggregators 4 --rounds 4 --workers 4 \
+  --attack-clients 4 --attack-rounds 1 4 --cohort-sampling individuals \
+  --mgf-beta 0.1 --mgf-initial-alpha 0.1 \
+  --mgf-initial-bound 1 --mgf-initial-term 1
+```
+
+이는 짧은 배선·공격 시험 설정이다. 논문 규모의 실험은 N=500/q=100,
+aggregator 8개로 지정하며, 논문 길이 곡선은 별도로 60라운드가 필요하다.
+cohort norm 복원은 2명 또는 10명 이상의 후보에서 지원한다. 모델·roster
+인증서와 cohort norm 인증서를 검증하고, 실제 모델 변화에서 norm history와
+다음 alpha를 재계산한다. worker 및 실행 소스 hash도 보존한다.
+
+공식 결과 exporter는 원시 `trace`가 있는 경우 action별 `phase_timings`도
+내보낸다. `seconds`는 coordinator가 본 RPC batch의 누적 경과 시간이며,
+병렬 수신자 수를 곱한 CPU 시간이나 순수 암호 연산 시간이 아니다. CLI/Ray
+기동·실행 후 평가·검증은 이 trace와 ServerApp 내부 총 시간 밖에 있다.
+HotStuff를 켠 실행과 끈 실행의 총 시간을 같은 조건의 속도 개선으로
+해석하지 않는다.
+
+연구용 HPRF, 작은 bounded mask의 정보 노출, 개별 악성 client의 mask 일치
+증명 한계는 남아 있다. 원본식 threshold 계산을 연결했다는 것이 논문의
+전체 보안 보장이나 float32 결과의 비트 단위 동일성을 의미하지는 않는다.
+
 ## 공개 코드 MLP·Adam 설정 이식 테스트
 
 31→30→30→9 MLP, Adam lr=0.01, batch 500, 최대 150 epochs/validation 조기 종료를
@@ -234,3 +309,125 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
 새 출력 경로를 지정한다. AION / 평문 양자화 / 평문 float를 별도 FAB에서 실행하고
 모든 AION/평문 양자화 round 모델이 정확히 같은지 확인한다. 설정과 한계는
 [실행 문서](../docs/endpoint-aion-runtime.md)를 참고한다. 기존 root AION entrypoint는 변경하지 않았다.
+## Flower Fashion-MNIST/LeNet5 정상·공격 실험
+
+`run_fmnist_flower`는 checksum 검증된 Fashion-MNIST와 공식 `avg_300.pth`
+checkpoint에서 시작한다. LeNet5 61,706개 파라미터, 같은 정규화, 정상 학습
+SGD 2 epochs·batch 64·lr 0.001을 Flower ServerApp/ClientApp에 연결했다.
+인증된 genesis vector 0은 checkpoint에서의 offset이다. 선택적으로 원 artifact의
+FMNIST model-replacement trigger·120 local step·20배 증폭을 node-local
+악성 trainer에서 실행한다.
+
+```bash
+PYTHONPATH=. python -m experiments.run_fmnist_flower \
+  --output docs/experiments/fmnist-flower-new-run \
+  --clients 4 --aggregators 4 --rounds 1
+PYTHONPATH=. python -m experiments.run_fmnist_flower \
+  --output docs/experiments/fmnist-flower-attack-new-run \
+  --population 8 --clients 4 --aggregators 4 --workers 3 \
+  --rounds 2 --attack-clients 2 --force-attack-rounds 1
+```
+
+이 선택형 workload에는 PyTorch가 필요하다. `--population N --clients q`는
+미리 등록한 N명에서 매 라운드 q명을 선택하며, 사전 확정된 2인 privacy group
+단위로 샘플링한다. `--workers`는 OS process 수를 제한하지만 각 논리 노드가
+Flower ClientApp과 별도 영속 identity/share 상태를 사용한다. 이 로컬 pool은
+공식 SuperLink/Ray runtime이 아니다.
+
+`results.json`에는 라운드별 TER·ASR, 평문 fixed-point 모델 오차, 공격 일정,
+참여자·partition hash, action별 시간·application payload bytes를 기록한다.
+새 기본 `--partition-rng artifact`는 FMNIST 분할 전의 Python RNG 소비와
+class 순서를 반영한다. 이후 공격 이미지 pool·학습 batch의 원본 RNG transcript까지
+완전히 같다고 보장하지 않는다.
+2인 group 샘플링은 논문의 CCS/VRF와 다르고, 현재 실험은 MGF를 사용하지 않는다.
+따라서 q=100·60라운드 조건을 명령으로 지정할 수 있다는 사실만으로
+Figure 5의 재현을 주장할 수 없다.
+
+### 공식 Flower Simulation Runtime 경로
+
+`run_fmnist_official`은 같은 FMNIST trainer를 공식 `flwr run`/SuperLink/Ray에서
+실행하도록 입력·노드 identity·FAB를 스테이징한다. `aion`, 동일 코호트의
+평문 `quantized`, `avg`, 평문 artifact-style `mgf`는 각각 **별도 Flower run**이다.
+`--phase all`은 큰 입력을 만들기 전에 `flwr`와 `flower-superlink`가 PATH에
+있는지 확인한다. 실행 Python 환경에는 Flower simulation·PyTorch가 함께
+설치돼 있어야 한다. 상대 `PYTHONPATH` 항목은 launcher가 실행 시작 위치의
+절대 경로로 바꿔, Flower CLI가 FAB 디렉터리로 이동해도 import가 유지된다.
+새 실행의 기본 `--partition-rng artifact`는 원본의 첫 등장 class 순서와
+정상 참여자 150명 사전 추첨에 따른 Python 난수 소비를 재현한다.
+이전 보고서의 분할을 재실행하려면 `--partition-rng legacy`를 지정한다.
+새 기본 `--poison-rng artifact`는 데이터 분할 뒤 같은 Python 난수기로 공격
+이미지 풀을 뽑는다. 이전 보고서처럼 별도 seed 0에서 풀을 뽑으려면
+`--poison-rng legacy`를 지정한다. 기존 결과와 새 기본 실행의 공격 성공률은
+평가용 이미지 풀이 달라 직접 반복 실험으로 비교하지 않는다.
+기본 `--cohort-sampling auto`는 oracle/평문 비교에서 원본처럼 client를
+개별 추첨하고, 고정 키 `aion`이 포함되면 완전한 2인 privacy group을 추첨한다.
+기존 oracle 보고서의 그룹 일정을 재현하려면 `--cohort-sampling groups`를 지정한다.
+[N=500/q=100 원본 순서 분할 1라운드](../docs/experiments/fmnist-flower-official-artifact-partition-one-round-2026-09-29/report.md)는
+공식 Flower에서 MGF 선택과 AION-ASR 집계까지 통과했다.
+MGF는 개별 업데이트를 중앙에서 읽으므로 보안 집계 결과로 해석하면 안 된다.
+MGF 선택과 집계 후 상태 갱신은 별도 함수로 분리되어 있으며, 현재 평문
+경로의 선택·모델 결과는 변경하지 않았다. masked projection과 실제 ASR
+update의 암호학적 결속은 아직 구현되지 않았다. 아래 oracle 경로에서만
+MGF가 고른 부분 집합의 대규모 masked update를 합산한다.
+선택형 `--modes aion_mgf_oracle mgf`는 별도의 **프라이버시 비보장 연결 시험**이다.
+client가 서명한 분류기 층 840개 평문 업데이트를 Flower coordinator에 공개하여
+artifact MGF와 동일하게 대상을 고른 뒤, 선택된 client의 전체 61,706차원
+업데이트는 AION-ASR로 집계한다. 이 모드에서 동적 부분 집합은 고정 ASR 키를
+재사용하지 않도록 client별 키를 매 라운드 새로 만들고 recipient-bound share로
+집계한다. 그러나 공개 classifier 값과 masked 전체 업데이트가 같은 원본인지
+영지식 증명으로 결속하지 않으며, classifier 자체는 coordinator에 노출된다. 따라서
+`aion_mgf_oracle`의 높은 공격 방어 성능을 안전한 AION-MGF로 부르지 않는다.
+기본 `aion` 모드는 변경되지 않으며, 이 모드는 명시적으로 지정할 때만 실행한다.
+선택형 `--hotstuff`는 AION의 roster·모델 투표에 연구용 HotStuff를 켠다.
+기본값은 꺼짐이며, N=500/q=100 첫 라운드 측정도 기본 서명 정족수 경로다.
+기본값은 N=500, q=100, 10라운드, 악성 20명으로 첫 공격과 이후 변화를
+보는 빠른 재현 경로다. 기본 `--modes`는 이번 10라운드에서 검증한
+`aion_mgf_oracle mgf` 두 경로이며, 전자는 classifier 평문 좌표를 공개한다.
+원래 AION·평문 양자화·평균 대조군이 필요하면
+`--modes aion quantized avg mgf`를 명시한다. 논문 길이의 60라운드 곡선은 `--rounds 60`을
+명시해야 하며 장시간 실행이다.
+작은 공식 런타임 연결 검사는 다음처럼 실행한다(Flower simulation·PyTorch 설치 필요).
+
+```bash
+python -m experiments.run_fmnist_official \
+  --phase stage --output .cache/fmnist/official-smoke-new \
+  --population 4 --participants 4 --aggregators 4 --rounds 1 \
+  --attack-clients 0 --attack-rounds --modes aion quantized
+python -m experiments.run_fmnist_official \
+  --phase run --output .cache/fmnist/official-smoke-new
+```
+
+출력은 새로운 경로여야 한다. `verify` 단계는 공식 런타임에서 저장한 매 라운드
+모델과 TER·ASR을 평가하고, AION/평문 양자화 모델의 정확한 일치를 요구한다.
+새로 스테이징한 실행은 manifest·참여 일정 입력 해시와 AION의 인증된
+roster 서명을 다시 검증하고 각 라운드의 참여 집합·부모 모델·결과 모델
+참조가 예정된 코호트와 일치하는지도 검사한다. 새 AION 실행은 공개 모델의
+전체 인증서를 `*-certificates.json`에 보관한다. `verify`는 서명·commit
+정족수와 인증서의 부모 체인을 확인하고 저장된 모델 배열과 정확히 대조한다.
+평문 MGF 비교군은 저장된 masked norm의 순위·동적 bound·선택 수를 다시
+계산하고, 기록된 집계 norm이 실제 저장 모델의 라운드별 변화와 일치하는지
+확인한다. 개별 평문 update를 보관하지 않으므로 각 norm의 원본 값까지
+독립 재계산하는 검증은 아니다.
+[공식 런타임 첫 연결 결과](../docs/experiments/fmnist-flower-official-smoke-2026-09-29/report.md)는
+N=q=4 정상 1라운드이며, 논문 규모·공격 방어 검증을 대신하지 않는다.
+[N=8/q=4 공격·MGF 배선](../docs/experiments/fmnist-flower-official-dynamic-2026-09-29/report.md)과
+[N=500/q=100 첫 공격 라운드](../docs/experiments/fmnist-flower-official-paper-scale-2026-09-29/report.md)는
+각각 공식 Flower Runtime에서 실행했다. 후자도 60라운드 논문 곡선은 아니다.
+[HotStuff·동적 참여 3라운드](../docs/experiments/fmnist-flower-official-hotstuff-dynamic-2026-09-29/report.md)는
+큰 update의 단계별 전달과 서명된 모델 ancestry 복귀 검사를 함께 통과했다.
+[N=500/q=100 HotStuff 첫 공격 라운드](../docs/experiments/fmnist-flower-official-hotstuff-paper-scale-2026-09-29/report.md)는
+공식 Flower Runtime에서 커밋 증명과 평문 양자화 모델의 정확한 일치를 확인했다.
+이 또한 60라운드 곡선이나 MGF의 보안 집계 내 실행은 아니다.
+[N=500/q=100 두 라운드](../docs/experiments/fmnist-flower-official-two-round-paper-scale-2026-09-29/report.md)는
+공격 후 새 코호트로 넘어갔고, 결정된 라운드의 큰 masked update와 staged
+사본이 누적되지 않는 것을 확인했다. 이 실행은 HotStuff를 끈 경로다.
+[N=500/q=100 10라운드](../docs/experiments/fmnist-flower-official-ten-round-2026-09-29/report.md)는
+공격 라운드 5·7·10을 포함한 네 Flower 경로를 완료했다. AION/평문 양자화
+모델은 모든 라운드에서 정확히 일치하며, 평문 MGF 대조군만 공격 update를
+걸러냈다. 이 결과는 MGF가 AION 보안 집계 내부에 연결됐다는 뜻은 아니다.
+[N=500/q=100 원본식 개별 client 추첨의 MGF→AION-ASR 10라운드](../docs/experiments/fmnist-flower-official-oracle-individual-ten-round-2026-09-29/report.md)는
+새 기본 분할·참여 정책에서 모든 라운드의 MGF 선택·정확도·ASR이 평문
+MGF와 일치했다. [2인 그룹 추첨](../docs/experiments/fmnist-flower-official-oracle-mgf-artifact-ten-round-2026-09-29/report.md)과
+[이전 `legacy` 분할](../docs/experiments/fmnist-flower-official-oracle-mgf-ten-round-2026-09-29/report.md)의
+10라운드도 별도 보존했다. 모든 `aion_mgf_oracle` 경로는 classifier 평문
+좌표를 coordinator에 공개한다.

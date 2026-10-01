@@ -22,6 +22,27 @@ from experiments.run_endpoint import prepare, write_json
 from trustlessfl.endpoint import MLP, evaluate, train_delta
 
 
+def absolute_pythonpath(value: str, cwd: Path) -> str:
+    """Keep import paths stable when the Flower CLI switches to the FAB directory."""
+    return os.pathsep.join(str((cwd / entry).resolve()) for entry in value.split(os.pathsep))
+
+
+def require_completed_run(status):
+    """CLI/list success is not application success; use the actual run state.
+
+    Each attempt has its own FLWR_HOME and newly started SuperLink, so exactly
+    one terminal completed run is expected. Do not log status-details, which
+    can include application exception values.
+    """
+    runs = status.get("runs") if isinstance(status, dict) else None
+    if (not isinstance(status, dict) or status.get("success") is not True) or (
+            not isinstance(runs, list) or len(runs) != 1 or not isinstance(runs[0], dict)):
+        raise RuntimeError("Official Flower run status is missing or not uniquely identified")
+    if runs[0].get("status") != "finished:completed":
+        raise RuntimeError("Official Flower application did not finish successfully; inspect run-status.json")
+    return runs[0]
+
+
 def stage(output, data, rounds, backend="numpy"):
     if backend not in ("numpy", "torch-cuda") or rounds < 1:
         raise ValueError("Invalid backend or rounds")
@@ -66,6 +87,10 @@ def stage(output, data, rounds, backend="numpy"):
 
 
 def run(output):
+    superlink = shutil.which("flower-superlink")
+    flwr = shutil.which("flwr")
+    if not superlink or not flwr:
+        raise FileNotFoundError("Flower CLI and flower-superlink must be on PATH")
     config = tomllib.loads((output / "app" / "pyproject.toml").read_text())["tool"]["flwr"]["app"]["config"]
     gpu = config.get("backend", "numpy") == "torch-cuda"
     attempt = output / f"attempt-{uuid.uuid4().hex[:8]}"
@@ -73,6 +98,8 @@ def run(output):
     flower_dir = attempt / "flower-home"
     flower_dir.mkdir()
     env = os.environ.copy()
+    if "PYTHONPATH" in env:
+        env["PYTHONPATH"] = absolute_pythonpath(env["PYTHONPATH"], Path.cwd())
     env.update({"FLWR_HOME": str(flower_dir), "FLWR_TELEMETRY_ENABLED": "0", "FLWR_DISABLE_UPDATE_CHECK": "1",
                 "RAY_USAGE_STATS_ENABLED": "0", "OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1",
                 "MKL_NUM_THREADS": "1", "PATH": str(Path(sys.executable).parent) + os.pathsep + env["PATH"]})
@@ -96,17 +123,19 @@ def run(output):
     with (flower_dir / "config.toml").open("x") as stream:
         stream.write(tomli_w.dumps({"superlink": {"default": "endpoint-test", "endpoint-test": {
             "address": f"127.0.0.1:{control}", "insecure": True}}}))
-    bin_dir = Path(sys.executable).parent
-    server_command = [str(bin_dir / "flower-superlink"), "--insecure", "--simulation",
+    server_command = [superlink, "--insecure", "--simulation",
                       "--isolation", "subprocess", "--disable-runtime-dependency-installation",
                       "--control-api-address", f"127.0.0.1:{control}",
                       "--host", "127.0.0.1", "--port", str(runtime)]
+    cpu_workers = int(config.get("simulation-workers", 2))
+    if cpu_workers < 1:
+        raise ValueError("simulation-workers must be positive")
     resources = ("client-resources-num-gpus=1 init-args-num-cpus=1 init-args-num-gpus=1" if gpu else
-                 "client-resources-num-gpus=0 init-args-num-cpus=2 init-args-num-gpus=0")
+                 f"client-resources-num-gpus=0 init-args-num-cpus={cpu_workers} init-args-num-gpus=0")
     node_count = int(config.get("num-clients", 8))
     if node_count < 1:
         raise ValueError("Positive node count required")
-    cli_command = [str(bin_dir / "flwr"), "run", str(output / "app"), "endpoint-test", "--stream",
+    cli_command = [flwr, "run", str(output / "app"), "endpoint-test", "--stream",
                    "--federation-config", f"num-supernodes={node_count} client-resources-num-cpus=1 " + resources]
     write_json(attempt / "commands.json", {"superlink": server_command, "flwr": cli_command,
                                           "env": {k: env[k] for k in ("FLWR_HOME", "FLWR_TELEMETRY_ENABLED",
@@ -131,11 +160,13 @@ def run(output):
             started = time.perf_counter()
             with (attempt / "flwr.log").open("x") as cli_log:
                 subprocess.run(cli_command, env=env, stdout=cli_log, stderr=subprocess.STDOUT,
-                               cwd=output / "app", check=True, timeout=1200 if gpu else 600)
+                               cwd=output / "app", check=True,
+                               timeout=int(config.get("runtime-cli-timeout", 1200 if gpu else 600)))
             write_json(attempt / "timing.json", {"flwr_cli_wall_seconds": time.perf_counter() - started})
             with (attempt / "run-status.json").open("x") as status:
-                subprocess.run([str(bin_dir / "flwr"), "list", "--format", "json"], env=env,
+                subprocess.run([flwr, "list", "--format", "json"], env=env,
                                stdout=status, stderr=subprocess.STDOUT, check=True, timeout=30)
+            require_completed_run(json.loads((attempt / "run-status.json").read_text()))
         finally:
             # Only signal the process group created above, not unrelated Flower/Ray jobs.
             if server.poll() is None:

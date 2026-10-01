@@ -76,8 +76,40 @@
 | 실제 증폭 | `mal_boost / adversaries / global_lr / s_norm` | `server.py:228,238` |
 | seed | torch/CUDA=1, Python random/NumPy=0 | `trainer.py:33–38`, `helper.py`, `image_helper.py` |
 
+이 공개 **입력 검증용 FMNIST 실험 코드**의 `server.py:183–249`는 각 client의
+학습 모델을 서버 메모리의 `trained_models`에 쌓고 평문 `model_updates`를 만든 뒤
+`aggregation_rules.aion()`에 전달한다. 그 함수의 `aggregation_rules.py:105–151`은
+평문 마지막 분류기 층에서 서버가 SHPRG seed와 mask를 생성해 masked norm으로
+client를 선택하고, 선택된 **평문 전체 update**를 평균한다. 즉 공개 artifact의
+이 ML 실험은 비공개 분산 AION-ASR 네트워크 프로토콜을 실행한 증거가 아니다.
+Flower의 `aion_mgf_oracle`은 이 중앙 선택 규칙을 재현한 뒤 선택된 전체 update를
+별도의 AION 마스킹 집계 경로로 보낸다. 이 때문에 artifact의 선택 결과와 비교할
+수 있지만, coordinator가 개별 classifier 840좌표를 보는 실험용 경계가 남는다.
+이를 논문 수준의 보안 MGF 완료로 분류하지 않는다.
+
 `class_imbalance=0`은 여기서 IID를 뜻하지 않는다. 이 branch는 Dirichlet 분할을 호출한다.
 같이 전달되는 `classes_per_client=2`와 `balance=0.99`는 해당 분할 branch에서 사용되지 않는다.
+FMNIST의 class 방문 순서는 번호순이 아니라 `get_img_classes()`의 첫 등장 순서
+`[9,0,3,2,7,5,1,6,4,8]`이다. 또한 `Trainer.__init__`가 분할 전에
+정상 참여자 150명을 `random.sample`로 뽑아 Python 난수 상태를 소비한다.
+class별 반올림으로 N=500, seed 0 포트에서는 59,941장만 중복 없이 배정되고
+59장은 남는다. 이전 Flower 보고서는 번호순·사전 sample 생략 transcript였으며,
+현재 CLI의 `--partition-rng legacy`로 그 입력을 재현한다. 새 기본값 `artifact`는
+원본의 class 순서와 난수 선행 소비를 따른다.
+원본은 이어서 같은 Python 난수기로 공격 이미지 풀을 `random.sample`한다.
+Flower 포트의 이전 결과는 이 단계에서 seed 0으로 다시 시작했으므로 이미지
+풀이 다르다. 새 기본 `--poison-rng artifact`는 분할 뒤의 난수 상태를 이어
+쓰며, `--poison-rng legacy`는 이전 결과의 풀을 재현한다. 두 정책의 결과는
+서로 다른 실험 입력으로 구분한다.
+공격 라운드를 명시하지 않으면 분할에 사용한 **같은 NumPy RNG의 다음 값**으로
+확률 추첨한다. seed 0의 N=500, q=100, 10라운드에서는 공격 라운드가
+`1,2,5,6,7,10`이다. 이전 공식 Flower 10라운드 보고서의 `5,7,10`은
+명시적으로 지정한 일정이므로 유효하지만, 원본의 확률 추첨 결과로 해석하지 않는다.
+참여자 선정은 원본 `server.py:140–177`처럼 비공격 라운드에 정상 client
+q명을 개별 추첨하고, 공격 라운드에 악성 client 전원과 나머지 정상 client를
+추첨한다. Flower의 `--cohort-sampling individuals`가 이 포함 규칙과 순서를
+사용한다. 원본은 local training 중 Python 난수 호출을 라운드 선정과 섞으므로,
+Flower에서 미리 저장한 일정의 정확한 난수 transcript 일치까지 주장하지 않는다.
 
 checkpoint SHA-256은 `047d40adbfdf3c0a5c95db299bec49c48ff1cc16125f5455094e974251c143e2`다.
 `avg_300`이라는 이름을 통해 코드가 300-round checkpoint로 취급함을 확인했지만,

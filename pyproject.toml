@@ -1,7 +1,7 @@
 [project]
 name = "trustlessfl"
 version = "0.1.0"
-description = "Trustless Federate Learning with Zero-Knowledge Proof"
+description = "Flower-based AION-ASR research baseline with masked-gradient filtering"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
@@ -14,6 +14,8 @@ dependencies = [
 [project.optional-dependencies]
 simulation = ["flwr[simulation]==1.36.0"]
 gpu = ["torch==2.8.0"]
+fast-crypto = ["gmpy2>=2.2,<3"]
+author-asr = ["gmpy2>=2.2,<3", "pycryptodomex>=3.23,<4", "dill>=0.4,<0.5"]
 
 [tool.uv.sources]
 torch = [{ index = "pytorch-cu128", extra = "gpu" }]
@@ -32,6 +34,8 @@ dev = ["pytest>=9.1,<10"]
 
 [project.scripts]
 aion-demo = "trustlessfl.demo:main"
+aion-peer = "trustlessfl.peer_service:main"
+aion-author-asr = "trustlessfl.aion_source_server:cli"
 
 [tool.hatch.build.targets.wheel]
 packages = ["trustlessfl"]
@@ -50,4 +54,5 @@ clientapp = "trustlessfl.client_app:app"
 num-server-rounds = 3
 research-mode = true
 timeout = 30.0
+quorum-attempts = 3
 aion-manifest = "UNCONFIGURED"

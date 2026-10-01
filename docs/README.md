@@ -1,5 +1,62 @@
 # 문서
 
+- [최신 진행 상황 요약: 경로별 완료 범위·검증·보안 한계·다음 작업](./reproduction/aion-flower-status-2026-10-01.md)
+- [Signed masked-MGF 공식 Flower 10라운드 시도: 4라운드 복원 실패와 완료 조건](./reproduction/source-authorized-long-run-2026-10-01.md)
+- [클라이언트 서명·위원회별 MGF 재계산·선택 명단과 key release 연결](./reproduction/source-selection-authorization-2026-10-01.md)
+- [원본 VSS 비공개성 감사와 무작위 계수·수신자별 암호화 수정](./reproduction/source-vss-privacy-2026-10-01.md)
+- [원본 scalar 키 범위의 공개 탐색: 현재/유한 wire에서 개별 업데이트 복원](./reproduction/source-keyspace-privacy-2026-10-01.md)
+- [float32 norm·wire 정밀도 대조: exact 후보의 공개 입력 복원과 기각](./reproduction/author-scale-wire-privacy-2026-10-01.md)
+- [추가 share 없는 bounded-lift MGF: 실제 Flower clean/공격 4라운드·재학습 대조](./experiments/fmnist-source-paper-mask-bounds-2026-10-01/report.md)
+- [추가 share 없는 Flower MGF 연결: 실제 mask norm·공식 1라운드·실패 진단](./reproduction/source-paper-mgf-norm-2026-10-01.md)
+- [실제 공개 초기 checkpoint의 bootstrap 스케일: 20라운드·840좌표 검증](./reproduction/paper-bootstrap-2026-10-01.md)
+- [추가 share 없는 조건부 quantized-lift 복원: 성공 조건과 bootstrap 한계](./reproduction/quantized-lift-2026-10-01.md)
+- [공식 v5 Python 130개 전체 대조: MGF와 DMC/DMR 수치 경로](./reproduction/author-numeric-coverage-2026-10-01.md)
+- [추가 share 없는 논문 스케일링·DMC/DMR 수치 감사](./reproduction/paper-dmc-no-extra-share-2026-10-01.md)
+- [공식 v5와 로컬 ASR 소스 재대조: 생성자 차이와 포팅 메서드 동일성](./reproduction/source-identity-2026-10-01.md)
+- [Single-view MGF의 공식 Flower FMNIST 공격 1라운드·재학습 검증](./experiments/fmnist-flower-original-single-view-mgf-one-round-2026-10-01/report.md)
+- [Single-view MGF의 공식 Flower FMNIST 공격 4라운드·threshold 갱신·재학습 검증](./experiments/fmnist-flower-original-single-view-mgf-four-round-2026-10-01/report.md)
+- [원본 HPRF·masked classifier MGF·HotStuff의 공식 Flower 4라운드와 재학습 검증](./experiments/fmnist-flower-original-client-mgf-projection-four-round-2026-10-01/report.md)
+- [논문 흐름의 원본 HPRF·클라이언트 마스킹 MGF: 구현·검증·남은 차이](./paper-client-mgf-port.md)
+- [MGF 일회성 키 공유·추가 share 제거: 원본 HPRF 반례와 완료 조건](./mgf-key-sharing-reduction.md)
+- [원본 Aion-ASR Flower 통신 포팅: 일회성 키 공유·원본 MMF·추가 mask share 없음](./source-asr-flower-port.md)
+- [원본 ASR 고정 키 FMNIST 4라운드: 집계 재검증과 공격 방어 실패](./experiments/fmnist-source-asr-fixed-key-four-round-2026-10-01/report.md)
+- [새 소스 ASR의 공식 Flower 실행: 상태 관리·FMNIST 공격 4·20라운드](./experiments/fmnist-source-asr-official-2026-10-01/report.md)
+- [새 소스 ASR: 모집단 500명·100명 참여, masked Flower 메시지 분할 및 학습 대조](./experiments/fmnist-source-asr-pop500-2026-10-01/report.md)
+- [저자 학습 artifact MGF: 모집단 500명·100명 참여 10/60라운드 공식 Flower 대조](./experiments/fmnist-author-artifact-pop500-2026-10-01/report.md)
+- [원본 ASR-MMF와 학습 artifact MGF 및 논문 Algorithm 6–8 데이터 흐름 대조](./reproduction/author-mmf-mgf-dataflow-2026-10-01.md)
+- [저자 Aion-ASR Flower 포팅 요구사항별 완료 감사와 미재현 경계](./reproduction/aion-flower-completion-audit-2026-10-01.md)
+- [새 소스 ASR 동적 참여: 모집단 100명·라운드별 10명, 로컬/공식 Flower 검증](./experiments/fmnist-source-asr-dynamic-2026-10-01/report.md)
+- [원본 HPRF·masked classifier MGF·HotStuff의 공식 Flower 공격 1라운드](./experiments/fmnist-flower-original-client-mgf-projection-one-round-2026-09-30/report.md)
+- [저자 Aion 구현의 Flower 포팅 목표·원본 대비 차이·실행법](./aion-author-port-goal.md)
+- [최신 저자 구현·학습 방식·원본 HPRF·HotStuff의 공식 Flower 10라운드](./experiments/fmnist-flower-author-reference-hprf-loader-hotstuff-ten-round-2026-09-30/report.md)
+- [저자 학습·SHPRG/MGF 소스 스냅샷 포함 공식 Flower 4라운드](./experiments/fmnist-flower-author-reference-loader-four-round-2026-09-30/report.md)
+- [원본 학습 batch·HPRF·SHPRG/MGF·HotStuff 연결의 공식 Flower 4라운드](./experiments/fmnist-flower-author-hprf-shprg-loader-hotstuff-four-round-2026-09-30/report.md)
+- [원본 DataLoader batch 구성의 공식 Flower SHPRG/MGF 4라운드](./experiments/fmnist-flower-author-shprg-loader-four-round-2026-09-30/report.md)
+- [원본 HPRF·저자 SHPRG/MGF·HotStuff 연결의 공식 Flower 10라운드](./experiments/fmnist-flower-author-hprf-shprg-hotstuff-ten-round-2026-09-30/report.md)
+- [원본 HPRF·저자 SHPRG/MGF·HotStuff 연결의 공식 Flower 4라운드](./experiments/fmnist-flower-author-hprf-shprg-hotstuff-four-round-2026-09-30/report.md)
+- [저자 SHPRG·MGF CPU 계산의 공식 Flower 평문 4라운드](./experiments/fmnist-flower-author-shprg-mgf-four-round-2026-09-30/report.md)
+
+- [FMNIST 공식 Flower: HotStuff 검증 재사용 4라운드 및 무방어 대조](./experiments/fmnist-flower-hotstuff-validation-reuse-comparison-2026-09-30/report.md)
+
+- [FMNIST 공식 Flower: 마스킹 MGF·원본식 threshold·HotStuff 4라운드](./experiments/fmnist-flower-masked-artifact-bound-hotstuff-four-round-2026-09-30/report.md)
+
+- [FMNIST 공식 Flower: 원본식 threshold 4라운드와 무방어 비교](./experiments/fmnist-flower-masked-artifact-bound-comparison-2026-09-30/report.md)
+
+- [FMNIST 공식 Flower: 마스킹된 classifier MGF와 전체 모델 ASR 1라운드](./experiments/fmnist-flower-masked-classifier-mgf-one-round-2026-09-30/report.md)
+
+- [FMNIST 비평문 MGF wire: 공식 실행 연결 및 계산·메시지 비용 측정](./experiments/fmnist-mgf-wire-feasibility-2026-09-30/report.md)
+
+- [FMNIST 공식 Flower 2라운드: MGF→AION 선택 일치 및 HotStuff 인증 연결](./experiments/fmnist-flower-official-hotstuff-mgf-two-round-2026-09-29/report.md)
+
+- [FMNIST 원본식 개별 client 추첨의 공식 Flower 10라운드 MGF→AION 집계](./experiments/fmnist-flower-official-oracle-individual-ten-round-2026-09-29/report.md)
+- [FMNIST 원본 분할 순서의 공식 Flower 10라운드 MGF 선택→AION-ASR 집계](./experiments/fmnist-flower-official-oracle-mgf-artifact-ten-round-2026-09-29/report.md)
+- [FMNIST 원본 class 순서·사전 RNG 소비 분할의 공식 Flower 1라운드 검증](./experiments/fmnist-flower-official-artifact-partition-one-round-2026-09-29/report.md)
+- [FMNIST 공식 Flower 10라운드: MGF 선택 후 AION-ASR 집계, 평문 MGF와 매 라운드 선택 일치](./experiments/fmnist-flower-official-oracle-mgf-ten-round-2026-09-29/report.md)
+- [FMNIST/LeNet5 Flower 정상 학습 연결: 공식 checkpoint, 집계 오차 0](./experiments/fmnist-flower-2026-09-28/report.md)
+- [FMNIST/LeNet5 Flower model-replacement 공격 연결: 1라운드 ASR 100%](./experiments/fmnist-flower-attack-2026-09-28/report.md)
+- [FMNIST/LeNet5 Flower 동적 참여·공격 2라운드: N=8, q=4](./experiments/fmnist-flower-dynamic-2026-09-28/report.md)
+- [FMNIST/LeNet5 Flower 첫 공격 라운드: N=500, q=100, 악성 20명](./experiments/fmnist-flower-paper-scale-2026-09-28/report.md)
+
 - [Crowdsensing AION FL 결과: F1 52.78%, 평문 양자화 모델과 정확히 일치](./experiments/endpoint-aion-2026-09-13/report.md)
 
 - [Crowdsensing AION: 공식 Runtime 연결·학습 조건·실행 방법](./endpoint-aion-runtime.md)

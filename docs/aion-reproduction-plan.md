@@ -1,11 +1,62 @@
 # AION 논문 실험 재현 계획
 
-작성일: 2026-09-12. 업데이트: 2026-09-13. 상태: **P1 실제 FMNIST 공격/MGF 2라운드 pilot 완료**.
-공식 checkpoint 정확도 88.56%와 avg/AION 필터 대조를 확인했다.
-60라운드 논문 결과 재현은 아직 미완료이며, 현재 단계 판정은
-[pilot 보고서](./experiments/fmnist-artifact-pilot-2026-09-13/report.md)와 [원본 감사](./reproduction/source-audit.md)를 따른다.
+## 현재 구현 우선순위
+
+목표는 논문 실험과 **유사한 조건·결과를 Flower의 ServerApp/ClientApp 경로에서** 재현하는 것이다.
+우선 FMNIST/LeNet5의 실제 데이터, checkpoint, client 분할, local training,
+공격 일정과 MGF 선택을 먼저 10라운드에서 같은 설정으로 연결하고,
+필요하면 60라운드로 확장해
+공식 artifact와 Flower의 라운드별 clean accuracy·공격 성공률·test error·선택 인원을 대조한다.
+그다음 논문의 client/aggregator 규모별 시간·통신량 실험으로 확장한다.
+
+HotStuff의 모든 부분 동기 장애 양상이나 LWE-HPRF의 독립적인 보안 증명을
+실험 재현의 선행 완료 조건으로 두지 않는다. 단, 실험용 대체 암호·중앙 MGF·
+Flower 밖의 전송을 논문의 보안 성질이나 동일한 분산 비용으로 주장하지 않는다.
+공개 FMNIST 입력 검증 artifact 자체도 서버에서 client별 평문 update를 모아
+MGF를 계산하므로, 이 artifact와 **실험 선택·학습 곡선의 동등성**을 확인하는 일과
+논문이 의도한 **비공개 분산 MGF**를 구현하는 일은 구분한다.
+논문/공식 artifact/Flower 설정이 다르면 차이를 결과와 함께 기록한다.
+기존 합성 데이터와 MNIST/softmax 결과는 회귀 테스트이지 논문 재현 성과가 아니다.
+
+작성일: 2026-09-12. 업데이트: 2026-09-30. 상태: **기존 oracle/평문 비교 10라운드와 새 마스킹 MGF·원본식 threshold의 축소 4라운드 비교 완료**.
+
+[새 마스킹 MGF의 N=100/q=20 공식 4라운드](./experiments/fmnist-flower-masked-artifact-bound-four-round-2026-09-30/report.md)는 전체 후보 mask norm·두 과거 norm을 실제 threshold에 연결했다. [동일 조건 무방어 비교](./experiments/fmnist-flower-masked-artifact-bound-comparison-2026-09-30/report.md)에서 마지막 정확도·ASR은 MGF 88.82%·1.37%, 무방어 64.92%·46.48%였다. 아래의 기존 10라운드는 classifier 평문 oracle 또는 평문 대조군이며 새 마스킹 경로의 다중 라운드 증거로 재사용하지 않는다. q=100 새 마스킹 경로는 별도 1라운드만 완료했다.
+[10라운드 보고서](./experiments/fmnist-flower-official-ten-round-2026-09-29/report.md)에
+정확도·ASR 곡선과 AION/평문 양자화 모델 오차 0을 기록했다. 평문 artifact-style
+MGF 대조군은 공격을 걸렀지만, 이를 AION 보안 집계 내부의 MGF로 해석하지 않는다.
+[MGF 선택→AION-ASR 집계 10라운드](./experiments/fmnist-flower-official-oracle-mgf-ten-round-2026-09-29/report.md)도
+별도 Flower run으로 완료했다. 모든 라운드에서 평문 MGF와 같은 client를 선택했고
+모델 최대 차이는 2.11×10⁻⁶이다. 이 경로는 classifier 평문 좌표를 coordinator에
+공개하는 실험용 oracle이므로 보안 MGF 완료로 분류하지 않는다.
+위 10라운드 결과의 분할은 이전 `legacy` 난수 transcript다. 원본의 첫 등장 class
+순서와 정상 참여자 150명 사전 추첨을 반영한 새 기본 `artifact` 분할도
+[공식 Flower 10라운드](./experiments/fmnist-flower-official-oracle-mgf-artifact-ten-round-2026-09-29/report.md)에서
+확인했다. 두 분할의 결과는 다른 입력으로 구분해 보고한다.
+기본 oracle/평문 비교의 참여 정책도 2인 그룹에서 원본식 개별 client 추첨으로
+바꾸고 [별도 공식 Flower 10라운드](./experiments/fmnist-flower-official-oracle-individual-ten-round-2026-09-29/report.md)에서
+검증했다. 원본 local training과 참여 추첨 사이의 난수 호출 순서까지 같지는 않다.
+원본처럼 Dirichlet 분할 직후 NumPy RNG를 이어 쓰고 `uniform >= 1 - poison_prob`를
+적용한 [기본 확률 추첨 10라운드](./experiments/fmnist-flower-official-default-rng-ten-round-2026-09-29/report.md)도
+공식 Flower에서 완료했다. seed 0의 공격 라운드는 1·2·5·6·7·10이며,
+oracle AION과 평문 MGF는 모든 라운드에서 같은 client를 선택했다.
+그 실행까지의 공격 이미지 풀은 Python seed 0을 새로 시작한 이전 포트 방식이다.
+새 기본값은 원본처럼 분할 직후의 Python RNG에서 이어 추첨하므로,
+해당 입력으로 [공식 Flower 10라운드](./experiments/fmnist-flower-official-shared-python-rng-ten-round-2026-09-29/report.md)를
+다시 검증했다. 두 경로는 매 라운드 같은 client를 선택했고 최종 정확도는
+88.62%, ASR은 0.5859375%였다. 이전 실행과 모델 이력은 같고 평가 풀이
+달라 ASR만 바뀌었으므로, 두 입력을 별도 보고서로 구분한다.
+원본 설정·checkpoint 감사는 [원본 감사](./reproduction/source-audit.md)를 따른다.
+60라운드 논문 길이의 곡선은 아직 미완료다.
 본 문서는 기존 MNIST 실험을 논문 재현으로 인정하지 않고, 원 실험과 비교 가능한
 증거를 확보하기 위한 실행 순서와 판정 기준을 정의한다.
+
+## 2026-09-30 작업 방향 변경
+
+현재 우선 목표는 [저자 Aion 구현의 Flower 포팅](aion-author-port-goal.md)이다.
+원본 HPRF의 실제 파일과 계산을 보존한 출력 동등성부터 검증한다.
+기존 경량 연구 백엔드의 결과는 원본 HPRF 재현 결과로 분류하지 않는다.
+아래의 전체 논문 재현 매트릭스는 장기 계획이며, 모든 보안 증명이나
+전체 실험 완료를 단기 포팅의 전제조건으로 삼지 않는다.
 
 ## 1. 목표와 범위
 
@@ -32,15 +83,24 @@ Against Malicious Participants*, USENIX Security 2025의 §7 및 부록 B·F다.
 같은 조건에서 Flower 결과를 대조한다. 이후 규모별 성능, 나머지 데이터셋, privacy 평가로 확장한다.
 첫 목표 완료를 논문의 모든 실험 재현 완료로 표시하지 않는다.
 
-## 2. 현재 출발점
+## 2. 기존 출발점과 현재 경계
 
 - [기존 MNIST 실험](./experiments/mnist-2026-09-12/report.md)은 손글씨 MNIST / softmax,
   client 4개 / aggregator 4개 / 20라운드다. 논문의 FMNIST / LeNet5 실험과 다르다.
 - 기존 결과의 일반 fixed-point 집계 대비 모델 오차 0은 수치 회귀 테스트로 유지한다.
 - HPRF는 연구용 rounded-linear 대체 구현이다. 원 구현과 동등하거나 보안 정리를 만족한다고 가정하지 않는다.
-- MGF는 단독 수치 모듈이고 실제 집계 경로에 연결되지 않았다.
-- AMR, CCS/VRF, 완전한 BFT view-change, EMA는 미구현이다.
-- fixed-cohort ASR은 client를 제외하면 abort한다. MGF와 동적 유효 집합을 바로 연결할 수 없다.
+- 선택형 `mgf_beta --mgf-projection`은 classifier 840좌표의 bounded mask
+  검사와 전체 61,706좌표 ASR 집계를 연결해 공식 Flower의 2-client
+  기능 시험을 완료했다. `--mgf-percentile`은 첫 3라운드의 원본식
+  percentile bootstrap과 10~80% 선택 수 제한을 구현했다. 추가
+  `--mgf-artifact-bound`는 전체 후보 mask norm 인증서와 최근 두 집계 norm을
+  사용하는 이후 threshold를 연결했다. 원본식 대조 구현과의 4라운드 선택
+  비교 테스트와 N=100/q=20의 공식 Flower 다중 라운드 실행·무방어 대조군 비교도 완료했다.
+  기존 `aion_mgf_oracle` 실험은 classifier 평문을 공개하는 별도 경로다.
+- AMR·EMA·동적 참여 및 선택형 HotStuff에는 연구용 구현과 시험이 있지만,
+  CCS/VRF 및 부분 동기 네트워크에서의 완전한 BFT 진행 보장은 미완료다.
+- 기본 fixed-cohort ASR은 일부 client 제외 시 privacy group 단위로만
+  진행한다. `mgf_beta`는 매 라운드 새 키를 사용하는 별도 동적 roster다.
 - 기존 통신량은 모델·인증서를 포함한 JSON 전체다. 논문의 모델 전송 제외 지표와 다르다.
 
 구현 상세는 [현재 구현 현황](./aion-flower-implementation.md)을 따른다.
@@ -98,8 +158,9 @@ E2의 Figure 4·5는 해당 공격 설정에서 최대 50% 악성 client에 대�
   10% 미만 제약을 기술한다. Figure별 artifact 값과 코드 적용 의미를 확인하고 임의로 하나를 선택하지 않는다.
 - **모델 크기 불일치:** EMNIST 모델은 Table 3에서 6700k, Figure 15 설명에서 trainable 6.598M으로
   기술된다. 반올림·buffer·모델 변형 여부를 확인한다. ResNet18도 Table 3의 2797k에 맞는 실제 구조를 확인한다.
-- **분할/가중치:** FMNIST 60,000개를 q=256으로 균등하게 나눌 수 없다. 누락·복제하거나 기존 동일 가중치를
-  그대로 적용하지 말고 artifact의 배정·가중치 정책을 따른다.
+- **분할/가중치:** FMNIST 60,000개를 q=256으로 균등하게 나눌 수 없다. 임의로 누락·복제하거나 기존 동일 가중치를
+  그대로 적용하지 말고 artifact의 배정·가중치 정책을 따른다. 이 포트의 N=500, seed 0에서는
+  artifact식 class별 개별 반올림으로 59,941장이 중복 없이 배정되고 59장이 남는다.
 - **공격 정의:** gradient 증폭만 구현한 뒤 임의의 오분류 비율을 공격 성공률이라고 부르지 않는다.
   원 공격의 target과 성공 판정이 확인되지 않으면 TER만으로 Figure 4–9 재현을 선언하지 않는다.
 
@@ -291,6 +352,16 @@ P1 + 해당 Flower 기능 준비 → P5 규모·비용·추가 데이터셋
 membership/인증/복원 검증 → P6 privacy·EMA·실제 silo 배포
 ```
 
-2026-09-13 기준 즉시 실행할 다음 작업은 **P1의 공식 FMNIST avg/AION 60라운드 기준선**이다.
-원본 확보·설정 매핑·2라운드 pilot은 완료했으며, 이후 정상-only 대조와 Flower 수치 경로를 준비한다.
-설정·membership 문제가 해결되기 전에 CNN 학습 정확도만 올리는 작업은 재현 완료를 앞당기지 않는다.
+2026-09-29 기준 다음 구현 판단은 **FMNIST 규모의 MGF를 AION 집계 내부에
+어떤 프라이버시 경계로 연결할지**다. 현재 검증 가능한 차원별 share 방식은
+61,706차원에서 비용이 크고, 빠른 분류기 층 투영 방식은 해당 층의 개별
+업데이트 노출 위험이 있다. 60라운드 재실행은 이 선택과 10라운드 결과
+해석을 마친 뒤 필요한 경우 수행한다.
+
+현행 Pedersen 경로의 국소 비용을 2026-09-29 CPU에서 `pedersen_split(i,3,8)`
+256좌표로 측정하니 22.3초였다. 이를 단순 선형 외삽하면 61,706차원
+client 한 명의 mask share 생성만 약 90분이며, q=100이면 직렬 작업량은
+약 149시간이다. 암호화·전송·검증을 제외한 수치이므로 실제 실행 시간
+예측이 아니라 현 구현을 그대로 10라운드 FMNIST에 연결하지 말아야 하는
+성능 근거다. 대규모 실험은 별도의 빠른 MGF wire/프라이버시 경계 설계가
+필요하다.
