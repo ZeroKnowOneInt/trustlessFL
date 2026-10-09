@@ -24,6 +24,7 @@ from .aion_original_hprf import OriginalAionHPRF
 from .crypto import ProtocolError, canonical, digest
 from .numeric import FixedPoint
 from .aion_source_cohort import round_clients
+from . import source_profiles
 
 FILES = ("agent/Aion/SA_ClientAgent.py", "agent/Aion/SA_Aggregator.py",
          "agent/Aion/HPRF/hprf.py", "agent/Aion/HPRF/initialization_values",
@@ -119,6 +120,8 @@ def source_request(config, state, request):
         raise ProtocolError("author source port requires research opt-in")
     client, aggregator, VSS, hprf = load_source(
         manifest["source-root"], json.dumps(manifest["source-sha256"], sort_keys=True))
+    source_profiles.validate_profile(manifest, hprf)
+    source_profiles.pin_profile(manifest, state)
     actor_id = int(config["aion-source-id"])
     from . import aion_source_sharing as sharing
     encrypted_sharing = sharing.enabled(manifest)
@@ -127,6 +130,14 @@ def source_request(config, state, request):
     if not is_client and actor_id != manifest["aggregator"]:
         raise ProtocolError("unknown author role")
     action = request["action"]
+    from .aion_source_roster import enabled as roster_enabled
+    roster_enabled(manifest)  # Reject unknown profiles instead of downgrading.
+    from . import aion_source_aggregate as aggregate_validation
+    validate_aggregate = aggregate_validation.enabled(manifest)
+    if "paper_numerics" in manifest:
+        from .source_paper_numeric import filter_rule, scale_source
+        filter_rule(manifest)  # Validate before hello or cached replies.
+        scale_source(manifest)
     if action == "hello":
         return dict(actor=actor_id, role="client" if is_client else "aggregator",
                     task=manifest["task"], config=digest(manifest))
@@ -156,15 +167,13 @@ def source_request(config, state, request):
     authorize_selection = selection_auth.enabled(manifest)
     if authorize_selection and (not paper or not encrypted_sharing):
         raise ProtocolError("source selection authorization requires encrypted paper-MGF path")
-    if paper and (manifest["paper_numerics"].get("wire_encoding", "decimal") != "decimal"
-                  or manifest["paper_numerics"].get("scale_source", "quantized-mean") != "quantized-mean"):
+    if paper and manifest["paper_numerics"].get("wire_encoding", "decimal") != "decimal":
         raise ProtocolError("unsupported source precision; exact-scale wire is publicly invertible")
     if paper and manifest["workload"] == "fmnist" and (
             manifest["paper_numerics"].get("reference_sha256") !=
             manifest.get("training", {}).get("input_sha256", {}).get("reference.npz")):
         raise ProtocolError("paper bootstrap is not bound to the staged public checkpoint")
-    codec = (FixedPoint(manifest["decimals"], manifest["max_abs"], len(manifest["clients"]),
-                        mask_backend="aion-original", original_hprf_setup=hprf.public_setup())
+    codec = (source_profiles.update_codec(manifest, hprf)
              if learning else None)
     vss = VSS.__new__(VSS)
     if encrypted_sharing:
@@ -194,7 +203,7 @@ def source_request(config, state, request):
             raise ProtocolError("source enrollment is one-time learning initialization")
         actor.share_mask_seed = share_mask_seed
         actor.vss_share = MethodType(client.vss_share, actor)
-        actor.mask_seed = random.SystemRandom().randint(1, 100000)
+        actor.mask_seed = source_profiles.sample_key(manifest, hprf)
         actor.share_mask_seed()
         state["mask_seed"] = actor.mask_seed
         response = dict(outbox=outbox)
@@ -232,7 +241,7 @@ def source_request(config, state, request):
             if "mask_seed" in state:
                 actor.mask_seed = state["mask_seed"]
             else:
-                actor.mask_seed = random.SystemRandom().randint(1, 100000)
+                actor.mask_seed = source_profiles.sample_key(manifest, hprf)
                 actor.share_mask_seed()
             if manifest["workload"] == "synthetic":
                 from .task import local_delta
@@ -317,6 +326,9 @@ def source_request(config, state, request):
                 authorized = state.get("source-selection", {})
                 if authorized.get("round") != round_id or authorized.get("members") != members:
                     raise ProtocolError("source key release requires masked MGF authorization")
+        from .aion_source_roster import require_commit
+        require_commit(manifest, state, request, members)
+        if encrypted_sharing:
             # A retry may release the same sum, never a second subset's sum
             # from the same round. Across-round CCS protection is separate.
             tag = digest(sorted(members))
@@ -343,6 +355,8 @@ def source_request(config, state, request):
             vectors = request["vectors"]
         response = selection_auth.authorize(manifest, transport_identity, state, request,
                                             vectors, hprf, codec.max_integer)
+    elif is_client and action == "validate-aggregate" and validate_aggregate:
+        response = aggregate_validation.validate(manifest, transport_identity, state, request, hprf)
     elif not is_client and action == "select":
         if round_id != state.get("last_round", 0) + 1:
             raise ProtocolError("source selection round out of order")
@@ -410,10 +424,12 @@ def source_request(config, state, request):
         if pending.get("round") != round_id:
             raise ProtocolError("missing original selection")
         entries = request["shares"]
-        if len({e["sender"] for e in entries}) != len(entries) or any(
-                e["sender"] not in manifest["committee"] for e in entries):
+        if (not encrypted_sharing or "threshold_rule" not in manifest["sharing_profile"]) and (
+                len({e["sender"] for e in entries}) != len(entries) or any(
+                    e["sender"] not in manifest["committee"] for e in entries)):
             raise ProtocolError("invalid original committee replies")
-        actor.committee_threshold = max(2, len(manifest["committee"]) // 3)
+        actor.committee_threshold = (sharing.threshold(manifest) if encrypted_sharing
+                                    else max(2, len(manifest["committee"]) // 3))
         actor.committee_shares_sum = ({e["sender"]: e["sum_shares"] for e in entries}
                                      if not encrypted_sharing else {})
         actor.vec_sum_partial = np.asarray(pending["total"], dtype=object)
@@ -428,9 +444,14 @@ def source_request(config, state, request):
         if learning:
             if not encrypted_sharing and len(actor.committee_shares_sum) < actor.committee_threshold:
                 raise ProtocolError("source learning shares below threshold")
-            actor.seed_sum = (sharing.recover_key(manifest, transport_identity, entries,
-                pending["selected"], round_id) if encrypted_sharing else
-                actor.vss.reconstruct(list(actor.committee_shares_sum.values()), actor.prime))
+            if validate_aggregate:
+                opening = sharing.recover_key_opening(manifest, transport_identity, entries,
+                                                     pending["selected"], round_id)
+                actor.seed_sum = opening["key"]
+            else:
+                actor.seed_sum = (sharing.recover_key(manifest, transport_identity, entries,
+                    pending["selected"], round_id) if encrypted_sharing else
+                    actor.vss.reconstruct(list(actor.committee_shares_sum.values()), actor.prime))
             paper_metadata = {}
             if paper:
                 from .source_paper_numeric import paper_codec, recover
@@ -457,6 +478,8 @@ def source_request(config, state, request):
                 state["paper_next_linf"] = meta["next_linf"]
                 state["paper_bound"] = meta["bound"]
                 state["paper_terms"] = (state.get("paper_terms", []) + [meta["history_term"]])[-2:]
+                if "mgf_scope" in meta:
+                    state["paper_mgf_scope"] = meta["mgf_scope"]
         else:
             aggregator.reconstruction_process(actor)
         state.update(last_round=round_id, b_old=pending["bound"],
@@ -464,6 +487,8 @@ def source_request(config, state, request):
                      linf_HPRF_old=float(actor.linf_HPRF_old))
         response = dict(result=_plain(actor.final_sum), outbox=outbox,
                         source_bft_committed=False, **({"model": state["model"]} if learning else {}))
+        if validate_aggregate:
+            response["aggregate_opening"] = opening
     else:
         raise ProtocolError("unknown author source action or role")
     state["vss"] = _plain(dict(p=vss.p, q=vss.q, g=vss.g, h=vss.h))

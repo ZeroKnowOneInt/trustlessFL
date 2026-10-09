@@ -18,6 +18,9 @@ from .aion_source_server import AuthorASRWorkflow
 from .client_app import payload, records
 from .crypto import ProtocolError, canonical
 from .paper_dmc import QuantizedLiftError
+from .aion_source_aggregate import AggregateValidationError
+from .source_paper_numeric import MGFSelectionError
+from .source_profiles import SourceProfileError
 
 client_app = ClientApp()
 server_app = ServerApp()
@@ -42,6 +45,15 @@ def handle(message: Message, context: Context):
         return Message(records(result), reply_to=message)
     except QuantizedLiftError as exc:
         return Message(error=Error(code=400, reason="Author ASR numeric failure: " + exc.code),
+                       reply_to=message)
+    except AggregateValidationError as exc:
+        return Message(error=Error(code=400, reason="Author ASR aggregate validation failure: " + exc.code),
+                       reply_to=message)
+    except MGFSelectionError as exc:
+        return Message(error=Error(code=400, reason="Author ASR MGF selection failure: " + exc.code),
+                       reply_to=message)
+    except SourceProfileError as exc:
+        return Message(error=Error(code=400, reason="Author ASR profile failure: " + exc.code),
                        reply_to=message)
     except (ProtocolError, ValueError, KeyError, TypeError, OverflowError):
         return Message(error=Error(code=400, reason="Author ASR request rejected"), reply_to=message)

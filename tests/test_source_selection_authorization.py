@@ -13,6 +13,7 @@ from Cryptodome.PublicKey import ECC
 from trustlessfl.aion_source_asr import load_source, source_request
 from trustlessfl.aion_source_bft import _module
 from trustlessfl.aion_source_inbox import inbox_root
+from trustlessfl.aion_source_roster import statement
 from trustlessfl.aion_source_selection import check_authorizations, sign_vector
 from trustlessfl.aion_source_server import provision_source
 from trustlessfl.aion_source_sharing import identity_for
@@ -34,7 +35,7 @@ def case(tmp_path):
     keys = {actor: ECC.generate(curve="P-256") for actor in manifest["committee"]}
     registry = {str(actor): key.public_key().export_key(format="PEM") for actor, key in keys.items()}
     for actor in keys:
-        states[actor]["source-bft"] = dict(registry=registry)
+        states[actor]["source-bft"] = dict(registry=registry, private=keys[actor].export_key(format="PEM"))
     hprf = load_source(manifest["source-root"], json.dumps(manifest["source-sha256"], sort_keys=True))[3]
 
     def proof(sequence, value):
@@ -64,7 +65,7 @@ def case(tmp_path):
 
 
 def test_committee_replays_filter_before_only_selected_key_sum_release(case):
-    manifest, _, states, call, previous, make_vectors, _, _ = case
+    manifest, _, states, call, previous, make_vectors, proof, _ = case
     for sender in (0, 1, 14, 15):
         for event in call(sender, "enroll")["outbox"]:
             call(event["recipient"], "deliver-share", body=event["body"])
@@ -77,12 +78,32 @@ def test_committee_replays_filter_before_only_selected_key_sum_release(case):
     reply = call(0, "authorize-selection", vectors=vectors, model=previous, members=[0, 1])
     assert reply["selected"] == [0, 1]
     assert call(0, "authorize-selection", vectors=vectors, model=previous, members=[0, 1]) == reply
-    sealed = call(0, "sum-shares", members=[0, 1])
+    with pytest.raises(ProtocolError, match="requires filtered BFT commit"):
+        call(0, "sum-shares", members=[0, 1])
+    commit = proof(2, digest(statement(manifest, 1, [0, 1])))
+    sealed = call(0, "sum-shares", members=[0, 1], selection_commit=commit)
     assert sealed["sealed_sum"]["members"] == [0, 1]
     with pytest.raises(ProtocolError, match="requires masked MGF authorization"):
         call(0, "sum-shares", members=[14, 15])
     assert states[0]["source-key-releases"] == {"1": digest([0, 1])}
     assert manifest["selection_authorization"]["evidence"].startswith("client-signed")
+
+
+def test_paper_bft_voter_requires_its_own_filter_approval(case):
+    manifest, _, states, call, previous, make_vectors, proof, _ = case
+    registry = proof(2, "unused")["registry"]
+    args = dict(sequence=2, registry=registry, selection_members=[0, 1],
+                value=digest(statement(manifest, 1, [0, 1])))
+    with pytest.raises(ProtocolError, match="requires masked MGF authorization"):
+        call(0, "bft-prepare", **args)
+    assert "2" not in states[0]["source-bft"].get("values", {})
+    call(0, "authorize-selection", vectors=make_vectors(), model=previous, members=[0, 1])
+    with pytest.raises(ProtocolError, match="requires masked MGF authorization"):
+        call(0, "bft-prepare", **{**args, "selection_members": [14, 15],
+            "value": digest(statement(manifest, 1, [14, 15]))})
+    assert "2" not in states[0]["source-bft"].get("values", {})
+    reply = call(0, "bft-prepare", **args)
+    assert reply["response"]["value"] == args["value"]
 
 
 @pytest.mark.parametrize("change", ["coordinate", "signature", "task", "parent", "scale", "sender", "plaintext"])
@@ -150,8 +171,14 @@ def test_tied_norms_cannot_be_steered_by_relay_arrival_order(case):
     assert reply["selected"] == call(20, "select", vectors=vectors)["selected"] == [0, 1]
 
 
-def test_fourth_round_replay_uses_two_committed_historical_terms(case):
-    manifest, _, states, call, previous, make_vectors, proof, hprf = case
+def test_legacy_fourth_round_replay_uses_two_committed_historical_terms(case):
+    manifest, nodes, states, call, previous, make_vectors, proof, hprf = case
+    # Historical manifests only required the certificate, not local numeric
+    # replay. This fixture deliberately invents metadata and must not exercise
+    # the new stronger profile as if those terms were independently verified.
+    del manifest["aggregation_validation"]
+    manifest["paper_numerics"].pop("filter_rule", None)
+    Path(nodes[1]["aion-source-manifest"]).write_text(json.dumps(manifest))
     terms = []
     for round_id in range(1, 5):
         linf = None if round_id == 1 else "0.012347"
@@ -169,6 +196,19 @@ def test_fourth_round_replay_uses_two_committed_historical_terms(case):
         previous = dict(round=round_id, model=body["model"], body=body,
                         commit=proof(2 * round_id + 1, digest(body)))
     assert states[0]["source-selection"]["paper_terms"] == ["3", "4"]
+
+
+def test_new_profile_rejects_committed_but_not_locally_replayed_history(case):
+    manifest, _, states, call, previous, make_vectors, proof, _ = case
+    call(0, "authorize-selection", vectors=make_vectors(), model=previous, members=[0, 1])
+    body = dict(msg="FINAL_SUM", iteration=1, task=manifest["task"], model=previous["model"],
+                paper_numeric=dict(next_linf="0.012347", bound="1/1000", history_term="999"))
+    previous = dict(round=1, model=body["model"], body=body, commit=proof(3, digest(body)))
+    before = copy.deepcopy(states[0]["source-selection"])
+    with pytest.raises(ProtocolError, match="requires local aggregate validation"):
+        call(0, "authorize-selection", 2, vectors=make_vectors(2, "0.012347"),
+             model=previous, members=[0, 1])
+    assert states[0]["source-selection"] == before
 
 
 def test_replay_receipts_bind_committee_round_members_parent_and_vectors(case):

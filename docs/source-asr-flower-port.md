@@ -12,6 +12,12 @@
 
 ## 현재 연결된 경로
 
+최신 paper-scale 실행은 `scale_source=quantized-sum`으로 다음 scale/history의
+update와 mask를 모두 selected SUM 단위로 계산한다. 학습 모델에 적용할 때만
+selected mean을 사용한다. 과거 mean/mask-SUM 혼용 profile은 legacy로 보존하며,
+이 보정 후에도 실제 Flower 복원의 carry ambiguity는 남아 있다.
+[독립 DMC/DMR 대조와 새 실행](reproduction/paper-mapping-and-sum-units-2026-10-02.md).
+
 | 원본 | Flower 연결 |
 | --- | --- |
 | `param.choose_committee` | 원본 ChaCha20 함수로 committee 선정, 공개 설정에 순서/seed 고정 |
@@ -69,6 +75,18 @@ max_abs 100 설정에서 인코딩된 업데이트 항의 좌표별 상한은
 
 다음은 source 계산 함수의 교체가 아니라 BFT 연결부의 명시적인 보정이다.
 
+- 2026-10-02부터 새 manifest의 `selection_consensus=post-filter-bft-v1`은
+  필터를 먼저 실행하고, 통과한 집합을 첫 번째 BFT의 합의 대상으로 쓴다.
+  합계 키 share 제공은 해당 round/명단의 commit 인증서가 있을 때만 허용한다.
+  Paper-MGF 위원회는 자신의 signed filter replay 결과와 다른 명단에 투표하지 않는다.
+  과거 manifest의 수신 집합 BFT 의미는 보존한다.
+  [변경과 검증](reproduction/post-filter-bft-2026-10-02.md).
+- 새 paper-MGF manifest의 `aggregation_validation`은 선택 합계 키 opening을
+  초기 VSS commitment와 대조하고, 위원회가 masked SUM·복원 모델·mask norm·
+  다음 scale/history를 재계산한 뒤 모델 BFT에 투표하도록 한다. 다음 round도
+  자신이 검증하지 않은 history를 인증서만 보고 신뢰하지 않는다. 추가 client
+  key/mask share는 없으며 aggregate opening은 public model/history에 넣지 않는다.
+  [검증과 공식 10-round 실행](reproduction/source-aggregate-validation-2026-10-02.md).
 - 원본 검증은 수신자의 자기 공개키를 썼다. sender별 공개키를 Flower에서
   수집·고정하고, 해당 sender 키로 원본 서명 검증 함수를 호출한다.
 - `Message` 객체 대신 공개 payload digest를 합의 값으로 전송한다.

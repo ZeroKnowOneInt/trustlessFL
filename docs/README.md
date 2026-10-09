@@ -1,5 +1,16 @@
 # 문서
 
+- [현재 계획: CCS/VRF까지 진행·누출 검사 보류, BLMR/VSS 비용·단계별 통과 기준](./reproduction/asr-plan-feasibility-2026-10-06.md)
+- [설계 계약: ASR·모듈러 집계·비공개 MGF·CCS/VRF, 입력·모듈러스 조건과 보류한 누출 보강안](./asr-modular-private-mgf-design.md)
+- [모듈러 집계·ZKP 후보 감사: 용량 조건·마스크 바인딩·ASR 차분·288좌표 AMR 실패와 scalar 출력 역산](./reproduction/split-wire-amr-audit-2026-10-03.md)
+- [DMC/DMR 독립 계산 대조·MGF SUM/MEAN 단위 보정·새 Flower 실행의 carry 실패](./reproduction/paper-mapping-and-sum-units-2026-10-02.md)
+- [8좌표 scaled SUM 충돌: 기존 aggregate opening/share의 carry 한계·공식 배포 재확인](./reproduction/scaled-sum-decoder-boundary-2026-10-02.md)
+- [MGF 이력 bound 판정 보정: 최소 인원 강제 채움·80% 제한 제거·공식 Flower 4라운드](./reproduction/source-mgf-inclusive-bound-2026-10-02.md)
+- [ASR 복원 임계값 보정: f+1·유효 share 집합·7명 위원회 공식 Flower 검증](./reproduction/source-asr-threshold-2026-10-02.md)
+- [실제 FMNIST 집계 재검증: 정상 4라운드 오차 0·공격 3라운드 복원 모호성·링 범위 대조](./reproduction/source-aggregate-fmnist-2026-10-02.md)
+- [MGF 합계·mask norm 위원회 재검증: BFT② gate·공식 Flower 10라운드 모델 오차 0](./reproduction/source-aggregate-validation-2026-10-02.md)
+- [스케일링된 모듈러 공간 검증: 조건부 정확 복원·MGF norm·실제 Flower 합계 범위](./reproduction/scaled-ring-consistency-2026-10-02.md)
+- [첫 번째 BFT를 필터 통과 명단으로 보정: key release 연결·129개 회귀·공식 Flower 검증](./reproduction/post-filter-bft-2026-10-02.md)
 - [최신 진행 상황 요약: 경로별 완료 범위·검증·보안 한계·다음 작업](./reproduction/aion-flower-status-2026-10-01.md)
 - [Signed masked-MGF 공식 Flower 10라운드 시도: 4라운드 복원 실패와 완료 조건](./reproduction/source-authorized-long-run-2026-10-01.md)
 - [클라이언트 서명·위원회별 MGF 재계산·선택 명단과 key release 연결](./reproduction/source-selection-authorization-2026-10-01.md)

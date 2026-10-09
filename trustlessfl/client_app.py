@@ -28,11 +28,23 @@ def handle_source_asr(message: Message, context: Context) -> Message:
     """Separate author-normal-path transport; never enters the custom Party."""
     from .aion_source_asr import flower_source_request
     from .paper_dmc import QuantizedLiftError
+    from .aion_source_aggregate import AggregateValidationError
+    from .source_paper_numeric import MGFSelectionError
+    from .source_profiles import SourceProfileError
     try:
         response = flower_source_request(context.node_config, context.state, payload(message))
         return Message(records(response), reply_to=message)
     except QuantizedLiftError as exc:
         return Message(error=Error(code=400, reason="Author ASR numeric failure: " + exc.code),
+                       reply_to=message)
+    except AggregateValidationError as exc:
+        return Message(error=Error(code=400, reason="Author ASR aggregate validation failure: " + exc.code),
+                       reply_to=message)
+    except MGFSelectionError as exc:
+        return Message(error=Error(code=400, reason="Author ASR MGF selection failure: " + exc.code),
+                       reply_to=message)
+    except SourceProfileError as exc:
+        return Message(error=Error(code=400, reason="Author ASR profile failure: " + exc.code),
                        reply_to=message)
     except (ProtocolError, ValueError, KeyError, TypeError, OverflowError):
         return Message(error=Error(code=400, reason="Author ASR request rejected"), reply_to=message)

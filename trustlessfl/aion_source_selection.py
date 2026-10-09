@@ -2,8 +2,8 @@
 
 This adds transport authentication and deterministic filter replay, not a
 solution for scaled-HPRF carry, private key-domain attacks, or CCS. Historical
-aggregate metadata is trusted only after its existing normal-path BFT commit;
-that certificate does not prove that the metadata itself was computed honestly.
+aggregate metadata in legacy profiles is only BFT-bound. New aggregation
+validation profiles also require each committee node's local numeric replay.
 """
 
 from fractions import Fraction
@@ -11,6 +11,7 @@ from fractions import Fraction
 from .aion_source_cohort import round_clients
 from .crypto import ProtocolError, digest, verify
 from .source_paper_numeric import descriptor, paper_codec, select_masked
+from .source_profiles import TransmissionCodec, profile
 
 MODE = "signed-masked-filter-replay-v1"
 
@@ -34,7 +35,8 @@ def check_vectors(manifest, vectors, round_id, parent, codec, max_integer):
             or {v["sender"] for v in vectors} != set(cohort)):
         raise ProtocolError("invalid signed source VECTOR cohort")
     from .paper_dmc import round_even
-    limit = max_integer * (codec.denominator // 10 ** codec.decimals)
+    limit = (codec.max_integer * codec.spacing if isinstance(codec, TransmissionCodec)
+             else max_integer * (codec.denominator // 10 ** codec.decimals))
     upper = limit + round_even(codec.coefficient * codec.modulus) + 1
     for vector in vectors:
         if (vector["task"] != manifest["task"] or vector["msg"] != "VECTOR"
@@ -94,6 +96,8 @@ def authorize(manifest, identity, state, request, vectors, hprf, max_integer):
         raise ProtocolError("source selection requires locally pinned BFT registry")
     from .aion_source_bft import check_source_commit
     history = dict(paper_terms=list(saved.get("paper_terms", [])))
+    if "paper_mgf_scope" in saved:
+        history["paper_mgf_scope"] = saved["paper_mgf_scope"]
     if round_id == 1:
         if any(type(x) not in (int, float) or x != 0 for x in previous["model"]):
             raise ProtocolError("source selection genesis must be zero offset")
@@ -105,10 +109,18 @@ def authorize(manifest, identity, state, request, vectors, hprf, max_integer):
                 or body.get("task") != manifest["task"] or body.get("model") != previous["model"]):
             raise ProtocolError("source selection history differs from committed model")
         value = digest(body)
+        from .aion_source_aggregate import require_previous
+        require_previous(manifest, state, round_id - 1, body)
         meta = body.get("paper_numeric", {})
+        from .source_paper_numeric import require_scope_history
+        require_scope_history(manifest, dict(paper_mgf_scope=meta.get("mgf_scope", "projection"),
+                                            paper_terms=[meta.get("history_term")]))
+        if "mgf_scope" in meta:
+            history["paper_mgf_scope"] = meta["mgf_scope"]
         try:
             linf, bound, term = (Fraction(meta[k]) for k in ("next_linf", "bound", "history_term"))
-            if linf <= 0 or bound < 0 or term < 0:
+            fixed = profile(manifest)["period_policy"] == "fixed-integer"
+            if linf < 0 or (linf == 0 and not fixed) or bound < 0 or term < 0:
                 raise ValueError("invalid history magnitude")
         except (KeyError, TypeError, ValueError, ZeroDivisionError) as exc:
             raise ProtocolError("invalid source selection MGF history") from exc
@@ -121,11 +133,19 @@ def authorize(manifest, identity, state, request, vectors, hprf, max_integer):
     vectors = sorted(vectors, key=lambda v: v["sender"])
     pending = select_masked(manifest, history, codec, vectors, round_id)
     if request["members"] != pending["selected"]:
-        raise ProtocolError("source key request differs from masked MGF selection")
+        from .aion_source_aggregate import AggregateValidationError
+        raise AggregateValidationError("selection-mismatch", "source key request differs from masked MGF selection")
     response = dict(selected=pending["selected"], bound=pending["bound"],
                     vectors_digest=digest(vectors))
     response["authorization"] = identity.sign(dict(msg="MASKED_MGF_SELECTION",
         task=manifest["task"], round=round_id, parent=digest(previous["model"]), **response))
     state["source-selection"] = dict(round=round_id, request=tag, response=response,
         paper_terms=history["paper_terms"], members=pending["selected"])
+    if "mgf_scope" in manifest.get("source_profile", {}):
+        from .source_paper_numeric import mgf_scope
+        state["source-selection"]["paper_mgf_scope"] = mgf_scope(manifest)
+    from .aion_source_aggregate import enabled as aggregate_validation_enabled
+    if aggregate_validation_enabled(manifest):
+        state["source-selection"].update(pending=pending, previous_model=previous["model"],
+                                          previous_linf=None if linf is None else str(linf))
     return response

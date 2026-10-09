@@ -113,25 +113,71 @@ class PaperDMC:
         return [rational(y) - self.coefficient * h / self.denominator
                 for y, h in zip(masked_sum, aggregate_hprf, strict=True)]
 
-    def remove_centered(self, masked_sum, aggregate_hprf, *, sum_bound):
+    def residual_modulo(self, masked_sum, aggregate_hprf):
+        """Residual in the *scaled* output ring, not a decoded model sum.
+
+        Multiplication by coefficient/denominator maps a p-period to
+        ``period``. Representatives still need an independently justified
+        lift; this operation alone does not recover an ordinary real sum.
+        Do not apply it to client vectors before MGF: norm is not invariant
+        under a change of modular representative.
+        """
+        return [v % self.period for v in self.residual(masked_sum, aggregate_hprf)]
+
+    def remove_centered(self, masked_sum, aggregate_hprf, *, sum_bound,
+                        selected_count=None, decimal_wire=False):
         """Explicit modular adaptation; not literal Algorithm 8.
 
         A caller must supply an independent bound on each true SUM coordinate.
-        Reject ambiguous configurations BEFORE reading the masked sum.
+        This is a precondition, NOT a proof that malicious clients obey it.
+        Reject ambiguous configurations BEFORE reading the masked sum. Include
+        per-client wire rounding when the transmitted view is decimal.
         """
+        count = self.clients if selected_count is None else selected_count
+        if type(count) is not int or not 1 <= count <= self.clients:
+            raise ProtocolError("invalid selected count for bounded sum lift")
+        if type(decimal_wire) is not bool:
+            raise ProtocolError("invalid bounded sum wire precision")
         bound = rational(sum_bound)
-        error_bound = self.coefficient * (self.clients - 1) / self.denominator
+        error_bound = self.coefficient * (count - 1) / self.denominator
+        if decimal_wire:
+            error_bound += Fraction(count, 2 * self.denominator)
         if bound < 0 or bound + error_bound >= self.period / 2:
             raise ProtocolError("scaled ring lacks unique bounded sum lift")
         if error_bound >= Fraction(1, 2 * 10 ** self.decimals):
             raise ProtocolError("scaled rounding error exceeds DMC precision")
-        return [self.quantize((v + self.period / 2) % self.period - self.period / 2)
-                for v in self.residual(masked_sum, aggregate_hprf)]
+        result = [self.quantize((v + self.period / 2) % self.period - self.period / 2)
+                  for v in self.residual_modulo(masked_sum, aggregate_hprf)]
+        if any(abs(v) > bound for v in result):
+            raise ProtocolError("decoded sum outside independent public bound")
+        return result
 
     def mask_decimal_wire(self, model, hprf):
         """Single masked view at DMC decimal precision; no auxiliary shares."""
         return [Fraction(round_even(v * self.denominator), self.denominator)
                 for v in self.mask(model, hprf)]
+
+    def remove_modular_integer_wire(self, wire_sum, aggregate_hprf, *, selected_count,
+                                    client_integer_bound, original_q):
+        """Separate, fail-closed recovery for a COMPATIBLE integer mask scale.
+
+        Same existing integer wire extra*z+round(coefficient*h), no second
+        vector. Fractional coefficients are rejected before any decoding:
+        mod p does not generally cancel their rounded mask carry. No legacy
+        fallback or automatic parameter/vector/MGF change is performed.
+        """
+        if self.coefficient.denominator != 1:
+            raise ProtocolError("fractional decimal mask scale is not certified for mod-p recovery")
+        from .modular_recovery import ModularRecovery, hprf_error_bound
+        scale = 10**self.decimals
+        spacing, remainder = divmod(self.denominator, scale)
+        if remainder:
+            raise ProtocolError("integer wire has incompatible model precision")
+        multiplier = self.coefficient.numerator
+        error = multiplier*hprf_error_bound(self.clients, p=self.modulus, q=original_q)
+        recovery = ModularRecovery(self.modulus, spacing, self.clients,
+                                   client_integer_bound, error, multiplier)
+        return recovery.recover(wire_sum, aggregate_hprf, selected_count=selected_count)
 
     def remove_quantized_lift(self, masked_sum, aggregate_hprf, *, selected_count,
                               decimal_wire=False):

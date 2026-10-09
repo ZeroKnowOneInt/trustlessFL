@@ -190,12 +190,46 @@ def pedersen_verify_share(index: int, share: tuple[int, int], commitments: list[
         return False
 
 
-def pedersen_reconstruct(shares: dict[int, tuple[int, int]], commitments: list[int]) -> int:
+def pedersen_verify_opening(pair: tuple[int, int], commitments: list[int]) -> bool:
+    """Verify an aggregate constant-term opening, not individual key shares."""
+    try:
+        if (not isinstance(pair, (tuple, list)) or len(pair) != 2
+                or not isinstance(commitments, list) or len(commitments) < 2):
+            return False
+        value, blind = scalar(pair[0]), scalar(pair[1])
+        lhs = _group_power(GENERATOR, value) * _group_power(PEDERSEN_GENERATOR, blind) % MODULUS
+        return lhs == group_element(commitments[0])
+    except (ValueError, TypeError):
+        return False
+
+
+def _pedersen_reconstruction_indices(shares, commitments):
     if len(shares) < len(commitments):
         raise ProtocolError("insufficient Pedersen shares")
     if any(not pedersen_verify_share(i, pair, commitments) for i, pair in shares.items()):
         raise ProtocolError("invalid Pedersen reconstruction share")
-    selected = tuple(sorted(shares)[:len(commitments)])
+    return tuple(sorted(shares)[:len(commitments)])
+
+
+def pedersen_reconstruct_pair(shares: dict[int, tuple[int, int]], commitments: list[int]) -> tuple[int, int]:
+    """Recover the existing shared secret AND its constant-term blinding.
+
+    No fresh sharing is performed. Exposing this opening is appropriate only
+    for an already authorized aggregate, not an individual client's secret.
+    """
+    selected = _pedersen_reconstruction_indices(shares, commitments)
+    weights = _lagrange_at_zero(selected)
+    pair = tuple(sum(coefficient * shares[i][component] for i, coefficient in
+                     zip(selected, weights, strict=True)) % ORDER for component in (0, 1))
+    if not pedersen_verify_opening(pair, commitments):
+        raise ProtocolError("Pedersen aggregate opening differs from commitments")
+    return pair
+
+
+def pedersen_reconstruct(shares: dict[int, tuple[int, int]], commitments: list[int]) -> int:
+    # Preserve the old key-only path's group-arithmetic cost. Only the new
+    # authorized aggregate witness needs the second component/opening check.
+    selected = _pedersen_reconstruction_indices(shares, commitments)
     return sum(coefficient * shares[i][0] for i, coefficient in
                zip(selected, _lagrange_at_zero(selected), strict=True)) % ORDER
 

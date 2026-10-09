@@ -19,7 +19,7 @@ from trustlessfl.crypto import canonical
 from trustlessfl.aion_source_cohort import make_cohorts
 
 
-def stage(prepared, output, *, workers=2, rounds=None, attack_rounds=None):
+def stage(prepared, output, *, workers=2, rounds=None, attack_rounds=None, committee=None):
     prepared, output = Path(prepared), Path(output).resolve()
     original = json.loads((prepared / "manifest.json").read_text())
     if workers < 1 or workers > len(original["clients"]) + 1:
@@ -27,6 +27,9 @@ def stage(prepared, output, *, workers=2, rounds=None, attack_rounds=None):
     count = original["rounds"] if rounds is None else rounds
     if count < 1:
         raise ValueError("positive rounds required")
+    committee_size = len(original["committee"]) if committee is None else committee
+    if type(committee_size) is not int or not 2 <= committee_size <= len(original["clients"]):
+        raise ValueError("invalid staged committee size")
     if source_inventory(original["source-root"]) != original["source-sha256"]:
         raise ValueError("prepared author snapshot changed")
     training = dict(original["training"]) if original.get("training") else None
@@ -52,11 +55,11 @@ def stage(prepared, output, *, workers=2, rounds=None, attack_rounds=None):
             malicious=training["attack_clients"] if training else 0,
             attack_rounds=training["attack_rounds"] if training else (), seed=participation["seed"])
     path, nodes = provision_source(output, original["source-root"],
-        clients=len(original["clients"]), committee=len(original["committee"]),
+        clients=len(original["clients"]), committee=committee_size,
         dimension=original["dimension"], rounds=count, workload=original["workload"],
         decimals=original["decimals"], max_abs=original["max_abs"],
         learning_rate=original["learning_rate"], cohort_schedule=schedule,
-        paper_numerics=original.get("paper_numerics"))
+        paper_numerics=original.get("paper_numerics"), source_profile=original.get("source_profile"))
     manifest = json.loads(path.read_text())
     if participation:
         manifest["participation"] = participation
@@ -108,11 +111,13 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--rounds", type=int)
+    parser.add_argument("--committee", type=int,
+                        help="Override committee size for the fresh task, preserving training settings")
     parser.add_argument("--attack-rounds", type=int, nargs="+",
                         help="Override the prepared attack schedule for the fresh task")
     args = parser.parse_args()
     output = stage(args.prepared, args.output, workers=args.workers, rounds=args.rounds,
-                   attack_rounds=args.attack_rounds)
+                   attack_rounds=args.attack_rounds, committee=args.committee)
     from experiments.run_endpoint_flower import run
     run(output)
     result = json.loads((output / "results.json").read_text())

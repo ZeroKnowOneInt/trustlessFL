@@ -1,6 +1,96 @@
 # 작업 목표 재설정: 저자 Aion 구현의 Flower 포팅
 
+## 2026-10-08 최신 요청: 동일 스케일·단일 벡터 MGF와 ASR
+
+현재 작업은 [동일 스케일 목표](same-scale-asr-goal.md)를 따른다.
+MGF와 집계에 같은 스케일의 마스킹 벡터를 사용하며, 아래 2026-10-06의
+분리 집계+ZKP 계획은 현재 구현의 선행 조건이 아니다. 먼저 실제 HPRF와
+스케일된 복원 조건을 검증하고 정당화된 방법만 Flower에 연결한다.
+제품 goal은 기존 미완료 항목 때문에 최초 등록이 거부됐지만, 이후 사용자가
+새 `resum` goal을 활성화했다. 상세 목표와 완료 기준은 위 문서에 기록한다.
+
+## 2026-10-06 현재 범위: ASR·모듈러 집계·비공개 MGF, 참여 정책은 CCS/VRF까지
+
+현재 후속 설계는 [새 설계 계약](asr-modular-private-mgf-design.md)을 기준으로 한다.
+ASR과 원본 masked-MGF 검사식을 유지하되, 모듈러 집계와 ZKP 결속을 사용하는
+확장이다. 사용자 결정에 따라 참여 정책은 CCS/VRF 배정·검증까지 진행하고,
+다중 라운드 공개 이력 rank 검사, all-or-none 그룹 처리, 관련 그룹 재편·키
+재공유는 이번 구현·완료 조건에서 제외한다. 키는 task 초기 한 번 공유해 재사용한다.
+따라서 MGF/dropout으로 명단이 달라질 때 개인 키가 노출될 수 있는 한계는 남는다.
+VSS·서명·실제 ZKP 검증, 승인 가중치·범위, BFT 확정 명단과 key release의
+결속 및 동일 round 재시도 규칙은 유지한다.
+충돌 없는 round/block 입력, 네 모듈러 공간과 오차 조건, 벡터 키 VSS 비용도
+유지한다. [수정된 실행 계획](reproduction/asr-plan-feasibility-2026-10-06.md)은
+수치/CCS → HPRF/VSS 비용 → 완전한 ZKP → Flower → 1/4/10-round 검증이다.
+이번 변경은 계획 문서 조정이며 새 CCS/VRF·ZKP·BLMR 경로는 구현 완료하지 않았다.
+범위 축소가 HPRF/증명 비용 문제나 전체 비공개성을 해결한 것은 아니다.
+아래의 원본 primitive 유지·무추가 공유 기록은 당시 재현 목표와 결과를 보존한
+이력이다. 원본 재현 경로는 변경하지 않으며 새 확장 결과와 혼합하지 않는다.
+
+2026-10-02의 후속 보정으로 새 실행의 첫 번째 BFT를 필터 통과 집합으로
+옮기고, 그 commit 인증서를 key release 앞에 연결했다. 원본 HPRF/MMF 수치
+함수는 바꾸지 않았고 source 파일도 수정하지 않았다. 이 adapter 보정은
+scaled-MGF carry 또는 비공개성 문제의 해결이 아니며 전체 목표는 미완료다.
+[첫 번째 BFT 보정과 검증](reproduction/post-filter-bft-2026-10-02.md).
+
 ## 현재 활성 목표: 클라이언트 마스킹 기반 MGF 연결
+
+2026-10-02의 원문 재대조에서 history update MEAN과 mask SUM의 단위 혼용을
+수정했다. 새 paper task는 `scale_source=quantized-sum`으로 scale/history를
+selected SUM에 맞추고 학습 optimizer만 평균을 사용한다. 과거 profile은
+보존한다. 새 공식 synthetic은 2-round 후 r3, FMNIST는 1-round 후 r2의
+carry 모호성으로 실패했다. 독립 Algorithm 7/8 계산에서도 작은 error와
+modular carry를 구분했으며, 단위 보정을 전체 목표 완료로 표시하지 않는다.
+[DMC/DMR 대조와 SUM 단위 보정](reproduction/paper-mapping-and-sum-units-2026-10-02.md).
+
+원본 HPRF와 현행 decimal wire의 8좌표 masked SUM 전체 및 aggregate key가
+같지만 참 update SUM이 다른 공개 fixture도 확인했다. 같은 aggregate
+Pedersen opening/합계 share를 추가해도 구분되지 않는다. 개별 VECTOR와
+commitment는 다르므로 전체 protocol의 불가능성 증명은 아니다. 원본
+combined wire 설명 또는 별도 비공개 공동 계산의 정당화가 필요하며,
+사용자 방향 결정 없이 새 MPC/개별 키 복원/추가 mask sharing을 넣지 않는다.
+[다좌표 decoder 반례와 남은 결정](reproduction/scaled-sum-decoder-boundary-2026-10-02.md).
+
+이력 기반 MGF에서 최소 인원 강제 채움/80% cap도 제거했다. fresh paper
+manifest는 round 4부터 inclusive bound 안의 입력만 모두 선택하고,
+통과자가 2명 미만이면 키 복원 없이 거부한다. 처음 3-round E2 bootstrap은
+별도 초기화로 유지한다. 새 rule은 numeric metadata/BFT②와 바인딩하고
+과거 rule은 legacy로 검증한다. 공식 Flower synthetic 4 rounds는 모델
+오차 0/추가 masks 0으로 완료했지만 carry 및 전체 논문 재현은 미완료다.
+[이력 기반 MGF 선택 규칙 보정](reproduction/source-mgf-inclusive-bound-2026-10-02.md).
+
+새 learning 작업의 초기 VSS/복원 threshold도 BFT의 f+1에 맞췄다.
+기존 식은 위원회 7·8·10명에서 임계값이 낮았다. 새 ASR은 수신한
+잘못된 packet을 유효 집합에서 제외하고 충분한 distinct share로 복원한다.
+7명 위원회의 공식 Flower synthetic 실행은 초기 shares 140/추가 masks 0,
+모델 오차 0으로 완료했다. 이 보정은 silent-node 진행 보장이나 MGF carry
+해결을 뜻하지 않는다.
+[임계값·유효 집합 보정과 검증](reproduction/source-asr-threshold-2026-10-02.md).
+
+실제 FMNIST에도 새 위원회 집계 검증을 적용했다. 공식 Flower 정상
+4라운드는 selected-training replay 8회와 모델 오차 0으로 검증했지만,
+별도 공격 실행은 2라운드 commit 후 3라운드 carry 모호성으로 실패했다.
+정상 실행 round 2~4의 실제 SUM도 centered-ring 범위 밖이므로 단순
+modulo 복원으로 대체하지 않는다. verifier에 사후 SUM/반주기 범위
+관측을 추가했고 전체 목표는 계속 미완료다.
+[실제 FMNIST 성공·실패와 회귀](reproduction/source-aggregate-fmnist-2026-10-02.md).
+
+최신 paper manifest에는 선택 합계 key opening을 초기 local VSS commitment와
+대조하고, 위원회가 masked SUM·모델·mask norm·MGF history를 재계산한 뒤
+BFT②에 투표하는 검증을 추가했다. 개별 키/평문 또는 추가 mask share는
+전달하지 않는다. 공식 Flower synthetic 10 rounds에서 40개 aggregate replay
+receipt, initial shares 80/extra masks 0, selected-training replay 28회의
+모델 오차 0을 확인했다. 이 단계는 aggregate metadata의 맹목적 신뢰를
+보강한 것이며 commensurate-scale carry 모호성의 해법은 아니다.
+[위원회 집계 재검증과 공식 실행](reproduction/source-aggregate-validation-2026-10-02.md).
+
+2026-10-02의 scaled-ring 감사에서는 같은 스케일을 적용한 모듈러 연산의
+일관성과, 독립 SUM bound를 지키는 exact/decimal fixture의 정확 복원을
+확인했다. 다만 기존 공식 Flower 1라운드의 실제 공개 SUM은 centered lift의
+반주기 범위를 초과한다. VECTOR를 먼저 mod P로 줄이는 방식은 MGF norm을
+바꾸므로 채택하지 않았다. 수치 참조의 selected-count·wire 오차 검사를
+보강했지만 현재 학습 wire나 원본 HPRF는 변경하지 않았고 전체 목표는 미완료다.
+[스케일링된 공간 검증과 실제 범위 대조](reproduction/scaled-ring-consistency-2026-10-02.md).
 
 사용자가 요구한 실제 경로는 client local update → 초기 일회성 키 공유와
 round 기반 원본 HPRF masking → Flower masked-vector 전달 → masked MGF

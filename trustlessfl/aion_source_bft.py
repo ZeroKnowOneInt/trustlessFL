@@ -86,6 +86,10 @@ def source_bft_request(manifest, actor_id, state, request):
     if type(round_id) is not int or not 1 <= round_id <= 2 * manifest["rounds"] + 1:
         raise ProtocolError("invalid source BFT sequence")
     value = request["value"]
+    from .aion_source_roster import check_proposal
+    check_proposal(manifest, state, request, round_id)
+    from .aion_source_aggregate import check_proposal as check_aggregate_proposal
+    check_aggregate_proposal(manifest, state, request, round_id)
     values = saved.setdefault("values", {})
     if str(round_id) in values and values[str(round_id)] != value:
         raise ProtocolError("conflicting source BFT value")

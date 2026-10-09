@@ -52,6 +52,31 @@ def test_fresh_task_and_pinned_catalog(official):
         actor_config(context(config, 0))
 
 
+def test_fresh_learning_committee_override_keeps_workload_and_pins_threshold(official):
+    output, _, manifest = official
+    prepared = output.parent / "prepared-learning"
+    path, _ = provision_source(prepared, manifest["source-root"], clients=10,
+                               committee=4, workload="synthetic", rounds=2)
+    original = json.loads(path.read_text())
+    new = stage(prepared, output.parent / "official-seven", committee=7, rounds=1)
+    actual = json.loads((new / "manifest.json").read_text())
+    assert len(actual["committee"]) == 7
+    assert actual["sharing_profile"]["threshold"] == 3
+    assert actual["task"] != original["task"]
+    for key in ("workload", "clients", "dimension", "decimals", "learning_rate", "source-sha256"):
+        assert actual[key] == original[key]
+    assert json.loads(path.read_text()) == original
+
+
+@pytest.mark.parametrize("committee", [1, 11, True, 7.5])
+def test_invalid_committee_override_rejected_before_staging(official, committee):
+    output, _, _ = official
+    target = output.parent / "bad-committee"
+    with pytest.raises(ValueError, match="committee size"):
+        stage(output.parent / "prepared", target, committee=committee)
+    assert not target.exists()
+
+
 @pytest.mark.parametrize("index,count", [(0, 10), (-1, 11), (11, 11)])
 def test_simulation_partition_mismatch_rejected(official, index, count):
     _, config, _ = official

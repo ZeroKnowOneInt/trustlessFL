@@ -1,5 +1,21 @@
 # TrustlessFL — AION-ASR on Flower
 
+## 첫 번째 집계 BFT의 논문 순서 보정 (2026-10-02)
+
+새 실행은 **필터 → 위원회 검증(paper-MGF 경로) → 통과 명단 BFT →
+합계 key share 제공 → 복원 → 모델 BFT** 순서로 동작합니다.
+첫 번째 BFT 인증서는 수신 명단이 아니라 필터 통과 명단에 바인딩하며,
+인증서 없는 key release를 거부합니다. 과거 manifest는 이전 의미를 보존합니다.
+[변경 범위·회귀·공식 Flower 검증](docs/reproduction/post-filter-bft-2026-10-02.md)을
+참고하세요. HPRF/scaling은 바꾸지 않았으며 아래 복원·비공개성 한계도 남아 있습니다.
+
+새 paper-MGF 실행은 **모델 BFT② 앞에도 위원회의 집계/norm 재검증**을
+수행합니다. 선택 합계 키를 초기 VSS commitment와 대조하고, 위원회가
+masked SUM·모델·MGF history를 다시 계산합니다. 공식 Flower synthetic
+10라운드에서 초기 key shares 80건·추가 mask shares 0건·모델 재계산 오차 0을
+확인했습니다. [검증 범위와 남은 carry 모호성](docs/reproduction/source-aggregate-validation-2026-10-02.md)을
+참고하세요. 이 성공을 일반적인 private MGF 완성으로 표시하지 않습니다.
+
 ## 최신 상태 (2026-10-01)
 
 현재는 **저자 Aion 구현을 활용한 Flower 연구용 포팅**이며, 논문 전체의

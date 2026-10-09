@@ -2,6 +2,39 @@
 
 이 문서는 `aion-asr-research-v2`를 논문과 동등한 보안 구현으로 표시하지 않기 위한 검증 기준이다. 현재 구현은 연구용이다.
 
+## 2026-10-06 현재 범위: CCS/VRF까지 구현, 다중 라운드 누출 검사는 보류
+
+[모듈러 집계·비공개 MGF 설계 계약](asr-modular-private-mgf-design.md)과
+[수정된 실행 계획](reproduction/asr-plan-feasibility-2026-10-06.md)은 사용자 결정으로
+참여 정책을 CCS/VRF 배정·검증까지로 제한한다. 공개 이력의 `e_i in rowspan`
+검사, all-or-none 그룹 처리, 관련 그룹 재편·독립 키 재공유는 이번 연구 구현의
+완료 조건이 아니다. 기존 보강안은 참고 이력으로 보존한다.
+이는 보안 문제가 해결됐다는 판정이 아니라 범위 축소다. MGF/dropout으로 명단이
+달라질 때 ASR 키 합 차분에 의한 개인 키 누출 위험은 남으며, CCS/VRF 시험이나
+학습 성공으로 전체 비공개성이 보장됐다고 표시하지 않는다.
+충돌 없는 입력·재시도 규칙, VSS/서명/실제 ZKP/범위 검증과 BFT 승인 명단의
+key release 결속은 유지한다. CCS 등록·난수 조건과 실제 HPRF/VSS/ZKP 비용도
+검증 대상이다. 새 규칙은 **계획 문서이며 새 CCS/VRF 런타임 구현 완료가 아니다**.
+아래 AMR 검토는 과거 감사 이력이고, 현재 선택은 ASR 및 원본 masked-MGF 검사다.
+
+## 2026-10-03 우선 차단 요인: 재사용 키 공개와 AMR 후보
+
+source-ASR의 동적 MGF/dropout 명단에서 공개되는 합계 키는 여러 round에 걸쳐
+차분될 수 있다. `{1,2,3,4}`에서 `{1,2,3}`으로 한 명만 제거해도 제거된 키가
+드러나므로 **영구 배제는 해결책이 아니다.** 같은 round의 상이한 부분집합에
+복원을 허용하는 정책도 별도로 제한해야 한다. CCS·서명·BFT만으로 이 정보가 없어지지 않는다.
+
+공개 fixture 감사에서 modular ASR 대조군은 288/288좌표를 복원했지만, 현재
+ORDER 공유에서 HPRF 출력 보간으로 바꾸는 AMR 후보는 실패했다. 공유 공간을
+HPRF q에 맞춘 진단도 share 조합에 따라 큰 보간 오차가 생겼다. 더 근본적으로
+로드한 원본 scalar HPRF는 공개 출력 2좌표로 큰 scalar 키까지 복원되는 fixture가
+확인됐다. 이는 일반 vector-key BLMR의 공격은 아니지만, **원본 primitive를
+그대로 둔 AMR 전환이나 키 범위 확대만으로 비공개성을 해결할 수 없다는 반례**다.
+
+[상세 설계·수치 결과·재현 명령](reproduction/split-wire-amr-audit-2026-10-03.md).
+이 작업은 isolated audit이며 ZKP·AMR·새 Flower wire를 구현 완료한 것이 아니다.
+아래의 과거 기능 시험 결과를 이 차단 요인의 해결 증거로 사용하지 않는다.
+
 ## CCS·VRF의 범위
 
 [AION 논문 §4.3, Algorithm 4](https://www.usenix.org/system/files/usenixsecurity25-liu-yizhong.pdf#page=9)는 CCS(Client Concealed Sortition)를 실제 프로토콜 절차로 명시한다. 클라이언트는 VRF 증명을 생성해 참여 subset을 결정하고, 업로드할 때 결과와 증명을 보내며, 집계자는 이를 검증한다. 따라서 단순한 향후 과제 언급은 아니다. 같은 절은 여러 라운드에서 재사용하는 HPRF 키의 합을 서로 다른 참여 집합에서 공개하면 차분으로 개인 키가 노출될 수 있다는 동기를 설명한다.
@@ -35,6 +68,14 @@
 구체 보안성을 산정할 때는 [Lattice Estimator](https://github.com/malb/lattice-estimator)처럼 공격 비용을 추정하는 도구가 필요하다. 추정치만으로 구현 검증이나 외부 감사를 대체하지는 않는다. 또한 2047비트 VSS 필드를 HPRF 모듈러스로 그대로 쓰면 정리의 최소 `m`부터 약 2047이므로, 단순히 `hprf_width` 상한만 높이는 변경으로는 현실적인 128비트 보안 파라미터를 얻지 못한다. 현재 `lwe-192-reference`는 VSS와 HPRF 모듈러스를 분리하고 집계 키 변환을 시험하는 선행 단계이다. 폭 8은 P-192에서도 정리 조건 `m=n⌈log q⌉`을 충족하지 않으며, 보안 파라미터 선택은 아직 남았다.
 
 ## MGF와 modular mask
+
+2026-10-02의 별도 source-ASR paper 경로에는 선택 합계 key opening을 초기
+local VSS commitment와 대조하고, 각 위원회가 masked SUM·복원 모델·실제 mask
+norm·다음 scale/history를 재계산한 뒤 BFT②에 투표하는 profile을 추가했다.
+추가 개별 key/mask share는 없으며 공식 Flower synthetic 10 rounds와 모델
+replay 오차 0을 확인했다. 이것은 아래 `mgf_beta`의 추가-share 경로와 별개이며,
+일반 carry lift·개별 업데이트 비공개성·악성 client range 증명을 해결하지 않는다.
+[위원회 집계 검증의 범위](reproduction/source-aggregate-validation-2026-10-02.md).
 
 [AION 논문 Algorithm 6](https://www.usenix.org/system/files/usenixsecurity25-liu-yizhong.pdf)은 실수형 `y = x + α HPRF(m,r)`의 L2 norm을 제한한다. 기본 wire는 `y = x·padding + h (mod 2^128)`이다. 이 잔여값의 norm은 실수형 `y`의 norm이 아니다. 예를 들어 `-1 mod 2^128`은 정상적인 작은 음수임에도 unsigned norm으로는 `2^128-1`이 된다.
 

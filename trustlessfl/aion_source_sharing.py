@@ -12,17 +12,38 @@ from pathlib import Path
 
 from .crypto import (Identity, ORDER, ProtocolError, aggregate_commitments,
                      decrypt_pedersen_share, encrypt_pedersen_share,
-                     pedersen_reconstruct, pedersen_split, pedersen_verify_share,
+                     pedersen_reconstruct_pair, pedersen_split, pedersen_verify_share,
                      sum_pedersen_shares, verify)
 
 MODE = "recipient-encrypted-pedersen-v1"
+THRESHOLD_RULE = "bft-f-plus-one-min-two-v1"
 
 
 def enabled(manifest):
     return manifest.get("sharing_profile", {}).get("kind") == MODE
 
 
+def threshold(manifest):
+    """Pin fresh ASR to f+1; preserve historical sharing transcripts.
+
+    The Pedersen adapter has a two-share minimum even for n=2/3 (f=0).
+    This numerical floor is not a claim of Byzantine tolerance for n<4.
+    """
+    size = len(manifest["committee"])
+    profile = manifest.get("sharing_profile", {})
+    if "threshold_rule" not in profile and "threshold" not in profile:
+        return max(2, size // 3)
+    expected = max(2, (size - 1) // 3 + 1)
+    if (profile.get("kind") != MODE
+            or profile.get("threshold_rule") != THRESHOLD_RULE
+            or type(profile.get("threshold")) is not int
+            or profile["threshold"] != expected):
+        raise ProtocolError("invalid source ASR threshold profile")
+    return expected
+
+
 def identity_for(config, manifest):
+    threshold(manifest)  # Reject mismatched policy before actor state changes.
     actor = str(config["aion-source-id"])
     try:
         identity = Identity.from_private(json.loads(Path(config["aion-source-identity"]).read_text()))
@@ -76,8 +97,7 @@ def open_share(manifest, identity, body, *, kind, round_id):
 
 def share_seed(manifest, identity, secret):
     committee = manifest["committee"]
-    threshold = max(2, len(committee) // 3)
-    pairs, commitments = pedersen_split(secret, threshold, len(committee))
+    pairs, commitments = pedersen_split(secret, threshold(manifest), len(committee))
     return [dict(recipient=recipient, body=seal(manifest, identity,
         dict(msg="SHARED_MASK", sender=int(identity.name), recipient=recipient,
              round=1, index=index, commitments=commitments), pairs[index]))
@@ -89,7 +109,7 @@ def receive_seed(manifest, identity, state, body):
     if body.get("index") != expected_index:
         raise ProtocolError("wrong encrypted source share recipient index")
     pair = open_share(manifest, identity, body, kind="SHARED_MASK", round_id=1)
-    if len(body["commitments"]) != max(2, len(manifest["committee"]) // 3):
+    if len(body["commitments"]) != threshold(manifest):
         raise ProtocolError("source share commitment threshold mismatch")
     stored = state.setdefault("shares", {})
     decoded = dict(shared_mask=[expected_index, *pair], commitments=body["commitments"],
@@ -110,24 +130,56 @@ def sum_keys(manifest, identity, stored, members, round_id):
     return dict(sealed_sum=body)
 
 
-def recover_key(manifest, identity, entries, members, round_id):
-    pairs, commitments = {}, None
+def _verified_aggregate_share(manifest, identity, entry, members, round_id, required):
+    if not isinstance(entry, dict) or set(entry) != {"sender", "sealed_sum"}:
+        raise ProtocolError("invalid source aggregate share entry")
+    body, sender = entry["sealed_sum"], entry["sender"]
+    if (type(sender) is not int or sender not in manifest["committee"]
+            or not isinstance(body, dict) or body.get("sender") != sender
+            or body.get("members") != members
+            or body.get("index") != manifest["committee"].index(sender) + 1
+            or not isinstance(body.get("commitments"), list)
+            or len(body["commitments"]) != required):
+        raise ProtocolError("source aggregate share members or sender mismatch")
+    pair = open_share(manifest, identity, body, kind="AGGREGATE_KEY_SHARE", round_id=round_id)
+    return body["index"], pair, body["commitments"]
+
+
+def recover_key_opening(manifest, identity, entries, members, round_id):
+    required = threshold(manifest)
+    if not isinstance(entries, list):
+        raise ProtocolError("invalid source aggregate share collection")
+    modern = manifest.get("sharing_profile", {}).get("threshold_rule") == THRESHOLD_RULE
+    groups = {}
     for entry in entries:
-        body = entry["sealed_sum"]
-        sender = entry["sender"]
-        if (body["sender"] != sender or sender not in manifest["committee"]
-                or body["members"] != members
-                or body["index"] != manifest["committee"].index(sender) + 1):
-            raise ProtocolError("source aggregate share members or sender mismatch")
-        pair = open_share(manifest, identity, body, kind="AGGREGATE_KEY_SHARE", round_id=round_id)
-        if commitments is not None and commitments != body["commitments"]:
+        try:
+            index, pair, commitments = _verified_aggregate_share(
+                manifest, identity, entry, members, round_id, required)
+        except (ProtocolError, KeyError, TypeError, ValueError):
+            if not modern:
+                raise
+            # Algorithm 3 collects valid authenticated shares. Reject an
+            # invalid packet, not the entire valid reconstruction set.
+            continue
+        group = tuple(commitments)
+        if not modern and groups and group not in groups:
             raise ProtocolError("source aggregate commitments disagree")
-        commitments = body["commitments"]
-        pairs[body["index"]] = pair
-    threshold = max(2, len(manifest["committee"]) // 3)
-    if commitments is None or len(commitments) != threshold or len(pairs) < threshold:
+        groups.setdefault(group, {})[index] = pair
+    candidates = [(list(commitments), pairs) for commitments, pairs in groups.items()
+                  if len(pairs) >= required]
+    if not candidates:
         raise ProtocolError("source randomized shares below threshold")
-    key = pedersen_reconstruct(pairs, commitments)
-    if not len(members) <= key <= len(members) * 100000:
+    if len(candidates) != 1:
+        # Never pick an arbitrary commitment set if the fault assumption is
+        # violated. A group cannot qualify with f faulty identities alone.
+        raise ProtocolError("source aggregate commitments disagree")
+    commitments, pairs = candidates[0]
+    key, blind = pedersen_reconstruct_pair(pairs, commitments)
+    from .source_profiles import key_sum_valid
+    if not key_sum_valid(manifest, key, len(members)):
         raise ProtocolError("source aggregate key outside author key domain")
-    return key
+    return dict(key=key, blind=blind)
+
+
+def recover_key(manifest, identity, entries, members, round_id):
+    return recover_key_opening(manifest, identity, entries, members, round_id)["key"]
