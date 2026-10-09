@@ -1,0 +1,2 @@
+# Preserve the SHA256-pinned research CSV bytes, including CSV-writer CRLF.
+experiments/results/mgf_feasible_region_20261009T063122844117Z/region.csv -text whitespace=cr-at-eol

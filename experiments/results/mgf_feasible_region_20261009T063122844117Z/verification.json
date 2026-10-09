@@ -1,0 +1,25 @@
+{
+  "related_fresh_suite": {
+    "passed": 361,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 2,
+    "seconds": 43.56,
+    "existing_related_tests": 335,
+    "new_helper_tests": 18,
+    "new_artifact_tests": 8,
+    "full_repository_suite": false,
+    "command": "env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.cache/flower-deps:.cache/author-asr-deps:.cache/torch-deps:. python3 -m pytest -q tests/test_mgf_feasible_region.py tests/test_mgf_region_artifact.py tests/test_mgf_fpr_diagnosis.py tests/test_mgf_fpr_artifact.py tests/test_mgf_scope.py tests/test_mgf_scope_comparison.py tests/test_source_profiles.py tests/test_source_paper_numeric.py tests/test_transmission_numeric.py tests/test_modular_recovery.py tests/test_paper_dmc.py tests/test_source_selection_authorization.py --tb=short"
+  },
+  "development_runs": [
+    {"passed": 18, "seconds": 0.26, "meaning": "new helpers only"},
+    {"passed": 227, "seconds": 29.42, "meaning": "earlier overlapping subset"},
+    {"passed": 353, "seconds": 44.10, "meaning": "related suite before artifact tests; overlapping"},
+    {"passed": 26, "seconds": 0.93, "meaning": "new helpers and artifact checks only; overlapping"}
+  ],
+  "runtime_modified": false,
+  "basis_documents_modified": false,
+  "previous_commit": "69844a2",
+  "git_diff_check": "passed",
+  "report_formatter_only_fixes": ["resolve relative input path", "import SCOPES"]
+}
