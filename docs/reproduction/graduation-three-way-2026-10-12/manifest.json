@@ -1,0 +1,24 @@
+{
+  "files": {
+    "results.json": "e085912d4b1829e3bf4cc45fa06265bcfef800afec7757c33450f2896b14d5f3",
+    "accuracy.png": "5239275892ba29b38853ba307b1bc4b7fff8893511eca0936d576b67759941b0",
+    "input-equality.json": "f3e97d3d7a6f346e817dd4d1facd63bc92fc34623f902188619b76265f7d3fff"
+  },
+  "source_sha256": {
+    "experiments/run_graduation_three_way.py": "e287c869ce66475706f60960f28d222900e1c67dfe90a0ccdb66f793a9e37ef0",
+    "experiments/run_seed_mpc_poisoning.py": "ac53a81eb86367e203e38f4a85fcafc9e98630892f6221c2a753c52cfdaf3090",
+    "experiments/run_seed_mpc_flower.py": "b386bb654b738bde63837bf54090bf2b265ec261beeb14f7ef7f120440b691d1",
+    "trustlessfl/seed_mpc_poisoning_fixture.py": "903a3e1950f8b691c5ea30b8b2a8d23d1bea3675900b084ceb12bc32d0553ce2",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f"
+  },
+  "scope": "public metrics/hash/counter export; no keys/seeds/private inputs/model audit files",
+  "additional_verifier_sha256": "bbc7e5a15751b60074aa079056d931bc98a3cdcb82a2b11ee49846ee2b8cada1",
+  "report_sha256": "751c04e99138f94346a8611a2996a284f28c78daaf103d4c26b266c01d9d64f5",
+  "runtime_secret_scan": {
+    "passed": true,
+    "secrets_checked": 192,
+    "files_scanned": 5,
+    "scope": "exact runtime component-seed/private-identity strings; private data not printed or exported"
+  }
+}

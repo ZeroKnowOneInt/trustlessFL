@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "fault": "registration-bind",
+  "status": "registration-abort",
+  "dimension": 2,
+  "model_updates": 0,
+  "retry_rejected": false,
+  "result_certificates": 0,
+  "execution_hash": "ad2c0fb19c2c751a03d938f6c8a82597d50c48b34a5f77b9f730a78ebf04abe7",
+  "source_sha256": {
+    "seed_mpc_chunked_session.mpc": "b5c74799867a789b67d12a02f631cf4f03d05644f898e46e85072c54d8e7f08e",
+    "seed_mpc_candidate_primitives.py": "4e8ebf531f4af77d892f805b06f6b5b0e89d2de42b972ce1f5cb47b0163fc78b",
+    "seed_mpc_primitives.py": "23870c20cc4a58c801f3fb6d85ee58bd948b9f816ddf1ce483dce55d4f516fad"
+  },
+  "workspace": "/home/hacho/@WSL-Projects/trustlessFL/.cache/seed-mpc/certified/023192e3ee7a4c09936e545db58e4ca4"
+}

@@ -1,0 +1,166 @@
+{
+  "clients": 8,
+  "aggregators": 4,
+  "dimension": 53,
+  "rounds": [
+    {
+      "round": 1,
+      "count": 8,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "evaluation_exact": true
+    },
+    {
+      "round": 2,
+      "count": 8,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "evaluation_exact": true
+    }
+  ],
+  "raw_audit_files": 0,
+  "widths": {
+    "wire": 18,
+    "norm": 37,
+    "sum": 20,
+    "count": 6
+  },
+  "compilation": {
+    "compile_invocations": 0,
+    "compile_seconds": 0.0,
+    "hit": true,
+    "key": "176b6da2d0d48f39ad5395f26d8673e12a402601645932ca42bc8dd9092bddff",
+    "load_seconds": 0.01,
+    "original_compile_seconds": 6.502
+  },
+  "communication": {
+    "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+    "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+    "parties": [
+      {
+        "global_sent_bytes": 1653256,
+        "registration_sent_bytes": 18012,
+        "rounds": [
+          {
+            "active_sent_bytes": 340290,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 340290,
+            "start": 18012,
+            "stop": 358302
+          },
+          {
+            "active_sent_bytes": 140130,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 140130,
+            "start": 358302,
+            "stop": 498432
+          }
+        ],
+        "setup_sent_bytes": 18012,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 498432
+      },
+      {
+        "global_sent_bytes": 1653256,
+        "registration_sent_bytes": 18012,
+        "rounds": [
+          {
+            "active_sent_bytes": 273602,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 273602,
+            "start": 18012,
+            "stop": 291614
+          },
+          {
+            "active_sent_bytes": 140130,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 140130,
+            "start": 291614,
+            "stop": 431744
+          }
+        ],
+        "setup_sent_bytes": 18012,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 431744
+      },
+      {
+        "global_sent_bytes": 1653256,
+        "registration_sent_bytes": 12778,
+        "rounds": [
+          {
+            "active_sent_bytes": 257797,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 257797,
+            "start": 12778,
+            "stop": 270575
+          },
+          {
+            "active_sent_bytes": 124309,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 124309,
+            "start": 270575,
+            "stop": 394884
+          }
+        ],
+        "setup_sent_bytes": 12778,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 394884
+      },
+      {
+        "global_sent_bytes": 1653256,
+        "registration_sent_bytes": 12778,
+        "rounds": [
+          {
+            "active_sent_bytes": 191109,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 191109,
+            "start": 12778,
+            "stop": 203887
+          },
+          {
+            "active_sent_bytes": 124309,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 124309,
+            "start": 203887,
+            "stop": 328196
+          }
+        ],
+        "setup_sent_bytes": 12778,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 328196
+      }
+    ],
+    "reconciled": true,
+    "registration_sent_bytes": 61580,
+    "rounds": [
+      {
+        "active_sent_bytes": 1062798,
+        "between_boundary_sent_bytes": 0,
+        "round": 1,
+        "sent_bytes": 1062798
+      },
+      {
+        "active_sent_bytes": 528878,
+        "between_boundary_sent_bytes": 0,
+        "round": 2,
+        "sent_bytes": 528878
+      }
+    ],
+    "setup_sent_bytes": 61580,
+    "shutdown_sent_bytes": 0,
+    "startup_tracked_sent_bytes": 0,
+    "total_sent_bytes": 1653256
+  }
+}

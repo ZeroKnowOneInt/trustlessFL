@@ -1,0 +1,30 @@
+{
+  "files": {
+    "results.json": "2d133dbb9740708bfc94476ecc2edfe639b20edfc8fb53e3fd525c32c51a86dc",
+    "cost.png": "c7876882967b88ec969541c48cf1dd0c2c197ac7b80a1b7c8095a5db7c55c1f1"
+  },
+  "report_sha256": "b82b78bd9208ef8939d6f5d3f07f64e6d46152263573fc42dda6eb7c09083836",
+  "source_sha256": {
+    "experiments/run_flower_cost_comparison.py": "65bbf5e7e1db80e4978f87dd8eca62d35c30ebe69fa2025228a052d96688c4a6",
+    "trustlessfl/research_cost_flower.py": "0a118950ce9417cece5902da04b2aa5e0462355f40abdf3102d6871a0b799e36",
+    "experiments/run_seed_mpc_flower.py": "8a2960a2f6286c372dc612f374994ea871d961d906fcec605aaf60af5fa7620e",
+    "experiments/run_endpoint_flower.py": "dcb19b9ba25a78575f985b4115fdf1220a0bc81b525d96c18d855bb01061a1dc",
+    "trustlessfl/seed_mpc_client_app.py": "474efa1d83b9b9ed1df996339066b7e3e5fe7c061752452278b699267900389e",
+    "trustlessfl/seed_mpc_server_app.py": "35d27d7a8fb7536636c7ddbe48bb68e2cf7f7201373a265ce59fa38c400bf299",
+    "trustlessfl/seed_mpc_dropout.py": "d6041395d461c2c57ba55175f2266ee3af10270e14a79d641f84a7dda15604ec",
+    "trustlessfl/seed_mpc_committee.py": "e48eb84d13611f0b83d85a68b499aaabac6d1de667c581bdd9e3b8f6740c360b",
+    "trustlessfl/seed_mpc_ledger.py": "33d4c369b5fea2a9efbbd7aef94af7d3487103f3397ba3c114ed85ffb96b7c4b",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_poisoning_fixture.py": "903a3e1950f8b691c5ea30b8b2a8d23d1bea3675900b084ceb12bc32d0553ce2",
+    "trustlessfl/seed_mpc_meter.py": "e399cdfb5921a3bc785df01f339663d5129d39dbc853b761cbf137c0d090568c",
+    "trustlessfl/seed_mpc_flower_runtime.py": "bc74cca5eeef53e6b073716ce42ba4bf718b6959b6c7cc5b51cc0e1bc00e8832",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699"
+  },
+  "additional_verifier_sha256": "a55adf7bde0c708db564c2a3db84ceef6ea5cc26aa9b8fc0b926166b26f79236",
+  "private_string_scan": {
+    "passed": true,
+    "exact_private_strings": 128,
+    "text_files": 2
+  }
+}

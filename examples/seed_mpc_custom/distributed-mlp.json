@@ -1,0 +1,6 @@
+{
+  "plugin": "classifier.py",
+  "kwargs": {"hidden": 5},
+  "training": {"epochs": 1, "batch_size": 16, "learning_rate": 0.05},
+  "policy": {"coordinate_cap": 20000, "squared_threshold": 2500000000, "scale": 10000, "minimum_accepted": 2}
+}

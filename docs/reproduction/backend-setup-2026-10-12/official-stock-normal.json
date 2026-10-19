@@ -1,0 +1,1 @@
+{"abort_hides_sum_count":true,"aggregators":4,"boundary_exclusion_exact":true,"mode":"stock","passed":true,"rounds":[{"count":4,"ok":1,"round":1,"sum":[80000,0]},{"count":2,"ok":1,"round":2,"sum":[-40000,0]},{"count":0,"ok":0,"round":3,"sum":[0,0]}],"scope":"synthetic native installation test; no FL/privacy proof","seconds":0.119,"wrap_exact":true}

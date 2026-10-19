@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-14",
+  "type": "read-only saved artifact verification; no experiments rerun",
+  "public_artifacts": [
+    {
+      "file": "docs/reproduction/graduation-three-way-2026-10-12/results.json",
+      "sha256": "e085912d4b1829e3bf4cc45fa06265bcfef800afec7757c33450f2896b14d5f3",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/graduation-three-way-2026-10-12/accuracy.png",
+      "sha256": "5239275892ba29b38853ba307b1bc4b7fff8893511eca0936d576b67759941b0",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/graduation-three-way-2026-10-12/input-equality.json",
+      "sha256": "f3e97d3d7a6f346e817dd4d1facd63bc92fc34623f902188619b76265f7d3fff",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/flower-cost-improved-2026-10-12/results.json",
+      "sha256": "2d133dbb9740708bfc94476ecc2edfe639b20edfc8fb53e3fd525c32c51a86dc",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/flower-cost-improved-2026-10-12/cost.png",
+      "sha256": "c7876882967b88ec969541c48cf1dd0c2c197ac7b80a1b7c8095a5db7c55c1f1",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/client-counts-2026-10-11/package-checks.json",
+      "sha256": "0e9aa6b3e561bdd4afac5faf891a87c69a1df88837cc914cecf4affa934e4934",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/client-counts-2026-10-11/verification.json",
+      "sha256": "d0ba94cf037bbd4ced3ba6d93d6f206dd157e4fdbdd7912d4f19d19c005a5878",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/client-counts-2026-10-11/wheel-training-8.json",
+      "sha256": "40e3509b7875449b2bb96893ddc927b064d5d35df5bd0c087f08f34aa73ce482",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/package-validation-2026-10-12/previous-final-dropout.json",
+      "sha256": "fdd1493266f5a5c9f15be2fd5998fb59992ca11de95caf93a86e1989b1c3b209",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/package-validation-2026-10-12/lite-mlp-dropout.json",
+      "sha256": "2182be51171327a5eb38827d818d0cb874cdd4d479c7d028f0d257461eab99b9",
+      "matches_recorded_hash": true
+    },
+    {
+      "file": "docs/reproduction/package-validation-2026-10-12/lite-cnn.json",
+      "sha256": "16926846929f54932396d4b329876bfabf36b46db6f97c292289229afabe0504",
+      "matches_recorded_hash": true
+    }
+  ],
+  "scope": "checks archived public bytes against manifests; does not certify current source, privacy proof, or fresh benchmark"
+}

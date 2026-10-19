@@ -1,0 +1,123 @@
+# Active arithmetic MPC specification. No individual values are opened.
+# Public config is compiled into bytecode; the native backend fixes PRIME.
+import json
+from pathlib import Path
+from Compiler.types import sint, regint, Array
+from Compiler.library import (listen_for_clients, accept_client_connection,
+                              runtime_error_if, print_ln, for_range)
+
+config=json.loads(Path(program.args[1]).read_text())
+program.active=True
+D=config['dimension']; N=config['clients']; B=config['coordinate_cap']
+d=config['spacing']; M=config['mask_max']; T=config['squared_bound']
+p=config['hprf']['p']; q=config['hprf']['q']; m=config['hprf']['m']
+columns=config['hprf']['columns']; x=config['seed']
+WY=(M+2*d*B).bit_length(); WK=(q-1).bit_length()
+R=M+2*d*B; A=M+d*B
+L=program.bit_length
+
+# Divide a known bounded nonnegative integer by a public positive constant.
+# Every intermediate remainder is < 2*denominator, never an inverse in F_P.
+def divide_const(value, bits, denominator):
+    if denominator==1:
+        return value, sint(0)
+    digits=value.bit_decompose(bits)
+    quotient=sint(0); remainder=sint(0)
+    for bit in reversed(digits):
+        remainder=2*remainder+bit
+        take=remainder.greater_equal(denominator,bit_length=(2*denominator).bit_length()+1)
+        remainder=remainder-take*denominator
+        quotient=2*quotient+take
+    return quotient,remainder
+
+# Modular multiply by a public constant without making a large product.
+def mul_mod_public(value,bits,coefficient,modulus):
+    coefficient%=modulus
+    if coefficient==0:
+        return sint(0)
+    if coefficient==1:
+        return value
+    result=sint(0)
+    # Iterate public coefficient digits, avoiding a secret bit decomposition.
+    for position in reversed(range(coefficient.bit_length())):
+        result=2*result+(((coefficient>>position)&1)*value)
+        for _ in range(2):
+            take=result.greater_equal(modulus,bit_length=(3*modulus).bit_length()+1)
+            result=result-take*modulus
+    return result
+
+listen_for_clients(config['client_port'])
+sockets=Array(N,regint)
+seen=Array(N,regint); seen.assign_all(0)
+for _ in range(N):
+    cid=accept_client_connection(config['client_port'])
+    runtime_error_if((cid<0)+(cid>=N),'invalid registered client id')
+    runtime_error_if(seen[cid]!=0,'duplicate registered client id')
+    seen[cid]=1; sockets[cid]=cid
+
+# Commit ALL private field inputs before generating any random challenges.
+inputs=[]
+for i in range(N):
+    inputs.append(sint.receive_from_client(WK+D*WY,sockets[i]))
+
+# One fresh independent secret field challenge per Boolean constraint.
+# If any b*(b-1) != 0, opening this sum aborts except with probability 1/PRIME.
+# Valid inputs reveal only 0; invalid ones reveal a uniform field value.
+check=sint(0)
+for row in inputs:
+    for bit in row:
+        check+=sint.get_random()*bit*(bit-1)
+opened_check=check.reveal()
+# cint equality uses the global application width, which is too short for a
+# random field element. Test EVERY canonical field bit instead of truncating.
+full_check_bits=opened_check.bit_decompose(config['backend_prime'].bit_length())
+runtime_error_if(sum(regint.conv(bit) for bit in full_check_bits)!=0,'invalid canonical private input')
+
+count=sint(0); total=[sint(0) for _ in range(D)]
+for i in range(N):
+    row=inputs[i]
+    key=sum(row[t]*(1<<t) for t in range(WK))
+    valid=key.less_than(q,bit_length=WK+1)
+    key=valid.if_else(key,0)
+    effective=[]
+    scalar=None
+    for j in range(D):
+        if j%m==0:
+            scalar=mul_mod_public(key,WK,x+j//m,q)
+        z=mul_mod_public(scalar,WK,columns[j%m],q)
+        # Exact author's nearest integer HPRF output, then canonicalize p endpoint.
+        if q==5*p and p%2==1:
+            h,_=divide_const(z+2,(q+2).bit_length(),5)
+        else:
+            h,_=divide_const(z*p+q//2,(q*p+q//2).bit_length(),q)
+        endpoint=h.equal(p,bit_length=(p+1).bit_length()+1)
+        h=h-endpoint*p
+        if M==1:
+            mask=h.greater_equal((p+1)//2,bit_length=p.bit_length()+1)
+        else:
+            mask,_=divide_const(2*M*h+p,(2*M*(p-1)+p).bit_length(),2*p)
+        start=WK+j*WY
+        offset=sum(row[start+t]*(1<<t) for t in range(WY))
+        wire_ok=offset.less_equal(R,bit_length=WY+1)
+        safe=wire_ok.if_else(offset,d*B)
+        residual=safe-d*B-mask
+        negative=residual.less_than(0,bit_length=A.bit_length()+1)
+        absolute=negative.if_else(-residual,residual)
+        quotient,remainder=divide_const(absolute,A.bit_length(),d)
+        grid_ok=remainder.equal(0,bit_length=d.bit_length()+1)
+        range_ok=quotient.less_equal(B,bit_length=A.bit_length()+1)
+        coordinate_ok=wire_ok*grid_ok*range_ok
+        effective.append(coordinate_ok.if_else(negative.if_else(-quotient,quotient),0))
+        valid*=coordinate_ok
+    squared_norm=sum(value*value for value in effective)
+    accepted=valid*squared_norm.less_equal(T,bit_length=(D*B*B).bit_length()+1)
+    count+=accepted
+    for j in range(D):
+        total[j]+=accepted*effective[j]
+
+ok=count.greater_equal(config['minimum_accepted'],bit_length=N.bit_length()+1)
+outputs=[ok,ok*count]+[ok*value for value in total]
+# Output is authenticated using the standard active ExternalIO triple protocol.
+sint.reveal_to_clients(sockets,outputs)
+print_ln('AION_PRIVATE_BOUND_STATUS %s',ok.reveal())
+# No per-client key/mask/norm/selection, exact mask SUM, or signed SUM output.

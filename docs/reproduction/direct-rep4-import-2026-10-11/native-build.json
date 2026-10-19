@@ -1,0 +1,39 @@
+{
+  "patch_id": "rep4-holder-checked-native-import-v1",
+  "observer_patch_id": "base-machine-public-sent-counter-v1",
+  "archive_sha256": "4b5f4f7a79f31365288fe4498ba2b70afc314c028696929c8d259ef50ab2e759",
+  "command": [
+    "make",
+    "-j1",
+    "rep4-ring-party.x"
+  ],
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "compiler_sha256": "1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769",
+  "config_sha256": "c1bef87b7ccf6f99ae09c5e53d7a03744253f7c0111967402b7a1f852a813dd1",
+  "patch_sources_sha256": {
+    "Processor/BaseMachine.cpp": "40a9319855ff40a1571ce00611fa9af559b259f1b6bc90ac1ea0e51a6a0c71f0",
+    "GC/Rep4Secret.h": "6ccc706ba2ab9627a2156ad980a9e682deb8dc75b367087de68235f5238d1378",
+    "GC/Rep4Secret.cpp": "2febcf4fc44b253172a31f4c13c267380fe4663ca5eca2a79419e66ca34e64f1"
+  },
+  "binary_sha256": "b2ca054089650e2b37eab810d064559651b846f51109319623f5b9ea201959e5",
+  "shared_library_sha256": "55ca834a4a7a69be22667b256cdc61d190037cf046215174f8bb479701b66ba3",
+  "runtime_libraries": {
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/private-bound-mpc/mp-spdz-0.4.3-direct-rep4-v1/libSPDZ.so": "55ca834a4a7a69be22667b256cdc61d190037cf046215174f8bb479701b66ba3",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/private-bound-mpc/telemetry-build-deps/root/usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.83.0": "2c137b29a3740fb6d12a4c18823bc2b15215646c3ba3bb208b89782df28559f0",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/private-bound-mpc/telemetry-build-deps/root/usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.83.0": "3e029a8a694b343cacea94d842d16ad76e74e10b5070544de6c9e50551616acc",
+    "/home/hacho/@WSL-Projects/trustlessFL/.cache/private-bound-mpc/telemetry-build-deps/root/usr/lib/x86_64-linux-gnu/libsodium.so.23.3.0": "fe00408090ea084504d7cb0130af56a22554fe299034b864551b65a64ca8a7b5",
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+    "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4": "cc08c9f50a8009ffd6391e0116a100369b11ca9238fa52392c019e6645b122a1",
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+    "/usr/lib/x86_64-linux-gnu/libcrypto.so.3": "6866ed711dab8927e1bf82bf1cd30e828bdfc34f3cc1e83b1c9eb01ce6c37d9a",
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+    "/usr/lib/x86_64-linux-gnu/libgmp.so.10.5.0": "0ccdfb6d6f5c039465f6d002cf7e4c072d48ac6a2cffc8dd6c748dec31592804",
+    "/usr/lib/x86_64-linux-gnu/libgmpxx.so.4.7.0": "ce7e88d711f00edc7b7da3d013d0f76707712e32314706f94340bdb727570ee1",
+    "/usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5": "696e868dd0700a19a6d65fc01608ec2d70d3cb91f65710e89180cd2e688f30cb",
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+    "/usr/lib/x86_64-linux-gnu/libssl.so.3": "a40e7b67489bbd257e432c700ff8f6a1ad796425b5eccecdc2930127fdd86624",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+    "/usr/lib/x86_64-linux-gnu/libz.so.1.3": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892",
+    "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.5": "0a2128bc10841fb29e76d08d945864dfb0b6a66da5df6df5d8299197439e54bb"
+  }
+}

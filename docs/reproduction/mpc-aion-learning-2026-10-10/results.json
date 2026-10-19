@@ -1,0 +1,1739 @@
+{
+  "manifest": {
+    "scope": "honest actual training, plaintext execution of MPC output functionality; no native MPC or new Flower run",
+    "source_run": "/home/hacho/@WSL-Projects/trustlessFL/.cache/fmnist-no-wrap/clean-4c-5r-20261010-v2",
+    "source_reference_sha256": "42b602622d082fa75a77b2349a8d29444a65cbd78a176b1439c8c028ea708740",
+    "source_test_sha256": "ec9ede82a528b9cfb046f2c8d7afa7c61caa467fe40c1b548e786c23c247b6ba",
+    "config": {
+      "seed": 42,
+      "rounds": 10,
+      "device": "cuda:0",
+      "dimension": 61706,
+      "scale": 10000,
+      "cap": 20000,
+      "local_epochs": 1,
+      "batch_size": 64,
+      "learning_rate": 0.01,
+      "momentum": 0.9,
+      "weight_decay": 0.0005,
+      "boot": 2500000000,
+      "minimum": 25000000,
+      "maximum": 40000000000
+    },
+    "partition": "four equal-sized sorted-label shards; all 60000 samples",
+    "records": [
+      {
+        "client": 0,
+        "rows": 15000,
+        "class_counts": [
+          6000,
+          6000,
+          3000,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "sha256": "7888a193fa8e41eb40204e7bd7bf9f6c4dde602543a653ed13c8875649838af3"
+      },
+      {
+        "client": 1,
+        "rows": 15000,
+        "class_counts": [
+          0,
+          0,
+          3000,
+          6000,
+          6000,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "sha256": "f509d2c117ef9ad45e7d27d6fc42e8193c0c263d2dfdcb91c2a4f7ebfaf3e156"
+      },
+      {
+        "client": 2,
+        "rows": 15000,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          6000,
+          6000,
+          3000,
+          0,
+          0
+        ],
+        "sha256": "df3b745f53af0ba4735911ad1eca2b989e718ba0cc9c41070a98a883f6949bfc"
+      },
+      {
+        "client": 3,
+        "rows": 15000,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3000,
+          6000,
+          6000
+        ],
+        "sha256": "ddfe1b2b6c3f4cd60777931e357c8522d65d510a054a12ec053712a2b3274266"
+      }
+    ],
+    "source_sha256": {
+      "experiments/audit_mpc_aion_learning.py": "11fc7e3f345412b7e2b53bc32368f2f72e382fd52aebb979467986dd093a8dc3",
+      "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699",
+      "trustlessfl/private_bound.py": "584ae7a4c5092beb07b75536effb7c7015b1a5f44c5b823b221eb033378777b7",
+      "trustlessfl/fmnist_no_wrap_math.py": "90624697ca0aad5347fa00de105833c5ae567856daae714d154d6990d2dbe1d9"
+    },
+    "private_diagnostics": "per-client norm and pass IDs are offline public-data diagnostics, never authorized live MPC outputs"
+  },
+  "cases": [
+    {
+      "case": "quantized-unfiltered",
+      "history": [
+        {
+          "round": 0,
+          "accuracy": 0.1,
+          "per_class_accuracy": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "round": 1,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            9.46839098,
+            7.9875856,
+            11.18656286,
+            7.41801978
+          ],
+          "max_abs_coordinate_real": [
+            0.37128423899412155,
+            0.3672393150627613,
+            0.4772283248603344,
+            0.3810703898780048
+          ],
+          "max_quantization_error": 4.999983906745918e-05,
+          "applied_step_l2": 1.587569459504056,
+          "training_meta": [
+            {
+              "round": 1,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 1,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 1,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 1,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.2586,
+          "per_class_accuracy": [
+            0.273,
+            0.0,
+            1.0,
+            0.234,
+            0.0,
+            0.112,
+            0.0,
+            0.967,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "round": 2,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            4.50368663,
+            5.62412024,
+            4.76506655,
+            6.01452992
+          ],
+          "max_abs_coordinate_real": [
+            0.24378754943609238,
+            0.26737308502197266,
+            0.2939089983701706,
+            0.2785196676850319
+          ],
+          "max_quantization_error": 4.999999701976775e-05,
+          "applied_step_l2": 1.1292904337458987,
+          "training_meta": [
+            {
+              "round": 2,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 2,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 2,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 2,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.4035,
+          "per_class_accuracy": [
+            0.784,
+            0.283,
+            0.985,
+            0.6,
+            0.009,
+            0.189,
+            0.0,
+            1.0,
+            0.0,
+            0.185
+          ]
+        },
+        {
+          "round": 3,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            2.989093,
+            3.9946329,
+            3.59543364,
+            3.16005389
+          ],
+          "max_abs_coordinate_real": [
+            0.19784745573997498,
+            0.21288800239562988,
+            0.29472649842500687,
+            0.2607564777135849
+          ],
+          "max_quantization_error": 4.9999827146530204e-05,
+          "applied_step_l2": 0.7610682677165038,
+          "training_meta": [
+            {
+              "round": 3,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 3,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 3,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 3,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.5476,
+          "per_class_accuracy": [
+            0.819,
+            0.804,
+            0.831,
+            0.669,
+            0.07,
+            0.243,
+            0.172,
+            1.0,
+            0.414,
+            0.454
+          ]
+        },
+        {
+          "round": 4,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            2.16034779,
+            3.71776029,
+            2.31893218,
+            1.92479512
+          ],
+          "max_abs_coordinate_real": [
+            0.16738396137952805,
+            0.2393415868282318,
+            0.23175141215324402,
+            0.1855871006846428
+          ],
+          "max_quantization_error": 4.999961555004172e-05,
+          "applied_step_l2": 0.5808653297021608,
+          "training_meta": [
+            {
+              "round": 4,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 4,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 4,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 4,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.5507,
+          "per_class_accuracy": [
+            0.702,
+            0.911,
+            0.974,
+            0.8,
+            0.108,
+            0.336,
+            0.019,
+            0.998,
+            0.007,
+            0.652
+          ]
+        },
+        {
+          "round": 5,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            1.68836059,
+            2.70354918,
+            2.43120674,
+            2.22224896
+          ],
+          "max_abs_coordinate_real": [
+            0.1451813280582428,
+            0.17311598360538483,
+            0.2555602788925171,
+            0.23388198763132095
+          ],
+          "max_quantization_error": 4.99999340623617e-05,
+          "applied_step_l2": 0.524576322497499,
+          "training_meta": [
+            {
+              "round": 5,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 5,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 5,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 5,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6527,
+          "per_class_accuracy": [
+            0.686,
+            0.895,
+            0.576,
+            0.693,
+            0.339,
+            0.461,
+            0.399,
+            0.998,
+            0.819,
+            0.661
+          ]
+        },
+        {
+          "round": 6,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            2.0259303,
+            3.02258067,
+            1.8112029,
+            1.3909428
+          ],
+          "max_abs_coordinate_real": [
+            0.17823690176010132,
+            0.1819583624601364,
+            0.19566918909549713,
+            0.14962686598300934
+          ],
+          "max_quantization_error": 4.99998092651369e-05,
+          "applied_step_l2": 0.5015991620557195,
+          "training_meta": [
+            {
+              "round": 6,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 6,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 6,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 6,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6132,
+          "per_class_accuracy": [
+            0.732,
+            0.945,
+            0.976,
+            0.748,
+            0.257,
+            0.639,
+            0.0,
+            0.992,
+            0.007,
+            0.836
+          ]
+        },
+        {
+          "round": 7,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            1.26736265,
+            2.00484109,
+            3.31360552,
+            1.93266425
+          ],
+          "max_abs_coordinate_real": [
+            0.12461981177330017,
+            0.15567603707313538,
+            0.3289676606655121,
+            0.19165678322315216
+          ],
+          "max_quantization_error": 4.999996721744525e-05,
+          "applied_step_l2": 0.5219010376738104,
+          "training_meta": [
+            {
+              "round": 7,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 7,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 7,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 7,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6188,
+          "per_class_accuracy": [
+            0.445,
+            0.847,
+            0.011,
+            0.69,
+            0.149,
+            0.625,
+            0.852,
+            0.996,
+            0.779,
+            0.794
+          ]
+        },
+        {
+          "round": 8,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            2.29876573,
+            3.21626719,
+            1.08335248,
+            1.11723334
+          ],
+          "max_abs_coordinate_real": [
+            0.17711424827575684,
+            0.17880453169345856,
+            0.16153782606124878,
+            0.1340034306049347
+          ],
+          "max_quantization_error": 4.9999859277158765e-05,
+          "applied_step_l2": 0.5621098102239455,
+          "training_meta": [
+            {
+              "round": 8,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 8,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 8,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 8,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6053,
+          "per_class_accuracy": [
+            0.715,
+            0.945,
+            0.979,
+            0.768,
+            0.207,
+            0.608,
+            0.0,
+            0.994,
+            0.002,
+            0.835
+          ]
+        },
+        {
+          "round": 9,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            1.00694012,
+            1.78252345,
+            4.57143079,
+            2.2238904
+          ],
+          "max_abs_coordinate_real": [
+            0.13756023347377777,
+            0.14718835055828094,
+            0.41205473244190216,
+            0.22310225665569305
+          ],
+          "max_quantization_error": 4.999983310699464e-05,
+          "applied_step_l2": 0.6159354795755801,
+          "training_meta": [
+            {
+              "round": 9,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 9,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 9,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 9,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6165,
+          "per_class_accuracy": [
+            0.164,
+            0.91,
+            0.0,
+            0.614,
+            0.329,
+            0.651,
+            0.902,
+            0.998,
+            0.812,
+            0.785
+          ]
+        },
+        {
+          "round": 10,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 246824.0,
+          "squared_norms_real": [
+            2.53958041,
+            3.01661736,
+            1.05898991,
+            0.893084
+          ],
+          "max_abs_coordinate_real": [
+            0.20741280913352966,
+            0.1926046758890152,
+            0.13418814539909363,
+            0.11141864210367203
+          ],
+          "max_quantization_error": 4.9999915063381195e-05,
+          "applied_step_l2": 0.5777098969205912,
+          "training_meta": [
+            {
+              "round": 10,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 10,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 10,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 10,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6268,
+          "per_class_accuracy": [
+            0.808,
+            0.94,
+            0.98,
+            0.76,
+            0.18,
+            0.678,
+            0.0,
+            0.993,
+            0.056,
+            0.873
+          ]
+        }
+      ],
+      "excluded_client_rounds_by_client": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "excluded_total": 0,
+      "abort_rounds": [],
+      "final_accuracy": 0.6268
+    },
+    {
+      "case": "no-wrap-dynamic",
+      "history": [
+        {
+          "round": 0,
+          "accuracy": 0.1,
+          "per_class_accuracy": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "round": 1,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 25.0,
+          "squared_norms_real": [
+            9.46839098,
+            7.9875856,
+            11.18656286,
+            7.41801978
+          ],
+          "max_abs_coordinate_real": [
+            0.37128423899412155,
+            0.3672393150627613,
+            0.4772283248603344,
+            0.3810703898780048
+          ],
+          "max_quantization_error": 4.999983906745918e-05,
+          "applied_step_l2": 1.587569459504056,
+          "training_meta": [
+            {
+              "round": 1,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 1,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 1,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 1,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.2586,
+          "per_class_accuracy": [
+            0.273,
+            0.0,
+            1.0,
+            0.234,
+            0.0,
+            0.112,
+            0.0,
+            0.967,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "round": 2,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 25.0,
+          "squared_norms_real": [
+            4.50368663,
+            5.62412024,
+            4.76506655,
+            6.01452992
+          ],
+          "max_abs_coordinate_real": [
+            0.24378754943609238,
+            0.26737308502197266,
+            0.2939089983701706,
+            0.2785196676850319
+          ],
+          "max_quantization_error": 4.999999701976775e-05,
+          "applied_step_l2": 1.1292904337458987,
+          "training_meta": [
+            {
+              "round": 2,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 2,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 2,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 2,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.4035,
+          "per_class_accuracy": [
+            0.784,
+            0.283,
+            0.985,
+            0.6,
+            0.009,
+            0.189,
+            0.0,
+            1.0,
+            0.0,
+            0.185
+          ]
+        },
+        {
+          "round": 3,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 12.65054086,
+          "squared_norms_real": [
+            2.989093,
+            3.9946329,
+            3.59543364,
+            3.16005389
+          ],
+          "max_abs_coordinate_real": [
+            0.19784745573997498,
+            0.21288800239562988,
+            0.29472649842500687,
+            0.2607564777135849
+          ],
+          "max_quantization_error": 4.9999827146530204e-05,
+          "applied_step_l2": 0.7610682677165038,
+          "training_meta": [
+            {
+              "round": 3,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 3,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 3,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 3,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.5476,
+          "per_class_accuracy": [
+            0.819,
+            0.804,
+            0.831,
+            0.669,
+            0.07,
+            0.243,
+            0.172,
+            1.0,
+            0.414,
+            0.454
+          ]
+        },
+        {
+          "round": 4,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 5.74536994,
+          "squared_norms_real": [
+            2.16034779,
+            3.71776029,
+            2.31893218,
+            1.92479512
+          ],
+          "max_abs_coordinate_real": [
+            0.16738396137952805,
+            0.2393415868282318,
+            0.23175141215324402,
+            0.1855871006846428
+          ],
+          "max_quantization_error": 4.999961555004172e-05,
+          "applied_step_l2": 0.5808653297021608,
+          "training_meta": [
+            {
+              "round": 4,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 4,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 4,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 4,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.5507,
+          "per_class_accuracy": [
+            0.702,
+            0.911,
+            0.974,
+            0.8,
+            0.108,
+            0.336,
+            0.019,
+            0.998,
+            0.007,
+            0.652
+          ]
+        },
+        {
+          "round": 5,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "applied_count": 4,
+          "threshold_squared_real": 3.34687575,
+          "squared_norms_real": [
+            1.68836059,
+            2.70354918,
+            2.43120674,
+            2.22224896
+          ],
+          "max_abs_coordinate_real": [
+            0.1451813280582428,
+            0.17311598360538483,
+            0.2555602788925171,
+            0.23388198763132095
+          ],
+          "max_quantization_error": 4.99999340623617e-05,
+          "applied_step_l2": 0.524576322497499,
+          "training_meta": [
+            {
+              "round": 5,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 5,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 5,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 5,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6527,
+          "per_class_accuracy": [
+            0.686,
+            0.895,
+            0.576,
+            0.693,
+            0.339,
+            0.461,
+            0.399,
+            0.998,
+            0.819,
+            0.661
+          ]
+        },
+        {
+          "round": 6,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            2,
+            3
+          ],
+          "applied_count": 3,
+          "threshold_squared_real": 2.73017427,
+          "squared_norms_real": [
+            2.0259303,
+            3.02258067,
+            1.8112029,
+            1.3909428
+          ],
+          "max_abs_coordinate_real": [
+            0.17823690176010132,
+            0.1819583624601364,
+            0.19566918909549713,
+            0.14962686598300934
+          ],
+          "max_quantization_error": 4.99998092651369e-05,
+          "applied_step_l2": 0.5603063388302272,
+          "training_meta": [
+            {
+              "round": 6,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 6,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 6,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 6,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6247,
+          "per_class_accuracy": [
+            0.93,
+            0.973,
+            0.575,
+            0.0,
+            0.001,
+            0.789,
+            0.334,
+            0.989,
+            0.818,
+            0.838
+          ]
+        },
+        {
+          "round": 7,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            2,
+            3
+          ],
+          "applied_count": 3,
+          "threshold_squared_real": 3.1147627,
+          "squared_norms_real": [
+            1.1208976,
+            7.35568533,
+            1.58671068,
+            1.13578211
+          ],
+          "max_abs_coordinate_real": [
+            0.0992467999458313,
+            0.3216265141963959,
+            0.20671527087688446,
+            0.13032907247543335
+          ],
+          "max_quantization_error": 4.999974519014358e-05,
+          "applied_step_l2": 0.41887704242016727,
+          "training_meta": [
+            {
+              "round": 7,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 7,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 7,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 7,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.5566,
+          "per_class_accuracy": [
+            0.436,
+            0.965,
+            0.129,
+            0.0,
+            0.0,
+            0.686,
+            0.901,
+            0.993,
+            0.631,
+            0.825
+          ]
+        },
+        {
+          "round": 8,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            2,
+            3
+          ],
+          "applied_count": 3,
+          "threshold_squared_real": 1.74083144,
+          "squared_norms_real": [
+            1.64660556,
+            7.62442805,
+            0.89146794,
+            1.13045108
+          ],
+          "max_abs_coordinate_real": [
+            0.17210189253091812,
+            0.30221574008464813,
+            0.13050439953804016,
+            0.15713249891996384
+          ],
+          "max_quantization_error": 4.999966323375704e-05,
+          "applied_step_l2": 0.41666996798692146,
+          "training_meta": [
+            {
+              "round": 8,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 8,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 8,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 8,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.6176,
+          "per_class_accuracy": [
+            0.931,
+            0.985,
+            0.791,
+            0.0,
+            0.0,
+            0.731,
+            0.0,
+            0.993,
+            0.904,
+            0.841
+          ]
+        },
+        {
+          "round": 9,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            3
+          ],
+          "applied_count": 2,
+          "threshold_squared_real": 1.72277638,
+          "squared_norms_real": [
+            0.73595672,
+            8.43314557,
+            3.30258892,
+            0.7690118
+          ],
+          "max_abs_coordinate_real": [
+            0.10180026292800903,
+            0.3264162391424179,
+            0.3417437672615051,
+            0.1075495183467865
+          ],
+          "max_quantization_error": 4.9999827146530204e-05,
+          "applied_step_l2": 0.47947921748497085,
+          "training_meta": [
+            {
+              "round": 9,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 9,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 9,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 9,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.5791,
+          "per_class_accuracy": [
+            0.943,
+            0.984,
+            0.886,
+            0.0,
+            0.0,
+            0.133,
+            0.0,
+            0.963,
+            0.918,
+            0.964
+          ]
+        },
+        {
+          "round": 10,
+          "status": "ok",
+          "accepted_clients": [
+            0,
+            3
+          ],
+          "applied_count": 2,
+          "threshold_squared_real": 2.28100629,
+          "squared_norms_real": [
+            0.50709934,
+            11.00435542,
+            6.7194686,
+            0.53678799
+          ],
+          "max_abs_coordinate_real": [
+            0.08710938692092896,
+            0.3765805959701538,
+            0.48801687359809875,
+            0.10534235835075378
+          ],
+          "max_quantization_error": 4.999985694885238e-05,
+          "applied_step_l2": 0.34902435803250176,
+          "training_meta": [
+            {
+              "round": 10,
+              "partition": 0,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 10,
+              "partition": 1,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 10,
+              "partition": 2,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            },
+            {
+              "round": 10,
+              "partition": 3,
+              "rows": 15000,
+              "optimizer_steps": 235,
+              "device": "cuda:0",
+              "epochs": 1,
+              "batch_size": 64
+            }
+          ],
+          "integer_oracle_matches": true,
+          "accuracy": 0.571,
+          "per_class_accuracy": [
+            0.925,
+            0.987,
+            0.899,
+            0.0,
+            0.0,
+            0.042,
+            0.0,
+            0.924,
+            0.95,
+            0.983
+          ]
+        }
+      ],
+      "excluded_client_rounds_by_client": [
+        0,
+        5,
+        2,
+        0
+      ],
+      "excluded_total": 7,
+      "abort_rounds": [],
+      "final_accuracy": 0.571
+    }
+  ],
+  "first_round_update_hashes_match": true,
+  "elapsed_seconds": 49.551816572999996,
+  "completed": true,
+  "native_mpc_run": false,
+  "malicious_clients": 0,
+  "training_replies": 80,
+  "verification": {
+    "passed": true,
+    "independent_round_checks": 20,
+    "quantized_and_dynamic_models_identical_through_round": 5,
+    "public_sum_count_model_update_matches": true,
+    "dynamic_threshold_replay_matches": true,
+    "final_accuracy_independently_reevaluated_from_checkpoints": true,
+    "all_training_replies_gpu": true,
+    "source_and_data_hashes_match": true,
+    "one_coordinate_cap_rejects_reference_path": true,
+    "existing_flower_interface_rejects_missing_client": true,
+    "offset_hash_alone_does_not_bind_reference": true,
+    "fixed_squared_boundary_25_would_accept_all_recorded_unfiltered_updates": true,
+    "verifier_sha256": "ce3c15d6f632faba91e98ce7bb364915a62489b7e542abe29a3490f08993f628",
+    "scope": "offline learning semantics; not native MPC or runtime dropout fault injection"
+  }
+}

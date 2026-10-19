@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-11",
+  "scope": "stages 0/1, public synthetic fixtures; no Flower dropout or full composition proof",
+  "python_regression": {
+    "passed": 250,
+    "failed": 0
+  },
+  "native_v2": {
+    "dimension": 65,
+    "rounds": 21,
+    "presence_patterns": 16,
+    "fault_cases": 7,
+    "passed": true
+  },
+  "v1_native_regression": true,
+  "v1_official_flower_regression": true,
+  "source_sha256": {
+    "trustlessfl/seed_mpc_backend.py": "90849f705e345aeca635a444038a85181b0dc24d069b5ff910a7ce566d83600c",
+    "trustlessfl/seed_mpc_committee.py": "c0196d4b419891cd4de5418079e53f7f74a7405a06ba051e223416e97fb69f10",
+    "trustlessfl/seed_mpc_session.py": "515b5381487b7e9d588918c393f109c7cfc40333c45180da9576e0a6b35d3207",
+    "trustlessfl/seed_mpc_service.py": "8537fa4e95c2b7acec951f00cd12baa32cd18b5d1c81d1232976bf2a4f8b467e",
+    "experiments/run_seed_mpc_certified.py": "3d79cfe22fc6ce5239e0885eb48b4bf3ed6fd9059023f48d8c44f76485ad49dc",
+    "experiments/run_seed_mpc_flower.py": "2d42b6c73dcac56e1a635cb6fa62a5392c6e61bf26b30c44bf6058b124e187f7",
+    "mpc/Programs/Source/seed_mpc_chunked_session.mpc": "4c23def79bab211292fc9e319e48dbd45be719e0ffe65841797280d3e7c48497",
+    "tests/test_seed_mpc_backend.py": "df34f134cea993e7615d9f4cb5f3d6fb7adbbba07a99eeb23d0f1c1b6d1952d8",
+    "tests/test_seed_mpc_committee.py": "dfd601d47641f61bcd6acc0f63c9a33a4017bcfd3d47e604501154f105a3a90f"
+  },
+  "artifact_sha256": {
+    "absence-wire.json": "3daca643ea8b0230e58d315af8284f820987fa44299caf86f1fa5d9707883765",
+    "backend-pin.json": "a08c88119383c957678008b36064a0318b505e4c205c74b07a2cf1d0fb2d5622",
+    "flower-v1-regression.json": "15798e034eab50c702712ef85137807ed8e60eb9ca918136d26fb8b3e2e36f0a",
+    "input-tag.json": "7a65257b4a77ed450b9387f287ce2a73855f65298559c25ddf64623e901614f3",
+    "participation.json": "fe8823f6173773f669dca5e180a4d876df744420088c984c722a4bd6539f3672",
+    "presence-disagreement.json": "bc0c6293bd755308947b2343402336271ad3833ecd618e070576f2d72338f027",
+    "presence-highbit.json": "33023c31e317e387c1ed86752481bd524ba91bc7e8f2c6589faa07482413164b",
+    "presence-nonboolean.json": "7bbc139650cd4b7b105043c1471ca4e0bfae0271d073783e5c44b087d1a5d401",
+    "registration-bind.json": "3a90f9e6f63ce389c440189580d6524d5756235cfbc3fff26eaef1e462c41dec",
+    "snapshot-version.json": "f2122eba5caadcfc60a03e14aad17f33ad6b032d93e6cb106892fe3ee767ef07",
+    "v1-regression.json": "d6d6ca1cbe95598d38be3c6708297fafe8b016acb959a0535dd3224917e0d68c"
+  }
+}

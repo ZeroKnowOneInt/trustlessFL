@@ -1,0 +1,701 @@
+{
+  "passed": true,
+  "protocol_correctness_passed": true,
+  "learning_workload_completed": null,
+  "runtime": "Official Flower Simulation Runtime / Ray; flwr run",
+  "mode": "dropout-fixture",
+  "mask_mode": "rep4-seeded-components-v1",
+  "dimension": 65,
+  "rounds": 10,
+  "round_checks": [
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 1,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 3,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "round": 2,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 2,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "round": 3,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 4,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 5,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 2,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "round": 6,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 1,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "round": 7,
+      "status": "abort"
+    },
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 8,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 0,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "round": 9,
+      "status": "abort"
+    },
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": null,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 10,
+      "status": "ok"
+    }
+  ],
+  "metrics": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "compile_invocations": 1,
+  "compile_seconds": 22.705,
+  "seed_inputs_per_client": 1,
+  "internal_mb": 23.1779,
+  "native_resources": [
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 120860,
+      "system_cpu_seconds": 0.61,
+      "user_cpu_seconds": 0.53
+    },
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 120872,
+      "system_cpu_seconds": 0.7,
+      "user_cpu_seconds": 0.52
+    },
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 120676,
+      "system_cpu_seconds": 0.76,
+      "user_cpu_seconds": 0.53
+    },
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 120860,
+      "system_cpu_seconds": 0.63,
+      "user_cpu_seconds": 0.59
+    }
+  ],
+  "compile_resources": {
+    "exit_status": 0,
+    "peak_rss_kib": 705672,
+    "system_cpu_seconds": 1.0,
+    "user_cpu_seconds": 21.07
+  },
+  "wall_seconds": 32.404,
+  "runtime_guard": {
+    "installed": true,
+    "source_sha256": "bc74cca5eeef53e6b073716ce42ba4bf718b6959b6c7cc5b51cc0e1bc00e8832",
+    "startup_processes": 12
+  },
+  "verified_receipt_certificates": 28,
+  "scope": "single WSL host/Unix UID, trusted local test bootstrap and post-run raw-update oracle; no operator isolation",
+  "original_verification_sha256": "92edac563bd2f99af82769d9abfdb21157c5a58ca54ca1f0c4c4049f732c747f",
+  "communication": {
+    "native": {
+      "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+      "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+      "parties": [
+        {
+          "global_sent_bytes": 23177944,
+          "registration_sent_bytes": 9436,
+          "rounds": [
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 846502,
+              "start": 9436,
+              "stop": 855938
+            },
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 2,
+              "sent_bytes": 846502,
+              "start": 855938,
+              "stop": 1702440
+            },
+            {
+              "active_sent_bytes": 606454,
+              "between_boundary_sent_bytes": 0,
+              "round": 3,
+              "sent_bytes": 606454,
+              "start": 1702440,
+              "stop": 2308894
+            },
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 4,
+              "sent_bytes": 846502,
+              "start": 2308894,
+              "stop": 3155396
+            },
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 5,
+              "sent_bytes": 846502,
+              "start": 3155396,
+              "stop": 4001898
+            },
+            {
+              "active_sent_bytes": 606454,
+              "between_boundary_sent_bytes": 0,
+              "round": 6,
+              "sent_bytes": 606454,
+              "start": 4001898,
+              "stop": 4608352
+            },
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 7,
+              "sent_bytes": 846502,
+              "start": 4608352,
+              "stop": 5454854
+            },
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 8,
+              "sent_bytes": 846502,
+              "start": 5454854,
+              "stop": 6301356
+            },
+            {
+              "active_sent_bytes": 606454,
+              "between_boundary_sent_bytes": 0,
+              "round": 9,
+              "sent_bytes": 606454,
+              "start": 6301356,
+              "stop": 6907810
+            },
+            {
+              "active_sent_bytes": 846502,
+              "between_boundary_sent_bytes": 0,
+              "round": 10,
+              "sent_bytes": 846502,
+              "start": 6907810,
+              "stop": 7754312
+            }
+          ],
+          "setup_sent_bytes": 9436,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 7754312
+        },
+        {
+          "global_sent_bytes": 23177944,
+          "registration_sent_bytes": 9436,
+          "rounds": [
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 686534,
+              "start": 9436,
+              "stop": 695970
+            },
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 2,
+              "sent_bytes": 686534,
+              "start": 695970,
+              "stop": 1382504
+            },
+            {
+              "active_sent_bytes": 526470,
+              "between_boundary_sent_bytes": 0,
+              "round": 3,
+              "sent_bytes": 526470,
+              "start": 1382504,
+              "stop": 1908974
+            },
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 4,
+              "sent_bytes": 686534,
+              "start": 1908974,
+              "stop": 2595508
+            },
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 5,
+              "sent_bytes": 686534,
+              "start": 2595508,
+              "stop": 3282042
+            },
+            {
+              "active_sent_bytes": 526470,
+              "between_boundary_sent_bytes": 0,
+              "round": 6,
+              "sent_bytes": 526470,
+              "start": 3282042,
+              "stop": 3808512
+            },
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 7,
+              "sent_bytes": 686534,
+              "start": 3808512,
+              "stop": 4495046
+            },
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 8,
+              "sent_bytes": 686534,
+              "start": 4495046,
+              "stop": 5181580
+            },
+            {
+              "active_sent_bytes": 526470,
+              "between_boundary_sent_bytes": 0,
+              "round": 9,
+              "sent_bytes": 526470,
+              "start": 5181580,
+              "stop": 5708050
+            },
+            {
+              "active_sent_bytes": 686534,
+              "between_boundary_sent_bytes": 0,
+              "round": 10,
+              "sent_bytes": 686534,
+              "start": 5708050,
+              "stop": 6394584
+            }
+          ],
+          "setup_sent_bytes": 9436,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 6394584
+        },
+        {
+          "global_sent_bytes": 23177944,
+          "registration_sent_bytes": 7218,
+          "rounds": [
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 566741,
+              "start": 7218,
+              "stop": 573959
+            },
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 2,
+              "sent_bytes": 566741,
+              "start": 573959,
+              "stop": 1140700
+            },
+            {
+              "active_sent_bytes": 406661,
+              "between_boundary_sent_bytes": 0,
+              "round": 3,
+              "sent_bytes": 406661,
+              "start": 1140700,
+              "stop": 1547361
+            },
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 4,
+              "sent_bytes": 566741,
+              "start": 1547361,
+              "stop": 2114102
+            },
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 5,
+              "sent_bytes": 566741,
+              "start": 2114102,
+              "stop": 2680843
+            },
+            {
+              "active_sent_bytes": 406661,
+              "between_boundary_sent_bytes": 0,
+              "round": 6,
+              "sent_bytes": 406661,
+              "start": 2680843,
+              "stop": 3087504
+            },
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 7,
+              "sent_bytes": 566741,
+              "start": 3087504,
+              "stop": 3654245
+            },
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 8,
+              "sent_bytes": 566741,
+              "start": 3654245,
+              "stop": 4220986
+            },
+            {
+              "active_sent_bytes": 406661,
+              "between_boundary_sent_bytes": 0,
+              "round": 9,
+              "sent_bytes": 406661,
+              "start": 4220986,
+              "stop": 4627647
+            },
+            {
+              "active_sent_bytes": 566741,
+              "between_boundary_sent_bytes": 0,
+              "round": 10,
+              "sent_bytes": 566741,
+              "start": 4627647,
+              "stop": 5194388
+            }
+          ],
+          "setup_sent_bytes": 7218,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 5194388
+        },
+        {
+          "global_sent_bytes": 23177944,
+          "registration_sent_bytes": 7218,
+          "rounds": [
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 406773,
+              "start": 7218,
+              "stop": 413991
+            },
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 2,
+              "sent_bytes": 406773,
+              "start": 413991,
+              "stop": 820764
+            },
+            {
+              "active_sent_bytes": 326677,
+              "between_boundary_sent_bytes": 0,
+              "round": 3,
+              "sent_bytes": 326677,
+              "start": 820764,
+              "stop": 1147441
+            },
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 4,
+              "sent_bytes": 406773,
+              "start": 1147441,
+              "stop": 1554214
+            },
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 5,
+              "sent_bytes": 406773,
+              "start": 1554214,
+              "stop": 1960987
+            },
+            {
+              "active_sent_bytes": 326677,
+              "between_boundary_sent_bytes": 0,
+              "round": 6,
+              "sent_bytes": 326677,
+              "start": 1960987,
+              "stop": 2287664
+            },
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 7,
+              "sent_bytes": 406773,
+              "start": 2287664,
+              "stop": 2694437
+            },
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 8,
+              "sent_bytes": 406773,
+              "start": 2694437,
+              "stop": 3101210
+            },
+            {
+              "active_sent_bytes": 326677,
+              "between_boundary_sent_bytes": 0,
+              "round": 9,
+              "sent_bytes": 326677,
+              "start": 3101210,
+              "stop": 3427887
+            },
+            {
+              "active_sent_bytes": 406773,
+              "between_boundary_sent_bytes": 0,
+              "round": 10,
+              "sent_bytes": 406773,
+              "start": 3427887,
+              "stop": 3834660
+            }
+          ],
+          "setup_sent_bytes": 7218,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 3834660
+        }
+      ],
+      "reconciled": true,
+      "registration_sent_bytes": 33308,
+      "rounds": [
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 1,
+          "sent_bytes": 2506550
+        },
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 2,
+          "sent_bytes": 2506550
+        },
+        {
+          "active_sent_bytes": 1866262,
+          "between_boundary_sent_bytes": 0,
+          "round": 3,
+          "sent_bytes": 1866262
+        },
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 4,
+          "sent_bytes": 2506550
+        },
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 5,
+          "sent_bytes": 2506550
+        },
+        {
+          "active_sent_bytes": 1866262,
+          "between_boundary_sent_bytes": 0,
+          "round": 6,
+          "sent_bytes": 1866262
+        },
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 7,
+          "sent_bytes": 2506550
+        },
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 8,
+          "sent_bytes": 2506550
+        },
+        {
+          "active_sent_bytes": 1866262,
+          "between_boundary_sent_bytes": 0,
+          "round": 9,
+          "sent_bytes": 1866262
+        },
+        {
+          "active_sent_bytes": 2506550,
+          "between_boundary_sent_bytes": 0,
+          "round": 10,
+          "sent_bytes": 2506550
+        }
+      ],
+      "setup_sent_bytes": 33308,
+      "shutdown_sent_bytes": 0,
+      "startup_tracked_sent_bytes": 0,
+      "total_sent_bytes": 23177944
+    },
+    "component_seed_provisioning": {
+      "packets": 16,
+      "payload_bytes": 12074,
+      "scope": "encrypted client-to-recipient bootstrap file payload; setup only; not a measured network transport"
+    },
+    "rpc_endpoint_counts_exact": true
+  },
+  "dropout_and_catchup_exact": true,
+  "all_client_ack_absence_progress": true,
+  "source_sha256": {
+    "experiments/run_endpoint_flower.py": "dcb19b9ba25a78575f985b4115fdf1220a0bc81b525d96c18d855bb01061a1dc",
+    "experiments/run_seed_mpc_flower.py": "546e75de4239594892b0b1c4f925ad03eab0187a82b1f1f9acc0f3ae43b2fa91",
+    "trustlessfl/crypto.py": "355708a17d98abbcf22f43cc908f9dbcf29afa44f1741ea806d368805e7ad8f3",
+    "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699",
+    "trustlessfl/rep4_external.py": "c51467a9af4fc6bda9bb354acf3fdc54c4e49939a777a1e0df194d1ffc9385db",
+    "trustlessfl/seed_mpc_backend.py": "2bfb53723e65be309409600e728e73be8344dbb92c17e3eb4dda8f23c423483f",
+    "trustlessfl/seed_mpc_client_app.py": "c517fe0f2b15db6eafc1dcd7c92f1bd3f2b936c96404911ef9738c5ddb1eb986",
+    "trustlessfl/seed_mpc_committee.py": "76f57138a48adf91d89d34c152e6265b77c90d89a8899ce2356a6350062cdfd8",
+    "trustlessfl/seed_mpc_direct_patch.py": "a54ab3fb780fbe78986249e88fcb418f4b4efdaee4e9043e565d447c0f55acd3",
+    "trustlessfl/seed_mpc_dropout.py": "65cfad4047b92281d42adbe9a7349d69374300e345a3a59c4efad7d07d8eca41",
+    "trustlessfl/seed_mpc_external_client.py": "ff55f34d4eb5479a1795f4f2e69828a96d9269b3165083ffcb344f055d7e546b",
+    "trustlessfl/seed_mpc_flower_runtime.py": "bc74cca5eeef53e6b073716ce42ba4bf718b6959b6c7cc5b51cc0e1bc00e8832",
+    "trustlessfl/seed_mpc_isolation.py": "601a596c2e7269bc56876429a283737e9dfd90c101cb0370f01b8b31685cd813",
+    "trustlessfl/seed_mpc_ledger.py": "33d4c369b5fea2a9efbbd7aef94af7d3487103f3397ba3c114ed85ffb96b7c4b",
+    "trustlessfl/seed_mpc_meter.py": "e399cdfb5921a3bc785df01f339663d5129d39dbc853b761cbf137c0d090568c",
+    "trustlessfl/seed_mpc_native.py": "4529a822c672a93737f9802ba452781b3e014dfc89fd3c0649cbfa193ef499f4",
+    "trustlessfl/seed_mpc_poisoning_fixture.py": "08feab072cbc3aef4aec765a34ea88fa2266525d1106c58860ab389f77043ce4",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/seed_mpc_prss.py": "9364ec829c770a236257a21f7ed7c0cb00a839021bfe060af17b3f9c7a1d7dd6",
+    "trustlessfl/seed_mpc_resources.py": "58abd8812d334bd03abf3e85dff8b20a8e453fab056bc0c534d93b8a2f1745d8",
+    "trustlessfl/seed_mpc_server_app.py": "fe4288eedaf762233c8b4e7890ac009a7c1078be36c91c9d5b8726294bdf274a",
+    "trustlessfl/seed_mpc_service.py": "1c4d6d0b8dd7b6307848bc0cff64663d4f049fc1764452ff1dff6418105015ae",
+    "trustlessfl/seed_mpc_session.py": "e4f86a652e3f6ed1df6d0e79ca512ff1115b14bfa91edb406ad5225957d21a07",
+    "trustlessfl/seed_mpc_telemetry_patch.py": "73429a7913739b8ab2001b953ae0f15666040a36353e7c5270807ea0e1d62334",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_wire.py": "3d055cf24348a0c1c028300f3ca9451f8fc94956f3f51f324f0f620d07227d91"
+  },
+  "mpc_source_sha256": {
+    "seed_mpc_candidate_primitives.py": "6f14906a0090ce27588851bdb0c25779b3a28ee4b0ce605f48dd9aa253e01b65",
+    "seed_mpc_chunked_session.mpc": "626f36cad491d89ab2086e45dd6e7de65334eccc96897f0be48bc06a440d8f47",
+    "seed_mpc_primitives.py": "23870c20cc4a58c801f3fb6d85ee58bd948b9f816ddf1ce483dce55d4f516fad"
+  },
+  "versions": {
+    "cryptography": "46.0.7",
+    "flwr": "1.36.0",
+    "numpy": "2.5.0",
+    "ray": "2.55.1",
+    "torch": "2.8.0+cu128"
+  },
+  "native_settings": {
+    "component_input": "holder-checked-direct-v1",
+    "mask_mode": "rep4-seeded-components-v1",
+    "public_agreement": "checked-open-v1",
+    "chunk_blocks": 64,
+    "round_slots": 10
+  }
+}

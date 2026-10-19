@@ -1,0 +1,163 @@
+{
+  "case": "multi-round",
+  "passed": true,
+  "scope": "synthetic local native MPC; no Flower/BFT or joint-collusion proof",
+  "runtime": "MP-SPDZ 0.4.3 MASCOT + active binary mixed computation, live preprocessing",
+  "parties": 4,
+  "clients": 4,
+  "dimension": 2,
+  "private_seed_inputs_per_client": 1,
+  "native_sessions": 1,
+  "rounds_executed": 3,
+  "rounds": 3,
+  "output": [
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        80000,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        -40000,
+        0
+      ]
+    },
+    {
+      "status": "abort"
+    }
+  ],
+  "expected": [
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        80000,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        -40000,
+        0
+      ]
+    },
+    {
+      "status": "abort"
+    }
+  ],
+  "wire_modulus": 65536,
+  "application_bits": 32,
+  "field_bits": 127,
+  "synthetic_wrap_events": {
+    "positive": 5,
+    "negative": 1
+  },
+  "source_sha256": {
+    "seed_mpc_session.mpc": "0ea31df12e5de4b0559f9f96540c108ee564dbda2a2a439d8ce59592478dd5d1",
+    "seed_mpc_primitives.py": "23870c20cc4a58c801f3fb6d85ee58bd948b9f816ddf1ce483dce55d4f516fad"
+  },
+  "aes_circuit_sha256": "40423a0cdaf5d4d34aba872c12660f115dc25c12eea6e24a9304578e79df6d04",
+  "aes_circuit_commit": "1603ed6aa12348c2ef15ed8395b9b96e4c558b7f",
+  "policy_hash": "c11be210fec85d1dd660b20215f237e7c09b29f278b3f22c2e05d8616ce69eb4",
+  "compile_seconds": 5.57,
+  "native_seconds": 26.242,
+  "global_data_sent_mb": 11743.5,
+  "malicious_aggregator_faults_injected": 0,
+  "workspace": "/home/hacho/@WSL-Projects/trustlessFL/.cache/seed-mpc/runs/5e593b04bed2457e9f06f4bc59bc5039",
+  "harness_sha256": {
+    "experiments/run_seed_mpc_probe.py": "dc39b3f9c370c5d87fc6bbce5dd76a7a8831a3c6ae41d4a78def5bf02f7c75eb",
+    "trustlessfl/seed_mpc_external_client.py": "9600b9218a64d2e05889bd305c19a87257146da7238be0aa79f8ea29b0b64a86",
+    "trustlessfl/seed_mpc_policy.py": "854fc18d2fcf366c0f71684c9ec1957fbdc8976cc5b750862b713e50e34f00e2",
+    "trustlessfl/seed_mpc_wire.py": "79f171ce9f0b57f66a1a32e06e12204e4636e5cb24ff8a1cfa93e38bee3ed429"
+  },
+  "external_client_communication": [
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 232,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 8208,
+        "received_bytes": 24592,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "final_outputs": {
+        "sent_bytes": 0,
+        "received_bytes": 2320,
+        "sent_messages": 0,
+        "received_messages": 4
+      }
+    },
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 232,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 8208,
+        "received_bytes": 24592,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "final_outputs": {
+        "sent_bytes": 0,
+        "received_bytes": 2320,
+        "sent_messages": 0,
+        "received_messages": 4
+      }
+    },
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 232,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 8208,
+        "received_bytes": 24592,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "final_outputs": {
+        "sent_bytes": 0,
+        "received_bytes": 2320,
+        "sent_messages": 0,
+        "received_messages": 4
+      }
+    },
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 232,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 8208,
+        "received_bytes": 24592,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "final_outputs": {
+        "sent_bytes": 0,
+        "received_bytes": 2320,
+        "sent_messages": 0,
+        "received_messages": 4
+      }
+    }
+  ],
+  "communication_measurement": "native -v plus ExternalIO message/framing counters; excludes TLS/TCP overhead"
+}

@@ -1,0 +1,261 @@
+{
+  "scope": "offline output-policy and integer counterexamples; ideal MPC assumed correct",
+  "native_mpc_run": false,
+  "training_run": false,
+  "tls_testing": false,
+  "assertions_passed": true,
+  "security_approved": false,
+  "note": "passing assertions reproduce vulnerabilities; they do not certify security",
+  "source_sha256": {
+    "trustlessfl/private_bound.py": "584ae7a4c5092beb07b75536effb7c7015b1a5f44c5b823b221eb033378777b7",
+    "mpc/Programs/Source/aion_private_bound.mpc": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+    "experiments/audit_private_bound_security.py": "9603abb8819cb6d70c4d63bc5fa25335757c251779524bec10e18dcd7c389603"
+  },
+  "cases": [
+    {
+      "id": "selected-honest-isolation",
+      "severity": "blocking-output-policy",
+      "colluding_clients": 2,
+      "input_honest_clients": 2,
+      "selected_honest_clients": 1,
+      "world_a": [
+        0,
+        0,
+        3,
+        6
+      ],
+      "world_b": [
+        0,
+        0,
+        1,
+        8
+      ],
+      "unfiltered_honest_sum": 9,
+      "public_a": {
+        "status": "ok",
+        "sum": [
+          3
+        ],
+        "count": 3
+      },
+      "public_b": {
+        "status": "ok",
+        "sum": [
+          1
+        ],
+        "count": 3
+      },
+      "recovered_accepted_honest_update": 3,
+      "identity_linkage": "additional knowledge of which honest client passes is needed to label the vector",
+      "same_unfiltered_sum_but_distinguishable": true
+    },
+    {
+      "id": "threshold-requery",
+      "severity": "blocking-session-policy",
+      "assumption": "same frozen honest updates queried twice with different thresholds",
+      "public_high": {
+        "status": "ok",
+        "sum": [
+          9
+        ],
+        "count": 4
+      },
+      "public_low": {
+        "status": "ok",
+        "sum": [
+          3
+        ],
+        "count": 3
+      },
+      "recovered_honest_update_values": [
+        3,
+        6
+      ],
+      "identity_linkage": "vector values are recovered; their assignment to the two honest identities needs extra information"
+    },
+    {
+      "id": "overlapping-cohort-requery",
+      "severity": "blocking-session-policy",
+      "assumption": "same frozen honest updates reused in overlapping cohorts",
+      "public_full": {
+        "status": "ok",
+        "sum": [
+          6
+        ],
+        "count": 4
+      },
+      "public_subset": {
+        "status": "ok",
+        "sum": [
+          5
+        ],
+        "count": 3
+      },
+      "recovered_honest_update": 1,
+      "honest_contributors_per_release": [
+        3,
+        2
+      ]
+    },
+    {
+      "id": "mean-only-not-a-general-repair",
+      "severity": "output-policy",
+      "world_a": [
+        0,
+        0,
+        6,
+        12
+      ],
+      "world_b": [
+        0,
+        0,
+        3,
+        15
+      ],
+      "unfiltered_honest_sum": 18,
+      "public_a": {
+        "status": "ok",
+        "mean": [
+          2
+        ]
+      },
+      "public_b": {
+        "status": "ok",
+        "mean": [
+          1
+        ]
+      },
+      "same_unfiltered_sum_but_distinguishable": true,
+      "limitation": "rounded mean does not generally reveal an exact individual update; it still leaks more than the unfiltered sum"
+    },
+    {
+      "id": "honest-quorum-and-abort-leak",
+      "severity": "output-contract",
+      "counting_cases": 9425,
+      "necessary_count": "accepted >= upper_bound_colluding_clients + 2",
+      "q_minus_two_corruption_requires_all_q_pass": true,
+      "same_unfiltered_honest_sum": 9,
+      "public_a": {
+        "status": "abort"
+      },
+      "public_b": {
+        "status": "ok",
+        "sum": [
+          9
+        ],
+        "count": 4
+      },
+      "abort_status_still_input_dependent": true,
+      "limitation": "ensures two honest contributions under the stated bound; not DP or original ideal-functionality equivalence"
+    },
+    {
+      "id": "dynamic-boundary-cancellation-capture",
+      "severity": "blocking-robustness-claim",
+      "successful_initial_output": {
+        "status": "ok",
+        "sum": [
+          40
+        ],
+        "count": 4
+      },
+      "poisoned_output": {
+        "status": "ok",
+        "sum": [
+          0
+        ],
+        "count": 4
+      },
+      "threshold_before": 100,
+      "threshold_after": 25,
+      "next_output": {
+        "status": "ok",
+        "sum": [
+          0
+        ],
+        "count": 2
+      },
+      "selected_honest_clients": 0,
+      "next_threshold": 25,
+      "masks_and_wrap_errors": 0,
+      "poisoned_updates_within_current_boundary": true
+    },
+    {
+      "id": "benign-heterogeneity-abort-lock",
+      "severity": "robustness-liveness",
+      "synthetic_not_observed_fmnist_event": true,
+      "malicious_clients": 0,
+      "first_output": {
+        "status": "ok",
+        "sum": [
+          40
+        ],
+        "count": 4
+      },
+      "second_output": {
+        "status": "ok",
+        "sum": [
+          0
+        ],
+        "count": 4
+      },
+      "next_threshold": 25,
+      "third_output": {
+        "status": "abort"
+      },
+      "unchanged_history_keeps_abort_threshold": true
+    },
+    {
+      "id": "in-bound-direction-poison",
+      "severity": "robustness-limit",
+      "q": 20,
+      "colluding_clients": 18,
+      "squared_norm_every_client": 1,
+      "honest_update_direction": 1,
+      "public_output": {
+        "status": "ok",
+        "sum": [
+          -16
+        ],
+        "count": 20
+      },
+      "accepted_attack_reverses_sum": true,
+      "limitation": "synthetic sign-flip, not an empirical backdoor or FMNIST attack"
+    },
+    {
+      "id": "history-authentication-is-external",
+      "severity": "missing-integration-invariant",
+      "legitimate_history_threshold": 100,
+      "fabricated_history_threshold": 25,
+      "certificate_verified_by_reference": false,
+      "limitation": "helper deliberately trusts its caller; not a cryptographic signature forgery"
+    },
+    {
+      "id": "small-M-requires-private-raw-input",
+      "severity": "conditional-integration-risk",
+      "mask_max": 1,
+      "spacing": 21,
+      "coordinates_recovered_without_key": 42,
+      "formula": "floor(Y/d) = u when Y=d*u+m and 0<=m<d",
+      "assumption": "raw Y or offset mistakenly sent publicly; proposed private input path does not do this"
+    },
+    {
+      "id": "arithmetic-wire-and-range-audit",
+      "severity": "no-failure-found-in-tested-domain",
+      "independent_oracle_checks": 3118,
+      "M_profiles": [
+        1,
+        15,
+        840000021,
+        "340282366920938463463374607431768211456"
+      ],
+      "spacings": [
+        1,
+        21
+      ],
+      "small_profiles_exhaust_all_wire_words": true,
+      "large_profiles": "valid updates plus wire-boundary samples",
+      "all_equal": true,
+      "limitation": "plaintext integer semantics; no native field implementation or general security proof"
+    }
+  ]
+}

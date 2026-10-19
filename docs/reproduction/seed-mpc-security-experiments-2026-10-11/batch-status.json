@@ -1,0 +1,42 @@
+{
+  "native_comparison_completed_conditions": [
+    "bounded-100",
+    "out-of-bound",
+    "clean"
+  ],
+  "batch": "completed after clean-only recovery; failed clean run retained and excluded",
+  "recovery_started": true,
+  "previous_failed_clean": {
+    "execution_terminated": true,
+    "internal_verification_passed": true,
+    "accepted_count_by_round": [
+      4,
+      4,
+      0,
+      0,
+      0
+    ],
+    "status_by_round": [
+      "ok",
+      "ok",
+      "abort",
+      "abort",
+      "abort"
+    ],
+    "submission_failure_rounds": [
+      3,
+      4,
+      5
+    ],
+    "failure_kind": "all clients transport-error",
+    "comparison_passed": false,
+    "root_cause": "Ray serialization raised RuntimeError; Flower BasicActorPool removes actor before remote submission and fails to restore it on a synchronous submission exception, exhausting the single-actor pool. Exact mutated dictionary not identified."
+  },
+  "clean": {
+    "execution_terminated": true,
+    "internal_verification_passed": true,
+    "learning_workload_completed": true,
+    "comparison_passed": true,
+    "source_run": "native-sequential-clean-runtime-fix-2026-10-11"
+  }
+}

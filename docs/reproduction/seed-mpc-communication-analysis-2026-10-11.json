@@ -1,0 +1,177 @@
+{
+  "baseline": {
+    "global_mb": 11743.5,
+    "online_mb": 4.7077919999999995,
+    "preprocessing_mb": 11738.79,
+    "online_percent": 0.040088491505939454,
+    "preprocessing_percent": 99.95989270660365,
+    "parties": [
+      {
+        "party": 0,
+        "total_mb": 2939.86,
+        "online_mb": 2.32794,
+        "preprocessing_mb": 2937.54
+      },
+      {
+        "party": 1,
+        "total_mb": 2934.54,
+        "online_mb": 0.793284,
+        "preprocessing_mb": 2933.75
+      },
+      {
+        "party": 2,
+        "total_mb": 2934.54,
+        "online_mb": 0.793284,
+        "preprocessing_mb": 2933.75
+      },
+      {
+        "party": 3,
+        "total_mb": 2934.54,
+        "online_mb": 0.793284,
+        "preprocessing_mb": 2933.75
+      }
+    ],
+    "stage_mb": {},
+    "stage_percent": {},
+    "external_all_clients": {
+      "connection": {
+        "sent_bytes": 80,
+        "received_bytes": 928,
+        "sent_messages": 16,
+        "received_messages": 16
+      },
+      "seed_registration": {
+        "sent_bytes": 32832,
+        "received_bytes": 98368,
+        "sent_messages": 16,
+        "received_messages": 16
+      },
+      "final_outputs": {
+        "sent_bytes": 0,
+        "received_bytes": 9280,
+        "sent_messages": 0,
+        "received_messages": 16
+      }
+    },
+    "compiler_requirements": {
+      "integer triples": 23579,
+      "integer randoms": 536,
+      "integer dabits": 2048,
+      "integer simple multiplications": 23067,
+      "integer opens": 612,
+      "bit opens": 12288,
+      "integer bits": 11049,
+      "bit triples": 76800,
+      "virtual machine rounds": 1178
+    }
+  },
+  "profile": {
+    "global_mb": 11743.5,
+    "online_mb": 4.7077919999999995,
+    "preprocessing_mb": 11738.79,
+    "online_percent": 0.040088491505939454,
+    "preprocessing_percent": 99.95989270660365,
+    "parties": [
+      {
+        "party": 0,
+        "total_mb": 2939.86,
+        "online_mb": 2.32794,
+        "preprocessing_mb": 2937.54
+      },
+      {
+        "party": 1,
+        "total_mb": 2934.54,
+        "online_mb": 0.793284,
+        "preprocessing_mb": 2933.75
+      },
+      {
+        "party": 2,
+        "total_mb": 2934.54,
+        "online_mb": 0.793284,
+        "preprocessing_mb": 2933.75
+      },
+      {
+        "party": 3,
+        "total_mb": 2934.54,
+        "online_mb": 0.793284,
+        "preprocessing_mb": 2933.75
+      }
+    ],
+    "stage_mb": {
+      "1": 3178.028,
+      "2": 897.8990000000001,
+      "3": 0.014976000000000001,
+      "4": 6273.4800000000005,
+      "5": 929.4010000000001,
+      "6": 464.649
+    },
+    "stage_percent": {
+      "1": 27.062017286158298,
+      "2": 7.645923276706264,
+      "3": 0.00012752586537233363,
+      "4": 53.42087112019416,
+      "5": 7.914173798271385,
+      "6": 3.9566483586664964
+    },
+    "external_all_clients": {
+      "connection": {
+        "sent_bytes": 80,
+        "received_bytes": 928,
+        "sent_messages": 16,
+        "received_messages": 16
+      },
+      "seed_registration": {
+        "sent_bytes": 32832,
+        "received_bytes": 98368,
+        "sent_messages": 16,
+        "received_messages": 16
+      },
+      "final_outputs": {
+        "sent_bytes": 0,
+        "received_bytes": 9280,
+        "sent_messages": 0,
+        "received_messages": 16
+      }
+    },
+    "compiler_requirements": {
+      "integer triples": 23579,
+      "integer randoms": 536,
+      "integer dabits": 2048,
+      "integer simple multiplications": 23067,
+      "integer opens": 612,
+      "bit opens": 12288,
+      "integer bits": 11049,
+      "bit triples": 76800,
+      "virtual machine rounds": 1190
+    }
+  },
+  "logical_sizes": {
+    "seeds_bytes": 64,
+    "public_masked_updates_bytes": 48,
+    "public_updates_sent_in_fixture": false,
+    "aes_blocks": 12,
+    "seed_a2b_bits": 512,
+    "mask_b2a_bits": 1536,
+    "needed_mask_b2a_bits": 384,
+    "unused_mask_b2a_bits": 1152
+  },
+  "notes": [
+    "Native counters: sum of bytes sent by MPC parties, decimal MB, excludes external clients and TLS/TCP overhead.",
+    "External counters: sent plus received application messages with four-byte framing; excludes TLS/TCP overhead.",
+    "Timer barriers change batching. Profile and baseline have equal non-round resource counts and rounded total MB.",
+    "On-demand preprocessing is charged where generated; the registration stage pre-generates shared daBit material used later.",
+    "No full-model traffic extrapolation from this D=2 fixture. Public masked inputs are compiled constants."
+  ],
+  "archived_logs": {
+    "docs/reproduction/seed-mpc-communication-2026-10-11/baseline/compile.log": "250188aeb8a453263379406c39760422b08214095cd325d1b8527cd073f7f6ae",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/baseline/P0.log": "00464d3f93cfa224724e7172eedc8a39c7540062e58f185a92df2b614776b2e9",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/baseline/P1.log": "231591a4236fcd7a94c04f1c56fe7365c8c6ce6b6e39fa78751aeb83fbe8c253",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/baseline/P2.log": "01e736efd8776852a9e8daf061f572a266090a1b3f53129ceb9dc34f6d9145fc",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/baseline/P3.log": "b96945f40ea8894b5c0959a4ef9173f02498730f6b5b2fd5ddad21a02a1ea406",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/profile/compile.log": "90bfb0086999d5b2807162098b6513552d77cf2f989861d2b8d813a34594ffbe",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/profile/P0.log": "8216bddcd22270ed808a0827c9511aa11687d7c3b02bbbc8db8b760a468b9b52",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/profile/P1.log": "e75c33b9865b32ef9fdf7161f585caf00745f04bb9b813c2b05530fa1bbc6946",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/profile/P2.log": "29c020d6c7fb39bc7bc9e126d0ac3ec21cf38cb864409839aa2be9bec1981fd8",
+    "docs/reproduction/seed-mpc-communication-2026-10-11/profile/P3.log": "5304d57c11ebf3ae55eb663c8482a3a9bdc2658277c0804588cb30352661b29f"
+  }
+}

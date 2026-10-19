@@ -43,6 +43,15 @@ def require_completed_run(status):
     return runs[0]
 
 
+def save_run_status(flwr, env, attempt):
+    """Keep diagnostic stderr separate from the CLI's JSON stdout."""
+    path=attempt / 'run-status.json'
+    with path.open('x') as status, (attempt / 'run-status.stderr.log').open('x') as errors:
+        subprocess.run([flwr,'list','--format','json'],env=env,stdout=status,
+                       stderr=errors,check=True,timeout=30)
+    return require_completed_run(json.loads(path.read_text()))
+
+
 def stage(output, data, rounds, backend="numpy"):
     if backend not in ("numpy", "torch-cuda") or rounds < 1:
         raise ValueError("Invalid backend or rounds")
@@ -103,6 +112,33 @@ def run(output):
     env.update({"FLWR_HOME": str(flower_dir), "FLWR_TELEMETRY_ENABLED": "0", "FLWR_DISABLE_UPDATE_CHECK": "1",
                 "RAY_USAGE_STATS_ENABLED": "0", "OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1",
                 "MKL_NUM_THREADS": "1", "PATH": str(Path(sys.executable).parent) + os.pathsep + env["PATH"]})
+    if config.get('seed-mpc-runtime-guard', False):
+        bootstrap = attempt / 'runtime-bootstrap'
+        bootstrap.mkdir()
+        (bootstrap / 'sitecustomize.py').write_text(
+            'import os, sys\n'
+            'if os.environ.get("TRUSTLESSFL_FLOWER_RUNTIME_GUARD") == "1":\n'
+            '    try:\n'
+            '        import hashlib, json\n'
+            '        from pathlib import Path\n'
+            '        from trustlessfl import seed_mpc_flower_runtime as guard\n'
+            '        actual = hashlib.sha256(Path(guard.__file__).read_bytes()).hexdigest()\n'
+            '        if actual != os.environ["TRUSTLESSFL_FLOWER_GUARD_SHA256"]:\n'
+            '            raise RuntimeError("runtime guard artifact differs")\n'
+            '        guard.install()\n'
+            '        evidence = Path(os.environ["TRUSTLESSFL_FLOWER_GUARD_EVIDENCE"])\n'
+            '        (evidence / (str(os.getpid()) + ".json")).write_text(json.dumps({"installed": True, "source_sha256": actual}))\n'
+            '    except Exception as error:\n'
+            '        sys.stderr.write("seed-MPC runtime guard rejected: " + str(error) + "\\n")\n'
+            '        sys.stderr.flush()\n'
+            '        os._exit(78)\n')
+        env['TRUSTLESSFL_FLOWER_RUNTIME_GUARD'] = '1'
+        evidence = bootstrap / 'guards'
+        evidence.mkdir()
+        env['TRUSTLESSFL_FLOWER_GUARD_EVIDENCE'] = str(evidence.resolve())
+        env['TRUSTLESSFL_FLOWER_GUARD_SHA256'] = config['seed-mpc-runtime-guard-sha256']
+        env['PYTHONPATH'] = (str(bootstrap.resolve()) + os.pathsep + str((output / 'app').resolve())
+                             + os.pathsep + env.get('PYTHONPATH', ''))
     if gpu:
         env["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
         # Probe in a separate process, releasing its CUDA context before Ray starts.
@@ -163,10 +199,7 @@ def run(output):
                                cwd=output / "app", check=True,
                                timeout=int(config.get("runtime-cli-timeout", 1200 if gpu else 600)))
             write_json(attempt / "timing.json", {"flwr_cli_wall_seconds": time.perf_counter() - started})
-            with (attempt / "run-status.json").open("x") as status:
-                subprocess.run([flwr, "list", "--format", "json"], env=env,
-                               stdout=status, stderr=subprocess.STDOUT, check=True, timeout=30)
-            require_completed_run(json.loads((attempt / "run-status.json").read_text()))
+            save_run_status(flwr, env, attempt)
         finally:
             # Only signal the process group created above, not unrelated Flower/Ray jobs.
             if server.poll() is None:

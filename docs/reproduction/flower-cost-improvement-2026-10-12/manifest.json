@@ -1,0 +1,15 @@
+{
+  "sources": {
+    "trustlessfl/seed_mpc_dropout.py": "d6041395d461c2c57ba55175f2266ee3af10270e14a79d641f84a7dda15604ec",
+    "trustlessfl/seed_mpc_server_app.py": "35d27d7a8fb7536636c7ddbe48bb68e2cf7f7201373a265ce59fa38c400bf299",
+    "trustlessfl/seed_mpc_client_app.py": "474efa1d83b9b9ed1df996339066b7e3e5fe7c061752452278b699267900389e",
+    "trustlessfl/seed_mpc_committee.py": "e48eb84d13611f0b83d85a68b499aaabac6d1de667c581bdd9e3b8f6740c360b",
+    "tests/test_seed_mpc_dropout.py": "7de49a9fe62de77c4b13b2e2791530bb33ff74dfad64489a4a116d37725d460e",
+    "experiments/export_flower_cost_improvement.py": "962b61a52f4df907e127040399c3616d7cad0d9db6ab1dd2f7b5f0ba221d23ac"
+  },
+  "public_files": {
+    "flower-cost-improvement-2026-10-12.md": "76f86ca09ff2acaca05da68e99721ecd2f99e15ffa0c2bc1e4d1f63218a05472",
+    "flower-cost-improvement-2026-10-12/results.json": "1ee318c6bcb4bebf570cea3d5b099b202c33c6ea5c20af843a770783007dd5a6",
+    "flower-cost-improvement-2026-10-12/before-after.png": "0c5224952f50e233c566b8929fdb22696ad87b98a46cc75a32e383ed90842aa5"
+  }
+}

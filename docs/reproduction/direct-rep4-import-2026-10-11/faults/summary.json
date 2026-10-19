@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "passed": true,
+      "fault": "component-equivocation",
+      "rejected_at": "inconsistent native mask components",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 0,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "component-equivocation",
+      "rejected_at": "inconsistent native mask components",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 1,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "component-equivocation",
+      "rejected_at": "inconsistent native mask components",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 2,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "component-equivocation",
+      "rejected_at": "inconsistent native mask components",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 3,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "component-noncanonical",
+      "rejected_at": "inconsistent native mask components",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 0,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "seed-equivocation",
+      "rejected_at": "inconsistent component seed registration",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 0,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "native-digest-equivocation",
+      "rejected_at": "inconsistent native mask components",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 0,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "native-status-equivocation",
+      "rejected_at": "Inconsistent broadcast at some point",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 0,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    },
+    {
+      "passed": true,
+      "fault": "native-postcheck-share",
+      "rejected_at": "hash mismatch for sender",
+      "aggregate_outputs": 0,
+      "result_checkpoints": 0,
+      "mask_mode": "rep4-seeded-components-v1",
+      "public_agreement": "checked-open-v1",
+      "component_input": "holder-checked-direct-v1",
+      "fault_party": 0,
+      "chunk_blocks": 64,
+      "scope": "local input fault injection; no complete malicious-protocol/composition proof"
+    }
+  ],
+  "source_sha256": "541ca3cbabbb954e09fbc31c1efa87fc154b78f02e7a724bab2f7be41e2eea57",
+  "native_initial_build": {
+    "scope": "test-only malicious P0; never accepted as product backend",
+    "binary_sha256": "29263abddaf63d4a657fab088ac873d86b98e48ab20b2e421ec8bd203044cea3",
+    "library_sha256": "71c86feb04b9545ebf8d7859b7045393eb4c7c6949555d7491b706304a6f8d56",
+    "parent_binary_sha256": "b2ca054089650e2b37eab810d064559651b846f51109319623f5b9ea201959e5",
+    "patches": {
+      "GC/Rep4Secret.cpp": "dec5065fc9c9aec729bbb3019ce1331d073fdb752c7e9a6e5883c5364d900529",
+      "Networking/Player.cpp": "9cecdeb3116a59022461f46f77b1a8bdd045b89e4986b5bb48a6b2cf69eaa709"
+    }
+  },
+  "native_final_build": {
+    "scope": "test-only malicious P0; never accepted as product backend",
+    "binary_sha256": "29263abddaf63d4a657fab088ac873d86b98e48ab20b2e421ec8bd203044cea3",
+    "library_sha256": "ae39521897ba026580d4e7fb9c162fbc6b17642b1017966afdab836f348099df",
+    "parent_binary_sha256": "b2ca054089650e2b37eab810d064559651b846f51109319623f5b9ea201959e5",
+    "patches": {
+      "GC/Rep4Secret.cpp": "dec5065fc9c9aec729bbb3019ce1331d073fdb752c7e9a6e5883c5364d900529",
+      "Networking/Player.cpp": "e8b0b913e825dd53467e9e39bef343867cf41d3e5e51d21eb7b7ad34747ae5fe",
+      "Networking/CryptoPlayer.cpp": "d080551c41b81880b727cd2bed0ca4d741dc3bd0ef7d86d38ad95251c79d1f98"
+    }
+  },
+  "scope": "local bounded fault coverage including three native attacks; not a complete composition proof"
+}

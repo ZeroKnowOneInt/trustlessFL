@@ -1,4 +1,81 @@
-# TrustlessFL — AION-ASR on Flower
+# TrustlessFL — Private MPC Update Validation on Flower
+
+## 현재 구현과 검증 (2026-10-19)
+
+현재 기본 구현은 **고정 4개 aggregator의 MP-SPDZ Rep4로 개별 업데이트를 직접 공개하지 않고 정적 좌표·L2 바운더리를 검사하는 Flower 프레임워크**입니다. 아래의 Aion 재현·초기 MPC 기록은 개발 시점별 자료입니다.
+
+- [발표 구성·선행연구·DP와의 관계·결과 비교](docs/graduation-presentation-outline-2026-10-17.md)
+- [전체 구현 및 실험 완료 범위](docs/reproduction/graduation-status-2026-10-14.md)
+- [FMNIST·LeNet5: 무필터·평문 검사·실제 MPC 비교](docs/reproduction/graduation-three-way-2026-10-12.md)
+- [동일 Flower 환경의 평문 대비 실행 시간·통신 비용](docs/reproduction/flower-cost-improved-2026-10-12.md)
+
+공모 한도는 세션 전체에서 static 악성 aggregator 최대 1개입니다. 두 aggregator 공모와 공개 집계·모델에서의 역추론은 보호 범위에 포함되지 않으며, DP 보장은 제공하지 않습니다. Norm bound의 적절성은 운영 정책이며 norm 이내의 poisoning을 일반적으로 방어한다고 주장하지 않습니다. 100명 실제 학습과 네 독립 기관의 실운영은 미완료입니다. 비용·정확도 수치는 각 보고서의 기록된 구현에 대한 결과입니다.
+
+업로드 전 관련 회귀 검사: **28개 테스트 파일, 663 passed** (2026-10-19). 전체 저장소 테스트나 전체 학습을 재실행한 결과는 아닙니다. 개인 키·seed·로컬 데이터·SQLite 상태·빌드 캐시는 저장소에 포함하지 않습니다. Flower Hub에는 게시하지 않았습니다. 재현 자료에 포함된 MP-SPDZ 소스의 라이선스는 [원문 고지](licenses/MP-SPDZ.txt)를 따릅니다.
+
+## 사용자용 Seed-MPC 로컬 실행
+
+[역할별 설치·패키지 실행 안내](docs/seed-mpc-package-guide.md): 독립 실행의 client에는 MP-SPDZ·컴파일러·Ray가 필요 없습니다. 새 client 환경에서 MLP의 4→3→4 복귀와 CNN 2라운드를 검증했습니다. [패키지 검증 결과](docs/reproduction/package-validation-2026-10-12.md).
+
+MPC backend는 `trustlessfl-mpc doctor/setup/verify/smoke`로 준비·검증할 수 있습니다. [Linux/WSL 설치·실행 자동화](docs/seed-mpc-backend-setup.md).
+
+현재 기본 Flower 진입점은 Seed-MPC `ServerApp` / `ClientApp`입니다. 사용자 모델·정적 정책으로 `python -m trustlessfl.seed_mpc_user prepare/run/status`를 사용하며 일반 실행은 raw 업데이트 audit을 생성하지 않습니다. Client·aggregator·coordinator 설정을 분리했습니다. Client 수는 데이터 목록에서 N명으로 설정하며 aggregator는 4명입니다. 4·8·16명 기능 검증을 수행한 같은 Linux/WSL UID의 로컬 실행입니다. 독립 host용 별도 네트워크 실행 경로와 역할별 키·데이터 provisioning도 구현했습니다. [실행 절차](docs/seed-mpc-independent-hosts.md), [분리 환경의 이탈·복귀·최종 패키지 검증](docs/reproduction/independent-hosts-2026-10-12.md). 실제 네 독립 운영자 배포와 Hub 게시는 아직 수행하지 않았습니다. [실행 방법과 프라이버시 경계](docs/seed-mpc-user-runtime.md).
+
+## 비공개 bound·no-wrap 확장 분기 (2026-10-10)
+
+**마스크 생성 비용 개선 (2026-10-11):** 현재 Flower 실행의 기본 경로는 클라이언트별 네 seed를 수신자별 세 개씩 암호화 전달하고, aggregator가 로컬 PRG로 마스크 component를 생성하는 방식입니다. 기존 악성 보안 binary input과 component 사본 일치 검사를 유지하면서 MPC 내부 AES를 제거했습니다. Single mask·정적 바운더리·carry/wrap 복원 계약을 유지합니다. [프로토콜](docs/aion-seeded-components-protocol.md), [검증·측정](docs/reproduction/seeded-components-2026-10-11.md). 이전 경로는 `--mask-mode secret-aes-v1`로 실행합니다.
+- [공개 입력 비교·SIMD packing 최적화 및 통신량](docs/reproduction/public-packed-2026-10-11.md)
+- [직접 share 연결 검증·통신량: 345.57 → 274.11 MB](<docs/reproduction/direct-rep4-import-2026-10-11.md>)
+- [Seed component의 native Rep4 share 직접 연결](<docs/aion-direct-rep4-import-protocol.md>)
+- [최신 packing 이후 구현 계획](docs/seed-mpc-roadmap-after-packing.md)
+- [사용자 PyTorch 모델·정적 정책·회로 캐시](docs/seed-mpc-user-models.md)
+- [사용자 모델 native 검증·cache 재사용 결과](docs/reproduction/user-models-2026-10-11.md)
+
+**일반 PRG + seed MPC:** [현재 통합 프로토콜](docs/aion-seed-mpc-current-protocol.md), [설계 변천](docs/aion-seed-mpc-protocol.md). 고정 committee에서 single mask, 작은 seed 등록·재사용, 입력 snapshot 확정, 비공개 바운더리 검사와 정확한 no-wrap 집계를 구성합니다. 등록 후 client dropout/복귀와 통신 계측도 구현했으며 각 검증 범위는 통합 문서에서 구분합니다. Q=65536에서 SUM=80000과 -40000 복원, 정적 norm/좌표 검사, 통과 인원 부족 및 invalid seed 중단을 확인했습니다. [첫 native 구현](docs/reproduction/seed-mpc-native-2026-10-11.md). 공식 Flower 학습까지 완료했으며, 안전한 disk share persistence와 전체 BFT liveness는 미완료입니다.
+
+**입력·결과 인증과 영속 ledger:** 서명된 masked chunk와 등록 handle을 native 입력에 연결하고, 실행 전 예약·사후 CHECK·3서명 결과 인증·모델 한 번 적용을 구현했습니다. 65좌표/3라운드, 등록 1회, 내부 **4.18145 MB**를 확인했습니다. 입력/등록 변조는 인증서와 모델 갱신 없이 중단됐고 재시작 후 재실행도 거부했습니다. 관련 Python 검사 **169개**와 native 회귀 9개가 통과했습니다. [구현·측정·남은 범위](docs/reproduction/seed-mpc-certified-review-2026-10-11.md). 고정 committee의 안전성 경로이며 전체 BFT/Flower 완료 결과는 아닙니다.
+
+[Seed-MPC 구현 계획: 실제 MPC부터 Flower FMNIST까지](docs/seed-mpc-implementation-plan.md).
+
+**등록·라운드별 통신 계측:** 공식 MP-SPDZ 설치를 보존한 별도 승인 observer build에서 정확한 native 송신 counter를 추가했습니다. D65 정상 3라운드의 등록 **188,960 bytes**, 라운드 **1,718,868 / 1,118,580 / 1,118,580 bytes**, 추적된 종료 **0 bytes**의 합이 전체 **4,144,988 bytes**와 일치합니다. Flower 객체 그래프·RPC JSON 양 endpoint·최초 external seed 입력을 따로 기록했고 회귀 **351개**, dropout 10라운드·D170 FMNIST·기존 v1 실행을 통과했습니다. [측정 정의·결과·재현](docs/reproduction/seed-mpc-meter-2026-10-11.md). Transport overhead와 전체 LeNet5 새 계측은 별도 검증 범위입니다.
+
+**Flower masked 연결:** 공식 `flwr run`에서 네 client와 네 별도 aggregator service를 연결했습니다. Client는 signed masked 입력만 반환하고, 결과 인증서를 확인한 뒤 모델을 채택합니다. **170파라미터 FMNIST/3라운드**에서 별도 재학습의 정수 SUM과 모델이 정확히 일치했고 내부 통신은 **8.34355 MB**였습니다. 65좌표 wrap/음수/abort와 인증되지 않은 모델의 학습 전 거부도 확인했습니다. [실행·비용·검증과 한계](docs/reproduction/seed-mpc-flower-review-2026-10-11.md). 같은 WSL UID의 기능 시험이며 전체 61706파라미터 LeNet5, 독립 운영자 격리 및 전체 BFT 완료 결과는 아닙니다.
+
+**전체 차원 검증:** 같은 Flower 경로에서 **61706좌표의 dense 합성 입력/3라운드**를 실제 Rep4로 검증했습니다. ±80000/±40000 정수 합, 마지막 좌표 위반·전체 norm 위반 제외, abort 시 모델 유지가 모두 참조와 일치했습니다. 실행 **733.502초**, native 통신 **2476.15MB**, native 프로세스별 최대 RSS **145.82MiB**, compile **6.870초/1회**, seed 입력도 client당 1회였습니다. 묶음 출력 개선 후 1024좌표 실행 시간이 14.8% 줄었고 관련 Python 검사 202개와 native 회귀 9개가 통과했습니다. [전체 자원·통신·재현과 한계](docs/reproduction/seed-mpc-scale-review-2026-10-11.md). LeNet5 크기의 합성 입력 검증입니다.
+
+**실제 전체 LeNet5 학습:** 공식 Flower·Rep4에서 FMNIST 학습 **60000장**, 테스트 **10000장**, IID client 4명/1라운드를 완료했습니다. 정확도 **10.00% → 74.84%**, 통과 **4/4명**이며, 기존 학습 코드의 독립 재학습과 양자화 업데이트·정수 SUM·최종 모델이 정확히 일치했습니다. ServerApp **256.587초**, native 통신 **825.968MB**, native 최대 RSS **71.52MiB**, compile **6.300초/1회**였습니다. 관련 Python 검사 **204개**가 통과했습니다. [1라운드 학습·비용·재현](docs/reproduction/seed-mpc-lenet5-learning-2026-10-11.md).
+
+**실제 IID 5라운드 완료:** 같은 초기 모델/전체 데이터로 **74.84% → 80.54% → 83.72% → 84.99% → 86.24%**를 확인했습니다. 정상 업데이트 제외 **0/20회**, 모든 양자화 업데이트·정수 SUM·모델이 독립 재학습과 정확히 일치했습니다. Compile과 client별 seed 입력은 **각 1회**, ServerApp **1253.902초**, native 통신 **4126.98MB**, native 최대 RSS **204.61MiB**였습니다. [5라운드 결과·비용·학습된 모델](docs/reproduction/seed-mpc-lenet5-iid-5r-2026-10-11.md). Non-IID 실제 MPC 학습은 미실행이며, 같은 WSL UID의 기능 시험과 static f<=1 등의 보안 범위는 유지됩니다.
+
+[Seed-MPC 초기 MASCOT 통신 분석: 전처리·AES·바운더리 검사·키 등록의 크기](docs/reproduction/seed-mpc-communication-2026-10-11.md). 해당 2좌표 native fixture의 내부 통신 11.74 GB 중 99.96%가 전처리였습니다. 이후 Rep4 전체 차원 측정과 구분합니다.
+
+**Rep4 + 비트 회로 후보:** 같은 4클라이언트·2좌표·3라운드에서 내부 통신 **0.350628 MB**, Rep4 산술 회로 대비 **19.32% 감소**를 확인했습니다. 4 aggregator 중 최대 1개 악성이라는 계약에 맞춰 구현했으며, signed 경계·Q를 넘는 정수 합·악성 키 등록 중단을 검증했습니다. 이전 11.74 GB는 MASCOT 구현의 측정값입니다. [비용 비교·wrap 방지·등록 수정·남은 검증](docs/reproduction/rep4-candidate-review-2026-10-11.md). 전체 모델과 Flower 연결의 완료 결과는 아닙니다.
+
+**실행 시 입력·chunk 회로:** 64좌표 compile을 84.487초에서 **6.727초**로 줄였고, **1024좌표/3라운드**도 실제 MPC로 검증했습니다. 같은 bytecode에 새 masked 입력을 넣으면 compile 호출 없이 실행됩니다. 여러 chunk의 전체 norm과 단일 선택을 유지하며 입력 불일치·padding·counter 재사용을 거부합니다. [측정·등록 보안 검토·재현](docs/reproduction/rep4-chunked-review-2026-10-11.md). 이후 FIFO 입력과 위의 공식 Flower masked 업로드 경로로 연결했습니다.
+
+[유사 FL 선행연구 비교: AlphaFL·ELSA·Falkor·ScionFL](docs/seed-mpc-related-work.md).
+
+**MPC 후보 재검토:** 직접 비밀 입력형으로 같은 검사 함수를 단순화할 수 있다. toy compile 자원 비교와 선택 합계 누출·정상 입력 정책은 [재검토 기록](docs/reproduction/mpc-candidate-review-2026-10-10.md)을 참고한다. 전체 모델 native MPC 연결은 미완료다.
+
+[현재 프로토콜: carry·wrap 방지 조건과 MPC 바운더리 체크](docs/aion-no-wrap-mpc-protocol.md).
+
+**현재 기본 검사 정책은 정적 threshold입니다.** 새 no-wrap 학습 경로는 업데이트
+L2 반경 5, `T=25*S²`를 학습 시작 전에 고정하고 공개 평균으로 갱신하지 않습니다.
+좌표 상한 `B=20000`, scale `S=10000`은 별도의 산술 안전 조건입니다.
+공식 Flower IID 5라운드 86.37%, 로컬 non-IID 10라운드 62.68%였으며,
+정상 업데이트 제외는 각각 0/20, 0/40건이고 양자화 집계 모델과 모두 일치했습니다.
+[변경 내용·설정·재현 기록](docs/reproduction/static-threshold-2026-10-10.md)을 참고하세요.
+
+이 학습 검증은 평문 reference입니다. 별도의 소규모 로컬 MASCOT MPC 경로는
+구현했으나 전체 모델의 Flower MPC 연결은 아직 완료하지 않았습니다.
+[산술·MPC 구현 범위](docs/reproduction/private-bound-no-wrap-2026-10-10.md)와
+[출력 정책·재질의 등 남은 보안 문제](docs/reproduction/private-bound-security-2026-10-10.md)를
+확인하세요. 정적 norm threshold의 poisoning 방어는 아직 검증하지 않았습니다.
+
+이전 동적 필터는 non-IID 학습에서 정상 업데이트 7/40건을 제외하고 57.10%를
+기록했습니다. [동적 정책의 학습 문제](docs/reproduction/mpc-aion-learning-2026-10-10.md)와
+[이전 IID pilot](docs/reproduction/fmnist-no-wrap-2026-10-10.md)은 비교용 과거 기록으로
+보존합니다. 기존 원본 Aion 재현 경로의 실행 의미는 유지합니다.
 
 ## 첫 번째 집계 BFT의 논문 순서 보정 (2026-10-02)
 

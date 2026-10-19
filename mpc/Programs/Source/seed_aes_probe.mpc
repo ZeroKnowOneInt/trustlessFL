@@ -1,0 +1,18 @@
+# TEST ONLY: opens AES output for known synthetic fixture keys.
+# Do not use this circuit to register real users' keys.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint
+from Compiler.library import print_ln
+from Compiler.circuit import Circuit
+from seed_mpc_primitives import register_keys, aes_words
+config = json.loads(Path(program.args[1]).read_text())
+keys, sockets = register_keys(config)
+aes = Circuit('aes_128')
+outputs = []
+for i, key in enumerate(keys):
+    outputs += aes_words(aes, key, int(config['test_counter'], 16), 32)
+sint.reveal_to_clients(sockets, outputs)
+print_ln('SEED_AES_TEST_ONLY_DONE')

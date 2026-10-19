@@ -218,3 +218,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Private MPC runtime keys, shares, and local state
+**/service-private/
+**/client-private/
+**/Player-Data/
+*.key
+*.pem
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+.env.*
+!.env.example
+!.env.sample

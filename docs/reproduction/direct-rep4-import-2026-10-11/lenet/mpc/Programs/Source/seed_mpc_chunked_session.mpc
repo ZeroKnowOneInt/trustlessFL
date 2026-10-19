@@ -1,0 +1,182 @@
+# Certified adapter feeds public masked input; fixed policy/shape, shared chunk loop.
+# Signatures, durable locks and quorum certificates are enforced by the host adapters.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint, cint, regint, personal, MemValue
+from Compiler.GC.types import sbitvec, sbitintvec, sbits
+from Compiler.library import for_range, if_, public_input, runtime_error_if, print_ln, check_point, break_point, start_timer, stop_timer
+from Compiler.circuit import Circuit
+from seed_mpc_candidate_primitives import register_rep4_keys, register_rep4_component_seeds, input_checked_mask_components, checked_public_copies, import_checked_native_mask, tree_reduce
+
+config = json.loads(Path(program.args[1]).read_text())
+assert config['backend'] == 'rep4' and config['ring_bits'] == 64
+snapshot_version=config.get('snapshot_version',1)
+assert type(snapshot_version) is int and snapshot_version in (1,2)
+assert snapshot_version==1 or config.get('certified_stream') is True
+D, W, B, T = (config[k] for k in
+              ('dimension', 'word_bits', 'coordinate_cap', 'squared_threshold'))
+N = config['clients']
+L = config['chunk_blocks']
+assert type(L) is int and 1 <= L <= 64
+P = 128 // W
+C = L * P
+PAD = ((D + C - 1) // C) * C
+component_mode = config.get('mask_mode', 'secret-aes-v1') == 'rep4-seeded-components-v1'
+assert config.get('mask_mode', 'secret-aes-v1') in ('secret-aes-v1', 'rep4-seeded-components-v1')
+assert not component_mode or config.get('certified_stream') is True
+component_input = config.get('component_input', 'stock-private-v1')
+assert component_input in ('stock-private-v1','holder-checked-direct-v1')
+assert component_input == 'stock-private-v1' or component_mode
+aes = None if component_mode else Circuit('aes_128')
+lane_type = sbits.get_type(L)
+word_type = sbitintvec.get_type(W)
+previous_round = MemValue(regint(0))
+public_agreement = config.get('public_agreement', 'checked-open-v1')
+assert public_agreement in ('checked-open-v1', 'secret-bit-compare-v1')
+
+
+def agreed_public(size):
+    # Each party reads its own file; all four copies must agree before use.
+    local = [public_input() for _ in range(size)]
+    copies = [sint.concat([sint(personal(p,word)) for word in local]) for p in range(4)]
+    if public_agreement == 'checked-open-v1':
+        return checked_public_copies(copies, size, 'inconsistent public chunk')
+    diff = sint.concat([x-copies[0] for x in copies[1:]])
+    bits = sbitvec(diff, length=64, input_length=64)
+    per_value = tree_reduce(bits.v, lambda a,b: a | b)
+    bad = tree_reduce(per_value.bit_decompose(3*size), lambda a,b: a | b)
+    runtime_error_if(regint.conv(bad.reveal()) != 0, 'inconsistent public chunk')
+    return copies[0].reveal()
+
+
+certified = config.get('certified_stream', False)
+metered = config.get('communication_meter', False)
+assert type(metered) is bool and (not metered or certified)
+if metered: start_timer(7)
+registration_tags = cint.Array(4*N) if certified else None
+if certified: registration_tags.assign_vector(agreed_public(4*N))
+if component_mode:
+    sockets = register_rep4_component_seeds(config)
+else:
+    keys, sockets = register_rep4_keys(config)
+    parallel_keys = [sbitvec([key.elements()[0]] * L) for key in keys]
+if certified:
+    for i in range(N):
+        local = cint.read_from_socket(sockets[i],4)
+        break_point('registration-tag-received')
+        if public_agreement == 'checked-open-v1':
+            copies = [sint.concat([sint(personal(p,local[j])) for j in range(4)])
+                      for p in range(4)]
+            opened = checked_public_copies(copies, 4, 'registration handle binding differs')
+            received_words, expected_words = regint.conv(opened), regint.conv(registration_tags.get_vector(base=4*i,size=4))
+            runtime_error_if(sum(received_words[j] != expected_words[j] for j in range(4)) != 0,
+                             'registration handle binding differs')
+        else:
+            diff = sint.concat([sint(personal(p,local[j]))-registration_tags[4*i+j]
+                                for j in range(4) for p in range(4)])
+            bits = sbitvec(diff,length=64,input_length=64)
+            bad_column = tree_reduce(bits.v,lambda a,b: a | b)
+            bad = tree_reduce(bad_column.bit_decompose(16),lambda a,b: a | b)
+            runtime_error_if(regint.conv(bad.reveal()) != 0,'registration handle binding differs')
+    check_point()
+    if metered: stop_timer(7)
+    print_ln('SEED_MPC_REG_CHECKED')
+
+
+@for_range(config['round_slots'])
+def run_round(_):
+    if metered: start_timer(8)
+    if config.get('snapshot_version',1)==2:
+        stream_version=regint.conv(agreed_public(1))
+        runtime_error_if(stream_version!=2,'snapshot stream version differs')
+    round_id = regint.conv(agreed_public(1))
+    input_tag = cint.Array(4) if certified else None
+    if certified: input_tag.assign_vector(agreed_public(4))
+    if config.get('snapshot_version',1)==2:
+        presence=regint.conv(agreed_public(N))
+        runtime_error_if(sum((presence[i]!=0)*(presence[i]!=1) for i in range(N))!=0,
+                         'noncanonical presence bit')
+    else:
+        presence=[regint(1) for _ in range(N)]
+    runtime_error_if((round_id <= previous_round.read()) + (round_id <= 0),
+                     'replayed or invalid round counter')
+    previous_round.write(round_id)
+    accepted = []
+    updates = []
+    for i in range(N):
+        safe_memory = sint.Array(PAD)
+        norm = MemValue(sint(0))
+        valid = MemValue(sint(1))
+
+        @for_range(PAD // C)
+        def chunk(index):
+            y = agreed_public(C)
+            y_int = regint.conv(y)
+            bad_wire = sum((y_int[k] < 0) + (y_int[k] >= (1 << W)) for k in range(C))
+            runtime_error_if(bad_wire != 0, 'noncanonical public wire')
+            runtime_error_if((1-presence[i])*sum(y_int[k]!=0 for k in range(C))!=0,
+                             'absent slot has nonzero wire')
+            active = [regint(index*C + lane*P+j < D)
+                      for lane in range(L) for j in range(P)]
+            # Zero padding is framing only and is never interpreted as input.
+            runtime_error_if(sum((1-active[k])*y_int[k] for k in range(C)) != 0,
+                             'nonzero public padding')
+            if component_mode:
+                masks = (import_checked_native_mask(W, P, L) if component_input == 'holder-checked-direct-v1'
+                         else input_checked_mask_components(W, P, L))
+            else:
+                plaintext_bits = []
+                for bit in range(64):
+                    packed = sum((((index*L+lane) >> bit) % 2) << lane
+                                 for lane in range(L))
+                    plaintext_bits.append(lane_type(packed))
+                for bit in range(64):
+                    plaintext_bits.append(lane_type(((round_id >> bit) % 2)*((1<<L)-1)))
+                encrypted = aes(parallel_keys[i], sbitvec.from_vec(plaintext_bits))
+            values, coordinate_checks = [], []
+            for j in range(P):
+                mask = masks[j] if component_mode else word_type.from_vec(encrypted.v[128-(j+1)*W:128-j*W])
+                wire_bits = [lane_type(sum(((y_int[lane*P+j] >> bit) % 2) << lane
+                                           for lane in range(L))) for bit in range(W)]
+                signed = word_type.from_vec(wire_bits)-mask
+                inside = ((signed >= -B) & (signed <= B)).v[0]
+                lane_active = lane_type(sum(active[lane*P+j] << lane for lane in range(L)))
+                check = inside | ~lane_active
+                slot_present=lane_type(presence[i]*((1<<L)-1))
+                safe_bits = [bit & inside & lane_active & slot_present for bit in signed.v]
+                unsigned = sint(sbitvec.from_vec(safe_bits))
+                signed_safe = unsigned-(1<<W)*sint(sbitvec.from_vec([safe_bits[-1]]))
+                values.append(signed_safe)
+                coordinate_checks.append(check)
+            safe = sint.concat([values[j][lane] for lane in range(L) for j in range(P)])
+            checks = tree_reduce(coordinate_checks, lambda a,b: a & b)
+            chunk_valid = tree_reduce(checks.bit_decompose(L), lambda a,b: a & b)
+            valid.write(valid.read()*sint(sbitvec.from_vec([chunk_valid])))
+            norm.write(norm.read()+(safe*safe).sum())
+            safe_memory.assign_vector(safe, base=index*C)
+
+        accepted.append(presence[i]*valid.read()*norm.read().less_equal(T, bit_length=config['widths']['norm']))
+        updates.append(safe_memory)
+    count = sum(accepted)
+    ok = count.greater_equal(config['minimum_accepted'], bit_length=config['widths']['count'])
+    print_ln('SEED_MPC_PUBLIC %s', ok.reveal())
+    print_ln('SEED_MPC_PUBLIC %s', (ok*count).reveal())
+    # Nothing is opened until the global norm and selection are complete.
+    # Batch the secret multiplications and opening. Padding remains internal,
+    # and a whole-client acceptance bit still gates every coordinate.
+    selected = [(ok*bit).expand_to_vector(C) for bit in accepted]
+    @for_range(PAD // C)
+    def output_chunk(index):
+        value = sum(selected[i]*updates[i].get_vector(base=index*C,size=C) for i in range(N))
+        clear = value.reveal()
+        for j in range(C):
+            @if_(index*C+j < D)
+            def print_coordinate():
+                print_ln('SEED_MPC_PUBLIC %s', clear[j])
+    if certified:
+        check_point()
+        if metered: stop_timer(8)
+        print_ln('SEED_MPC_CHECKED %s %s %s %s %s',round_id,*[input_tag[j] for j in range(4)])
+print_ln('SEED_MPC_CANDIDATE_DONE')

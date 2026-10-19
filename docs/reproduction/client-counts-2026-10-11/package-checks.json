@@ -1,0 +1,16 @@
+{
+  "wheel_name": "trustlessfl-0.1.0-py3-none-any.whl",
+  "sha256": "795fe8d74a18050286b7695af93fed87f4e858cbd4457ca3363b41287c801116",
+  "mpc_source_resources": [
+    "trustlessfl/mpc_sources/__init__.py",
+    "trustlessfl/mpc_sources/seed_mpc_candidate_primitives.py",
+    "trustlessfl/mpc_sources/seed_mpc_chunked_session.py",
+    "trustlessfl/mpc_sources/seed_mpc_primitives.py"
+  ],
+  "private_or_experiment_files": 0,
+  "installed_outside_repo_verified": true,
+  "installed_client_count": 8,
+  "installed_rounds": 2,
+  "installed_compile_invocations": 0,
+  "integer_sum_model_evaluation_exact": true
+}

@@ -1,0 +1,295 @@
+{
+  "date_KST": "2026-10-10",
+  "flower_run_id": "13535648581854286680",
+  "flower_status": "finished:completed",
+  "fab_hash": "cf2eeaad7963f740fb8cb9aaaa3a774d0eec942948b028c6992803a20d9fc52e",
+  "versions": {
+    "flwr": "1.36.0",
+    "torch": "2.8.0+cu128",
+    "ray": "2.55.1",
+    "numpy": "2.5.0"
+  },
+  "config": {
+    "data-dir": "/home/hacho/@WSL-Projects/trustlessFL/.cache/fmnist-no-wrap/clean-4c-5r-20261010-v2/shards",
+    "output-dir": "/home/hacho/@WSL-Projects/trustlessFL/.cache/fmnist-no-wrap/clean-4c-5r-20261010-v2/runtime-results",
+    "num-clients": 4,
+    "seed": 42,
+    "rounds": 5,
+    "epochs": 1,
+    "batch-size": 64,
+    "learning-rate": 0.01,
+    "timeout": 600.0,
+    "runtime-cli-timeout": 1800,
+    "backend": "torch-cuda",
+    "device": "cuda:0",
+    "simulation-workers": 1,
+    "scale": 10000,
+    "coordinate-cap": 20000,
+    "boot-bound": 2500000000,
+    "minimum-bound": 25000000,
+    "maximum-bound": 40000000000
+  },
+  "flwr_cli_wall_seconds": 77.96555699100008,
+  "verification": {
+    "passed": true,
+    "runtime": "Official Flower Simulation Runtime / Ray",
+    "security": "NONE: public FMNIST plaintext reference, not MPC or secure Aion",
+    "verification_source_sha256": "73bed38368cf0f9dd20e8343133c9601da5737c190f1f17ed4c75ccea3fc0301",
+    "staged_application_source_matches": true,
+    "cases": [
+      {
+        "case": "fedavg",
+        "accuracy_by_round": [
+          0.1,
+          0.7454,
+          0.8031,
+          0.8384,
+          0.8494,
+          0.8626
+        ],
+        "final_accuracy": 0.8626,
+        "excluded_normal_client_rounds": 0,
+        "total_normal_client_rounds": 20,
+        "normal_exclusion_rate": 0.0,
+        "aborted_rounds": 0,
+        "boundary_squared_real": [
+          246824.0,
+          246824.0,
+          246824.0,
+          246824.0,
+          246824.0
+        ],
+        "max_coordinate_quantization_error": 4.999999105930321e-05,
+        "applied_counts": [
+          0,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "round_seconds": [
+          9.993346158999884,
+          9.362337490999835,
+          3.234679238999888,
+          3.1050055119999342,
+          3.240654833999997,
+          3.3489283089998025
+        ]
+      },
+      {
+        "case": "quantized",
+        "accuracy_by_round": [
+          0.1,
+          0.7453,
+          0.8022,
+          0.8372,
+          0.8495,
+          0.8637
+        ],
+        "final_accuracy": 0.8637,
+        "excluded_normal_client_rounds": 0,
+        "total_normal_client_rounds": 20,
+        "normal_exclusion_rate": 0.0,
+        "aborted_rounds": 0,
+        "boundary_squared_real": [
+          246824.0,
+          246824.0,
+          246824.0,
+          246824.0,
+          246824.0
+        ],
+        "max_coordinate_quantization_error": 4.999999701976775e-05,
+        "applied_counts": [
+          0,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "round_seconds": [
+          0.028023335999932897,
+          3.294980088000102,
+          3.100253330000214,
+          2.96982658800016,
+          3.425489080999796,
+          5.055122985000253
+        ]
+      },
+      {
+        "case": "no-wrap-dynamic",
+        "accuracy_by_round": [
+          0.1,
+          0.7453,
+          0.8022,
+          0.8372,
+          0.8495,
+          0.8637
+        ],
+        "final_accuracy": 0.8637,
+        "excluded_normal_client_rounds": 0,
+        "total_normal_client_rounds": 20,
+        "normal_exclusion_rate": 0.0,
+        "aborted_rounds": 0,
+        "boundary_squared_real": [
+          25.0,
+          25.0,
+          6.60623129,
+          3.60774128,
+          2.23635637
+        ],
+        "max_coordinate_quantization_error": 4.999999701976775e-05,
+        "applied_counts": [
+          0,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "round_seconds": [
+          0.029912504999629164,
+          2.8678168510000432,
+          2.790191028999743,
+          2.978878641999927,
+          2.825699077000081,
+          3.1037274199998137
+        ]
+      }
+    ],
+    "profile_round_checks": 60,
+    "training_replies": 60,
+    "first_round_updates_identical_across_cases": true,
+    "dynamic_public_history_replay_matches": true,
+    "M1_old_modular_alias_coordinates_total": 919316,
+    "max_model_difference_quantized_vs_dynamic": 0.0,
+    "max_model_difference_float_vs_quantized": 0.05177913696065079,
+    "initialization": "fresh torch seed; no pretrained checkpoint",
+    "scope": "Arithmetic comparisons against independent integer oracle at runtime; not sequential retraining or a cryptographic/privacy test"
+  },
+  "model_dimension": 61706,
+  "train_rows": 60000,
+  "test_rows": 10000,
+  "profiles": [
+    {
+      "M": "1",
+      "spacing": 1,
+      "coordinate_recovery_error": 0,
+      "sum_error": 0,
+      "selected_count_matches": true,
+      "old_centered_modular_alias_coordinates": 61336,
+      "widths": {
+        "offset_unsigned": 16,
+        "residual_signed": 16,
+        "update_signed": 16,
+        "norm_unsigned": 45,
+        "sum_signed": 18,
+        "count_unsigned": 3
+      }
+    },
+    {
+      "M": "15",
+      "spacing": 21,
+      "coordinate_recovery_error": 0,
+      "sum_error": 0,
+      "selected_count_matches": true,
+      "old_centered_modular_alias_coordinates": 61336,
+      "widths": {
+        "offset_unsigned": 20,
+        "residual_signed": 20,
+        "update_signed": 16,
+        "norm_unsigned": 45,
+        "sum_signed": 18,
+        "count_unsigned": 3
+      }
+    },
+    {
+      "M": "840000021",
+      "spacing": 21,
+      "coordinate_recovery_error": 0,
+      "sum_error": 0,
+      "selected_count_matches": true,
+      "old_centered_modular_alias_coordinates": 0,
+      "widths": {
+        "offset_unsigned": 30,
+        "residual_signed": 31,
+        "update_signed": 16,
+        "norm_unsigned": 45,
+        "sum_signed": 18,
+        "count_unsigned": 3
+      }
+    },
+    {
+      "M": "340282366920938463463374607431768211456",
+      "spacing": 21,
+      "coordinate_recovery_error": 0,
+      "sum_error": 0,
+      "selected_count_matches": true,
+      "old_centered_modular_alias_coordinates": 0,
+      "widths": {
+        "offset_unsigned": 129,
+        "residual_signed": 130,
+        "update_signed": 16,
+        "norm_unsigned": 45,
+        "sum_signed": 18,
+        "count_unsigned": 3
+      }
+    }
+  ],
+  "dynamic_rounds": [
+    {
+      "round": 1,
+      "accuracy": 0.7453,
+      "squared_bound": 2500000000,
+      "squared_norm_min": 1351604923,
+      "squared_norm_max": 1596065765,
+      "integer_mean_squared_norm": 1277845253,
+      "accepted_count": 4
+    },
+    {
+      "round": 2,
+      "accuracy": 0.8022,
+      "squared_bound": 2500000000,
+      "squared_norm_min": 374578973,
+      "squared_norm_max": 391864298,
+      "integer_mean_squared_norm": 337669651,
+      "accepted_count": 4
+    },
+    {
+      "round": 3,
+      "accuracy": 0.8372,
+      "squared_bound": 660623129,
+      "squared_norm_min": 220941057,
+      "squared_norm_max": 241068452,
+      "integer_mean_squared_norm": 184405402,
+      "accepted_count": 4
+    },
+    {
+      "round": 4,
+      "accuracy": 0.8495,
+      "squared_bound": 360774128,
+      "squared_norm_min": 155378154,
+      "squared_norm_max": 170230768,
+      "integer_mean_squared_norm": 114308694,
+      "accepted_count": 4
+    },
+    {
+      "round": 5,
+      "accuracy": 0.8637,
+      "squared_bound": 223635637,
+      "squared_norm_min": 116214178,
+      "squared_norm_max": 133607731,
+      "integer_mean_squared_norm": 76841733,
+      "accepted_count": 4
+    }
+  ],
+  "privacy": "NONE: plaintext reference; diagnostic client norm range is for this public-data experiment only",
+  "limitations": [
+    "Single seed, clean IID data, five rounds",
+    "No poisoning-defense validation",
+    "No MPC, VSS, BFT or cryptographic privacy in this Flower run",
+    "Controlled [1,2] HPRF matrix, not author artifact",
+    "No Hub publishing or changes to root project deployment/publisher settings"
+  ]
+}

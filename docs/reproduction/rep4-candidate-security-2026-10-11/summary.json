@@ -1,0 +1,83 @@
+{
+  "scope": "synthetic local native Rep4, f=1 assumption; no Flower/BFT or formal composition proof",
+  "runs": {
+    "nonboolean-2": {
+      "passed": true,
+      "output": {
+        "status": "input-abort"
+      },
+      "global_mb": null,
+      "native_seconds": 1.253,
+      "compile_seconds": 6.088,
+      "result": "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/result.json"
+    },
+    "nonboolean-high": {
+      "passed": true,
+      "output": {
+        "status": "input-abort"
+      },
+      "global_mb": null,
+      "native_seconds": 1.147,
+      "compile_seconds": 5.98,
+      "result": "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/result.json"
+    },
+    "equivocated-response": {
+      "passed": true,
+      "output": {
+        "status": "input-abort"
+      },
+      "global_mb": null,
+      "native_seconds": 1.297,
+      "compile_seconds": 5.381,
+      "result": "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/result.json"
+    },
+    "tampered-triple-frame": {
+      "passed": true,
+      "output": {
+        "status": "input-abort"
+      },
+      "global_mb": null,
+      "native_seconds": 1.189,
+      "compile_seconds": 5.662,
+      "result": "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/result.json"
+    }
+  },
+  "log_sha256": {
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/compile.log": "d155fab6222886a06ecbf88e1756da30668ee9fb6f687dee4535b5cfaba275ea",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/P0.log": "0f6913d622dcde19ef03719a34b94cc68b740027d42ba6e7bd2d1da24b192bd5",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/P1.log": "39039d1e708c97c9a5a3a5d4f8be1514ac323bda575ef52405d1e38d7b3ad298",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/P2.log": "7d0fff949b7178eb2dfedb3829448e0eaa346152a609f3d7086ed8f160fc7743",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/P3.log": "195f05bd73231a6d147a371b3f70baf4bca38c32e67a4ba56d0ced150c07fde3",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-2/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/compile.log": "e3ff8d065619b1d726d612e8188ce695f2f7ce9e20dff3af239a47f04bbebe5f",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/P0.log": "b3f1b7219a4e05f243141727f65bec8a9ece0303b89b5623d9b416292454d044",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/P1.log": "0dee572e1aa3236e5296d38644dd5240bc0bb00122f5e92a1f19931b6dc96cfa",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/P2.log": "f8598675a8685090a7b067431401869c7c5466c72eb155bfb52ff4e33f9ebbbd",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/P3.log": "9d8d1c20d9fe63bc7fc9c24064f0a10d148fc3eef8ebe40fd54d3e1a701607de",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/nonboolean-high/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/compile.log": "f692be8881716ea4090fdae525da8dd77b00bf27cac054ccaa060f5b125d3702",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/P0.log": "cbb61916914ce00af5eaebed42cf52cb05057b4118a940f42d1f698c6615bc55",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/P1.log": "9fcbdad028602402ff104e77c47081b83731d227c38e894e6492f02e66167c22",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/P2.log": "f4a737d6d65b86d87b12574ee1b2390b3dcf4912bb6c6fd98feb304cd875988b",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/P3.log": "136eb1c84f8b460b28d755ad820d275a812f816930875484437f1cca1f9ef471",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/equivocated-response/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/compile.log": "72047909bc5c703f4e91ebbd479e6887a1886a7e696bc3ca43b6c3d55ffe285f",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/P0.log": "c4f6e2842c3abd73b412c3a2576b18d6b08820996f5c79dc929d7e404756eee1",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/P1.log": "e1d2c42b0bf148ac78b148341c77b9a00b3ab9fb31c29a40c6989735647c9a81",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/P2.log": "f7187769357d557edde6dd29bbf594d1a522d59733d08118091f4d32d9a89e0e",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/P3.log": "a767d25f05113d8c8c9f3a73c6bc54f9467ee1741bb391069b33b59b01ae5fe7",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/C2.log": "4b8e20a80b7891dce23358b83bc2eb38ddf55d3a3c4572beb9acd8a243e275cf",
+    "docs/reproduction/rep4-candidate-security-2026-10-11/tampered-triple-frame/C3.log": "e864c4e45da02cb4bda5bdb4614604b2cfb6c340f13bc5076e4b77311fb79d5c"
+  }
+}

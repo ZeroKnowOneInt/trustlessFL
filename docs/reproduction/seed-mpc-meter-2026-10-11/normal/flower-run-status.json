@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "runs": [
+    {
+      "run-id": "844158793651131832",
+      "federation-id": "@none/default",
+      "fab-id": "trustlessfl/trustlessfl-seed-mpc-local",
+      "fab-name": "trustlessfl-seed-mpc-local",
+      "fab-version": "0.1.0",
+      "fab-hash": "fb46b8afb3c5ba2f453b26628b8ab00c7cf2312820db0edcf77ec4cc8c07d595",
+      "status": "finished:completed",
+      "status-details": "N/A",
+      "elapsed": 8.964758,
+      "pending-at": "2026-10-11 05:54:24Z",
+      "starting-at": "2026-10-11 05:54:25Z",
+      "running-at": "2026-10-11 05:54:25Z",
+      "finished-at": "2026-10-11 05:54:34Z",
+      "network-traffic": {
+        "inbound-bytes": 0,
+        "outbound-bytes": 0,
+        "total-bytes": 0
+      },
+      "compute-time": {
+        "serverapp-seconds": 8.964758,
+        "clientapp-seconds": 1.3670541899700765,
+        "total-seconds": 10.331812189970076
+      }
+    }
+  ]
+}

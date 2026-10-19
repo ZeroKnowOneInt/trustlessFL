@@ -1,0 +1,10 @@
+{
+  "scope": "recorded application contents, excluding framing/TLS/HTTP/Flower protobuf and registration/identity/ack/ready/finish control messages",
+  "native_all_party_decimal_mb": 8.34355,
+  "masked_configrecord_content_bytes": 52777,
+  "aggregator_round_rpc_request_json_bytes": 748000,
+  "aggregator_round_rpc_response_json_bytes": 20744,
+  "client_commit_configrecord_content_bytes_including_duplicate_test": 630208,
+  "public_model_array_raw_bytes_train_and_two_commits": 48960,
+  "duplicate_commit_test_included": true
+}

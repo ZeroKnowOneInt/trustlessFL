@@ -1,7 +1,7 @@
 [project]
 name = "trustlessfl"
 version = "0.1.0"
-description = "Flower-based AION-ASR research baseline with masked-gradient filtering"
+description = "Flower federated learning with private MPC boundary checks and exact modular recovery"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
@@ -9,10 +9,14 @@ dependencies = [
     "numpy>=2.5.0",
     "flwr==1.36.0",
     "cryptography>=46.0.7,<47",
+    "tomli-w>=1.2,<2",
 ]
 
 [project.optional-dependencies]
+client = ["torch==2.8.0"]
+aggregator = ["torch==2.8.0"]
 simulation = ["flwr[simulation]==1.36.0"]
+seed-mpc = ["flwr[simulation]==1.36.0", "ray==2.55.1", "torch==2.8.0"]
 gpu = ["torch==2.8.0"]
 fast-crypto = ["gmpy2>=2.2,<3"]
 author-asr = ["gmpy2>=2.2,<3", "pycryptodomex>=3.23,<4", "dill>=0.4,<0.5"]
@@ -33,6 +37,9 @@ build-backend = "hatchling.build"
 dev = ["pytest>=9.1,<10"]
 
 [project.scripts]
+trustlessfl-distributed = "trustlessfl.seed_mpc_distributed:main"
+trustlessfl-mpc = "trustlessfl.seed_mpc_setup:main"
+trustlessfl-seed-mpc = "trustlessfl.seed_mpc_user:main"
 aion-demo = "trustlessfl.demo:main"
 aion-peer = "trustlessfl.peer_service:main"
 aion-author-asr = "trustlessfl.aion_source_server:cli"
@@ -47,12 +54,12 @@ testpaths = ["tests"]
 publisher = "trustlessfl"
 
 [tool.flwr.app.components]
-serverapp = "trustlessfl.server_app:app"
-clientapp = "trustlessfl.client_app:app"
+serverapp = "trustlessfl.seed_mpc_server_app:app"
+clientapp = "trustlessfl.seed_mpc_client_app:app"
 
 [tool.flwr.app.config]
-num-server-rounds = 3
-research-mode = true
-timeout = 30.0
-quorum-attempts = 3
-aion-manifest = "UNCONFIGURED"
+deployment-file = "UNCONFIGURED"
+output-dir = "UNCONFIGURED"
+num-clients = 4
+backend = "numpy"
+simulation-workers = 1

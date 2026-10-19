@@ -1,0 +1,14 @@
+{
+  "installation": "/home/operator/backend/mp-spdz-0.4.3-checked-source-v1",
+  "version": "0.4.3",
+  "reused": false,
+  "setup_seconds": 180.991,
+  "backend_pin_hash": "7fa1a3c658a71495a6ddd32426ac94b9ef2c991e1eba0141d9befed779b7b88c",
+  "applied_patches": [
+    "base-machine-public-sent-counter-v1",
+    "rep4-holder-checked-native-import-v1"
+  ],
+  "component_input": "holder-checked-direct-v1",
+  "communication_meter": true,
+  "ready": true
+}

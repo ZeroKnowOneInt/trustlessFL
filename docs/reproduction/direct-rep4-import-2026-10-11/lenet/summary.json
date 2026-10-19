@@ -1,0 +1,230 @@
+{
+  "passed": true,
+  "protocol_correctness_passed": true,
+  "learning_workload_completed": true,
+  "runtime": "Official Flower Simulation Runtime / Ray; flwr run",
+  "mode": "fmnist-lenet5",
+  "mask_mode": "rep4-seeded-components-v1",
+  "dimension": 61706,
+  "rounds": 1,
+  "round_checks": [
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": true,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 1,
+      "status": "ok"
+    }
+  ],
+  "metrics": [
+    {
+      "accuracy": 0.1,
+      "loss": 2.307322925186157,
+      "test_error_rate": 0.9
+    },
+    {
+      "accuracy": 0.7484,
+      "loss": 0.6796211730957031,
+      "test_error_rate": 0.25160000000000005
+    }
+  ],
+  "compile_invocations": 1,
+  "compile_seconds": 22.089,
+  "seed_inputs_per_client": 1,
+  "internal_mb": 274.146,
+  "native_resources": [
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 126604,
+      "system_cpu_seconds": 4.81,
+      "user_cpu_seconds": 3.87
+    },
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 126600,
+      "system_cpu_seconds": 5.48,
+      "user_cpu_seconds": 4.11
+    },
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 126776,
+      "system_cpu_seconds": 5.86,
+      "user_cpu_seconds": 4.3
+    },
+    {
+      "exit_status": 0,
+      "peak_rss_kib": 126728,
+      "system_cpu_seconds": 5.46,
+      "user_cpu_seconds": 4.04
+    }
+  ],
+  "compile_resources": {
+    "exit_status": 0,
+    "peak_rss_kib": 699068,
+    "system_cpu_seconds": 0.9,
+    "user_cpu_seconds": 20.57
+  },
+  "wall_seconds": 41.011,
+  "runtime_guard": {
+    "installed": true,
+    "source_sha256": "bc74cca5eeef53e6b073716ce42ba4bf718b6959b6c7cc5b51cc0e1bc00e8832",
+    "startup_processes": 12
+  },
+  "verified_receipt_certificates": 4,
+  "scope": "single WSL host/Unix UID, trusted local test bootstrap and post-run raw-update oracle; no operator isolation",
+  "original_verification_sha256": "1413a5a58313ad6b897765ee94006bc4bd8705e9344986ec1886e7aa96d6adfc",
+  "communication": {
+    "native": {
+      "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+      "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+      "parties": [
+        {
+          "global_sent_bytes": 274146498,
+          "registration_sent_bytes": 9436,
+          "rounds": [
+            {
+              "active_sent_bytes": 91762726,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 91762726,
+              "start": 9436,
+              "stop": 91772162
+            }
+          ],
+          "setup_sent_bytes": 9436,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 91772162
+        },
+        {
+          "global_sent_bytes": 274146498,
+          "registration_sent_bytes": 9436,
+          "rounds": [
+            {
+              "active_sent_bytes": 75845910,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 75845910,
+              "start": 9436,
+              "stop": 75855346
+            }
+          ],
+          "setup_sent_bytes": 9436,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 75855346
+        },
+        {
+          "global_sent_bytes": 274146498,
+          "registration_sent_bytes": 7218,
+          "rounds": [
+            {
+              "active_sent_bytes": 61210685,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 61210685,
+              "start": 7218,
+              "stop": 61217903
+            }
+          ],
+          "setup_sent_bytes": 7218,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 61217903
+        },
+        {
+          "global_sent_bytes": 274146498,
+          "registration_sent_bytes": 7218,
+          "rounds": [
+            {
+              "active_sent_bytes": 45293869,
+              "between_boundary_sent_bytes": 0,
+              "round": 1,
+              "sent_bytes": 45293869,
+              "start": 7218,
+              "stop": 45301087
+            }
+          ],
+          "setup_sent_bytes": 7218,
+          "shutdown_sent_bytes": 0,
+          "startup_tracked_sent_bytes": 0,
+          "total_sent_bytes": 45301087
+        }
+      ],
+      "reconciled": true,
+      "registration_sent_bytes": 33308,
+      "rounds": [
+        {
+          "active_sent_bytes": 274113190,
+          "between_boundary_sent_bytes": 0,
+          "round": 1,
+          "sent_bytes": 274113190
+        }
+      ],
+      "setup_sent_bytes": 33308,
+      "shutdown_sent_bytes": 0,
+      "startup_tracked_sent_bytes": 0,
+      "total_sent_bytes": 274146498
+    },
+    "component_seed_provisioning": {
+      "packets": 16,
+      "payload_bytes": 12074,
+      "scope": "encrypted client-to-recipient bootstrap file payload; setup only; not a measured network transport"
+    },
+    "rpc_endpoint_counts_exact": true
+  },
+  "source_sha256": {
+    "experiments/run_endpoint_flower.py": "dcb19b9ba25a78575f985b4115fdf1220a0bc81b525d96c18d855bb01061a1dc",
+    "experiments/run_seed_mpc_flower.py": "546e75de4239594892b0b1c4f925ad03eab0187a82b1f1f9acc0f3ae43b2fa91",
+    "trustlessfl/crypto.py": "355708a17d98abbcf22f43cc908f9dbcf29afa44f1741ea806d368805e7ad8f3",
+    "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699",
+    "trustlessfl/rep4_external.py": "c51467a9af4fc6bda9bb354acf3fdc54c4e49939a777a1e0df194d1ffc9385db",
+    "trustlessfl/seed_mpc_backend.py": "2bfb53723e65be309409600e728e73be8344dbb92c17e3eb4dda8f23c423483f",
+    "trustlessfl/seed_mpc_client_app.py": "c517fe0f2b15db6eafc1dcd7c92f1bd3f2b936c96404911ef9738c5ddb1eb986",
+    "trustlessfl/seed_mpc_committee.py": "76f57138a48adf91d89d34c152e6265b77c90d89a8899ce2356a6350062cdfd8",
+    "trustlessfl/seed_mpc_direct_patch.py": "a54ab3fb780fbe78986249e88fcb418f4b4efdaee4e9043e565d447c0f55acd3",
+    "trustlessfl/seed_mpc_dropout.py": "65cfad4047b92281d42adbe9a7349d69374300e345a3a59c4efad7d07d8eca41",
+    "trustlessfl/seed_mpc_external_client.py": "ff55f34d4eb5479a1795f4f2e69828a96d9269b3165083ffcb344f055d7e546b",
+    "trustlessfl/seed_mpc_flower_runtime.py": "bc74cca5eeef53e6b073716ce42ba4bf718b6959b6c7cc5b51cc0e1bc00e8832",
+    "trustlessfl/seed_mpc_isolation.py": "601a596c2e7269bc56876429a283737e9dfd90c101cb0370f01b8b31685cd813",
+    "trustlessfl/seed_mpc_ledger.py": "33d4c369b5fea2a9efbbd7aef94af7d3487103f3397ba3c114ed85ffb96b7c4b",
+    "trustlessfl/seed_mpc_meter.py": "e399cdfb5921a3bc785df01f339663d5129d39dbc853b761cbf137c0d090568c",
+    "trustlessfl/seed_mpc_native.py": "4529a822c672a93737f9802ba452781b3e014dfc89fd3c0649cbfa193ef499f4",
+    "trustlessfl/seed_mpc_poisoning_fixture.py": "08feab072cbc3aef4aec765a34ea88fa2266525d1106c58860ab389f77043ce4",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/seed_mpc_prss.py": "9364ec829c770a236257a21f7ed7c0cb00a839021bfe060af17b3f9c7a1d7dd6",
+    "trustlessfl/seed_mpc_resources.py": "58abd8812d334bd03abf3e85dff8b20a8e453fab056bc0c534d93b8a2f1745d8",
+    "trustlessfl/seed_mpc_server_app.py": "fe4288eedaf762233c8b4e7890ac009a7c1078be36c91c9d5b8726294bdf274a",
+    "trustlessfl/seed_mpc_service.py": "1c4d6d0b8dd7b6307848bc0cff64663d4f049fc1764452ff1dff6418105015ae",
+    "trustlessfl/seed_mpc_session.py": "e4f86a652e3f6ed1df6d0e79ca512ff1115b14bfa91edb406ad5225957d21a07",
+    "trustlessfl/seed_mpc_telemetry_patch.py": "73429a7913739b8ab2001b953ae0f15666040a36353e7c5270807ea0e1d62334",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_wire.py": "3d055cf24348a0c1c028300f3ca9451f8fc94956f3f51f324f0f620d07227d91"
+  },
+  "mpc_source_sha256": {
+    "seed_mpc_candidate_primitives.py": "6f14906a0090ce27588851bdb0c25779b3a28ee4b0ce605f48dd9aa253e01b65",
+    "seed_mpc_chunked_session.mpc": "626f36cad491d89ab2086e45dd6e7de65334eccc96897f0be48bc06a440d8f47",
+    "seed_mpc_primitives.py": "23870c20cc4a58c801f3fb6d85ee58bd948b9f816ddf1ce483dce55d4f516fad"
+  },
+  "versions": {
+    "cryptography": "46.0.7",
+    "flwr": "1.36.0",
+    "numpy": "2.5.0",
+    "ray": "2.55.1",
+    "torch": "2.8.0+cu128"
+  },
+  "native_settings": {
+    "component_input": "holder-checked-direct-v1",
+    "mask_mode": "rep4-seeded-components-v1",
+    "public_agreement": "checked-open-v1",
+    "chunk_blocks": 64,
+    "round_slots": 1
+  }
+}

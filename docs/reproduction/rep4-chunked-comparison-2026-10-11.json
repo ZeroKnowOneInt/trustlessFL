@@ -1,0 +1,46 @@
+{
+  "measurements": {
+    "dimension-64": {
+      "passed": true,
+      "dimension": 64,
+      "compile_seconds": 6.727,
+      "native_seconds": 2.267,
+      "global_data_sent_mb": 2.8215,
+      "compile_invocations": 1,
+      "compiled_artifact_hash": "fcd5b9fa96ce6df8fe441dba5c4059f73626d34ee2f6d7500b5a483cb4ab03ee"
+    },
+    "dimension-64-reused": {
+      "passed": true,
+      "dimension": 64,
+      "compile_seconds": 0.0,
+      "native_seconds": 2.342,
+      "global_data_sent_mb": 2.8215,
+      "compile_invocations": 0,
+      "compiled_artifact_hash": "fcd5b9fa96ce6df8fe441dba5c4059f73626d34ee2f6d7500b5a483cb4ab03ee"
+    }
+  },
+  "log_sha256": {
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/compile.log": "6579d00c41ea9967b1ed64d111f1ae8481a73335a3add155baebb9d5993dee47",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/P0.log": "b3d46ab35cf8dc918a4f95e6301d6d7bd0dbe82a98cb307f0692b5138d1c65e9",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/P1.log": "ef550da68049633926a7115bb04142f3b2c95de5714435e4e72a11d12ecd6255",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/P2.log": "c36b2edc213c6d07c263ac4625a6372eec3dd4c8d7b1181f2c415e8a7fa018f1",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/P3.log": "90782a6092c07db1d872207aaa78576a284b4c1108858bb01031632bb8aec96d",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/compile.log": "6579d00c41ea9967b1ed64d111f1ae8481a73335a3add155baebb9d5993dee47",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/P0.log": "2595e000220d770c1749b172997fdf78b1c01139e21dab4fdfd9ee53f9dbce22",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/P1.log": "8cc0305e0f05fb057d442a20f1684cb5557294618b085ee2780a6ab5f0530666",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/P2.log": "b3bfc89c7d1b7789efa59c452d0f9623785865e8539eee33ab84ba632be01604",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/P3.log": "7e09a698b80ee5d18050540ab7d9e2b2cee86b3a27c299da063303fd25f26a96",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-chunked-2026-10-11/dimension-64-reused/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "notes": [
+    "Local runtime public-file input; synthetic seeds; no signed Flower upload or BFT certificate.",
+    "Prior D64 baseline used v2 registration; current implementation uses v3 SIMD registration."
+  ]
+}

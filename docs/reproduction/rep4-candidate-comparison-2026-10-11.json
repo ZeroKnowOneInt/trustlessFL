@@ -1,0 +1,124 @@
+{
+  "measurements": {
+    "mascot-arithmetic-public": {
+      "result": "seed-mpc-mascot-arithmetic-public-2026-10-11.json",
+      "global_mb": 11743.5,
+      "native_seconds": 31.173,
+      "compile_seconds": 6.595,
+      "compiler_counts": {
+        "integer triples": 23567,
+        "integer dabits": 2048,
+        "integer simple multiplications": 23055,
+        "integer opens": 612,
+        "bit triples": 76800,
+        "virtual machine rounds": 1177
+      },
+      "online_mb": 4.704244,
+      "preprocessing_mb": 11738.79
+    },
+    "mascot-binary-public": {
+      "result": "seed-mpc-mascot-binary-2026-10-11.json",
+      "global_mb": 4097.54,
+      "native_seconds": 14.276,
+      "compile_seconds": 5.108,
+      "compiler_counts": {
+        "integer triples": 5807,
+        "integer dabits": 932,
+        "integer simple multiplications": 5295,
+        "integer opens": 540,
+        "bit triples": 81012,
+        "virtual machine rounds": 1117
+      },
+      "online_mb": 1.23888,
+      "preprocessing_mb": 4096.29
+    },
+    "rep4-arithmetic": {
+      "result": "seed-mpc-rep4-arithmetic-2026-10-11-v3.json",
+      "global_mb": 0.434604,
+      "native_seconds": 1.566,
+      "compile_seconds": 7.698,
+      "compiler_counts": {
+        "integer triples": 125,
+        "bit triples": 109041,
+        "integer dabits": 471,
+        "integer simple multiplications": 117,
+        "integer opens": 12,
+        "virtual machine rounds": 1336
+      },
+      "online_mb": 0.39798,
+      "preprocessing_mb": 0.036624000000000004
+    },
+    "rep4-binary": {
+      "result": "seed-mpc-rep4-binary-2026-10-11-v3.json",
+      "global_mb": 0.350628,
+      "native_seconds": 1.557,
+      "compile_seconds": 6.776,
+      "compiler_counts": {
+        "integer triples": 77,
+        "bit triples": 98313,
+        "integer dabits": 255,
+        "integer simple multiplications": 69,
+        "integer opens": 12,
+        "virtual machine rounds": 1216
+      },
+      "online_mb": 0.330132,
+      "preprocessing_mb": 0.020496
+    },
+    "rep4-aes": {
+      "result": "seed-mpc-rep4-aes-2026-10-11-v3.json",
+      "global_mb": 0.122866,
+      "native_seconds": 0.305,
+      "compile_seconds": 3.669,
+      "compiler_counts": {
+        "integer triples": 8,
+        "bit triples": 41583,
+        "integer dabits": 64,
+        "integer opens": 16,
+        "virtual machine rounds": 351
+      },
+      "online_mb": 0.117906,
+      "preprocessing_mb": 0.00496
+    }
+  },
+  "notes": [
+    "Bytes are native application send counters, not NIC traffic.",
+    "MASCOT and Rep4 have different corruption assumptions, seed encodings and input adapters.",
+    "Rep4 arithmetic/binary comparisons have identical seed, input adapter and output policy.",
+    "Single wall-time observations include client connection retries; not a statistical speed benchmark."
+  ],
+  "log_sha256": {
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-arithmetic-public/compile.log": "3b69fd58c37b5cfa8b6a20fa37a74ae803e21d9e9190dfcf1133b43897556698",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-arithmetic-public/P0.log": "4b0c0b162e255685b50bfd810a965c1a9feeb86cc712b88eec2321cef98dc131",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-arithmetic-public/P1.log": "1442888d3377ee4cafda084ffe76cb25b1622357d1a24c26969c74c10c9ac19d",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-arithmetic-public/P2.log": "faf66a77e88fb9644b7ef2a51d424e73c5ff9ebab73a70f356e4eefe0862cb47",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-arithmetic-public/P3.log": "fde7f375d35f9204296938c45de6d7b05339fff989014875f497375117366394",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-binary-public/compile.log": "2f684ac19eebbda4b787e6a00b734148be8f72d0c8b6ffd9c80f8ad0d07f806f",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-binary-public/P0.log": "d0fb9bf9a1858e3d8463cfb4d20adc3e4fc0147604f67ff0ebc0b645b872fe5e",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-binary-public/P1.log": "d950e47c504c083254896efcf61728a5b174d433ca9e0428d35b34615e2a4cbd",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-binary-public/P2.log": "71e06f6c0b186cc8ba3aba2ad7e26220055a5f55355343785ce525f62252a447",
+    "docs/reproduction/rep4-comparison-2026-10-11/mascot-binary-public/P3.log": "7a287a7d1f97effb948db71a3ee483ba012c056d29ae0147a06ca539a1688a54",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-arithmetic/compile.log": "c58319e81545c33b4797846f8a069263c7dfeabbfa17b93dbb398a2dcc272305",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-arithmetic/P0.log": "8a1c15a2239a19728f5ae6ea0507f5f3fe50d24762ac750d6d3e6dd780779507",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-arithmetic/P1.log": "7e9ed33be45bd27a011d638f019165390f2a7c9bc11fbdda278722f8ca670e39",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-arithmetic/P2.log": "02943b70038f95e2324856ef8e4a334c5a9013567ce062c96f7dae7ed98701f9",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-arithmetic/P3.log": "19c97f69a41d9c6b550ff947dfd9bb8426cd8b3e4dacb4b927da1ba4e2be27d8",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-binary/compile.log": "ddcda33580e48b404e646cd3e852f9bdf089dc8121814f186048f977ec632711",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-binary/P0.log": "a37db5ba7a390fddab9e768796c7d525d7dbe19a38c2b716f4c845c5b75aa0e9",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-binary/P1.log": "85c7969e26c15843bda07d6bf1a6afbedebf321eacc81e65d63b4a234b45ff7e",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-binary/P2.log": "aeb142454a504d74605682a2a09d5bb9db2559aa53f79241cc2b1e0ebd792969",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-binary/P3.log": "3d72ec0be7260d3c24c54c62a685aec75be69ad9cd54e8904ec6f1dddc371b95",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-aes/compile.log": "e58d0a58c13154d79ca96c224075d6f078046a66a9bc5caed07abfd132b9fbdc",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-aes/P0.log": "c3887fa57f58739be6c5e62c4ca16d1e11650074670759bf6d699aa76e507074",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-aes/P1.log": "363d65dd2c7b396296f5a16fa757f14a484fc2bee6be027a771f13ca13d5fac2",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-aes/P2.log": "faf6c954c0e31271b12cb2b02cf22a2c6f710106c3627548c56759bef99177ed",
+    "docs/reproduction/rep4-comparison-2026-10-11/rep4-aes/P3.log": "7221505b345e885681978ad2ba0b5b91848ead07cea4b5e09c1313bbfb111dfc"
+  },
+  "rep4_binary_reduction_percent": 19.32241764917028,
+  "full_model_capacity": {
+    "dimension": 61706,
+    "cap": 20000,
+    "maximum_squared_norm": 24682400000000,
+    "maximum_sum_per_coordinate": 80000,
+    "ring_bits": 64
+  }
+}

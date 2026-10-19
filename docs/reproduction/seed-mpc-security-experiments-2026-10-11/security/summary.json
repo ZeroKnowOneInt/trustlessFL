@@ -1,0 +1,50 @@
+{
+  "native_attacks": [
+    {
+      "mode": "arithmetic-mul",
+      "result_certificates": 0,
+      "model_updates": 0,
+      "retry_rejected": true,
+      "errors": [
+        "Fatal error in communication: read_some: stream truncated [asio.ssl.stream:1]",
+        "Fatal error in communication: read_some: stream truncated [asio.ssl.stream:1]",
+        "Fatal error at seed_mpc_chunked_session-policy.json-0:58939 (DABIT): hash mismatch for sender 0 and backup 1"
+      ]
+    },
+    {
+      "mode": "binary-mul",
+      "result_certificates": 0,
+      "model_updates": 0,
+      "retry_rejected": true,
+      "errors": [
+        "Fatal error in communication: read_some: stream truncated [asio.ssl.stream:1]",
+        "Fatal error in communication: read_some: stream truncated [asio.ssl.stream:1]",
+        "Fatal error at seed_mpc_chunked_session-policy.json-0:14290 (ANDS): hash mismatch for sender 0 and backup 1"
+      ]
+    },
+    {
+      "mode": "opening-wire",
+      "result_certificates": 0,
+      "model_updates": 0,
+      "retry_rejected": true,
+      "errors": [
+        "Fatal error at seed_mpc_chunked_session-policy.json-0:13544 (OPEN): MacCheck Failure",
+        "Fatal error at seed_mpc_chunked_session-policy.json-0:14087 (OPEN): read_some: stream truncated [asio.ssl.stream:1]",
+        "Fatal error in communication: read_some: stream truncated [asio.ssl.stream:1]"
+      ]
+    },
+    {
+      "mode": "round-abort",
+      "result_certificates": 0,
+      "model_updates": 0,
+      "retry_rejected": true,
+      "errors": [
+        "Fatal error in communication: write_some: Broken pipe [system:32]",
+        "Fatal error in communication: read_some: stream truncated [asio.ssl.stream:1]"
+      ]
+    }
+  ],
+  "participation_rounds": 21,
+  "patterns": 16,
+  "scope": "observed integrity/abort tests; no composition privacy proof"
+}

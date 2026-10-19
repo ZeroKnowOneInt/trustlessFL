@@ -1,0 +1,347 @@
+{
+  "completed": true,
+  "conditions_equal": true,
+  "exact_input_comparisons": 80,
+  "models_sums_counts_metrics_equal": true,
+  "native_player_bytes_equal": true,
+  "attack_mean": {
+    "before": {
+      "serverapp_seconds": 518.6063333333333,
+      "flower_cli_seconds": 538.8089961323325,
+      "tracked_payload_bytes": 2613155963.3333335,
+      "flower_server_to_clients_bytes": 719507352.6666666,
+      "native_player_sent_bytes": 1369285374,
+      "collection_seconds": 357.7943333333333
+    },
+    "after": {
+      "serverapp_seconds": 186.691,
+      "flower_cli_seconds": 197.17651972499638,
+      "tracked_payload_bytes": 2164736078.3333335,
+      "flower_server_to_clients_bytes": 271065641.3333333,
+      "native_player_sent_bytes": 1369285374,
+      "collection_seconds": 93.01466666666667
+    }
+  },
+  "reduction_percent": {
+    "serverapp_seconds": 64.00140376226283,
+    "flower_cli_seconds": 63.405117371765364,
+    "tracked_payload_bytes": 17.160088846285205,
+    "flower_server_to_clients_bytes": 62.3262166357718,
+    "native_player_sent_bytes": 0.0,
+    "collection_seconds": 74.00331475344774
+  },
+  "runs": [
+    {
+      "seed": 42,
+      "case": "clean",
+      "before": {
+        "serverapp_seconds": 511.183,
+        "flower_cli_seconds": 530.5418052129971,
+        "tracked_payload_bytes": 2618246300,
+        "flower_server_to_clients_bytes": 723585660,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 352.26099999999997,
+        "round_seconds": [
+          37.94,
+          70.164,
+          102.22,
+          129.267,
+          161.869
+        ],
+        "round_payload_bytes": [
+          411797412,
+          467318279,
+          524068946,
+          579322024,
+          635739639
+        ],
+        "client_confirmed_rounds": {
+          "C0": 0,
+          "C1": 0,
+          "C2": 0,
+          "C3": 0
+        },
+        "notification_status_counts": {
+          "confirmed": 0,
+          "missing": 16,
+          "invalid": 0
+        },
+        "fresh_head_queries": 0
+      },
+      "after": {
+        "serverapp_seconds": 193.702,
+        "flower_cli_seconds": 203.38101664700662,
+        "tracked_payload_bytes": 2167276292,
+        "flower_server_to_clients_bytes": 272595772,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 93.791,
+        "round_seconds": [
+          31.144,
+          40.525999999999996,
+          36.755,
+          36.132,
+          37.953
+        ],
+        "round_payload_bytes": [
+          411804224,
+          438986070,
+          439303985,
+          438388022,
+          438793991
+        ],
+        "client_confirmed_rounds": {
+          "C0": 4,
+          "C1": 4,
+          "C2": 4,
+          "C3": 4
+        },
+        "notification_status_counts": {
+          "confirmed": 25,
+          "missing": 0,
+          "invalid": 0
+        },
+        "fresh_head_queries": 9
+      }
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "before": {
+        "serverapp_seconds": 512.822,
+        "flower_cli_seconds": 532.5265576969832,
+        "tracked_payload_bytes": 2613742993,
+        "flower_server_to_clients_bytes": 719945426,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 356.25600000000003,
+        "round_seconds": [
+          35.825,
+          70.663,
+          102.009,
+          132.198,
+          165.01
+        ],
+        "round_payload_bytes": [
+          411507771,
+          466732148,
+          523140615,
+          578100992,
+          634261467
+        ],
+        "client_confirmed_rounds": {
+          "C0": 0,
+          "C1": 0,
+          "C2": 0,
+          "C3": 0
+        },
+        "notification_status_counts": {
+          "confirmed": 0,
+          "missing": 16,
+          "invalid": 0
+        },
+        "fresh_head_queries": 0
+      },
+      "after": {
+        "serverapp_seconds": 184.842,
+        "flower_cli_seconds": 195.70132389399805,
+        "tracked_payload_bytes": 2165080030,
+        "flower_server_to_clients_bytes": 271269458,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 90.798,
+        "round_seconds": [
+          27.563,
+          37.674,
+          35.772,
+          35.222,
+          37.799
+        ],
+        "round_payload_bytes": [
+          411512966,
+          438533047,
+          438786051,
+          437893010,
+          438354956
+        ],
+        "client_confirmed_rounds": {
+          "C0": 4,
+          "C1": 4,
+          "C2": 4,
+          "C3": 4
+        },
+        "notification_status_counts": {
+          "confirmed": 25,
+          "missing": 0,
+          "invalid": 0
+        },
+        "fresh_head_queries": 9
+      }
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "before": {
+        "serverapp_seconds": 526.852,
+        "flower_cli_seconds": 546.889092360012,
+        "tracked_payload_bytes": 2613308781,
+        "flower_server_to_clients_bytes": 719676176,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 361.646,
+        "round_seconds": [
+          37.714,
+          72.286,
+          104.634,
+          136.536,
+          168.493
+        ],
+        "round_payload_bytes": [
+          411613604,
+          466750360,
+          523049354,
+          577910271,
+          633985192
+        ],
+        "client_confirmed_rounds": {
+          "C0": 0,
+          "C1": 0,
+          "C2": 0,
+          "C3": 0
+        },
+        "notification_status_counts": {
+          "confirmed": 0,
+          "missing": 16,
+          "invalid": 0
+        },
+        "fresh_head_queries": 0
+      },
+      "after": {
+        "serverapp_seconds": 190.379,
+        "flower_cli_seconds": 200.758787535975,
+        "tracked_payload_bytes": 2164691073,
+        "flower_server_to_clients_bytes": 271047532,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 95.326,
+        "round_seconds": [
+          29.916,
+          36.034,
+          40.995999999999995,
+          37.441,
+          37.717999999999996
+        ],
+        "round_payload_bytes": [
+          411606340,
+          438501821,
+          438634670,
+          437743631,
+          438204611
+        ],
+        "client_confirmed_rounds": {
+          "C0": 4,
+          "C1": 4,
+          "C2": 4,
+          "C3": 4
+        },
+        "notification_status_counts": {
+          "confirmed": 25,
+          "missing": 0,
+          "invalid": 0
+        },
+        "fresh_head_queries": 9
+      }
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "before": {
+        "serverapp_seconds": 516.145,
+        "flower_cli_seconds": 537.0113383400021,
+        "tracked_payload_bytes": 2612416116,
+        "flower_server_to_clients_bytes": 718900456,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 355.481,
+        "round_seconds": [
+          36.1,
+          72.353,
+          103.452,
+          130.322,
+          166.932
+        ],
+        "round_payload_bytes": [
+          411503917,
+          466552389,
+          522825871,
+          577721037,
+          633812902
+        ],
+        "client_confirmed_rounds": {
+          "C0": 0,
+          "C1": 0,
+          "C2": 0,
+          "C3": 0
+        },
+        "notification_status_counts": {
+          "confirmed": 0,
+          "missing": 16,
+          "invalid": 0
+        },
+        "fresh_head_queries": 0
+      },
+      "after": {
+        "serverapp_seconds": 184.852,
+        "flower_cli_seconds": 195.06944774501608,
+        "tracked_payload_bytes": 2164437132,
+        "flower_server_to_clients_bytes": 270879934,
+        "native_player_sent_bytes": 1369285374,
+        "collection_seconds": 92.92,
+        "round_seconds": [
+          26.624000000000002,
+          36.204,
+          38.519,
+          37.029,
+          37.519
+        ],
+        "round_payload_bytes": [
+          411506610,
+          438361979,
+          438564014,
+          437758004,
+          438246525
+        ],
+        "client_confirmed_rounds": {
+          "C0": 5,
+          "C1": 4,
+          "C2": 4,
+          "C3": 4
+        },
+        "notification_status_counts": {
+          "confirmed": 26,
+          "missing": 0,
+          "invalid": 0
+        },
+        "fresh_head_queries": 9
+      }
+    }
+  ],
+  "previous_plaintext_comparison": {
+    "private_over_bound_serverapp_ratio_of_means": 14.430192679237354,
+    "private_over_mean_serverapp_ratio_of_means": 13.992511568064435,
+    "private_extra_serverapp_seconds_vs_bound": 482.66735837567234,
+    "private_over_bound_tracked_payload_ratio_of_means": 117.28208870239506,
+    "private_extra_payload_bytes_vs_bound": 2590875016.666667
+  },
+  "updated_plaintext_comparison": {
+    "private_over_bound_serverapp_ratio_of_means": 5.122632386145768,
+    "private_over_mean_serverapp_ratio_of_means": 4.9594457243853824,
+    "private_extra_serverapp_seconds_vs_bound": 150.2466514840088,
+    "private_over_bound_tracked_payload_ratio_of_means": 97.15631994013424,
+    "private_extra_payload_bytes_vs_bound": 2142455118.3333335
+  },
+  "regression": {
+    "targeted_tests": 519,
+    "test_log_sha256": "0b1c8bbdd170d29e0e162bb9b9e421ae574ada41c8fc59e3b352293fa8bfc278",
+    "dropout_verification_sha256": "aaf9e0da20874c9b0839d45ad2cf20bdb1f7e6f24f684290634b9bfa0d582af9",
+    "dropout_rounds": 10,
+    "all_client_ack_loss_progress": true,
+    "full_suite_complete": false,
+    "legacy_environment_failure": "test_full_domain_keys: external Aion/agent/Aion/SA_ClientAgent.py missing; full suite interrupted"
+  },
+  "scope": "same local WSL host; fresh full learning each arm; logical tracked payload, not TCP/TLS wire"
+}

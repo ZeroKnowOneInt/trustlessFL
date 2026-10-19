@@ -1,0 +1,1 @@
+{"scope":"local harness service startup + official Flower CLI run + owned-process cleanup; excludes stage/compile and post-run oracle","seconds":1849.316968240004}

@@ -1,0 +1,1396 @@
+{
+  "completed": true,
+  "scope": "historical evidence + actual already-decided sync replay; original state unchanged; profiler overhead separate",
+  "histories": [
+    {
+      "run": "42-clean-private-mpc",
+      "confirmed": {
+        "C0": 0,
+        "C1": 0,
+        "C2": 0,
+        "C3": 0
+      },
+      "notification_status_counts": {
+        "missing": 16
+      },
+      "collection_seconds": [
+        9.958,
+        42.858,
+        72.963,
+        99.228,
+        127.254
+      ],
+      "client_sync": {
+        "C0": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "210b406ba657d63374774261ce19002798211be27338518e97a4fb947d2ddee9",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "a2e25c7480d95e84382839adc77f0818ba6aff308e193713de11b4141f64fe8e",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "b2bb554911378268a7a9bf07cb4da5dbb52a2c13303b776453a2e778f194464d",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "1e6f2a9f55cf3d67283ccac8eb431c445c9dbd6c0f373e1bc99b9eaebc55b29b",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C1": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "210b406ba657d63374774261ce19002798211be27338518e97a4fb947d2ddee9",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "a2e25c7480d95e84382839adc77f0818ba6aff308e193713de11b4141f64fe8e",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "b2bb554911378268a7a9bf07cb4da5dbb52a2c13303b776453a2e778f194464d",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "1e6f2a9f55cf3d67283ccac8eb431c445c9dbd6c0f373e1bc99b9eaebc55b29b",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C2": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "210b406ba657d63374774261ce19002798211be27338518e97a4fb947d2ddee9",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "a2e25c7480d95e84382839adc77f0818ba6aff308e193713de11b4141f64fe8e",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "b2bb554911378268a7a9bf07cb4da5dbb52a2c13303b776453a2e778f194464d",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "1e6f2a9f55cf3d67283ccac8eb431c445c9dbd6c0f373e1bc99b9eaebc55b29b",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C3": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "210b406ba657d63374774261ce19002798211be27338518e97a4fb947d2ddee9",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "a2e25c7480d95e84382839adc77f0818ba6aff308e193713de11b4141f64fe8e",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "b2bb554911378268a7a9bf07cb4da5dbb52a2c13303b776453a2e778f194464d",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "1e6f2a9f55cf3d67283ccac8eb431c445c9dbd6c0f373e1bc99b9eaebc55b29b",
+            "round": 5,
+            "to_round": 4
+          }
+        ]
+      },
+      "result_sha256": "cdc6860cbc8390926c037966fa26ba212e7b8725411f94833fe887731ee08c4b",
+      "all_present": true,
+      "no_ack_poll_measured_phase_seconds": [
+        34.704,
+        66.188,
+        96.36,
+        122.128,
+        151.657
+      ]
+    },
+    {
+      "run": "42-norm-overflow-private-mpc",
+      "confirmed": {
+        "C0": 0,
+        "C1": 0,
+        "C2": 0,
+        "C3": 0
+      },
+      "notification_status_counts": {
+        "missing": 16
+      },
+      "collection_seconds": [
+        9.335,
+        43.643,
+        72.867,
+        101.114,
+        129.297
+      ],
+      "client_sync": {
+        "C0": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "0d4b5f7a913d5c7a3586ce9aa9a0365e5eca312a538facb9605c62aea2d0f8f7",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "1d1d5f8568f2ee9218e7b7bb32e5bdf1182afcecf74e2d04a3bc6197342041e7",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "e0855231fb5a6779effb25a84a0e373608612682c4fb7396cdfc01725bfd96b0",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "5a6db144c40f1c6aeda46a335611fc5284edf1266e61895dec1c5efd2028d35d",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C1": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "0d4b5f7a913d5c7a3586ce9aa9a0365e5eca312a538facb9605c62aea2d0f8f7",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "1d1d5f8568f2ee9218e7b7bb32e5bdf1182afcecf74e2d04a3bc6197342041e7",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "e0855231fb5a6779effb25a84a0e373608612682c4fb7396cdfc01725bfd96b0",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "5a6db144c40f1c6aeda46a335611fc5284edf1266e61895dec1c5efd2028d35d",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C2": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "0d4b5f7a913d5c7a3586ce9aa9a0365e5eca312a538facb9605c62aea2d0f8f7",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "1d1d5f8568f2ee9218e7b7bb32e5bdf1182afcecf74e2d04a3bc6197342041e7",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "e0855231fb5a6779effb25a84a0e373608612682c4fb7396cdfc01725bfd96b0",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "5a6db144c40f1c6aeda46a335611fc5284edf1266e61895dec1c5efd2028d35d",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C3": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "a2e6a7818439e75de3cea28defdd7311489771540d22eb42844ec900a7d841fb",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "0d4b5f7a913d5c7a3586ce9aa9a0365e5eca312a538facb9605c62aea2d0f8f7",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "1d1d5f8568f2ee9218e7b7bb32e5bdf1182afcecf74e2d04a3bc6197342041e7",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "e0855231fb5a6779effb25a84a0e373608612682c4fb7396cdfc01725bfd96b0",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "5a6db144c40f1c6aeda46a335611fc5284edf1266e61895dec1c5efd2028d35d",
+            "round": 5,
+            "to_round": 4
+          }
+        ]
+      },
+      "result_sha256": "aa8e7f0a1671b336c47d8246c992c71c9a5b827bf55df22238520da86622b73d",
+      "all_present": true,
+      "no_ack_poll_measured_phase_seconds": [
+        32.816,
+        66.595,
+        96.269,
+        123.70700000000001,
+        154.439
+      ]
+    },
+    {
+      "run": "43-norm-overflow-private-mpc",
+      "confirmed": {
+        "C0": 0,
+        "C1": 0,
+        "C2": 0,
+        "C3": 0
+      },
+      "notification_status_counts": {
+        "missing": 16
+      },
+      "collection_seconds": [
+        10.097,
+        44.372,
+        72.508,
+        102.105,
+        132.564
+      ],
+      "client_sync": {
+        "C0": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "59a36eab496b5b1377fca6d7b27c362f95707809c96c6e1466e9da9551b2da54",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "33fe64e7502ad71bd6d019ef8c7280a63e2ea97625191730dc6019baa19fe112",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "d9431410383fec672baf9b77c0ede0bbe0e0647459ff1bfc3d4621d14f536381",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "d6bc0df32eef1a93feb39961c65fad431b111496280ab193b77594ee2b7fc225",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "36b6d931440558915a0f7c0fe78ebbcdae62168786a5390e9b82c80ad87cb5ab",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C1": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "59a36eab496b5b1377fca6d7b27c362f95707809c96c6e1466e9da9551b2da54",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "33fe64e7502ad71bd6d019ef8c7280a63e2ea97625191730dc6019baa19fe112",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "d9431410383fec672baf9b77c0ede0bbe0e0647459ff1bfc3d4621d14f536381",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "d6bc0df32eef1a93feb39961c65fad431b111496280ab193b77594ee2b7fc225",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "36b6d931440558915a0f7c0fe78ebbcdae62168786a5390e9b82c80ad87cb5ab",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C2": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "59a36eab496b5b1377fca6d7b27c362f95707809c96c6e1466e9da9551b2da54",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "33fe64e7502ad71bd6d019ef8c7280a63e2ea97625191730dc6019baa19fe112",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "d9431410383fec672baf9b77c0ede0bbe0e0647459ff1bfc3d4621d14f536381",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "d6bc0df32eef1a93feb39961c65fad431b111496280ab193b77594ee2b7fc225",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "36b6d931440558915a0f7c0fe78ebbcdae62168786a5390e9b82c80ad87cb5ab",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C3": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "59a36eab496b5b1377fca6d7b27c362f95707809c96c6e1466e9da9551b2da54",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "33fe64e7502ad71bd6d019ef8c7280a63e2ea97625191730dc6019baa19fe112",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "d9431410383fec672baf9b77c0ede0bbe0e0647459ff1bfc3d4621d14f536381",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "d6bc0df32eef1a93feb39961c65fad431b111496280ab193b77594ee2b7fc225",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "36b6d931440558915a0f7c0fe78ebbcdae62168786a5390e9b82c80ad87cb5ab",
+            "round": 5,
+            "to_round": 4
+          }
+        ]
+      },
+      "result_sha256": "a734a3c8ab28555ed041d83337d7bffec6f0942441f9ca16175c51d1059e1f56",
+      "all_present": true,
+      "no_ack_poll_measured_phase_seconds": [
+        34.201,
+        67.994,
+        97.62599999999999,
+        127.363,
+        157.716
+      ]
+    },
+    {
+      "run": "44-norm-overflow-private-mpc",
+      "confirmed": {
+        "C0": 0,
+        "C1": 0,
+        "C2": 0,
+        "C3": 0
+      },
+      "notification_status_counts": {
+        "missing": 16
+      },
+      "collection_seconds": [
+        9.81,
+        44.096,
+        73.817,
+        99.027,
+        128.731
+      ],
+      "client_sync": {
+        "C0": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "17b39b5c8ffa88f5b492174953450674203e35722fef2c545a105f6d5c337f32",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "f748be4c58cf113c995a5cb9c50e18f1dbefde8687b3564fb4f32bc125b13303",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "3485a6956640a5309a58e238c785f90b4453b7d59d85fd676b04df7a85db77bb",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "157c8e1a3153c6dc4f2e46db33c8ad906f53ba3a349f2c45bad30cdf8a8d5ce4",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "fcab27d8af4977f9aadfbf345fd89f9284a2088db56d90fcc3db752fb23bc690",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C1": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "17b39b5c8ffa88f5b492174953450674203e35722fef2c545a105f6d5c337f32",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "f748be4c58cf113c995a5cb9c50e18f1dbefde8687b3564fb4f32bc125b13303",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "3485a6956640a5309a58e238c785f90b4453b7d59d85fd676b04df7a85db77bb",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "157c8e1a3153c6dc4f2e46db33c8ad906f53ba3a349f2c45bad30cdf8a8d5ce4",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "fcab27d8af4977f9aadfbf345fd89f9284a2088db56d90fcc3db752fb23bc690",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C2": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "17b39b5c8ffa88f5b492174953450674203e35722fef2c545a105f6d5c337f32",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "f748be4c58cf113c995a5cb9c50e18f1dbefde8687b3564fb4f32bc125b13303",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "3485a6956640a5309a58e238c785f90b4453b7d59d85fd676b04df7a85db77bb",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "157c8e1a3153c6dc4f2e46db33c8ad906f53ba3a349f2c45bad30cdf8a8d5ce4",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "fcab27d8af4977f9aadfbf345fd89f9284a2088db56d90fcc3db752fb23bc690",
+            "round": 5,
+            "to_round": 4
+          }
+        ],
+        "C3": [
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 0,
+            "model_hash": "17b39b5c8ffa88f5b492174953450674203e35722fef2c545a105f6d5c337f32",
+            "round": 1,
+            "to_round": 0
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 1,
+            "model_hash": "f748be4c58cf113c995a5cb9c50e18f1dbefde8687b3564fb4f32bc125b13303",
+            "round": 2,
+            "to_round": 1
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 2,
+            "model_hash": "3485a6956640a5309a58e238c785f90b4453b7d59d85fd676b04df7a85db77bb",
+            "round": 3,
+            "to_round": 2
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 3,
+            "model_hash": "157c8e1a3153c6dc4f2e46db33c8ad906f53ba3a349f2c45bad30cdf8a8d5ce4",
+            "round": 4,
+            "to_round": 3
+          },
+          {
+            "action": "train",
+            "applied_decisions": 0,
+            "from_round": 4,
+            "model_hash": "fcab27d8af4977f9aadfbf345fd89f9284a2088db56d90fcc3db752fb23bc690",
+            "round": 5,
+            "to_round": 4
+          }
+        ]
+      },
+      "result_sha256": "a2966d6d3c0f89cc72d7f9d8f790a718caa07e2503ffb0a4003f0a4e69cf6e99",
+      "all_present": true,
+      "no_ack_poll_measured_phase_seconds": [
+        32.907000000000004,
+        68.301,
+        97.137,
+        121.986,
+        155.93699999999998
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "prefix_decisions": 0,
+      "wall_seconds": 0.04586775100324303,
+      "applied_decisions": 0,
+      "head_unchanged": true
+    },
+    {
+      "prefix_decisions": 1,
+      "wall_seconds": 3.529561306000687,
+      "applied_decisions": 0,
+      "head_unchanged": true
+    },
+    {
+      "prefix_decisions": 2,
+      "wall_seconds": 7.228968340990832,
+      "applied_decisions": 0,
+      "head_unchanged": true
+    },
+    {
+      "prefix_decisions": 3,
+      "wall_seconds": 10.420349058986176,
+      "applied_decisions": 0,
+      "head_unchanged": true
+    },
+    {
+      "prefix_decisions": 4,
+      "wall_seconds": 13.74909514200408,
+      "applied_decisions": 0,
+      "head_unchanged": true
+    }
+  ],
+  "profile_seconds": 26.01871821199893,
+  "top_cumulative_functions": [
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_dropout.py",
+      "line": 76,
+      "function": "synchronize",
+      "calls": 1,
+      "primitive_calls": 1,
+      "self_seconds": 0.020530304000000003,
+      "cumulative_seconds": 26.0166921
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 130,
+      "function": "check_manifest",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.006052786,
+      "cumulative_seconds": 23.191818526000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 87,
+      "function": "manifest",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.38236591400000003,
+      "cumulative_seconds": 22.431220821
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 341,
+      "function": "apply",
+      "calls": 4,
+      "primitive_calls": 4,
+      "self_seconds": 0.01661614,
+      "cumulative_seconds": 13.231677584000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 176,
+      "function": "input_body",
+      "calls": 8,
+      "primitive_calls": 8,
+      "self_seconds": 0.029627019,
+      "cumulative_seconds": 11.920672554000001
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/copy.py",
+      "line": 118,
+      "function": "deepcopy",
+      "calls": 10493200,
+      "primitive_calls": 123472,
+      "self_seconds": 4.885131826,
+      "cumulative_seconds": 9.66946514
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/copy.py",
+      "line": 217,
+      "function": "_deepcopy_dict",
+      "calls": 370568,
+      "primitive_calls": 123472,
+      "self_seconds": 0.7162995900000001,
+      "cumulative_seconds": 9.511431048
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/crypto.py",
+      "line": 275,
+      "function": "verify",
+      "calls": 123520,
+      "primitive_calls": 123520,
+      "self_seconds": 0.17640160400000002,
+      "cumulative_seconds": 8.870895599
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'verify' of 'cryptography.hazmat.bindings._rust.openssl.ed25519.Ed25519PublicKey' objects>",
+      "calls": 123520,
+      "primitive_calls": 123520,
+      "self_seconds": 7.492039041000001,
+      "cumulative_seconds": 7.492039041000001
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/copy.py",
+      "line": 191,
+      "function": "_deepcopy_list",
+      "calls": 123512,
+      "primitive_calls": 123480,
+      "self_seconds": 1.113205234,
+      "cumulative_seconds": 5.952435083
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/crypto.py",
+      "line": 70,
+      "function": "canonical",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 0.22661625500000002,
+      "cumulative_seconds": 4.248706959000001
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_wire.py",
+      "line": 84,
+      "function": "payload",
+      "calls": 123456,
+      "primitive_calls": 123456,
+      "self_seconds": 0.16167369,
+      "cumulative_seconds": 3.909484082
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/json/__init__.py",
+      "line": 183,
+      "function": "dumps",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 0.368256214,
+      "cumulative_seconds": 3.896800593
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/json/encoder.py",
+      "line": 183,
+      "function": "encode",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 0.339555404,
+      "cumulative_seconds": 3.4537923490000004
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/json/encoder.py",
+      "line": 205,
+      "function": "iterencode",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 2.9579720390000004,
+      "cumulative_seconds": 2.9579720390000004
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 28,
+      "function": "same_transcript",
+      "calls": 123552,
+      "primitive_calls": 123552,
+      "self_seconds": 0.061363684,
+      "cumulative_seconds": 2.472095324
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 192,
+      "function": "check_certificate",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.008090099,
+      "cumulative_seconds": 2.284478676
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 181,
+      "function": "certificate",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.00041582500000000004,
+      "cumulative_seconds": 2.240201721
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 43,
+      "function": "policy_hash",
+      "calls": 123472,
+      "primitive_calls": 123472,
+      "self_seconds": 0.086189101,
+      "cumulative_seconds": 1.7533645560000002
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/dataclasses.py",
+      "line": 1308,
+      "function": "asdict",
+      "calls": 246944,
+      "primitive_calls": 246944,
+      "self_seconds": 0.089820706,
+      "cumulative_seconds": 1.521960945
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'get' of 'dict' objects>",
+      "calls": 21356832,
+      "primitive_calls": 21356832,
+      "self_seconds": 1.4623443760000001,
+      "cumulative_seconds": 1.4623443760000001
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/dataclasses.py",
+      "line": 1332,
+      "function": "_asdict_inner",
+      "calls": 1852080,
+      "primitive_calls": 246944,
+      "self_seconds": 0.678077217,
+      "cumulative_seconds": 1.350774565
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.any>",
+      "calls": 246960,
+      "primitive_calls": 246960,
+      "self_seconds": 0.300392989,
+      "cumulative_seconds": 1.2879091770000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/crypto.py",
+      "line": 74,
+      "function": "digest",
+      "calls": 123514,
+      "primitive_calls": 123514,
+      "self_seconds": 0.068204102,
+      "cumulative_seconds": 1.2116519650000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 86,
+      "function": "validate_wire",
+      "calls": 123456,
+      "primitive_calls": 123456,
+      "self_seconds": 0.06806927,
+      "cumulative_seconds": 1.2109406930000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 91,
+      "function": "<genexpr>",
+      "calls": 4072640,
+      "primitive_calls": 4072640,
+      "self_seconds": 0.6555013270000001,
+      "cumulative_seconds": 0.88872083
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.id>",
+      "calls": 11604832,
+      "primitive_calls": 11604832,
+      "self_seconds": 0.567855195,
+      "cumulative_seconds": 0.567855195
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/dataclasses.py",
+      "line": 1278,
+      "function": "fields",
+      "calls": 246944,
+      "primitive_calls": 246944,
+      "self_seconds": 0.29839084400000004,
+      "cumulative_seconds": 0.49817713500000005
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'append' of 'list' objects>",
+      "calls": 7035008,
+      "primitive_calls": 7035008,
+      "self_seconds": 0.422074369,
+      "cumulative_seconds": 0.422074369
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/copy.py",
+      "line": 172,
+      "function": "_deepcopy_atomic",
+      "calls": 9999120,
+      "primitive_calls": 9999120,
+      "self_seconds": 0.393547707,
+      "cumulative_seconds": 0.393547707
+    }
+  ],
+  "selected_functions": [
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_dropout.py",
+      "line": 76,
+      "function": "synchronize",
+      "calls": 1,
+      "primitive_calls": 1,
+      "self_seconds": 0.020530304000000003,
+      "cumulative_seconds": 26.0166921
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 130,
+      "function": "check_manifest",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.006052786,
+      "cumulative_seconds": 23.191818526000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 87,
+      "function": "manifest",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.38236591400000003,
+      "cumulative_seconds": 22.431220821
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 341,
+      "function": "apply",
+      "calls": 4,
+      "primitive_calls": 4,
+      "self_seconds": 0.01661614,
+      "cumulative_seconds": 13.231677584000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 176,
+      "function": "input_body",
+      "calls": 8,
+      "primitive_calls": 8,
+      "self_seconds": 0.029627019,
+      "cumulative_seconds": 11.920672554000001
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/copy.py",
+      "line": 118,
+      "function": "deepcopy",
+      "calls": 10493200,
+      "primitive_calls": 123472,
+      "self_seconds": 4.885131826,
+      "cumulative_seconds": 9.66946514
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/crypto.py",
+      "line": 275,
+      "function": "verify",
+      "calls": 123520,
+      "primitive_calls": 123520,
+      "self_seconds": 0.17640160400000002,
+      "cumulative_seconds": 8.870895599
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'verify' of 'cryptography.hazmat.bindings._rust.openssl.ed25519.Ed25519PublicKey' objects>",
+      "calls": 123520,
+      "primitive_calls": 123520,
+      "self_seconds": 7.492039041000001,
+      "cumulative_seconds": 7.492039041000001
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/crypto.py",
+      "line": 70,
+      "function": "canonical",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 0.22661625500000002,
+      "cumulative_seconds": 4.248706959000001
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_wire.py",
+      "line": 84,
+      "function": "payload",
+      "calls": 123456,
+      "primitive_calls": 123456,
+      "self_seconds": 0.16167369,
+      "cumulative_seconds": 3.909484082
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/json/encoder.py",
+      "line": 183,
+      "function": "encode",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 0.339555404,
+      "cumulative_seconds": 3.4537923490000004
+    },
+    {
+      "file": "/home/hacho/miniforge3/lib/python3.12/json/encoder.py",
+      "line": 205,
+      "function": "iterencode",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 2.9579720390000004,
+      "cumulative_seconds": 2.9579720390000004
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 28,
+      "function": "same_transcript",
+      "calls": 123552,
+      "primitive_calls": 123552,
+      "self_seconds": 0.061363684,
+      "cumulative_seconds": 2.472095324
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 192,
+      "function": "check_certificate",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.008090099,
+      "cumulative_seconds": 2.284478676
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 181,
+      "function": "certificate",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.00041582500000000004,
+      "cumulative_seconds": 2.240201721
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 43,
+      "function": "policy_hash",
+      "calls": 123472,
+      "primitive_calls": 123472,
+      "self_seconds": 0.086189101,
+      "cumulative_seconds": 1.7533645560000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/crypto.py",
+      "line": 74,
+      "function": "digest",
+      "calls": 123514,
+      "primitive_calls": 123514,
+      "self_seconds": 0.068204102,
+      "cumulative_seconds": 1.2116519650000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 86,
+      "function": "validate_wire",
+      "calls": 123456,
+      "primitive_calls": 123456,
+      "self_seconds": 0.06806927,
+      "cumulative_seconds": 1.2109406930000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 91,
+      "function": "<genexpr>",
+      "calls": 4072640,
+      "primitive_calls": 4072640,
+      "self_seconds": 0.6555013270000001,
+      "cumulative_seconds": 0.88872083
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_policy.py",
+      "line": 31,
+      "function": "modulus",
+      "calls": 3949184,
+      "primitive_calls": 3949184,
+      "self_seconds": 0.23321950300000002,
+      "cumulative_seconds": 0.23321950300000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'encode' of 'str' objects>",
+      "calls": 494138,
+      "primitive_calls": 494138,
+      "self_seconds": 0.125290111,
+      "cumulative_seconds": 0.125290111
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_wire.py",
+      "line": 87,
+      "function": "<genexpr>",
+      "calls": 370368,
+      "primitive_calls": 370368,
+      "self_seconds": 0.078144212,
+      "cumulative_seconds": 0.09864213200000001
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_ledger.py",
+      "line": 55,
+      "function": "row",
+      "calls": 8,
+      "primitive_calls": 8,
+      "self_seconds": 0.000111175,
+      "cumulative_seconds": 0.015115788000000002
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 118,
+      "function": "<lambda>",
+      "calls": 123456,
+      "primitive_calls": 123456,
+      "self_seconds": 0.010062486,
+      "cumulative_seconds": 0.010062486
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 339,
+      "function": "head",
+      "calls": 1,
+      "primitive_calls": 1,
+      "self_seconds": 3.6190000000000004e-06,
+      "cumulative_seconds": 0.009163479
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_ledger.py",
+      "line": 51,
+      "function": "head",
+      "calls": 1,
+      "primitive_calls": 1,
+      "self_seconds": 9.493e-06,
+      "cumulative_seconds": 0.00915986
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_wire.py",
+      "line": 74,
+      "function": "__post_init__",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 0.00014135000000000002,
+      "cumulative_seconds": 0.00044617400000000003
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 17,
+      "function": "require_hash",
+      "calls": 16,
+      "primitive_calls": 16,
+      "self_seconds": 4.601e-05,
+      "cumulative_seconds": 0.000275467
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_wire.py",
+      "line": 81,
+      "function": "<genexpr>",
+      "calls": 2080,
+      "primitive_calls": 2080,
+      "self_seconds": 0.000135028,
+      "cumulative_seconds": 0.000135028
+    },
+    {
+      "file": "/home/hacho/@WSL-Projects/trustlessFL/trustlessfl/seed_mpc_committee.py",
+      "line": 98,
+      "function": "<genexpr>",
+      "calls": 80,
+      "primitive_calls": 80,
+      "self_seconds": 1.8198e-05,
+      "cumulative_seconds": 1.8198e-05
+    }
+  ],
+  "masked_chunks_per_round": 7716,
+  "raw_manifest_bytes_per_round": [
+    5843747,
+    5844372,
+    5844067,
+    5844304,
+    5844151
+  ],
+  "client_target_round": 4,
+  "original_head_unchanged": true,
+  "flower_ttl_source": "/home/hacho/@WSL-Projects/trustlessFL/.venv/lib/python3.12/site-packages/flwr/server/superlink/linkstate/utils.py",
+  "flower_ttl_source_sha256": "085d7fc73d8ce7b56346fdb4dc4410a87824cb65e4fa290727618efd3c69acdb",
+  "profiler_sha256": "510d95ed99d9e70eec3a5abee4d94e497835b40f32f6c494bd31227d32e54c65",
+  "synthetic_official_ttl_check": {
+    "ttl": 60,
+    "at_59_seconds_error": false,
+    "at_61_seconds_error": true,
+    "error_code": 3,
+    "error_reason": "Error: Message Unavailable - The requested message could not be found in the database. It may have expired due to its TTL, been deleted because the destination SuperNode was removed from the federation, or never existed.",
+    "scope": "installed official Flower function; no actual transport; does not isolate every historical missing ACK error code"
+  }
+}

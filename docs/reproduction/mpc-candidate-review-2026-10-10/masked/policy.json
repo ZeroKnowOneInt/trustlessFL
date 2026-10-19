@@ -1,0 +1,1 @@
+{"dimension": 2, "clients": 4, "parties": 4, "coordinate_cap": 2, "scale": 1, "spacing": 5, "mask_max": 15, "squared_bound": 8, "minimum_accepted": 2, "client_port": 25000, "seed": 42, "backend_prime": 170141183460469231731687303715884105727, "hprf": {"p": 101, "q": 505, "m": 2, "columns": [1, 2]}}

@@ -1,0 +1,12 @@
+{
+  "installation": "/home/hacho/@WSL-Projects/trustlessFL/.cache/seed-mpc-setup-network-v1/mp-spdz-0.4.3-stock",
+  "version": "0.4.3",
+  "reused": false,
+  "setup_seconds": 12.829,
+  "backend_pin_hash": "b942adc9b999bb0227d0f905e9a9bdd7ca0918eaa55bd14ca2e181fe47dd1a9e",
+  "applied_patches": [],
+  "component_input": "stock-private-v1",
+  "communication_meter": false,
+  "ready": true,
+  "download": "fixed official GitHub URL; no offline archive supplied"
+}

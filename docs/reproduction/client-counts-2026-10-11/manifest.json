@@ -1,0 +1,11 @@
+{
+  "files_sha256": {
+    "package-checks.json": "0e9aa6b3e561bdd4afac5faf891a87c69a1df88837cc914cecf4affa934e4934",
+    "verification.json": "d0ba94cf037bbd4ced3ba6d93d6f206dd157e4fdbdd7912d4f19d19c005a5878",
+    "wheel-training-8.json": "40e3509b7875449b2bb96893ddc927b064d5d35df5bd0c087f08f34aa73ce482"
+  },
+  "source_run": ".cache/seed-mpc-client-count-validation-v1",
+  "private_seed_and_identity_string_scan": "clean",
+  "scope": "public aggregate/count/presence and validation metrics; no private input exports",
+  "regression_tests": 404
+}

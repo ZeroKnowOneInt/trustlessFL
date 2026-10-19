@@ -1,0 +1,34 @@
+{
+  "dimension": 61706,
+  "clients": 4,
+  "rounds": 1,
+  "metrics_identical": true,
+  "versions": [
+    {
+      "name": "stock-packed",
+      "round_sent_bytes": 345574822,
+      "setup_sent_bytes": 33308
+    },
+    {
+      "name": "holder-checked-direct",
+      "round_sent_bytes": 274113190,
+      "setup_sent_bytes": 33308
+    }
+  ],
+  "round_reduction_percent": 20.67906208745729,
+  "stock_baseline_verification_sha256": "0473f8dbff4a00f3ef77a056e0163db45725202c0d763acbc4d6d10e0d598181",
+  "same_build_d1024": {
+    "stock_rounds": [
+      6140182,
+      5510006,
+      5510006
+    ],
+    "direct_rounds": [
+      4958998,
+      4328822,
+      4328822
+    ]
+  },
+  "definition": "native Player sent payload sum across four aggregators, including live preprocessing; setup separated; excludes application/native framing/TLS/TCP/IP",
+  "scope": "same full-model policy/data/training/packing; separate fresh sessions; native importer build differs; same-build stock/direct control at D1024; one learning round, not five-round completion or complete security proof"
+}

@@ -1,0 +1,196 @@
+{
+  "scope": "official Flower local single-UID functional test, actual Rep4, no operator isolation/full BFT/composition proof",
+  "runs": {
+    "fixture": {
+      "client_duplicate_commit_applied": false,
+      "compile_invocations": 1,
+      "compile_seconds": 6.527,
+      "dimension": 65,
+      "internal_mb": 4.18145,
+      "masked_application_json_bytes": 26791,
+      "metrics": [
+        {},
+        {},
+        {},
+        {}
+      ],
+      "mode": "fixture",
+      "passed": true,
+      "raw_delta_in_flower_reply": false,
+      "round_checks": [
+        {
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 1,
+          "status": "ok"
+        },
+        {
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 2,
+          "status": "ok"
+        },
+        {
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 3,
+          "status": "abort"
+        }
+      ],
+      "rounds": 3,
+      "runtime": "Official Flower Simulation Runtime / Ray; flwr run",
+      "scope": "single WSL host/Unix UID, trusted local test bootstrap and post-run raw-update oracle; no operator isolation",
+      "seed_inputs_per_client": 1,
+      "verification_source_sha256": "549dee16048fbc1753f16e0b1a661ff0baeddd7af3b383b26a18f21656649475",
+      "wall_seconds": 6.053,
+      "communication": {
+        "scope": "recorded application contents, excluding framing/TLS/HTTP/Flower protobuf and registration/identity/ack/ready/finish control messages",
+        "native_all_party_decimal_mb": 4.18145,
+        "masked_configrecord_content_bytes": 24979,
+        "aggregator_round_rpc_request_json_bytes": 381124,
+        "aggregator_round_rpc_response_json_bytes": 14084,
+        "client_commit_configrecord_content_bytes_including_duplicate_test": 341224,
+        "public_model_array_raw_bytes_train_and_two_commits": 18720,
+        "duplicate_commit_test_included": true
+      }
+    },
+    "tiny-fmnist": {
+      "client_duplicate_commit_applied": false,
+      "compile_invocations": 1,
+      "compile_seconds": 6.229,
+      "dimension": 170,
+      "internal_mb": 8.34355,
+      "masked_application_json_bytes": 56317,
+      "metrics": [
+        {
+          "accuracy": 0.1064453125,
+          "loss": 2.3025851249694824
+        },
+        {
+          "accuracy": 0.1123046875,
+          "loss": 2.2949390411376953
+        },
+        {
+          "accuracy": 0.1123046875,
+          "loss": 2.2876522541046143
+        },
+        {
+          "accuracy": 0.1123046875,
+          "loss": 2.2806456089019775
+        }
+      ],
+      "mode": "tiny-fmnist",
+      "passed": true,
+      "raw_delta_in_flower_reply": false,
+      "round_checks": [
+        {
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 1,
+          "status": "ok"
+        },
+        {
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 2,
+          "status": "ok"
+        },
+        {
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 3,
+          "status": "ok"
+        }
+      ],
+      "rounds": 3,
+      "runtime": "Official Flower Simulation Runtime / Ray; flwr run",
+      "scope": "single WSL host/Unix UID, trusted local test bootstrap and post-run raw-update oracle; no operator isolation",
+      "seed_inputs_per_client": 1,
+      "verification_source_sha256": "549dee16048fbc1753f16e0b1a661ff0baeddd7af3b383b26a18f21656649475",
+      "wall_seconds": 10.242,
+      "communication": {
+        "scope": "recorded application contents, excluding framing/TLS/HTTP/Flower protobuf and registration/identity/ack/ready/finish control messages",
+        "native_all_party_decimal_mb": 8.34355,
+        "masked_configrecord_content_bytes": 52777,
+        "aggregator_round_rpc_request_json_bytes": 748000,
+        "aggregator_round_rpc_response_json_bytes": 20744,
+        "client_commit_configrecord_content_bytes_including_duplicate_test": 630208,
+        "public_model_array_raw_bytes_train_and_two_commits": 48960,
+        "duplicate_commit_test_included": true
+      }
+    },
+    "model-reject": {
+      "fault": "uncertified-model",
+      "model_updates": 0,
+      "passed": true,
+      "plaintext_fallback": false,
+      "status": "Flower finished:failed as expected",
+      "training_calls": 0,
+      "verification_source_sha256": "0d1b944093cedecad2af1faba190179c561b9080f9a2b7b8bb27fbd7c22af870"
+    }
+  },
+  "log_sha256": {
+    "fixture/compile.log": "fbc0cca4691c8990a37fcb0d0d19c4b461f55be64c5a70c350710f07e6c384dd",
+    "fixture/A0-native.log": "4f8500af2dfa229b0dea2e09d4e49f9320beeb75534b003cd63226de85d98a26",
+    "fixture/A0-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/C0-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/A1-native.log": "f872d8e972f7813e54a86cf2ded2d409a292c9a57b01e6354cbbdf428d5bcf62",
+    "fixture/A1-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/C1-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/A2-native.log": "0e136a4a3f7efa03007fc12dfe588036163810fe26bbbfae640c905142f3bcc1",
+    "fixture/A2-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/C2-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/A3-native.log": "4c90c0c5cb053c4640a06cbea4d91ddb739940ccb690ea188d7fa8f62a82ba54",
+    "fixture/A3-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/C3-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture/flwr.log": "dcc9444aaeed740702356a333f89bc67b660dedc7f4089369705d66acbf62576",
+    "fixture/superlink.log": "da4b4a7e835fda52531bd6bbd667a57a41960e3e86cff66f15d839f22dca9568",
+    "tiny-fmnist/compile.log": "184c50517c45b7d5ee930f9a587949c296d6ca99d659a4cf3aa9c40db98d81b5",
+    "tiny-fmnist/A0-native.log": "8caf7b0d972d8f5a73e23638a999ff80a5b24c005ef63af081e0c0a52cf3378b",
+    "tiny-fmnist/A0-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/C0-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/A1-native.log": "35da4b0bd6a4dc4a373abb61d245674b6a67083ee5072844b674f9b76793edf8",
+    "tiny-fmnist/A1-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/C1-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/A2-native.log": "a18e2cc5bd7454d0247c3e6e6ef5f68086eff68754eeac50e4779008720ecebf",
+    "tiny-fmnist/A2-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/C2-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/A3-native.log": "19bf2561b48aa51a43fd9e6e0d0dbdd741fb245cd3fefc2bc5693e1c944cb9d6",
+    "tiny-fmnist/A3-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/C3-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-fmnist/flwr.log": "9834d888232a7325bb77d52b17142eccf8003d4ca24dacebe7f206645f93a77e",
+    "tiny-fmnist/superlink.log": "d9376d9d0bdcefa928c117aa2c23b1e20861678e92913b7668beecbfe4dcba71",
+    "model-reject/compile.log": "4821d6395cd010b6d8beef9425c2a38b043ea0031402bc458d564a4d52e96b78",
+    "model-reject/A0-native.log": "3d811117b786ac67c0357919f2aaf51859b20e9ea29e5e07c1054ec4070bb191",
+    "model-reject/A0-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/C0-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/A1-native.log": "3bc4f7ee7206130bc77e3da9cb83b915fc7285c6119da7628b5e8bdb137936a3",
+    "model-reject/A1-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/C1-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/A2-native.log": "4421eedf690be3a2740a9448df421646bb69054b8957fd523503acb0c615d6b7",
+    "model-reject/A2-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/C2-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/A3-native.log": "2f590158f29d1937b38a3a4dfe8a00811fed16456075020b1da271f4047d9f20",
+    "model-reject/A3-service.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/C3-registration.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-reject/flwr.log": "f9528c73dc0f71f815a35bfb7ece58412eb5e0f4d1ad1a0433aa0c9768bd4bd0",
+    "model-reject/superlink.log": "466498b253d2c8b01af5ecb6f18e344c7ec6c9176151e8e926d5880eee75ed24"
+  },
+  "public_file_sha256": {
+    "fixture/verification.json": "4e83b09352c378c1477d9b6de2572b477dfad65a92bff2ae4cc0e8d60683c892",
+    "fixture/provenance.json": "a1ec0afd1bea23652e844015461b896a7da4bd3d187414f2d63ee4eff9deea9f",
+    "fixture/deployment.json": "ad6ee69cd2cb998d044a0c359a81b50dcec43d0a92281055b1f4fe1504741a8b",
+    "fixture/timing.json": "28fbb6210677313241319c08518b9ba18931ac2d050ff4a2f3140bf42c72d606",
+    "fixture/results.json": "b93972d58602c3fccafb070ca89a092d306c3197b17ebc19ef6445ae3e8f40a9",
+    "tiny-fmnist/verification.json": "74eb7d0788b9e3ed6eb1972911ec51515afe92220e8d8b5e500ba758037d4cdf",
+    "tiny-fmnist/provenance.json": "0a4f8b42280d469288b6f6abdf82fa52f2a956f193f5323a1036c2b6f2e9e5f9",
+    "tiny-fmnist/deployment.json": "f62f5b1c799dc376140eb05000397819bdbc3f993e30726223dc77b3446d54f4",
+    "tiny-fmnist/timing.json": "2c86970b9af6b695d08cc547ce2d1318087a7d20cce908b9fdea7e53640207d3",
+    "tiny-fmnist/results.json": "ffcde377e05e70351735f968ca8050fa51cbdf92e1dd4b8a733fc31a1afd6d93",
+    "model-reject/verification.json": "6713f30202afe404c6e2be8f5d6bdd9183d5c588b50270a904f8b253bb81fc82",
+    "model-reject/provenance.json": "e28acde89fbc7da94f2cbc6ec8ec3efa45dc969f0258005a4a87d57022773184",
+    "model-reject/deployment.json": "5dcb1889e756be4b4773565c7e3e7c64bd89894242430e75f5a764528fcc9de2",
+    "model-reject/timing.json": "705d417b6ffac3b81fed18bf719566dc736e1e4ebbafd4bc760df701d9139ea6",
+    "model-reject/failed.json": "c64b1dccbf9d73dd90dfea81ca291b8309f0533baf98723f2b28941efcef6440"
+  }
+}

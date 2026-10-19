@@ -1,0 +1,9 @@
+{
+  "files": {
+    "diagnosis.json": "5c12560b97e2d0be36bf1ae9f94df34a306d3a0f6a46040efd0d61e3be7d6323"
+  },
+  "report_sha256": "c996f70b40159f0dfcb9d6f60e2374ffc0f6001f17cb3f0903e3a1574e51bf64",
+  "profile_script_sha256": "510d95ed99d9e70eec3a5abee4d94e497835b40f32f6c494bd31227d32e54c65",
+  "original_client_head_unchanged": true,
+  "scope": "stats/public-transcript hashes only; no private update vectors or key/seed files read/exported"
+}

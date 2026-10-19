@@ -1,0 +1,854 @@
+{
+  "passed": true,
+  "client_round_comparisons": 120,
+  "checks": [
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 42,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 43,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 1,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 2,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 3,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 4,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "clean",
+      "round": 5,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 1,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 2,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 3,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 4,
+      "client_slot": 3,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 0,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 1,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 2,
+      "input_exact": true
+    },
+    {
+      "seed": 44,
+      "case": "norm-overflow",
+      "round": 5,
+      "client_slot": 3,
+      "input_exact": true
+    }
+  ],
+  "attack_checks": {
+    "count": 15,
+    "l2_radius_min": 9.999709224772488,
+    "l2_radius_max": 9.999999410499983,
+    "max_coordinate_abs": 0.7636,
+    "all_coordinate_valid_and_l2_invalid": true
+  },
+  "scope": "trusted post-run oracle comparison only; no keys/seeds read; vectors not exported"
+}

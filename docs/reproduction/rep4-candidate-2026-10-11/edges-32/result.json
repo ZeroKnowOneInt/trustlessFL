@@ -1,0 +1,204 @@
+{
+  "case": "edge-cases",
+  "passed": true,
+  "scope": "synthetic local native MPC; no Flower/BFT or joint-collusion proof",
+  "runtime": "MP-SPDZ 0.4.3 Rep4 active ring/binary, live execution",
+  "backend": "rep4",
+  "coordinate_circuit": "binary",
+  "seed_encoding": "packed64",
+  "output_mode": "native-public",
+  "ring_bits": 64,
+  "parties": 4,
+  "clients": 4,
+  "dimension": 2,
+  "private_seed_inputs_per_client": 1,
+  "native_sessions": 1,
+  "rounds_executed": 6,
+  "rounds": 6,
+  "output": [
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        0,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        0,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        0,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        -80000,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        80000,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        0,
+        0
+      ]
+    }
+  ],
+  "expected": [
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        0,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        0,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 2,
+      "sum": [
+        0,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        -80000,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        80000,
+        0
+      ]
+    },
+    {
+      "status": "ok",
+      "count": 4,
+      "sum": [
+        0,
+        0
+      ]
+    }
+  ],
+  "wire_modulus": 4294967296,
+  "application_bits": 34,
+  "field_bits": null,
+  "synthetic_wrap_events": {
+    "positive": 1,
+    "negative": 0
+  },
+  "source_sha256": {
+    "seed_mpc_candidate_session.mpc": "80a5616e034e054f24c79d9dc37415f91e5c0cc94b9b3de8bbb06991dba2dd35",
+    "seed_mpc_primitives.py": "23870c20cc4a58c801f3fb6d85ee58bd948b9f816ddf1ce483dce55d4f516fad",
+    "seed_mpc_candidate_primitives.py": "363980d849a777ffaf0c414087c68418a6a2cb04f79b97e060e4525a206516d4"
+  },
+  "aes_circuit_sha256": "40423a0cdaf5d4d34aba872c12660f115dc25c12eea6e24a9304578e79df6d04",
+  "aes_circuit_commit": "1603ed6aa12348c2ef15ed8395b9b96e4c558b7f",
+  "policy_hash": "cb7335087c3e04ac4585a034078e237681d193f9609fe1611babc02e0c72ac8f",
+  "compile_seconds": 14.359,
+  "native_seconds": 1.868,
+  "global_data_sent_mb": 0.745902,
+  "malicious_aggregator_faults_injected": 0,
+  "workspace": "/home/hacho/@WSL-Projects/trustlessFL/.cache/seed-mpc/runs/63c6351812ec4b2e93b8ccb5aa91e23d",
+  "harness_sha256": {
+    "experiments/run_seed_mpc_probe.py": "76e8018bc4084f0e7e7f6fbf8332b3091dcbd0f4e3a07c9bf4bf513baa6617c0",
+    "trustlessfl/seed_mpc_external_client.py": "3b78a3d4e7244d1b54ec83c70f581c5a42b701fd375c09999248537ddfb392a6",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/seed_mpc_wire.py": "79f171ce9f0b57f66a1a32e06e12204e4636e5cb24ff8a1cfa93e38bee3ed429",
+    "trustlessfl/rep4_external.py": "c51467a9af4fc6bda9bb354acf3fdc54c4e49939a777a1e0df194d1ffc9385db"
+  },
+  "external_client_communication": [
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 64,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 80,
+        "received_bytes": 592,
+        "sent_messages": 4,
+        "received_messages": 4
+      }
+    },
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 64,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 80,
+        "received_bytes": 592,
+        "sent_messages": 4,
+        "received_messages": 4
+      }
+    },
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 64,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 80,
+        "received_bytes": 592,
+        "sent_messages": 4,
+        "received_messages": 4
+      }
+    },
+    {
+      "connection": {
+        "sent_bytes": 20,
+        "received_bytes": 64,
+        "sent_messages": 4,
+        "received_messages": 4
+      },
+      "seed_registration": {
+        "sent_bytes": 80,
+        "received_bytes": 592,
+        "sent_messages": 4,
+        "received_messages": 4
+      }
+    }
+  ],
+  "communication_measurement": "native -v plus ExternalIO message/framing counters; excludes TLS/TCP overhead"
+}

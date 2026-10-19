@@ -1,0 +1,35 @@
+{
+  "dimension": 61706,
+  "clients": 4,
+  "rounds": 1,
+  "presence": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "metrics_identical": true,
+  "baseline_verification_sha256": "8e6d02caba90b1961f5a79bd405cd328aa4961ed23a44aad628b9a2cd0973041",
+  "versions": [
+    {
+      "name": "seeded-components",
+      "round_sent_bytes": 675883188,
+      "setup_sent_bytes": 85506
+    },
+    {
+      "name": "checked-public",
+      "round_sent_bytes": 446533798,
+      "setup_sent_bytes": 33308
+    },
+    {
+      "name": "checked-public-packed",
+      "round_sent_bytes": 345574822,
+      "setup_sent_bytes": 33308
+    }
+  ],
+  "public_comparison_reduction_percent": 33.93328818825421,
+  "additional_packing_reduction_percent": 22.609481399210907,
+  "combined_reduction_percent": 48.870629106401154,
+  "definition": "native tracked Player sent payload sum over four aggregators, including live preprocessing; setup separated; excludes application, native framing and TLS/TCP/IP",
+  "scope": "same D/N/Q/B/T/S/model/data/training/seed/round slots/backend; independent fresh sessions; chunk packing differs as stated; no generic performance/security proof"
+}

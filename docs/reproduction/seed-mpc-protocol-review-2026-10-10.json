@@ -1,0 +1,36 @@
+{
+  "scope": "synthetic plaintext oracle; no native MPC/security/performance validation",
+  "aes_known_answer": "passed",
+  "exhaustive_coordinate_checks": 21712,
+  "random_aes_rounds": 300,
+  "norm_boundary_and_invalid_client": "passed",
+  "canonical_wire_rejection": "passed",
+  "counter_address_uniqueness_cases": 600,
+  "reused_mask_difference_leak": [
+    2,
+    5
+  ],
+  "malicious_modular_alias": {
+    "claimed_raw": 65543,
+    "effective_input": 7
+  },
+  "sum_exceeds_wire_modulus": {
+    "wire_q": 65536,
+    "true_sum": 80000,
+    "mpc_integer_sum": 80000,
+    "wrong_aggregate_wire_decode": 14464
+  },
+  "fmnist_cost_counts": {
+    "dimension": 61706,
+    "clients": 4,
+    "mask_word_bits": 16,
+    "wire_bytes_per_client": 123412,
+    "aes_blocks_per_client": 7714,
+    "aes_blocks_per_round": 30856,
+    "squares_per_round": 246824,
+    "norm_cap": 24682400000000,
+    "norm_bits": 45,
+    "sum_cap": 80000
+  },
+  "source_sha256": "9691cc93b441c39f323a165fb34b75ad4a817a38c12762f21106c91bffddc5fe"
+}

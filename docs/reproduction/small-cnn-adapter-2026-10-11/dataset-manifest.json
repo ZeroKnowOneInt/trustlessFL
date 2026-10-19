@@ -1,0 +1,142 @@
+{
+  "source": {
+    "dataset": "Fashion-MNIST",
+    "source": "https://github.com/zalandoresearch/fashion-mnist",
+    "train_examples": 60000,
+    "test_examples": 10000,
+    "files": [
+      {
+        "name": "train-images-idx3-ubyte.gz",
+        "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/train-images-idx3-ubyte.gz",
+        "md5": "8d4fb7e6c68d591d4c3dfef9ec88bf0d",
+        "sha256": "3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84",
+        "raw_sha256": "c59f468a2f672dc815687fe0f83887768d799fd8a3f3276145d20f83aa44d888",
+        "bytes": 26421880,
+        "raw_bytes": 47040016,
+        "idx_header": [
+          2051,
+          60000,
+          28,
+          28
+        ]
+      },
+      {
+        "name": "train-labels-idx1-ubyte.gz",
+        "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/train-labels-idx1-ubyte.gz",
+        "md5": "25c81989df183df01b3e8a0aad5dffbe",
+        "sha256": "a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845",
+        "raw_sha256": "bad3541b69d912435c50bb6ba87bec294ff4f6a2e1246121d8633921760443d9",
+        "bytes": 29515,
+        "raw_bytes": 60008,
+        "idx_header": [
+          2049,
+          60000
+        ]
+      },
+      {
+        "name": "t10k-images-idx3-ubyte.gz",
+        "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/t10k-images-idx3-ubyte.gz",
+        "md5": "bef4ecab320f06d8554ea6380940ec79",
+        "sha256": "346e55b948d973a97e58d2351dde16a484bd415d4595297633bb08f03db6a073",
+        "raw_sha256": "5b4141f0afbad91edebe8549f8fcffe087ea10ca49f1dbef5c9a5cd8815ce37b",
+        "bytes": 4422102,
+        "raw_bytes": 7840016,
+        "idx_header": [
+          2051,
+          10000,
+          28,
+          28
+        ]
+      },
+      {
+        "name": "t10k-labels-idx1-ubyte.gz",
+        "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/t10k-labels-idx1-ubyte.gz",
+        "md5": "bb300cfdad3c16e7a12a480ee83cd310",
+        "sha256": "67da17c76eaffca5446c3361aaab5c3cd6d1c2608764d35dfb1850b086bf8dd5",
+        "raw_sha256": "0402a96d92fd2663957122ceb108a494c5af83dab82d92729df917d7dec38c34",
+        "bytes": 5148,
+        "raw_bytes": 10008,
+        "idx_header": [
+          2049,
+          10000
+        ]
+      }
+    ]
+  },
+  "selection_seed": 42,
+  "partition": "four disjoint IID random partitions, first rows-per-client entries",
+  "shards": {
+    "C0": {
+      "rows": 1024,
+      "sha256": "61ceffe9b498fe76c0e574154c986e1fc2931abcecf046b84914f6dc74e2316b",
+      "indices_sha256": "52949ee61fde554bda7cef3976d8a1aaa1705ba83ee4323f546593574fb87126",
+      "class_counts": [
+        86,
+        109,
+        115,
+        91,
+        102,
+        101,
+        99,
+        106,
+        107,
+        108
+      ]
+    },
+    "C1": {
+      "rows": 1024,
+      "sha256": "1dfeb7d64ea943e428052c9fd0599caee61273a4dfeb0fe98338de3dc77e37ba",
+      "indices_sha256": "2196c33270f520720ae8d8cc45f3d25e901d3044b68bf77ed16952437cb570cd",
+      "class_counts": [
+        102,
+        110,
+        93,
+        111,
+        98,
+        105,
+        91,
+        101,
+        101,
+        112
+      ]
+    },
+    "C2": {
+      "rows": 1024,
+      "sha256": "baa98e13ce33f29b8b6b313c1502a7290c49b56417a370e8d03e0f29a542a211",
+      "indices_sha256": "54f1889650f970f45ea25817eb72783184d00e2fed232cf8812fcfd3b12fc372",
+      "class_counts": [
+        92,
+        125,
+        105,
+        112,
+        92,
+        97,
+        118,
+        90,
+        96,
+        97
+      ]
+    },
+    "C3": {
+      "rows": 1024,
+      "sha256": "b63bd77accadc68efbc508c315e5f1a5859f4c12107ee78f4cad9df3d295753d",
+      "indices_sha256": "e8039b7547e2a8213708ca30468dee5cd6777f0394fcad7595e6cfa1a84bd3b2",
+      "class_counts": [
+        102,
+        107,
+        107,
+        96,
+        115,
+        90,
+        84,
+        111,
+        105,
+        107
+      ]
+    },
+    "test": {
+      "rows": 2048,
+      "sha256": "94ab7fe01318bc9804cddf2e754354ca3b4d473e36ac567603218bb024d43fa5"
+    }
+  }
+}

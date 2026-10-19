@@ -1,0 +1,10 @@
+# Research validation image; context must contain only the wheel and this file.
+# The base is produced by Dockerfile.validation. No FL identity/data/seed is copied.
+FROM trustlessfl-mpc-validation:local-v1
+USER root
+COPY *.whl /tmp/distributed-wheel/
+RUN pip install --no-deps --force-reinstall /tmp/distributed-wheel/*.whl
+USER operator
+RUN trustlessfl-mpc setup --directory /home/operator/backend --mode direct
+RUN trustlessfl-mpc verify --installation /home/operator/backend/mp-spdz-0.4.3-checked-source-v1
+CMD ["python", "-c", "import time; time.sleep(3600)"]

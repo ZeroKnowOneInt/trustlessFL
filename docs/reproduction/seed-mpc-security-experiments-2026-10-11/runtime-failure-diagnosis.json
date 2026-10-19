@@ -1,0 +1,37 @@
+{
+  "runtime_failure": "serialization exception followed by unrecovered actor pool depletion",
+  "original_log": ".cache/seed-mpc-experiments/native-sequential-clean-2026-10-11/attempt-0fcd3148/flwr.log",
+  "first_error_line": 14,
+  "dictionary_error_count": 1,
+  "empty_pool_error_count": 27,
+  "local_sources": {
+    ".venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py": "174132017563559c9113602a9933ea54d7622a84d19d9fc2d5cadea1eb599561",
+    ".venv/lib/python3.12/site-packages/flwr/server/superlink/fleet/vce/backend/raybackend.py": "2cdc6ab2a585ac04a3cc553d6b0e9b33e7d6f22d5d6a4e6ec0170254fbbb9f09"
+  },
+  "actor_pool_reproduction": [
+    {
+      "type": "RuntimeError",
+      "message": "dictionary changed size during iteration",
+      "idle_actors_after": 0
+    },
+    {
+      "type": "IndexError",
+      "message": "pop from empty list",
+      "idle_actors_after": 0
+    }
+  ],
+  "learning_rounds_with_four_inputs": [
+    1,
+    2
+  ],
+  "abort_rounds": [
+    3,
+    4,
+    5
+  ],
+  "root_dictionary_identity": "not established by available stack trace",
+  "memory_failure": "no OOM signature in this Flower log; prior parallel-run OOM is a separate incident",
+  "passed_flag_scope": "correctness of received inputs and aborts; not completion of the intended all-present learning workload",
+  "plaintext_comparison": "failed as expected for an incomplete learning workload",
+  "rerun_started": false
+}

@@ -1,0 +1,104 @@
+{
+  "scope": "plaintext arithmetic with original HPRF adapter; no MPC/privacy/FL-performance claim",
+  "seed": 20261010,
+  "coordinate_cases": 64000,
+  "profiles": [
+    {
+      "M": 1,
+      "d": 1,
+      "widths": {
+        "offset_unsigned": 21,
+        "residual_signed": 21,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 1,
+      "d": 21,
+      "widths": {
+        "offset_unsigned": 26,
+        "residual_signed": 26,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 15,
+      "d": 1,
+      "widths": {
+        "offset_unsigned": 21,
+        "residual_signed": 21,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 15,
+      "d": 21,
+      "widths": {
+        "offset_unsigned": 26,
+        "residual_signed": 26,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 840000021,
+      "d": 1,
+      "widths": {
+        "offset_unsigned": 30,
+        "residual_signed": 31,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 840000021,
+      "d": 21,
+      "widths": {
+        "offset_unsigned": 30,
+        "residual_signed": 31,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 340282366920938463463374607431768211456,
+      "d": 1,
+      "widths": {
+        "offset_unsigned": 129,
+        "residual_signed": 130,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    },
+    {
+      "M": 340282366920938463463374607431768211456,
+      "d": 21,
+      "widths": {
+        "offset_unsigned": 129,
+        "residual_signed": 130,
+        "update_signed": 21,
+        "norm_unsigned": 44,
+        "sum_signed": 26,
+        "count_unsigned": 5
+      }
+    }
+  ],
+  "passed": true
+}

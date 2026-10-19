@@ -1,0 +1,57 @@
+# Synthetic candidate: same accepted sums/count/abort policy; public final output.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint
+from Compiler.GC.types import sbitvec
+from Compiler.library import print_ln
+from Compiler.circuit import Circuit
+from seed_mpc_primitives import register_keys, aes_words
+from seed_mpc_candidate_primitives import register_rep4_keys, binary_coordinate, tree_reduce
+config = json.loads(Path(program.args[1]).read_text())
+D = config['dimension']; B = config['coordinate_cap']; W = config['word_bits']
+Q = 1 << W; T = config['squared_threshold']; widths = config['widths']
+keys, sockets = register_rep4_keys(config) if config['backend'] == 'rep4' else register_keys(config)
+aes = Circuit('aes_128')
+outputs = []
+for round_spec in config['rounds']:
+    count = sint(0); total = [sint(0) for _ in range(D)]
+    for i, key in enumerate(keys):
+        if config['coordinate_circuit'] == 'binary':
+            update, checks = [], []
+            per_block = 128 // W
+            for block in range((D + per_block - 1) // per_block):
+                encrypted = aes(key, sbitvec.get_type(128)((round_spec['round_id'] << 64) | block))
+                for j in range(min(per_block, D-block*per_block)):
+                    y = round_spec['wire'][i][block*per_block+j]
+                    assert type(y) is int and 0 <= y < Q
+                    safe, coordinate_ok = binary_coordinate(encrypted,j,W,y,B)
+                    update.append(safe); checks.append(coordinate_ok)
+            valid = sint(sbitvec.from_vec([tree_reduce(checks, lambda a,b: a & b)]))
+        else:
+            masks = []
+            for block in range((D + 128//W - 1) // (128//W)):
+                masks += aes_words(aes,key,(round_spec['round_id'] << 64) | block,W)
+            valid = sint(1); update = []
+            for j in range(D):
+                y = round_spec['wire'][i][j]
+                assert type(y) is int and 0 <= y < Q
+                z = y-masks[j]
+                r = z + Q*z.less_than(0,bit_length=widths['wire'])
+                positive = r.less_equal(B,bit_length=widths['wire'])
+                negative = r.greater_equal(Q-B,bit_length=widths['wire'])
+                coordinate_ok = positive+negative
+                update.append(coordinate_ok*(r-Q*negative))
+                valid *= coordinate_ok
+        norm = sum(v*v for v in update)
+        accepted = valid*norm.less_equal(T,bit_length=widths['norm'])
+        count += accepted
+        for j in range(D): total[j] += accepted*update[j]
+    ok = count.greater_equal(config['minimum_accepted'],bit_length=widths['count'])
+    outputs += [ok,ok*count] + [ok*v for v in total]
+# Public SUM/count/abort is allowed. Avoid claiming prime-based ExternalIO
+# output triple checks provide equivalent authentication over Z_(2^k).
+for value in outputs:
+    print_ln('SEED_MPC_PUBLIC %s', value.reveal())
+print_ln('SEED_MPC_CANDIDATE_DONE')

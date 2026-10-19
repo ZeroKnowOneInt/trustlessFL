@@ -1,0 +1,193 @@
+{
+  "aggregators": 4,
+  "client_code_guard_enforced": true,
+  "client_confirmed_rounds_at_shutdown": {
+    "C0": 2,
+    "C1": 2,
+    "C2": 2,
+    "C3": 0
+  },
+  "client_environment": [
+    {
+      "compiler_present": false,
+      "installed_package": "/opt/venv/lib/python3.12/site-packages/trustlessfl/__init__.py",
+      "native_backend_present": false,
+      "ray_present": false
+    },
+    {
+      "compiler_present": false,
+      "installed_package": "/opt/venv/lib/python3.12/site-packages/trustlessfl/__init__.py",
+      "native_backend_present": false,
+      "ray_present": false
+    },
+    {
+      "compiler_present": false,
+      "installed_package": "/opt/venv/lib/python3.12/site-packages/trustlessfl/__init__.py",
+      "native_backend_present": false,
+      "ray_present": false
+    },
+    {
+      "compiler_present": false,
+      "installed_package": "/opt/venv/lib/python3.12/site-packages/trustlessfl/__init__.py",
+      "native_backend_present": false,
+      "ray_present": false
+    }
+  ],
+  "clients": 4,
+  "completed": true,
+  "contract_hash": "c0f6fa40584200ddb40a0d431bc0a551ebe431d2e7b26b1a4d1a29360cbcfea9",
+  "dimension": 53,
+  "dropout_rejoin_verified": true,
+  "filesystem_inventory": [
+    {
+      "aggregator_private_present": true,
+      "client_private_present": false,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "P0.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "A0"
+    },
+    {
+      "aggregator_private_present": true,
+      "client_private_present": false,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "P1.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "A1"
+    },
+    {
+      "aggregator_private_present": true,
+      "client_private_present": false,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "P2.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "A2"
+    },
+    {
+      "aggregator_private_present": true,
+      "client_private_present": false,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "P3.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "A3"
+    },
+    {
+      "aggregator_private_present": false,
+      "client_private_present": true,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "C0.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "C0"
+    },
+    {
+      "aggregator_private_present": false,
+      "client_private_present": true,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "C1.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "C1"
+    },
+    {
+      "aggregator_private_present": false,
+      "client_private_present": true,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "C2.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "C2"
+    },
+    {
+      "aggregator_private_present": false,
+      "client_private_present": true,
+      "docker_socket_accessible": false,
+      "native_private_keys": [
+        "C3.key"
+      ],
+      "other_host_workspace_accessible": false,
+      "role": "C3"
+    }
+  ],
+  "metrics": [
+    {
+      "accuracy": 0.3541666666666667,
+      "loss": 1.1077922185262044,
+      "test_error_rate": 0.6458333333333333
+    },
+    {
+      "accuracy": 0.3854166666666667,
+      "loss": 1.0994245211283367,
+      "test_error_rate": 0.6145833333333333
+    },
+    {
+      "accuracy": 0.3854166666666667,
+      "loss": 1.0913970470428467,
+      "test_error_rate": 0.6145833333333333
+    },
+    {
+      "accuracy": 0.4166666666666667,
+      "loss": 1.0836371580759685,
+      "test_error_rate": 0.5833333333333333
+    }
+  ],
+  "model_kind": "mlp",
+  "non_coordinator_rpc_rejected": true,
+  "protocol": "seed-mpc-independent-network-validation-v1",
+  "public_deployment_hash": "d65eef05a7a9b771d0bc440867e09bc0f0123556150fefd37efadf2de72c9019",
+  "raw_audit_files": 0,
+  "rounds": [
+    {
+      "accepted": 4,
+      "certificates_valid": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 1,
+      "sum_exact": true
+    },
+    {
+      "accepted": 3,
+      "certificates_valid": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "round": 2,
+      "sum_exact": true
+    },
+    {
+      "accepted": 4,
+      "certificates_valid": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 3,
+      "sum_exact": true
+    }
+  ],
+  "scope": "distinct Docker filesystem and network namespaces; one trusted Docker administrator; not physical multi-operator deployment",
+  "wall_seconds": 282.551
+}

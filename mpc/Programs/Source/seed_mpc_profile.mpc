@@ -1,0 +1,65 @@
+# Synthetic measurement circuit. Same operations/output as seed_mpc_session,
+# with timer barriers. Barriers change instruction batching; this measures the
+# instrumented run, not an exact function attribution of the uninstrumented run.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint
+from Compiler.GC.types import sbitvec
+from Compiler.library import print_ln, start_timer, stop_timer
+from Compiler.circuit import Circuit
+from seed_mpc_primitives import register_keys
+config = json.loads(Path(program.args[1]).read_text())
+D = config['dimension']; N = config['clients']; B = config['coordinate_cap']
+W = config['word_bits']; Q = 1 << W; T = config['squared_threshold']
+widths = config['widths']
+start_timer(1)
+keys, sockets = register_keys(config)
+stop_timer(1)
+aes = Circuit('aes_128')
+outputs = []
+for round_spec in config['rounds']:
+    round_id = round_spec['round_id']
+    count = sint(0)
+    total = [sint(0) for _ in range(D)]
+    for i, key in enumerate(keys):
+        masks = []
+        for block in range((D + 128//W - 1) // (128//W)):
+            start_timer(2)
+            encrypted = aes(key, sbitvec.get_type(128)((round_id << 64) | block))
+            stop_timer(2)
+            start_timer(3)
+            masks += [sint(sbitvec.from_vec(encrypted.v[128-(j+1)*W:128-j*W]))
+                      for j in range(128 // W)]
+            stop_timer(3)
+        start_timer(4)
+        valid = sint(1)
+        update = []
+        for j in range(D):
+            y = round_spec['wire'][i][j]
+            assert type(y) is int and 0 <= y < Q
+            z = y - masks[j]
+            r = z + Q * z.less_than(0, bit_length=widths['wire'])
+            positive = r.less_equal(B, bit_length=widths['wire'])
+            negative = r.greater_equal(Q-B, bit_length=widths['wire'])
+            coordinate_ok = positive + negative
+            safe = coordinate_ok * (r - Q*negative)
+            valid *= coordinate_ok
+            update.append(safe)
+        stop_timer(4)
+        start_timer(5)
+        squared = sum(v*v for v in update)
+        accepted = valid * squared.less_equal(T, bit_length=widths['norm'])
+        count += accepted
+        for j in range(D):
+            total[j] += accepted * update[j]
+        stop_timer(5)
+    start_timer(6)
+    ok = count.greater_equal(config['minimum_accepted'], bit_length=widths['count'])
+    outputs += [ok, ok*count] + [ok*v for v in total]
+    stop_timer(6)
+start_timer(6)
+sint.reveal_to_clients(sockets, outputs)
+stop_timer(6)
+print_ln('SEED_MPC_PROFILE_DONE')

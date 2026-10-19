@@ -1,0 +1,41 @@
+{
+  "baseline_source": "docs/reproduction/seed-mpc-scale-2026-10-11/batched-61706/verification.json",
+  "baseline_verification_sha256": "95009b48d9687444ee6ad4102d98bfe9f71a41d8e3160fe39a8851b5259be833",
+  "baseline_dimension": 61706,
+  "baseline_rounds": 3,
+  "baseline_global_mb": 2476.15,
+  "new_dimension": 61706,
+  "new_rounds": 3,
+  "new_global_sent_bytes": 2027094782,
+  "new_setup_sent_bytes": 85506,
+  "new_rounds_sent_bytes": [
+    675883188,
+    675883188,
+    675242900
+  ],
+  "total_reduction_percent": 18.13521870645962,
+  "scope": "native MPC only, including live preprocessing; baseline total rounded; new v2 snapshot; third new fixture snapshot has one absent rejected slot; bootstrap payload counted separately",
+  "benchmark_variant": "three-round shape benchmark precedes final registration-channel consolidation and local-source binding; final full LeNet one-round result verifies final implementation",
+  "final_lenet_first_round": {
+    "previous_source": "docs/reproduction/seed-mpc-security-experiments-2026-10-11/native/native-sequential-clean-runtime-fix-2026-10-11/verification.json",
+    "previous_verification_sha256": "dcd9426fea1dee2d3fb8281e8b9318fc1b61f9857312baf621e1799178c7caaa",
+    "previous_sent_bytes": 829863684,
+    "new_sent_bytes": 675883188,
+    "reduction_percent": 18.554914375551824,
+    "previous_setup_sent_bytes": 554960,
+    "new_setup_sent_bytes": 85506,
+    "first_round_metrics_identical": true,
+    "previous_compiled_round_slots": 5,
+    "new_compiled_round_slots": 1,
+    "presence": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "dimension": 61706,
+    "clients": 4,
+    "chunk_blocks": 4,
+    "scope": "first-round native counters incl. live preprocessing; identical public policy/model/data/seed/training; compilation loop budgets differ; excludes bootstrap ciphertext and application transport"
+  }
+}

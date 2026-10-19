@@ -1,0 +1,10 @@
+{
+  "learning_rounds_completed": 5,
+  "all_clients_present_every_round": true,
+  "plaintext_sum_model_metrics_exact_rounds": 5,
+  "final_accuracy": 0.8624,
+  "pre_submission_serialization_retries": 1,
+  "expired_message_diagnostic_present": true,
+  "expired_message_scope": "best-effort notification; did not prevent all-present training or certified model progression",
+  "all_experiment_processes_terminated": true
+}

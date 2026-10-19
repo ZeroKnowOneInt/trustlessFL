@@ -1,0 +1,19 @@
+# TEST ONLY: opens ciphertexts for publicly specified synthetic fixture keys.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint
+from Compiler.GC.types import sbitvec
+from Compiler.library import print_ln
+from Compiler.circuit import Circuit
+from seed_mpc_primitives import register_keys
+from seed_mpc_candidate_primitives import register_rep4_keys
+config = json.loads(Path(program.args[1]).read_text())
+keys, sockets = register_rep4_keys(config) if config['backend'] == 'rep4' else register_keys(config)
+aes = Circuit('aes_128')
+for key in keys:
+    encrypted = aes(key, sbitvec.get_type(128)(int(config['test_counter'],16)))
+    for j in range(4):
+        value = sint(sbitvec.from_vec(encrypted.v[128-(j+1)*32:128-j*32]))
+        print_ln('SEED_MPC_PUBLIC %s',value.reveal())

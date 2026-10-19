@@ -1,0 +1,15 @@
+# Isolated validation image. Build with a context containing only the wheel and this file.
+FROM ubuntu@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y python3-venv ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:/usr/local/bin:/usr/bin:/bin"
+COPY *.whl /tmp/wheels/
+RUN pip install --no-cache-dir /tmp/wheels/*.whl
+RUN python -c 'from trustlessfl.seed_mpc_setup import install_dependencies; install_dependencies()'
+RUN pip install --no-cache-dir 'torch==2.8.0' --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir 'flwr[simulation]==1.36.0' 'ray==2.55.1'
+RUN apt-get update && apt-get install -y passwd && if id ubuntu >/dev/null 2>&1; then /usr/sbin/usermod -l operator -d /home/operator -m ubuntu; else /usr/sbin/useradd -m -u 1000 operator; fi
+ENV HOME="/home/operator"
+USER operator
+WORKDIR /home/operator
+CMD ["trustlessfl-mpc", "doctor"]

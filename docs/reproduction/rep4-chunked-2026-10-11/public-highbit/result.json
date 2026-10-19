@@ -1,0 +1,59 @@
+{
+  "case": "public-highbit",
+  "passed": true,
+  "scope": "synthetic local native MPC; no Flower/BFT or joint-collusion proof",
+  "runtime": "MP-SPDZ 0.4.3 Rep4 active ring/binary, live execution",
+  "backend": "rep4",
+  "coordinate_circuit": "chunked",
+  "seed_encoding": "packed64",
+  "output_mode": "native-public",
+  "ring_bits": 64,
+  "rep4_input_mode": "replicated-triples-v1",
+  "seed_input_values_per_client": 2,
+  "parties": 4,
+  "clients": 4,
+  "dimension": 65,
+  "private_seed_inputs_per_client": 1,
+  "native_sessions": 1,
+  "rounds_executed": 0,
+  "rounds": 3,
+  "output": {
+    "status": "input-abort"
+  },
+  "expected": null,
+  "wire_modulus": 65536,
+  "application_bits": 37,
+  "field_bits": null,
+  "synthetic_wrap_events": {
+    "positive": 5,
+    "negative": 1
+  },
+  "source_sha256": {
+    "seed_mpc_chunked_session.mpc": "b367ed3a2480284aa87d07a4b7a7782bbae669f0af1aa230d38866c9f11b3ab7",
+    "seed_mpc_primitives.py": "23870c20cc4a58c801f3fb6d85ee58bd948b9f816ddf1ce483dce55d4f516fad",
+    "seed_mpc_candidate_primitives.py": "4e8ebf531f4af77d892f805b06f6b5b0e89d2de42b972ce1f5cb47b0163fc78b"
+  },
+  "aes_circuit_sha256": "40423a0cdaf5d4d34aba872c12660f115dc25c12eea6e24a9304578e79df6d04",
+  "aes_circuit_commit": "1603ed6aa12348c2ef15ed8395b9b96e4c558b7f",
+  "policy_hash": "70338e9f98b9a60c3ccbf2fef31af3c40836f8b1e094f75407303dc452a88b3f",
+  "compile_seconds": 0.0,
+  "native_seconds": 1.261,
+  "global_data_sent_mb": null,
+  "malicious_aggregator_faults_injected": 0,
+  "workspace": "/home/hacho/@WSL-Projects/trustlessFL/.cache/seed-mpc/runs/e2f1361b26274cf7863600394b4c2257",
+  "malicious_client_faults_injected": 0,
+  "public_input_faults_injected": 1,
+  "external_frame_tampering_injected": 0,
+  "harness_sha256": {
+    "experiments/run_seed_mpc_probe.py": "8a64df42427bf1d5a59efb0253b4a299498e57ce5316ecd21b322ee54d1e6ede",
+    "trustlessfl/seed_mpc_external_client.py": "3b78a3d4e7244d1b54ec83c70f581c5a42b701fd375c09999248537ddfb392a6",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/seed_mpc_wire.py": "79f171ce9f0b57f66a1a32e06e12204e4636e5cb24ff8a1cfa93e38bee3ed429",
+    "trustlessfl/rep4_external.py": "c51467a9af4fc6bda9bb354acf3fdc54c4e49939a777a1e0df194d1ffc9385db"
+  },
+  "chunk_blocks": 4,
+  "runtime_public_input": true,
+  "compiled_workspace_reused": "/home/hacho/@WSL-Projects/trustlessFL/.cache/seed-mpc/runs/1608b71a6065401484fd7d3205731e81",
+  "compiled_artifact_hash": "a0cea534cede9bf3bb193403736a879e2b75bf664ada2a259e8c60e630bb3a0a",
+  "compile_invocations": 0
+}

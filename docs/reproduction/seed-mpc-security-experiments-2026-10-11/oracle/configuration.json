@@ -1,0 +1,55 @@
+{
+  "kind": "trusted-plaintext-oracle-not-MPC",
+  "policy": {
+    "dimension": 61706,
+    "max_clients": 4,
+    "coordinate_cap": 20000,
+    "squared_threshold": 2500000000,
+    "scale": 10000,
+    "minimum_accepted": 2,
+    "word_bits": 16,
+    "statistical_security": 40
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "cases": [
+    "clean",
+    "out-of-bound",
+    "sign-flip",
+    "bounded-50",
+    "bounded-100",
+    "label-flip"
+  ],
+  "rounds": 5,
+  "malicious_clients": 1,
+  "malicious_slots": [
+    0
+  ],
+  "training": {
+    "epochs": 1,
+    "batch_size": 64,
+    "learning_rate": 0.01,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "device": "cpu"
+  },
+  "source_sha256": {
+    "experiments/run_seed_mpc_poisoning.py": "94602ddd86a5c516d732bdfe936ab7b5581f86aa7401e67d46723af9bcdb4516",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699"
+  },
+  "versions": {
+    "numpy": "2.5.0",
+    "torch": "2.8.0+cu128"
+  },
+  "data_sha256": {
+    "train_x": "2e487a6c89124f78f2d7521542223cafe96f7123c3ca13d447772ac6ecbb3012",
+    "train_y": "657fbd221bfc9f4198cc14b5619cc33ec57c58dd0e47af4d99d6650759e869a7",
+    "test_x": "c867c93ff95360594e8ec3287995350b824dd110b11595c0e13d5423f621867a",
+    "test_y": "3d0e6c6ea990b53b6f8f500a41cac93881d981b315f84578b7d915342ade01e9"
+  }
+}

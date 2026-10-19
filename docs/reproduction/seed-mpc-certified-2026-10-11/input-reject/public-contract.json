@@ -1,0 +1,88 @@
+{
+  "protocol": "seed-mpc-committee-v1",
+  "session_id": "40b719ab6ab046a99287cfcc359dedc6",
+  "committee_epoch": 1,
+  "policy": {
+    "dimension": 65,
+    "max_clients": 4,
+    "coordinate_cap": 20000,
+    "squared_threshold": 400000000,
+    "scale": 1,
+    "minimum_accepted": 2,
+    "word_bits": 16,
+    "statistical_security": 40
+  },
+  "execution_hash": "5f56b422a977b3016828c747e41c3e73e3e192e88ac7eaef3119e1ae7a8cd4ce",
+  "clients": [
+    "C0",
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "aggregators": [
+    "A0",
+    "A1",
+    "A2",
+    "A3"
+  ],
+  "registry_hash": "b0b8770b2d2263a1f492d0ac4dbba6f2c1bc36aa4e31be6b99b126014641a627",
+  "registrations": [
+    {
+      "sender": "C0",
+      "body": {
+        "protocol": "seed-mpc-registration-v1",
+        "session_id": "40b719ab6ab046a99287cfcc359dedc6",
+        "committee_epoch": 1,
+        "client_id": "C0",
+        "slot": 0,
+        "key_handle": "deac779b14c54f03a9764c54f969d71c",
+        "policy_hash": "f194b59dd6fb640d171cd3a9d049fe34fc1799218e777ff20e5a972235247b52",
+        "execution_hash": "5f56b422a977b3016828c747e41c3e73e3e192e88ac7eaef3119e1ae7a8cd4ce"
+      },
+      "signature": "dfc128c220c948a900257dc7e36e54ef09e7908f87c1d579f32832becf03a0dcfd72964d432f70ab5d14c4aaa5f39980c1be3f7b63a8bd6611458f0b92283500"
+    },
+    {
+      "sender": "C1",
+      "body": {
+        "protocol": "seed-mpc-registration-v1",
+        "session_id": "40b719ab6ab046a99287cfcc359dedc6",
+        "committee_epoch": 1,
+        "client_id": "C1",
+        "slot": 1,
+        "key_handle": "7f84c07cea5e43f4993d024cb3fd5638",
+        "policy_hash": "f194b59dd6fb640d171cd3a9d049fe34fc1799218e777ff20e5a972235247b52",
+        "execution_hash": "5f56b422a977b3016828c747e41c3e73e3e192e88ac7eaef3119e1ae7a8cd4ce"
+      },
+      "signature": "33a09f04f8c8454dcd9cafcc793357698251047971e0fb501f73e9a2b3d2df0e36bfed8d34092ff4d4a0aae26d9eb5600682ad8193b7b74c36732a4ee3800b0a"
+    },
+    {
+      "sender": "C2",
+      "body": {
+        "protocol": "seed-mpc-registration-v1",
+        "session_id": "40b719ab6ab046a99287cfcc359dedc6",
+        "committee_epoch": 1,
+        "client_id": "C2",
+        "slot": 2,
+        "key_handle": "a27eb93a25f74c708be91cd5a2e2a37c",
+        "policy_hash": "f194b59dd6fb640d171cd3a9d049fe34fc1799218e777ff20e5a972235247b52",
+        "execution_hash": "5f56b422a977b3016828c747e41c3e73e3e192e88ac7eaef3119e1ae7a8cd4ce"
+      },
+      "signature": "c53abcb432fabaa93f46c91fe0ede090d66b6bd1b087bf9e4228fa891fd0ae9f138e3a7310eccb27883fc6ad3a3c678235c0d70ebc8905361d5ec8841a084f0a"
+    },
+    {
+      "sender": "C3",
+      "body": {
+        "protocol": "seed-mpc-registration-v1",
+        "session_id": "40b719ab6ab046a99287cfcc359dedc6",
+        "committee_epoch": 1,
+        "client_id": "C3",
+        "slot": 3,
+        "key_handle": "12257ff7e7de4c0b9b73c3b1c56bcf37",
+        "policy_hash": "f194b59dd6fb640d171cd3a9d049fe34fc1799218e777ff20e5a972235247b52",
+        "execution_hash": "5f56b422a977b3016828c747e41c3e73e3e192e88ac7eaef3119e1ae7a8cd4ce"
+      },
+      "signature": "bd4c8fef27d22ef278f28ecbeb3f2dbc948cfead6e8d184dac379407ae8d2a5360d404df99594ec70025d4c3d7f77bd30d9eb2c669a70a4c20758bc0c0369b05"
+    }
+  ],
+  "initial_model_hash": "fd1015268b0cd436ae09ae441d4ca22f76e633f81d3f575f0f5e45bda98c28be"
+}

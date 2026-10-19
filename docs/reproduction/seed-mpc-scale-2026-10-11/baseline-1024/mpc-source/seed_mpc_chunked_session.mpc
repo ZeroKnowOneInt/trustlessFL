@@ -1,0 +1,128 @@
+# Runtime public fixture input, fixed policy/shape, one shared chunk loop.
+# Not a signed Flower input service or a BFT output certificate.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint, cint, regint, personal, MemValue
+from Compiler.GC.types import sbitvec, sbitintvec, sbits
+from Compiler.library import for_range, public_input, runtime_error_if, print_ln, check_point, break_point
+from Compiler.circuit import Circuit
+from seed_mpc_candidate_primitives import register_rep4_keys, tree_reduce
+
+config = json.loads(Path(program.args[1]).read_text())
+assert config['backend'] == 'rep4' and config['ring_bits'] == 64
+D, W, B, T = (config[k] for k in
+              ('dimension', 'word_bits', 'coordinate_cap', 'squared_threshold'))
+N = config['clients']
+L = config['chunk_blocks']
+P = 128 // W
+C = L * P
+PAD = ((D + C - 1) // C) * C
+aes = Circuit('aes_128')
+lane_type = sbits.get_type(L)
+word_type = sbitintvec.get_type(W)
+previous_round = MemValue(regint(0))
+
+
+def agreed_public(size):
+    # Each party reads its own file; all four copies must agree before use.
+    local = [public_input() for _ in range(size)]
+    copies = [sint.concat([sint(personal(p,word)) for word in local]) for p in range(4)]
+    diff = sint.concat([x-copies[0] for x in copies[1:]])
+    bits = sbitvec(diff, length=64, input_length=64)
+    per_value = tree_reduce(bits.v, lambda a,b: a | b)
+    bad = tree_reduce(per_value.bit_decompose(3*size), lambda a,b: a | b)
+    runtime_error_if(regint.conv(bad.reveal()) != 0, 'inconsistent public chunk')
+    return copies[0].reveal()
+
+
+certified = config.get('certified_stream', False)
+registration_tags = cint.Array(4*N) if certified else None
+if certified: registration_tags.assign_vector(agreed_public(4*N))
+keys, sockets = register_rep4_keys(config)
+parallel_keys = [sbitvec([key.elements()[0]] * L) for key in keys]
+if certified:
+    for i in range(N):
+        local = cint.read_from_socket(sockets[i],4)
+        break_point('registration-tag-received')
+        diff = sint.concat([sint(personal(p,local[j]))-registration_tags[4*i+j]
+                            for j in range(4) for p in range(4)])
+        bits = sbitvec(diff,length=64,input_length=64)
+        bad_column = tree_reduce(bits.v,lambda a,b: a | b)
+        bad = tree_reduce(bad_column.bit_decompose(16),lambda a,b: a | b)
+        runtime_error_if(regint.conv(bad.reveal()) != 0,'registration handle binding differs')
+    check_point()
+    print_ln('SEED_MPC_REG_CHECKED')
+
+
+@for_range(config['round_slots'])
+def run_round(_):
+    round_id = regint.conv(agreed_public(1))
+    input_tag = cint.Array(4) if certified else None
+    if certified: input_tag.assign_vector(agreed_public(4))
+    runtime_error_if((round_id <= previous_round.read()) + (round_id <= 0),
+                     'replayed or invalid round counter')
+    previous_round.write(round_id)
+    accepted = []
+    updates = []
+    for i in range(N):
+        safe_memory = sint.Array(PAD)
+        norm = MemValue(sint(0))
+        valid = MemValue(sint(1))
+
+        @for_range(PAD // C)
+        def chunk(index):
+            y = agreed_public(C)
+            y_int = regint.conv(y)
+            bad_wire = sum((y_int[k] < 0) + (y_int[k] >= (1 << W)) for k in range(C))
+            runtime_error_if(bad_wire != 0, 'noncanonical public wire')
+            active = [regint(index*C + lane*P+j < D)
+                      for lane in range(L) for j in range(P)]
+            # Zero padding is framing only and is never interpreted as input.
+            runtime_error_if(sum((1-active[k])*y_int[k] for k in range(C)) != 0,
+                             'nonzero public padding')
+            plaintext_bits = []
+            for bit in range(64):
+                packed = sum((((index*L+lane) >> bit) % 2) << lane
+                             for lane in range(L))
+                plaintext_bits.append(lane_type(packed))
+            for bit in range(64):
+                plaintext_bits.append(lane_type(((round_id >> bit) % 2)*((1<<L)-1)))
+            encrypted = aes(parallel_keys[i], sbitvec.from_vec(plaintext_bits))
+            values, coordinate_checks = [], []
+            for j in range(P):
+                mask = word_type.from_vec(encrypted.v[128-(j+1)*W:128-j*W])
+                wire_bits = [lane_type(sum(((y_int[lane*P+j] >> bit) % 2) << lane
+                                           for lane in range(L))) for bit in range(W)]
+                signed = word_type.from_vec(wire_bits)-mask
+                inside = ((signed >= -B) & (signed <= B)).v[0]
+                lane_active = lane_type(sum(active[lane*P+j] << lane for lane in range(L)))
+                check = inside | ~lane_active
+                safe_bits = [bit & inside & lane_active for bit in signed.v]
+                unsigned = sint(sbitvec.from_vec(safe_bits))
+                signed_safe = unsigned-(1<<W)*sint(sbitvec.from_vec([safe_bits[-1]]))
+                values.append(signed_safe)
+                coordinate_checks.append(check)
+            safe = sint.concat([values[j][lane] for lane in range(L) for j in range(P)])
+            checks = tree_reduce(coordinate_checks, lambda a,b: a & b)
+            chunk_valid = tree_reduce(checks.bit_decompose(L), lambda a,b: a & b)
+            valid.write(valid.read()*sint(sbitvec.from_vec([chunk_valid])))
+            norm.write(norm.read()+(safe*safe).sum())
+            safe_memory.assign_vector(safe, base=index*C)
+
+        accepted.append(valid.read()*norm.read().less_equal(T, bit_length=config['widths']['norm']))
+        updates.append(safe_memory)
+    count = sum(accepted)
+    ok = count.greater_equal(config['minimum_accepted'], bit_length=config['widths']['count'])
+    print_ln('SEED_MPC_PUBLIC %s', ok.reveal())
+    print_ln('SEED_MPC_PUBLIC %s', (ok*count).reveal())
+    # Nothing is opened until the global norm and selection are complete.
+    @for_range(D)
+    def output(j):
+        value = sum(accepted[i]*updates[i][j] for i in range(N))
+        print_ln('SEED_MPC_PUBLIC %s', (ok*value).reveal())
+    if certified:
+        check_point()
+        print_ln('SEED_MPC_CHECKED %s %s %s %s %s',round_id,*[input_tag[j] for j in range(4)])
+print_ln('SEED_MPC_CANDIDATE_DONE')

@@ -1,0 +1,12 @@
+{
+  "wheel": "trustlessfl-0.1.0-py3-none-any.whl",
+  "sha256": "d9ae5ad8f8106499fcf1be27265db8d68568717f584bc4a91281de3af9fe04b9",
+  "private_or_experiment_files": 0,
+  "installed_wheel_outside_checkout": true,
+  "native_normal_and_fault": true,
+  "functional_wheel_flower_clients": 8,
+  "functional_wheel_flower_rounds": 2,
+  "regression_tests": 445,
+  "functional_code_matches_flower_verified_wheel": true,
+  "flower_verified_wheel_sha256": "ec477e67ec2b21e7977c772181549c08faddf22f2c01fc683c9a46641c433fbc"
+}

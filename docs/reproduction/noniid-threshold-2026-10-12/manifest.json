@@ -1,0 +1,25 @@
+{
+  "files": {
+    "arithmetic-checks.json": "b9b628055de65b1e7e04dcda5bc4a3162c70a317d6019421fdcc47b3471c20c0",
+    "results.json": "006c9a20d005b47a95b4c33f01117893455e98a8044ff6a99edecc763abf3972",
+    "accuracy.png": "d18e000fae4ad7ee6c9373e139d021a52361bfb3fe745699dde9a76763df3573",
+    "norms.png": "a10db8f3339b4598706ec08aeaf74c40891ccec0e32b18e8bc67db178256e3c1"
+  },
+  "report_sha256": "9f727bf51a863d9f005d4102acae4654d7454d2601f16ab0766832f3bf85a954",
+  "source_sha256": {
+    "experiments/run_noniid_threshold.py": "db1d56b5b075f1f09ea51a03aea5d458072f98ec5e4a713b7ddf59b878f8ba58",
+    "experiments/run_seed_mpc_flower.py": "8a2960a2f6286c372dc612f374994ea871d961d906fcec605aaf60af5fa7620e",
+    "experiments/run_seed_mpc_poisoning.py": "ac53a81eb86367e203e38f4a85fcafc9e98630892f6221c2a753c52cfdaf3090",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699",
+    "trustlessfl/seed_mpc_client_app.py": "b93362d5d11e606565225718285ced11a3a9c27a5c994aae7f8301071ca75a39",
+    "trustlessfl/seed_mpc_server_app.py": "afe97d3913ecb79f99ce3a3e0b47bfa59190e360b3290148fb900175ea6f4d7c"
+  },
+  "additional_verifier_sha256": "eef4b9c23dcbf58e83dfc1c5583ea598eb775ebd203c0f509b78982235534799",
+  "private_string_scan": {
+    "passed": true,
+    "exact_private_strings": 96,
+    "text_files": 3
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "files": {
+    "results.json": "1e171eba519446d04208532f40b268218025f2e7e9e05043a8c026aeee6979e0",
+    "cost.png": "96a006f1a721c74d99b21525a47b213544a327ed01bbe9b0f53248e719bdd79b"
+  },
+  "report_sha256": "39567bec9b8da64490e267c1018b152e7f48fd87a9c25ef45aa15e8481554a4f",
+  "source_sha256": {
+    "experiments/run_flower_cost_comparison.py": "fe70248a75a0644101f7cdc6f28fc52b9780f37349c0d179bfd72d1c2622c981",
+    "trustlessfl/research_cost_flower.py": "0a118950ce9417cece5902da04b2aa5e0462355f40abdf3102d6871a0b799e36",
+    "experiments/run_seed_mpc_flower.py": "8a2960a2f6286c372dc612f374994ea871d961d906fcec605aaf60af5fa7620e",
+    "experiments/run_endpoint_flower.py": "dcb19b9ba25a78575f985b4115fdf1220a0bc81b525d96c18d855bb01061a1dc",
+    "trustlessfl/seed_mpc_client_app.py": "b93362d5d11e606565225718285ced11a3a9c27a5c994aae7f8301071ca75a39",
+    "trustlessfl/seed_mpc_server_app.py": "afe97d3913ecb79f99ce3a3e0b47bfa59190e360b3290148fb900175ea6f4d7c",
+    "trustlessfl/seed_mpc_training.py": "f1736ee896c0a84c6726706d42a406716b7db69b072e84e5c54db481a501bf4b",
+    "trustlessfl/seed_mpc_poisoning_fixture.py": "903a3e1950f8b691c5ea30b8b2a8d23d1bea3675900b084ceb12bc32d0553ce2",
+    "trustlessfl/seed_mpc_meter.py": "e399cdfb5921a3bc785df01f339663d5129d39dbc853b761cbf137c0d090568c",
+    "trustlessfl/seed_mpc_flower_runtime.py": "bc74cca5eeef53e6b073716ce42ba4bf718b6959b6c7cc5b51cc0e1bc00e8832",
+    "trustlessfl/seed_mpc_policy.py": "43d911bd01bb8d4c00ddfb2c48e2416b8cd1b228d82227f05308988fa9afcc1f",
+    "trustlessfl/fmnist.py": "d5af43ad0f55f8f880f282320b737dfbe817f828d4d712806f688a0c1fab1699"
+  },
+  "additional_verifier_sha256": "a55adf7bde0c708db564c2a3db84ceef6ea5cc26aa9b8fc0b926166b26f79236",
+  "private_string_scan": {
+    "passed": true,
+    "exact_private_strings": 128,
+    "text_files": 2
+  }
+}

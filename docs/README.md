@@ -1,5 +1,51 @@
 # 문서
 
+## 현재 구현과 발표 자료
+
+- [발표 구성: 배경·동기·DP 및 선행연구·우리 구현·결과 비교](./graduation-presentation-outline-2026-10-17.md)
+- [구현·실험 완료 범위와 한계](./reproduction/graduation-status-2026-10-14.md)
+- [FMNIST·LeNet5 세 방식 비교](./reproduction/graduation-three-way-2026-10-12.md)
+- [같은 Flower 환경의 비용 비교](./reproduction/flower-cost-improved-2026-10-12.md)
+
+
+- [ACK·이력 전달 개선: 시간 64% 감소와 전후 비용 검증](reproduction/flower-cost-improvement-2026-10-12.md)
+- [개선 후 Flower 평문 대비 비용: 12회·60라운드](reproduction/flower-cost-improved-2026-10-12.md)
+- [V2 ACK/head 복구·입력 검증 cache 설계](seed-mpc-delivery-optimization.md)
+- [Flower MPC 병목 원인: ACK 만료·전체 chain 재전송·실제 동기화 프로파일](reproduction/flower-cost-bottleneck-2026-10-12.md)
+
+- [같은 Flower 환경의 평문·MPC 비용: 공격 효과 재현·실행 시간·계층별 payload 비교](reproduction/flower-cost-comparison-2026-10-12.md)
+
+- [정상 클라이언트 Non-IID·정적 threshold: 45개 탐색·새 seed 확인·실제 MPC 15라운드](reproduction/noniid-threshold-2026-10-12.md)
+
+- [졸업작품 세 비교군 실험: 전체 FMNIST·3 seeds·실제 MPC 30라운드](reproduction/graduation-three-way-2026-10-12.md)
+
+- [패키지 검증: backend 없는 client, MLP/CNN, 508개 회귀](reproduction/package-validation-2026-10-12.md)
+
+- [역할별 설치·패키지 실행·모델/정책 설정·오류 복구](seed-mpc-package-guide.md)
+
+- [독립 호스트 실행: 역할별 키·데이터·승인·Flower/MPC 네트워크](seed-mpc-independent-hosts.md)
+- [분리 환경 검증: 4→3→4 이탈·복귀, 최종 패키지, 490개 회귀](reproduction/independent-hosts-2026-10-12.md)
+
+- [MPC 설치·실행 자동화: doctor/setup/verify/smoke](seed-mpc-backend-setup.md)
+- [새 Ubuntu에서 source build·native·8-client Flower 검증](reproduction/backend-setup-2026-10-12.md)
+
+- [Client N 범용화: 4·8·16명 Flower/Rep4 검증·dropout·wrap·등록 변조](reproduction/client-counts-2026-10-11.md)
+
+- [사용자용 Seed-MPC 실행·역할별 설정·audit 없는 기본 경로](seed-mpc-user-runtime.md)
+- [사용자 실행 경로의 wheel·MLP/CNN·raw audit 없는 검증](reproduction/user-runtime-2026-10-11.md)
+
+- [현재 마스크 생성 경로: seed component 로컬 확장·악성 사본 검사](./aion-seeded-components-protocol.md)
+- [Seed component 적용·통신량·native 변조 검증](./reproduction/seeded-components-2026-10-11.md)
+- [공개 입력 비교·SIMD packing 최적화 및 통신량](reproduction/public-packed-2026-10-11.md)
+- [직접 share 연결 검증·통신량: 345.57 → 274.11 MB](<reproduction/direct-rep4-import-2026-10-11.md>)
+- [Seed component의 native Rep4 share 직접 연결](<aion-direct-rep4-import-protocol.md>)
+- [최신 packing 이후 구현 계획](seed-mpc-roadmap-after-packing.md)
+- [사용자 PyTorch 모델·정적 정책·회로 캐시](seed-mpc-user-models.md)
+- [사용자 모델 native 검증·cache 재사용 결과](reproduction/user-models-2026-10-11.md)
+- [소형 FMNIST CNN의 범용 adapter 교체 검증](reproduction/small-cnn-adapter-2026-10-11.md)
+
+- [Seed-MPC 실험계획: wrap·입력 검증·악성 aggregator·FMNIST poisoning 비교](./seed-mpc-security-experiment-plan.md)
+- [Seed-MPC 실험 기록: 3-seed poisoning 대조군·실제 native 변조·격리 검증](./reproduction/seed-mpc-security-experiments-2026-10-11.md)
 - [현재 계획: CCS/VRF까지 진행·누출 검사 보류, BLMR/VSS 비용·단계별 통과 기준](./reproduction/asr-plan-feasibility-2026-10-06.md)
 - [설계 계약: ASR·모듈러 집계·비공개 MGF·CCS/VRF, 입력·모듈러스 조건과 보류한 누출 보강안](./asr-modular-private-mgf-design.md)
 - [모듈러 집계·ZKP 후보 감사: 용량 조건·마스크 바인딩·ASR 차분·288좌표 AMR 실패와 scalar 출력 역산](./reproduction/split-wire-amr-audit-2026-10-03.md)

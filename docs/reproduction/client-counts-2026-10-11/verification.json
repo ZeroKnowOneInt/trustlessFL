@@ -1,0 +1,1875 @@
+{
+  "native_fixtures": [
+    {
+      "aggregators": 4,
+      "cases": [
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "result": {
+            "count": 4,
+            "status": "ok",
+            "sum": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              80000
+            ]
+          },
+          "round": 1
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "result": {
+            "count": 3,
+            "status": "ok",
+            "sum": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              -60000
+            ]
+          },
+          "round": 2
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "result": {
+            "count": 2,
+            "status": "ok",
+            "sum": [
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8
+            ]
+          },
+          "round": 3
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "result": {
+            "status": "abort"
+          },
+          "round": 4
+        }
+      ],
+      "clients": 4,
+      "communication": {
+        "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+        "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+        "parties": [
+          {
+            "global_sent_bytes": 1639860,
+            "registration_sent_bytes": 9580,
+            "rounds": [
+              {
+                "active_sent_bytes": 271098,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 271098,
+                "start": 9580,
+                "stop": 280678
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 70890,
+                "start": 280678,
+                "stop": 351568
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 70890,
+                "start": 351568,
+                "stop": 422458
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 70890,
+                "start": 422458,
+                "stop": 493348
+              }
+            ],
+            "setup_sent_bytes": 9580,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 493348
+          },
+          {
+            "global_sent_bytes": 1639860,
+            "registration_sent_bytes": 9580,
+            "rounds": [
+              {
+                "active_sent_bytes": 204394,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 204394,
+                "start": 9580,
+                "stop": 213974
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 70890,
+                "start": 213974,
+                "stop": 284864
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 70890,
+                "start": 284864,
+                "stop": 355754
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 70890,
+                "start": 355754,
+                "stop": 426644
+              }
+            ],
+            "setup_sent_bytes": 9580,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 426644
+          },
+          {
+            "global_sent_bytes": 1639860,
+            "registration_sent_bytes": 7362,
+            "rounds": [
+              {
+                "active_sent_bytes": 196621,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 196621,
+                "start": 7362,
+                "stop": 203983
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 63101,
+                "start": 203983,
+                "stop": 267084
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 63101,
+                "start": 267084,
+                "stop": 330185
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 63101,
+                "start": 330185,
+                "stop": 393286
+              }
+            ],
+            "setup_sent_bytes": 7362,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 393286
+          },
+          {
+            "global_sent_bytes": 1639860,
+            "registration_sent_bytes": 7362,
+            "rounds": [
+              {
+                "active_sent_bytes": 129917,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 129917,
+                "start": 7362,
+                "stop": 137279
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 63101,
+                "start": 137279,
+                "stop": 200380
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 63101,
+                "start": 200380,
+                "stop": 263481
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 63101,
+                "start": 263481,
+                "stop": 326582
+              }
+            ],
+            "setup_sent_bytes": 7362,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 326582
+          }
+        ],
+        "reconciled": true,
+        "registration_sent_bytes": 33884,
+        "rounds": [
+          {
+            "active_sent_bytes": 802030,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 802030
+          },
+          {
+            "active_sent_bytes": 267982,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 267982
+          },
+          {
+            "active_sent_bytes": 267982,
+            "between_boundary_sent_bytes": 0,
+            "round": 3,
+            "sent_bytes": 267982
+          },
+          {
+            "active_sent_bytes": 267982,
+            "between_boundary_sent_bytes": 0,
+            "round": 4,
+            "sent_bytes": 267982
+          }
+        ],
+        "setup_sent_bytes": 33884,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 1639860
+      },
+      "registration_checked": true
+    },
+    {
+      "aggregators": 4,
+      "cases": [
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "result": {
+            "count": 8,
+            "status": "ok",
+            "sum": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              160000
+            ]
+          },
+          "round": 1
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "result": {
+            "count": 7,
+            "status": "ok",
+            "sum": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              -140000
+            ]
+          },
+          "round": 2
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "result": {
+            "count": 6,
+            "status": "ok",
+            "sum": [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              24
+            ]
+          },
+          "round": 3
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "result": {
+            "status": "abort"
+          },
+          "round": 4
+        }
+      ],
+      "clients": 8,
+      "communication": {
+        "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+        "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+        "parties": [
+          {
+            "global_sent_bytes": 3244932,
+            "registration_sent_bytes": 18012,
+            "rounds": [
+              {
+                "active_sent_bytes": 340290,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 340290,
+                "start": 18012,
+                "stop": 358302
+              },
+              {
+                "active_sent_bytes": 140130,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 140130,
+                "start": 358302,
+                "stop": 498432
+              },
+              {
+                "active_sent_bytes": 340290,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 340290,
+                "start": 498432,
+                "stop": 838722
+              },
+              {
+                "active_sent_bytes": 140130,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 140130,
+                "start": 838722,
+                "stop": 978852
+              }
+            ],
+            "setup_sent_bytes": 18012,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 978852
+          },
+          {
+            "global_sent_bytes": 3244932,
+            "registration_sent_bytes": 18012,
+            "rounds": [
+              {
+                "active_sent_bytes": 273602,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 273602,
+                "start": 18012,
+                "stop": 291614
+              },
+              {
+                "active_sent_bytes": 140130,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 140130,
+                "start": 291614,
+                "stop": 431744
+              },
+              {
+                "active_sent_bytes": 273602,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 273602,
+                "start": 431744,
+                "stop": 705346
+              },
+              {
+                "active_sent_bytes": 140130,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 140130,
+                "start": 705346,
+                "stop": 845476
+              }
+            ],
+            "setup_sent_bytes": 18012,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 845476
+          },
+          {
+            "global_sent_bytes": 3244932,
+            "registration_sent_bytes": 12778,
+            "rounds": [
+              {
+                "active_sent_bytes": 257797,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 257797,
+                "start": 12778,
+                "stop": 270575
+              },
+              {
+                "active_sent_bytes": 124309,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 124309,
+                "start": 270575,
+                "stop": 394884
+              },
+              {
+                "active_sent_bytes": 257797,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 257797,
+                "start": 394884,
+                "stop": 652681
+              },
+              {
+                "active_sent_bytes": 124309,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 124309,
+                "start": 652681,
+                "stop": 776990
+              }
+            ],
+            "setup_sent_bytes": 12778,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 776990
+          },
+          {
+            "global_sent_bytes": 3244932,
+            "registration_sent_bytes": 12778,
+            "rounds": [
+              {
+                "active_sent_bytes": 191109,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 191109,
+                "start": 12778,
+                "stop": 203887
+              },
+              {
+                "active_sent_bytes": 124309,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 124309,
+                "start": 203887,
+                "stop": 328196
+              },
+              {
+                "active_sent_bytes": 191109,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 191109,
+                "start": 328196,
+                "stop": 519305
+              },
+              {
+                "active_sent_bytes": 124309,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 124309,
+                "start": 519305,
+                "stop": 643614
+              }
+            ],
+            "setup_sent_bytes": 12778,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 643614
+          }
+        ],
+        "reconciled": true,
+        "registration_sent_bytes": 61580,
+        "rounds": [
+          {
+            "active_sent_bytes": 1062798,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 1062798
+          },
+          {
+            "active_sent_bytes": 528878,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 528878
+          },
+          {
+            "active_sent_bytes": 1062798,
+            "between_boundary_sent_bytes": 0,
+            "round": 3,
+            "sent_bytes": 1062798
+          },
+          {
+            "active_sent_bytes": 528878,
+            "between_boundary_sent_bytes": 0,
+            "round": 4,
+            "sent_bytes": 528878
+          }
+        ],
+        "setup_sent_bytes": 61580,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 3244932
+      },
+      "registration_checked": true
+    },
+    {
+      "aggregators": 4,
+      "cases": [
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "result": {
+            "count": 16,
+            "status": "ok",
+            "sum": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              320000
+            ]
+          },
+          "round": 1
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "result": {
+            "count": 15,
+            "status": "ok",
+            "sum": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              -300000
+            ]
+          },
+          "round": 2
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "result": {
+            "count": 14,
+            "status": "ok",
+            "sum": [
+              42,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              56
+            ]
+          },
+          "round": 3
+        },
+        {
+          "exact": true,
+          "presence": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "result": {
+            "status": "abort"
+          },
+          "round": 4
+        }
+      ],
+      "clients": 16,
+      "communication": {
+        "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+        "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+        "parties": [
+          {
+            "global_sent_bytes": 6454884,
+            "registration_sent_bytes": 34844,
+            "rounds": [
+              {
+                "active_sent_bytes": 478746,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 478746,
+                "start": 34844,
+                "stop": 513590
+              },
+              {
+                "active_sent_bytes": 478746,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 478746,
+                "start": 513590,
+                "stop": 992336
+              },
+              {
+                "active_sent_bytes": 478746,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 478746,
+                "start": 992336,
+                "stop": 1471082
+              },
+              {
+                "active_sent_bytes": 478746,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 478746,
+                "start": 1471082,
+                "stop": 1949828
+              }
+            ],
+            "setup_sent_bytes": 34844,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 1949828
+          },
+          {
+            "global_sent_bytes": 6454884,
+            "registration_sent_bytes": 34844,
+            "rounds": [
+              {
+                "active_sent_bytes": 412066,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 412066,
+                "start": 34844,
+                "stop": 446910
+              },
+              {
+                "active_sent_bytes": 412066,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 412066,
+                "start": 446910,
+                "stop": 858976
+              },
+              {
+                "active_sent_bytes": 412066,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 412066,
+                "start": 858976,
+                "stop": 1271042
+              },
+              {
+                "active_sent_bytes": 412066,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 412066,
+                "start": 1271042,
+                "stop": 1683108
+              }
+            ],
+            "setup_sent_bytes": 34844,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 1683108
+          },
+          {
+            "global_sent_bytes": 6454884,
+            "registration_sent_bytes": 23546,
+            "rounds": [
+              {
+                "active_sent_bytes": 380197,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 380197,
+                "start": 23546,
+                "stop": 403743
+              },
+              {
+                "active_sent_bytes": 380197,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 380197,
+                "start": 403743,
+                "stop": 783940
+              },
+              {
+                "active_sent_bytes": 380197,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 380197,
+                "start": 783940,
+                "stop": 1164137
+              },
+              {
+                "active_sent_bytes": 380197,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 380197,
+                "start": 1164137,
+                "stop": 1544334
+              }
+            ],
+            "setup_sent_bytes": 23546,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 1544334
+          },
+          {
+            "global_sent_bytes": 6454884,
+            "registration_sent_bytes": 23546,
+            "rounds": [
+              {
+                "active_sent_bytes": 313517,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 313517,
+                "start": 23546,
+                "stop": 337063
+              },
+              {
+                "active_sent_bytes": 313517,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 313517,
+                "start": 337063,
+                "stop": 650580
+              },
+              {
+                "active_sent_bytes": 313517,
+                "between_boundary_sent_bytes": 0,
+                "round": 3,
+                "sent_bytes": 313517,
+                "start": 650580,
+                "stop": 964097
+              },
+              {
+                "active_sent_bytes": 313517,
+                "between_boundary_sent_bytes": 0,
+                "round": 4,
+                "sent_bytes": 313517,
+                "start": 964097,
+                "stop": 1277614
+              }
+            ],
+            "setup_sent_bytes": 23546,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 1277614
+          }
+        ],
+        "reconciled": true,
+        "registration_sent_bytes": 116780,
+        "rounds": [
+          {
+            "active_sent_bytes": 1584526,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 1584526
+          },
+          {
+            "active_sent_bytes": 1584526,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 1584526
+          },
+          {
+            "active_sent_bytes": 1584526,
+            "between_boundary_sent_bytes": 0,
+            "round": 3,
+            "sent_bytes": 1584526
+          },
+          {
+            "active_sent_bytes": 1584526,
+            "between_boundary_sent_bytes": 0,
+            "round": 4,
+            "sent_bytes": 1584526
+          }
+        ],
+        "setup_sent_bytes": 116780,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 6454884
+      },
+      "registration_checked": true
+    }
+  ],
+  "passed": true,
+  "registration_faults": [
+    {
+      "aggregators": 4,
+      "clients": 16,
+      "fault_slot": 15,
+      "registration_fault_rejected": true,
+      "result_certificates": 0,
+      "unchanged_genesis_and_no_round_output_verified": true
+    }
+  ],
+  "scope": "trusted local development reference; four aggregators; not multi-host isolation",
+  "training": [
+    {
+      "aggregators": 4,
+      "clients": 4,
+      "communication": {
+        "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+        "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+        "parties": [
+          {
+            "global_sent_bytes": 837016,
+            "registration_sent_bytes": 9580,
+            "rounds": [
+              {
+                "active_sent_bytes": 171018,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 171018,
+                "start": 9580,
+                "stop": 180598
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 70890,
+                "start": 180598,
+                "stop": 251488
+              }
+            ],
+            "setup_sent_bytes": 9580,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 251488
+          },
+          {
+            "global_sent_bytes": 837016,
+            "registration_sent_bytes": 9580,
+            "rounds": [
+              {
+                "active_sent_bytes": 137674,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 137674,
+                "start": 9580,
+                "stop": 147254
+              },
+              {
+                "active_sent_bytes": 70890,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 70890,
+                "start": 147254,
+                "stop": 218144
+              }
+            ],
+            "setup_sent_bytes": 9580,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 218144
+          },
+          {
+            "global_sent_bytes": 837016,
+            "registration_sent_bytes": 7362,
+            "rounds": [
+              {
+                "active_sent_bytes": 129901,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 129901,
+                "start": 7362,
+                "stop": 137263
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 63101,
+                "start": 137263,
+                "stop": 200364
+              }
+            ],
+            "setup_sent_bytes": 7362,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 200364
+          },
+          {
+            "global_sent_bytes": 837016,
+            "registration_sent_bytes": 7362,
+            "rounds": [
+              {
+                "active_sent_bytes": 96557,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 96557,
+                "start": 7362,
+                "stop": 103919
+              },
+              {
+                "active_sent_bytes": 63101,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 63101,
+                "start": 103919,
+                "stop": 167020
+              }
+            ],
+            "setup_sent_bytes": 7362,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 167020
+          }
+        ],
+        "reconciled": true,
+        "registration_sent_bytes": 33884,
+        "rounds": [
+          {
+            "active_sent_bytes": 535150,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 535150
+          },
+          {
+            "active_sent_bytes": 267982,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 267982
+          }
+        ],
+        "setup_sent_bytes": 33884,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 837016
+      },
+      "compilation": {
+        "compile_invocations": 0,
+        "compile_seconds": 0.0,
+        "hit": true,
+        "key": "6eb2a6765a425f7cb31bcd938ea5931b723addc15c6ec41e05f13f28d8f117c2",
+        "load_seconds": 0.007,
+        "original_compile_seconds": 3.264
+      },
+      "dimension": 53,
+      "raw_audit_files": 0,
+      "rounds": [
+        {
+          "count": 4,
+          "evaluation_exact": true,
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 1
+        },
+        {
+          "count": 4,
+          "evaluation_exact": true,
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 2
+        }
+      ],
+      "widths": {
+        "count": 5,
+        "norm": 37,
+        "sum": 19,
+        "wire": 18
+      }
+    },
+    {
+      "aggregators": 4,
+      "clients": 8,
+      "communication": {
+        "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+        "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+        "parties": [
+          {
+            "global_sent_bytes": 1653256,
+            "registration_sent_bytes": 18012,
+            "rounds": [
+              {
+                "active_sent_bytes": 340290,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 340290,
+                "start": 18012,
+                "stop": 358302
+              },
+              {
+                "active_sent_bytes": 140130,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 140130,
+                "start": 358302,
+                "stop": 498432
+              }
+            ],
+            "setup_sent_bytes": 18012,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 498432
+          },
+          {
+            "global_sent_bytes": 1653256,
+            "registration_sent_bytes": 18012,
+            "rounds": [
+              {
+                "active_sent_bytes": 273602,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 273602,
+                "start": 18012,
+                "stop": 291614
+              },
+              {
+                "active_sent_bytes": 140130,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 140130,
+                "start": 291614,
+                "stop": 431744
+              }
+            ],
+            "setup_sent_bytes": 18012,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 431744
+          },
+          {
+            "global_sent_bytes": 1653256,
+            "registration_sent_bytes": 12778,
+            "rounds": [
+              {
+                "active_sent_bytes": 257797,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 257797,
+                "start": 12778,
+                "stop": 270575
+              },
+              {
+                "active_sent_bytes": 124309,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 124309,
+                "start": 270575,
+                "stop": 394884
+              }
+            ],
+            "setup_sent_bytes": 12778,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 394884
+          },
+          {
+            "global_sent_bytes": 1653256,
+            "registration_sent_bytes": 12778,
+            "rounds": [
+              {
+                "active_sent_bytes": 191109,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 191109,
+                "start": 12778,
+                "stop": 203887
+              },
+              {
+                "active_sent_bytes": 124309,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 124309,
+                "start": 203887,
+                "stop": 328196
+              }
+            ],
+            "setup_sent_bytes": 12778,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 328196
+          }
+        ],
+        "reconciled": true,
+        "registration_sent_bytes": 61580,
+        "rounds": [
+          {
+            "active_sent_bytes": 1062798,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 1062798
+          },
+          {
+            "active_sent_bytes": 528878,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 528878
+          }
+        ],
+        "setup_sent_bytes": 61580,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 1653256
+      },
+      "compilation": {
+        "compile_invocations": 1,
+        "compile_seconds": 6.502,
+        "hit": false,
+        "key": "176b6da2d0d48f39ad5395f26d8673e12a402601645932ca42bc8dd9092bddff"
+      },
+      "dimension": 53,
+      "raw_audit_files": 0,
+      "rounds": [
+        {
+          "count": 8,
+          "evaluation_exact": true,
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 1
+        },
+        {
+          "count": 8,
+          "evaluation_exact": true,
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 2
+        }
+      ],
+      "widths": {
+        "count": 6,
+        "norm": 37,
+        "sum": 20,
+        "wire": 18
+      }
+    },
+    {
+      "aggregators": 4,
+      "clients": 16,
+      "communication": {
+        "definition": "upstream tracked Player payload SENT, summed over four senders; each transmission counted once; includes live preprocessing",
+        "excluded": "untracked/no_stats setup/final exchange, native framing, TLS/TCP/IP headers/retransmissions; receive counters not measured",
+        "parties": [
+          {
+            "global_sent_bytes": 3285832,
+            "registration_sent_bytes": 34844,
+            "rounds": [
+              {
+                "active_sent_bytes": 478746,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 478746,
+                "start": 34844,
+                "stop": 513590
+              },
+              {
+                "active_sent_bytes": 478746,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 478746,
+                "start": 513590,
+                "stop": 992336
+              }
+            ],
+            "setup_sent_bytes": 34844,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 992336
+          },
+          {
+            "global_sent_bytes": 3285832,
+            "registration_sent_bytes": 34844,
+            "rounds": [
+              {
+                "active_sent_bytes": 412066,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 412066,
+                "start": 34844,
+                "stop": 446910
+              },
+              {
+                "active_sent_bytes": 412066,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 412066,
+                "start": 446910,
+                "stop": 858976
+              }
+            ],
+            "setup_sent_bytes": 34844,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 858976
+          },
+          {
+            "global_sent_bytes": 3285832,
+            "registration_sent_bytes": 23546,
+            "rounds": [
+              {
+                "active_sent_bytes": 380197,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 380197,
+                "start": 23546,
+                "stop": 403743
+              },
+              {
+                "active_sent_bytes": 380197,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 380197,
+                "start": 403743,
+                "stop": 783940
+              }
+            ],
+            "setup_sent_bytes": 23546,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 783940
+          },
+          {
+            "global_sent_bytes": 3285832,
+            "registration_sent_bytes": 23546,
+            "rounds": [
+              {
+                "active_sent_bytes": 313517,
+                "between_boundary_sent_bytes": 0,
+                "round": 1,
+                "sent_bytes": 313517,
+                "start": 23546,
+                "stop": 337063
+              },
+              {
+                "active_sent_bytes": 313517,
+                "between_boundary_sent_bytes": 0,
+                "round": 2,
+                "sent_bytes": 313517,
+                "start": 337063,
+                "stop": 650580
+              }
+            ],
+            "setup_sent_bytes": 23546,
+            "shutdown_sent_bytes": 0,
+            "startup_tracked_sent_bytes": 0,
+            "total_sent_bytes": 650580
+          }
+        ],
+        "reconciled": true,
+        "registration_sent_bytes": 116780,
+        "rounds": [
+          {
+            "active_sent_bytes": 1584526,
+            "between_boundary_sent_bytes": 0,
+            "round": 1,
+            "sent_bytes": 1584526
+          },
+          {
+            "active_sent_bytes": 1584526,
+            "between_boundary_sent_bytes": 0,
+            "round": 2,
+            "sent_bytes": 1584526
+          }
+        ],
+        "setup_sent_bytes": 116780,
+        "shutdown_sent_bytes": 0,
+        "startup_tracked_sent_bytes": 0,
+        "total_sent_bytes": 3285832
+      },
+      "compilation": {
+        "compile_invocations": 1,
+        "compile_seconds": 12.952,
+        "hit": false,
+        "key": "39b348e54266fbc47a0558e09f328dad4ed940a6dabdacd93291e74363d3c376"
+      },
+      "dimension": 53,
+      "raw_audit_files": 0,
+      "rounds": [
+        {
+          "count": 16,
+          "evaluation_exact": true,
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 1
+        },
+        {
+          "count": 16,
+          "evaluation_exact": true,
+          "integer_sum_exact": true,
+          "model_exact": true,
+          "round": 2
+        }
+      ],
+      "widths": {
+        "count": 7,
+        "norm": 37,
+        "sum": 21,
+        "wire": 18
+      }
+    }
+  ]
+}

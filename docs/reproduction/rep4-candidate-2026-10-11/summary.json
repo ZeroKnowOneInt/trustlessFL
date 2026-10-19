@@ -1,0 +1,334 @@
+{
+  "scope": "synthetic local native Rep4, f=1 assumption; no Flower/BFT or formal composition proof",
+  "runs": {
+    "aes-known-answer": {
+      "passed": true,
+      "output": [
+        987200436,
+        226113120,
+        2828978931,
+        610725783,
+        4207233813,
+        1591742575,
+        10263459,
+        2870394203,
+        330739301,
+        1597982684,
+        2424443630,
+        2653484298,
+        3435139006,
+        645250799,
+        350824829,
+        1347371855
+      ],
+      "global_mb": 0.122866,
+      "native_seconds": 1.253,
+      "compile_seconds": 6.333,
+      "result": "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/result.json"
+    },
+    "edges-16": {
+      "passed": true,
+      "output": [
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            -80000,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            80000,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            0,
+            0
+          ]
+        }
+      ],
+      "global_mb": 0.685758,
+      "native_seconds": 1.879,
+      "compile_seconds": 11.451,
+      "result": "docs/reproduction/rep4-candidate-2026-10-11/edges-16/result.json"
+    },
+    "edges-32": {
+      "passed": true,
+      "output": [
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            -80000,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            80000,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            0,
+            0
+          ]
+        }
+      ],
+      "global_mb": 0.745902,
+      "native_seconds": 1.868,
+      "compile_seconds": 14.359,
+      "result": "docs/reproduction/rep4-candidate-2026-10-11/edges-32/result.json"
+    },
+    "dimension-64": {
+      "passed": true,
+      "output": [
+        {
+          "status": "ok",
+          "count": 4,
+          "sum": [
+            80000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "status": "ok",
+          "count": 2,
+          "sum": [
+            -40000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "status": "abort"
+        }
+      ],
+      "global_mb": 3.45064,
+      "native_seconds": 3.829,
+      "compile_seconds": 84.487,
+      "result": "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/result.json"
+    }
+  },
+  "log_sha256": {
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/compile.log": "b9d79543b3a50963a8012a159cb2378e552d77e53896fb832a9e46e6a5eada41",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/P0.log": "a49091847fc59f7afa5c3338e6a7a61f07e94b4f10640b10cddd7f0cc058ec1b",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/P1.log": "9ca4ae349f0b39213ed6380fcb1f8d8c032bbe831c9c6e52950f564a6f7dd588",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/P2.log": "f42f702562564d0fff4c183f31ed35a5cb940f290e8b2935800ffe544de3ab45",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/P3.log": "f6cda4d5086af25ee5b0b5c5d6dd5ea0fe187a42df215c17f316159bcb9d75a0",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/aes-known-answer/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/compile.log": "e5d66912ced83faed413e8b703b0205c328db7a0d33320f683629dc3a38d38a4",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/P0.log": "adf9d7f282a89776bc17f2d7a620de7ab1b735052207fac00477b007972fd284",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/P1.log": "a4c312cd2c38be0941d95ea369a4ba12cb06a857b4b0f8932ed441f68e9b6055",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/P2.log": "c86ea3c116faa720dba1ba40779f7b8a63f98a7f8228d657e46393b6c6e4cdc9",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/P3.log": "3151fdcd91ad2e955c42b8fd1a2536b1e29f63d5fad58d34b15de235fd37b1bb",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-16/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/compile.log": "e09df15ccdf28307423defd495d28e214e655048cf7ad0b16b60e3b8e728d0f4",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/P0.log": "e3ae6908ab81320ea1ca2dc6778e19cbd264f71811155bf205d73c94b90fec84",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/P1.log": "396895d81ed5fa570df83cdbff4b01852380c65509bfd20810b98361131052f5",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/P2.log": "aac0ff9fdcb0f0f9cda5d2c650c49da77a923c837e2e6a4b83c50a3700782283",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/P3.log": "89cb0933e6becc3689a9f9c0008240ffedb5c3af06167da8534daf74b7548cd9",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/edges-32/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/compile.log": "26b103df645b431c1eecba066b5bd74b49051bf194eae5ee0cf5e6dc8c084e69",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/P0.log": "9de1153c5d67976e319dc0fb36f9530285cc94ac47f2d49ab18d9f0a80fbb6fd",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/P1.log": "8943b29a6cb7cd978a107da37a34cbf4b36a546a2f483a478b5cce6efc08067f",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/P2.log": "2fba986c642a82d503283ee3254456e7c9f74a2a53ebe45016f77e0cabdf6557",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/P3.log": "187e5537645c4be10a4f21aaf521daddfa397cc801dfb88dc820a44cba9392c1",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/C0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/C1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/C2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/reproduction/rep4-candidate-2026-10-11/dimension-64/C3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

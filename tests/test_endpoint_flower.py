@@ -50,6 +50,17 @@ def test_terminal_completed_application_is_accepted():
     assert run_endpoint_flower.require_completed_run({"success": True, "runs": [run]}) == run
 
 
+def test_cli_stderr_warning_does_not_corrupt_json_status(tmp_path,monkeypatch):
+    import json
+    status={'success':True,'runs':[{'status':'finished:completed'}]}
+    def command(*args,stdout,stderr,**kwargs):
+        stdout.write(json.dumps(status));stderr.write('DeprecationWarning: CLI diagnostic\n')
+    monkeypatch.setattr(run_endpoint_flower.subprocess,'run',command)
+    assert run_endpoint_flower.save_run_status('flwr',{},tmp_path)==status['runs'][0]
+    assert json.loads((tmp_path/'run-status.json').read_text())==status
+    assert 'DeprecationWarning' in (tmp_path/'run-status.stderr.log').read_text()
+
+
 def test_client_serialization_and_context_state(tmp_path):
     rng = np.random.default_rng(7)
     x, y = rng.normal(size=(18, 3)), np.arange(18) % 9

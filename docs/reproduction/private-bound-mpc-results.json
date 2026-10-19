@@ -1,0 +1,287 @@
+{
+  "scope": "local active MPC fixtures; controlled matrix and toy HPRF p/q; not Flower training",
+  "results": [
+    {
+      "case": "wrap",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "ok",
+        "count": 4,
+        "sum": [
+          6,
+          6
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "count": 4,
+        "sum": [
+          6,
+          6
+        ]
+      },
+      "elapsed_seconds": 52.724,
+      "policy_hash": "3a30088fa1026afc0a9d6bda3f190b5fe8efdc190ff355143e40a856a15763ed",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 14,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "mask_max": 15,
+      "statistical_security": 40,
+      "global_data_sent_mb": 35108.8,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": false
+    },
+    {
+      "case": "negative-wrap",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "ok",
+        "count": 4,
+        "sum": [
+          -6,
+          -6
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "count": 4,
+        "sum": [
+          -6,
+          -6
+        ]
+      },
+      "elapsed_seconds": 53.477,
+      "policy_hash": "210b0554837342f7617cab2d3bc96515b06294b0b3916effdfe1c05c9980e610",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 14,
+      "mask_max": 15,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": 35805.9,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": false
+    },
+    {
+      "case": "norm",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "ok",
+        "count": 3,
+        "sum": [
+          1,
+          1
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "count": 3,
+        "sum": [
+          1,
+          1
+        ]
+      },
+      "elapsed_seconds": 57.14,
+      "policy_hash": "e7f19f71fcc1196c91202cc22f88b296fc035b7f6fc16ebda927aaa92cfdb6b0",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 14,
+      "mask_max": 15,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": 35805.9,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": false
+    },
+    {
+      "case": "off-grid",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "ok",
+        "count": 2,
+        "sum": [
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "count": 2,
+        "sum": [
+          0,
+          0
+        ]
+      },
+      "elapsed_seconds": 54.192,
+      "policy_hash": "11c6f4975732fb37e605cf95d4d62c2d71183b4822a1ee210c7982fdd4579c24",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 14,
+      "mask_max": 15,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": 34411.8,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": true
+    },
+    {
+      "case": "coordinate-large",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "ok",
+        "count": 2,
+        "sum": [
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "count": 2,
+        "sum": [
+          0,
+          0
+        ]
+      },
+      "elapsed_seconds": 56.719,
+      "policy_hash": "91bb3248f7b772463dbf97ae4cb86f669df71cba37aa4d86f5366b39784afc9f",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 14,
+      "mask_max": 15,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": 35805.9,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": true
+    },
+    {
+      "case": "nonboolean",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "input-abort"
+      },
+      "expected": null,
+      "elapsed_seconds": 50.76,
+      "policy_hash": "f10f7d00c098e5bd7003af64782338fa581546764062a60953f1146f4e85011d",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 14,
+      "mask_max": 15,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": null,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": true
+    },
+    {
+      "case": "wrap",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "ok",
+        "count": 4,
+        "sum": [
+          6,
+          6
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "count": 4,
+        "sum": [
+          6,
+          6
+        ]
+      },
+      "elapsed_seconds": 39.273,
+      "policy_hash": "5277062926ba24c74589fc488d4f18a0b627ca3a402cb7d84623c6e4f8181373",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 13,
+      "mask_max": 1,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": 24885.6,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": false
+    },
+    {
+      "case": "insufficient",
+      "runtime": "MP-SPDZ 0.4.3 MASCOT active preprocessing + authenticated external input/output",
+      "parties": 4,
+      "clients": 4,
+      "output": {
+        "status": "abort"
+      },
+      "expected": {
+        "status": "abort"
+      },
+      "elapsed_seconds": 38.268,
+      "policy_hash": "99817f3332e6fd60148a68f37fce04fb84cd8c41967aae696eb6fca7a81939e5",
+      "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+      "application_bit_length": 13,
+      "mask_max": 1,
+      "statistical_security": 40,
+      "field_bits": 127,
+      "input_bitcheck_soundness_error": "1/170141183460469231731687303715884105727",
+      "real_author_moduli": false,
+      "public_matrix": "controlled [1,2]; not author artifact matrix",
+      "validation": "local process protocol test; not official Flower or production security certification",
+      "passed": true,
+      "global_data_sent_mb": 24188.6,
+      "committee_fault_budget": 1,
+      "malicious_party_faults_injected": 0,
+      "malicious_client_input_injected": false
+    }
+  ]
+}

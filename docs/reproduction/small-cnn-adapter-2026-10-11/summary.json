@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "dimension": 666,
+  "rounds": 2,
+  "metrics": [
+    {
+      "accuracy": 0.09619140625,
+      "loss": 2.3023305237293243,
+      "test_error_rate": 0.90380859375
+    },
+    {
+      "accuracy": 0.15625,
+      "loss": 2.2633883357048035,
+      "test_error_rate": 0.84375
+    },
+    {
+      "accuracy": 0.14501953125,
+      "loss": 2.224681407213211,
+      "test_error_rate": 0.85498046875
+    }
+  ],
+  "round_checks": [
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": true,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 1,
+      "status": "ok"
+    },
+    {
+      "accepted_count": 4,
+      "independent_retraining_exact": true,
+      "integer_sum_exact": true,
+      "model_exact": true,
+      "presence": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "round": 2,
+      "status": "ok"
+    }
+  ],
+  "compilation": {
+    "compile_invocations": 1,
+    "compile_seconds": 22.617,
+    "hit": false,
+    "key": "9e168d9aad00ce14f5abcfb4d4084f9299d759a47d44a08354a18b898d884353"
+  },
+  "client_mean": [
+    {
+      "round": 1,
+      "sent_bytes_mean": 16934.0,
+      "received_bytes_mean": 93446.0,
+      "total_bytes_mean": 110380.0
+    },
+    {
+      "round": 2,
+      "sent_bytes_mean": 16931.5,
+      "received_bytes_mean": 255192.0,
+      "total_bytes_mean": 272123.5
+    }
+  ],
+  "native_setup_bytes": 33884,
+  "native_rounds": [
+    {
+      "active_sent_bytes": 4838910,
+      "between_boundary_sent_bytes": 0,
+      "round": 1,
+      "sent_bytes": 4838910
+    },
+    {
+      "active_sent_bytes": 4238750,
+      "between_boundary_sent_bytes": 0,
+      "round": 2,
+      "sent_bytes": 4238750
+    }
+  ],
+  "scope": "local architecture adapter integration; FMNIST subsets; trusted retraining oracle; static f<=1"
+}

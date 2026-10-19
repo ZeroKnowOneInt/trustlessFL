@@ -1,0 +1,40 @@
+# REVIEW CIRCUIT ONLY: direct unsigned offset bits, no HPRF/key/mask.
+import json
+from pathlib import Path
+from Compiler.types import sint, regint, Array
+from Compiler.library import listen_for_clients, accept_client_connection, runtime_error_if, print_ln
+config=json.loads(Path(program.args[1]).read_text())
+program.active=True
+D=config['dimension']; N=config['clients']; B=config['coordinate_cap']; T=config['squared_bound']
+W=(2*B).bit_length()
+listen_for_clients(config['client_port'])
+sockets=Array(N,regint)
+seen=Array(N,regint); seen.assign_all(0)
+for _ in range(N):
+    cid=accept_client_connection(config['client_port'])
+    runtime_error_if((cid<0)+(cid>=N),'invalid registered client id')
+    runtime_error_if(seen[cid]!=0,'duplicate registered client id')
+    seen[cid]=1; sockets[cid]=cid
+inputs=[sint.receive_from_client(D*W,sockets[i]) for i in range(N)]
+check=sint(0)
+for row in inputs:
+    for bit in row:
+        check+=sint.get_random()*bit*(bit-1)
+opened=check.reveal()
+full=opened.bit_decompose(config['backend_prime'].bit_length())
+runtime_error_if(sum(regint.conv(bit) for bit in full)!=0,'invalid canonical private input')
+count=sint(0); total=[sint(0) for _ in range(D)]
+for row in inputs:
+    valid=sint(1); effective=[]
+    for j in range(D):
+        v=sum(row[j*W+t]*(1<<t) for t in range(W))
+        coordinate_ok=v.less_equal(2*B,bit_length=W+1)
+        z=coordinate_ok.if_else(v-B,0)
+        effective.append(z); valid*=coordinate_ok
+    squared_norm=sum(z*z for z in effective)
+    accepted=valid*squared_norm.less_equal(T,bit_length=(D*B*B).bit_length()+1)
+    count+=accepted
+    for j in range(D): total[j]+=accepted*effective[j]
+ok=count.greater_equal(config['minimum_accepted'],bit_length=N.bit_length()+1)
+sint.reveal_to_clients(sockets,[ok,ok*count]+[ok*z for z in total])
+print_ln('DIRECT_PRIVATE_BOUND_REVIEW_STATUS %s',ok.reveal())

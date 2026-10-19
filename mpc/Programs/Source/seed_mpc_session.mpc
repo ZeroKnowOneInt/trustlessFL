@@ -1,0 +1,47 @@
+# Synthetic fixed-public-input fixture. Same secret key shares across rounds.
+# No mask, norm, accepted roster, or individual update is opened.
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('Programs/Source').resolve()))
+from Compiler.types import sint
+from Compiler.library import print_ln
+from Compiler.circuit import Circuit
+from seed_mpc_primitives import register_keys, aes_words
+config = json.loads(Path(program.args[1]).read_text())
+D = config['dimension']; N = config['clients']; B = config['coordinate_cap']
+W = config['word_bits']; Q = 1 << W; T = config['squared_threshold']
+widths = config['widths']
+keys, sockets = register_keys(config)
+aes = Circuit('aes_128')
+outputs = []
+for round_spec in config['rounds']:
+    round_id = round_spec['round_id']
+    count = sint(0)
+    total = [sint(0) for _ in range(D)]
+    for i, key in enumerate(keys):
+        masks = []
+        for block in range((D + 128//W - 1) // (128//W)):
+            masks += aes_words(aes, key, (round_id << 64) | block, W)
+        valid = sint(1)
+        update = []
+        for j in range(D):
+            y = round_spec['wire'][i][j]
+            assert type(y) is int and 0 <= y < Q
+            z = y - masks[j]
+            r = z + Q * z.less_than(0, bit_length=widths['wire'])
+            positive = r.less_equal(B, bit_length=widths['wire'])
+            negative = r.greater_equal(Q-B, bit_length=widths['wire'])
+            coordinate_ok = positive + negative
+            safe = coordinate_ok * (r - Q*negative)
+            valid *= coordinate_ok
+            update.append(safe)
+        squared = sum(v*v for v in update)
+        accepted = valid * squared.less_equal(T, bit_length=widths['norm'])
+        count += accepted
+        for j in range(D):
+            total[j] += accepted * update[j]
+    ok = count.greater_equal(config['minimum_accepted'], bit_length=widths['count'])
+    outputs += [ok, ok*count] + [ok*v for v in total]
+sint.reveal_to_clients(sockets, outputs)
+print_ln('SEED_MPC_SESSION_DONE')

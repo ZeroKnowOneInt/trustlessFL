@@ -1,0 +1,12 @@
+{
+  "sha256": {
+    "compile-resource.txt": "51ca8881ce0e86a95fbe0ddafcacafff12eb7b96ce5f9fcde624a8e0b6e49a2e",
+    "dataset-manifest.json": "f0cab59c0d14ba105ab6f564bc11f7e22e48514573a5eaa9ac0f9532d56f176e",
+    "fmnist_small_cnn.py": "ee3c9ad847748bc1b79c7bc14d008febc4533dcc70b0598e1005d4f5f6b8eb02",
+    "policy.json": "126e2ae3eb79443cb7b07ecc8aafa6f48581730f3ed4b8260fef66896aed4e0e",
+    "prepare_seed_mpc_small_fmnist.py": "03c1342e5faac9776ac40916d0210314ed3d3586b682de533da1e3707ced015b",
+    "provenance.json": "cf2cb69f32f9437e8b43e9c1b18e6bd56f3340e090200e7736f042c2b2fbb6ce",
+    "summary.json": "a38ac3c9eac1343a7a77381474717ccb3bfc5a790fb38ae8bca9728e49268c02",
+    "verification.json": "0dce19814e504792f861dc2d8792360b986ef587771f36c0d20d2d36e3edc35a"
+  }
+}

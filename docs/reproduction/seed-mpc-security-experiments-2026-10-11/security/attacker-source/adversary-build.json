@@ -1,0 +1,17 @@
+{
+  "scope": "test-only malicious P0; forbidden by product backend pin",
+  "binary_sha256": "0e259a441ccd67cfff2f7485c8fd3cb357e197a6fa7bc9fea288b575c81526af",
+  "library_sha256": "900cb3fc8c36e248cc1c6c67d142ea390a6de8bc772051059e30a98d67d61aae",
+  "parent_observer_binary_sha256": "1ad2ddb90f6bcd715bcfac7e85b168688b46275c7e86b21b36334bfc6bb50e95",
+  "patches": {
+    "Protocols/Rep4.hpp": "bb5d5e538a6d6f02ce2867ef3a4f253047f40cec6dd76a8ab2412e80729e4067",
+    "Protocols/Rep4MC.hpp": "1eb24a1358694d040cf03449696d3978b510ad35a1e448738fb7a32435ee515d",
+    "Processor/BaseMachine.cpp": "239079269b0d092901ea9a2e51be6c94f9ceb3feee3c48faab4066681b7201fc"
+  },
+  "modes": [
+    "arithmetic-mul",
+    "binary-mul",
+    "opening-wire",
+    "round-abort"
+  ]
+}

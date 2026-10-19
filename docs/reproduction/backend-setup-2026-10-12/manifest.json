@@ -1,0 +1,14 @@
+{
+  "files_sha256": {
+    "setup.json": "36d9fa1b7aefe936d7575dae5fe2ffb6a94332d770b35987fda9f2809cfbf247",
+    "native-fault.json": "dfb4b52046a65fa64d08a2d952036192e93898b2518e3043fea30d229fbc8409",
+    "network-stock-setup.json": "28881c5f43f8bfc2d70fec1fc3ffeacf72ff9462a432de415703da3f1a8d56a6",
+    "package.json": "7a3f10f6280e82c12b132813ecfb34959a4e8bed4fdf3aa76bd3ecaac1fc8871",
+    "native-normal.json": "e6330c84214ba0a1d4c8bf240644940bbf2991e5e5100e109dd8d21db8842bac",
+    "source-build.json": "12a1ac08c189b77737b79e479d753d62e21f7c2309f318f4f2d1f46b77ac17bf",
+    "official-stock-normal.json": "8d40c1919fea9620d60f1636bcbd20088bdc691ad9f4be7587ccd1f976dbeb47",
+    "flower-8-2r.json": "698ddb63dc4794ef777cc80339d585b272c782d66154a547fb18b97a1a71b249"
+  },
+  "private_string_scan": "clean",
+  "scope": "public setup provenance and aggregate validation; local approval records/private inputs not exported"
+}

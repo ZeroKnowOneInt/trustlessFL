@@ -1,0 +1,101 @@
+{
+  "scope": "plaintext functional audits and native compiler estimates; not a cryptographic security proof",
+  "functional": {
+    "exhaustive_direct_wire_cases": 708,
+    "masked_vs_direct_cases": 800,
+    "direct_eliminates_mask_without_changing_filter_output": true,
+    "selected_sum_leak_persists": {
+      "world_a": {
+        "status": "ok",
+        "count": 3,
+        "sum": [
+          3
+        ]
+      },
+      "world_b": {
+        "status": "ok",
+        "count": 3,
+        "sum": [
+          1
+        ]
+      },
+      "same_unfiltered_sum": 9
+    },
+    "all_pass_guard_still_has_input_dependent_abort": true,
+    "field_alias_example": {
+      "squared_norm": 101,
+      "too_small_P": 101,
+      "aliased_norm": 0
+    },
+    "nonboolean_reference_rejected": true
+  },
+  "compile_only": {
+    "scope": "two coordinates, four clients, same P/L/compiler; compile only, no native execution",
+    "config": {
+      "dimension": 2,
+      "clients": 4,
+      "parties": 4,
+      "coordinate_cap": 2,
+      "scale": 1,
+      "spacing": 5,
+      "mask_max": 15,
+      "squared_bound": 8,
+      "minimum_accepted": 2,
+      "client_port": 25000,
+      "seed": 42,
+      "backend_prime": 170141183460469231731687303715884105727,
+      "hprf": {
+        "p": 101,
+        "q": 505,
+        "m": 2,
+        "columns": [
+          1,
+          2
+        ]
+      }
+    },
+    "application_bit_length": 14,
+    "cases": [
+      {
+        "candidate": "masked",
+        "compiler_requirements_upper_bounds": {
+          "integer triples": 100273,
+          "integer randoms": 92,
+          "integer bits": 43815,
+          "integer opens": 351,
+          "integer simple multiplications": 100189,
+          "virtual machine rounds": 3947
+        },
+        "input_field_elements": 84,
+        "source_sha256": "03611fa65b4ff4afb5373575447918140fc974825918815aee29aed3830fefb6",
+        "workspace": "/home/hacho/@WSL-Projects/trustlessFL/.cache/mpc-candidate-review/b4b86ad40fd84bb9bd2f5166e4fa258d/masked"
+      },
+      {
+        "candidate": "direct",
+        "compiler_requirements_upper_bounds": {
+          "integer triples": 3313,
+          "integer randoms": 32,
+          "integer simple multiplications": 3289,
+          "integer bits": 1651,
+          "integer opens": 19,
+          "virtual machine rounds": 40
+        },
+        "input_field_elements": 24,
+        "source_sha256": "57a75b2d3bb3085e85de3bba569b2c872fa6eb327c8de2ca2b01756d0ba4a8db",
+        "workspace": "/home/hacho/@WSL-Projects/trustlessFL/.cache/mpc-candidate-review/b4b86ad40fd84bb9bd2f5166e4fa258d/direct"
+      }
+    ]
+  },
+  "full_model_arithmetic": {
+    "dimension": 61706,
+    "clients": 4,
+    "B": 20000,
+    "norm_cap": 24682400000000,
+    "norm_bits": 45,
+    "direct_input_bits_per_client": 987296,
+    "application_L": 47,
+    "backend_P": 170141183460469231731687303715884105727,
+    "note": "range calculation only; no full-model compilation/runtime cost extrapolation"
+  },
+  "source_sha256": "9c2b9709ba6f9cf12bf989a1bf1532c506ab740d6b03afd2bbb7a45dfe2a4dbd"
+}
